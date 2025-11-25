@@ -510,6 +510,117 @@
             left: 0;
             color: #3b82f6;
         }
+
+        /* Collapsible sections */
+        .collapsible {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible:after {
+            content: " ▼";
+            font-size: 0.7em;
+            opacity: 0.6;
+        }
+
+        .collapsible.collapsed:after {
+            content: " ▶";
+        }
+
+        .collapsible-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+        }
+
+        /* Artifact links */
+        .artifact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .artifact-link {
+            display: block;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #93c5fd;
+            transition: all 0.2s;
+        }
+
+        .artifact-link:hover {
+            background: rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+            color: #bfdbfe;
+        }
+
+        .artifact-icon {
+            font-size: 1.3em;
+            margin-right: 8px;
+        }
+
+        .artifact-name {
+            font-weight: 500;
+        }
+
+        .artifact-type {
+            font-size: 0.75em;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        /* File directory */
+        .file-tree {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9em;
+        }
+
+        .file-tree a {
+            color: #93c5fd;
+            text-decoration: none;
+        }
+
+        .file-tree a:hover {
+            color: #bfdbfe;
+            text-decoration: underline;
+        }
+
+        .file-category {
+            margin: 15px 0;
+        }
+
+        .file-category-title {
+            color: #f1f5f9;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .file-list {
+            list-style: none;
+            padding-left: 15px;
+        }
+
+        .file-list li {
+            padding: 4px 0;
+            color: #94a3b8;
+        }
+
+        .file-list li:before {
+            content: "├── ";
+            color: #475569;
+        }
+
+        .file-list li:last-child:before {
+            content: "└── ";
+        }
     </style>
 </head>
 <body>
@@ -554,12 +665,14 @@
                         <div id="pending-questions"></div>
                     </div>
 
-                    <!-- Recent Timeline -->
+                    <!-- Recent Timeline (collapsible) -->
                     <div class="panel" style="margin-top: 20px;">
                         <div class="panel-header">
-                            <div class="panel-title">Recent Completions</div>
+                            <div class="panel-title collapsible" onclick="toggleCollapse(this)">Recent Completions</div>
                         </div>
-                        <div class="timeline" id="timeline"></div>
+                        <div class="collapsible-content">
+                            <div class="timeline" id="timeline"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -581,30 +694,119 @@
                         <ul class="fact-list" id="key-facts"></ul>
                     </div>
 
-                    <!-- Working Assumptions -->
+                    <!-- Working Assumptions (collapsible) -->
                     <div class="panel" style="margin-top: 20px;">
                         <div class="panel-header">
-                            <div class="panel-title">Working Assumptions</div>
+                            <div class="panel-title collapsible" onclick="toggleCollapse(this)">Working Assumptions</div>
                         </div>
-                        <ul class="fact-list" id="assumptions"></ul>
+                        <div class="collapsible-content">
+                            <ul class="fact-list" id="assumptions"></ul>
+                        </div>
                     </div>
 
-                    <!-- Domain Knowledge -->
+                    <!-- Domain Knowledge (collapsible) -->
                     <div class="panel" style="margin-top: 20px;">
                         <div class="panel-header">
-                            <div class="panel-title">Domain Knowledge</div>
+                            <div class="panel-title collapsible" onclick="toggleCollapse(this)">Domain Knowledge</div>
                         </div>
-                        <div id="domain-knowledge"></div>
+                        <div class="collapsible-content">
+                            <div id="domain-knowledge"></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bottom: Meta State -->
+            <!-- Bottom row: Artifacts and File Directory -->
+            <div class="main-grid" style="margin-top: 20px;">
+                <!-- Artifacts Panel -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title collapsible" onclick="toggleCollapse(this)">Cool Artifacts</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="artifact-grid" id="artifacts-grid">
+                            <!-- Static artifacts -->
+                            <a href="phase_diagram.html" class="artifact-link" target="_blank">
+                                <span class="artifact-icon">📊</span>
+                                <span class="artifact-name">Phase Diagram</span>
+                                <div class="artifact-type">Interactive Demo</div>
+                            </a>
+                            <a href="reaction_diffusion.html" class="artifact-link" target="_blank">
+                                <span class="artifact-icon">🌊</span>
+                                <span class="artifact-name">RD Explorer</span>
+                                <div class="artifact-type">Interactive Demo</div>
+                            </a>
+                            <a href="ca_explorer.html" class="artifact-link" target="_blank">
+                                <span class="artifact-icon">🔲</span>
+                                <span class="artifact-name">CA Explorer</span>
+                                <div class="artifact-type">Interactive Demo</div>
+                            </a>
+                            <a href="conversation_map.html" class="artifact-link" target="_blank">
+                                <span class="artifact-icon">🗺️</span>
+                                <span class="artifact-name">Conversation Map</span>
+                                <div class="artifact-type">Interactive Demo</div>
+                            </a>
+                            <a href="../outputs/cool-stuff-001.md" class="artifact-link" target="_blank">
+                                <span class="artifact-icon">✨</span>
+                                <span class="artifact-name">Cool Stuff #1</span>
+                                <div class="artifact-type">Summary</div>
+                            </a>
+                        </div>
+                        <div id="dynamic-artifacts" style="margin-top: 15px;"></div>
+                    </div>
+                </div>
+
+                <!-- File Directory Panel -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title collapsible" onclick="toggleCollapse(this)">Key Files</div>
+                    </div>
+                    <div class="collapsible-content">
+                        <div class="file-tree">
+                            <div class="file-category">
+                                <div class="file-category-title">📋 Curated Lists</div>
+                                <ul class="file-list">
+                                    <li><a href="../OPEN_PROBLEMS.md" target="_blank">OPEN_PROBLEMS.md</a> - Problems database</li>
+                                    <li><a href="../IDEAS.md" target="_blank">IDEAS.md</a> - Speculative ideas</li>
+                                    <li><a href="../DIRECTIONS.md" target="_blank">DIRECTIONS.md</a> - Exploration paths</li>
+                                    <li><a href="../INDEX.md" target="_blank">INDEX.md</a> - Master index</li>
+                                </ul>
+                            </div>
+                            <div class="file-category">
+                                <div class="file-category-title">📓 Journals</div>
+                                <ul class="file-list">
+                                    <li><a href="../journal/philosophical-musings.md" target="_blank">philosophical-musings.md</a></li>
+                                    <li><a href="../journal/11-chaos-discovery.md" target="_blank">11-chaos-discovery.md</a></li>
+                                    <li><a href="../journal/10-boundary-geometry.md" target="_blank">10-boundary-geometry.md</a></li>
+                                </ul>
+                            </div>
+                            <div class="file-category">
+                                <div class="file-category-title">🔧 Tools & Designs</div>
+                                <ul class="file-list">
+                                    <li><a href="../tools/MEDITATION_INTERFACE_DESIGN.md" target="_blank">MEDITATION_INTERFACE_DESIGN.md</a></li>
+                                </ul>
+                            </div>
+                            <div class="file-category">
+                                <div class="file-category-title">🐍 Simulations</div>
+                                <ul class="file-list">
+                                    <li><a href="../simulations/reaction_diffusion.py" target="_blank">reaction_diffusion.py</a></li>
+                                    <li><a href="../simulations/boundary_finder.py" target="_blank">boundary_finder.py</a></li>
+                                    <li><a href="../simulations/cellular_automata.py" target="_blank">cellular_automata.py</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meta State (collapsible) -->
             <div class="panel full-width" style="margin-top: 20px;">
                 <div class="panel-header">
-                    <div class="panel-title">Meta State</div>
+                    <div class="panel-title collapsible" onclick="toggleCollapse(this)">Meta State</div>
                 </div>
-                <div class="meta-info" id="meta-info"></div>
+                <div class="collapsible-content">
+                    <div class="meta-info" id="meta-info"></div>
+                </div>
             </div>
         </div>
 
@@ -615,6 +817,15 @@
         let updateInterval;
         const STATUS_FILE = '../data/session_status.json';
         const UPDATE_INTERVAL = 5000; // 5 seconds for live updates
+
+        // Collapse toggle function
+        function toggleCollapse(element) {
+            element.classList.toggle('collapsed');
+            const content = element.closest('.panel-header').nextElementSibling;
+            if (content && content.classList.contains('collapsible-content')) {
+                content.classList.toggle('collapsed');
+            }
+        }
 
         function formatTime(isoString) {
             const date = new Date(isoString);
