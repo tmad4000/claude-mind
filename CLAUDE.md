@@ -1,5 +1,15 @@
 # Claude Mind - Exploration Project
 
+## Quick Start
+
+```bash
+./start.sh   # Opens dashboard in browser
+```
+
+Or manually: `python3 -m http.server 8080` then open http://localhost:8080/demos/status_dashboard.html
+
+---
+
 ## What This Is
 
 An autonomous curiosity-driven exploration project. The goal is genuine discovery - finding things that would surprise other Claudes, interest humans, and build toward real scientific frontiers.
