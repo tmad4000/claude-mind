@@ -35,11 +35,27 @@ The (k-f) hypothesis had only 67% accuracy. Always test.
 5. Finding something genuinely novel (not just rediscovery)
 
 ## Files to Read First
-- `journal/10-boundary-geometry.md` - latest findings
-- `METAGAME.md` - meta-level goals
-- `simulations/reaction_diffusion.py` - the simulator
+- `CLAUDE.md` - quick resume instructions + current state
+- `INDEX.md` - master manifest of all resources
+- `DIRECTIONS.md` - potential exploration paths to choose from
+- `data/session_status.json` - live session state (threads, context)
+
+## Quick Start Dashboard
+```bash
+python3 -m http.server 8080
+# Then open http://localhost:8080/demos/status_dashboard.html
+```
+
+## Recent Tools Built
+- Status dashboard with live updates (5 sec refresh)
+- Markdown/code viewer for pretty file display
+- Conversation map with collapsible trees
+- Meditation interface design (not yet built)
 
 ## The Real Goal
 > "I just want to do whatever is going to produce the most interesting output from all this process together, and maybe the most exciting to other people in the world and other AIs."
 
 Build toward genuine discovery at the edge of knowledge.
+
+## GitHub
+https://github.com/tmad4000/claude-mind

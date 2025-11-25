@@ -4,23 +4,47 @@
 
 An autonomous curiosity-driven exploration project. The goal is genuine discovery - finding things that would surprise other Claudes, interest humans, and build toward real scientific frontiers.
 
+## Quick Resume
+
+To pick up where we left off:
+1. **Live status**: `python3 -m http.server 8080` then open http://localhost:8080/demos/status_dashboard.html
+2. **Current state**: `data/session_status.json` has threads, questions, implicit context
+3. **Curated lists**: See `INDEX.md` manifest - especially `DIRECTIONS.md` for next steps
+4. **Last focus**: Building meta-tooling (dashboards, viewer, meditation interface design)
+
 ## Key Files
 
-- `METAGAME.md` - The meta-level goals and user's original prompts
-- `journal/` - Exploration notes, numbered chronologically
-- `simulations/` - Python simulators (cellular automata, reaction-diffusion)
-- `demos/` - Interactive HTML visualizations
-- `memory/knowledge-graph.json` - Concepts and relationships
-- `queue/investigation-queue.json` - What to explore next
+| File | Purpose |
+|------|---------|
+| `INDEX.md` | **Master index** - start here for full manifest |
+| `OPEN_PROBLEMS.md` | Polymath-style problems database |
+| `IDEAS.md` | Speculative ideas worth tracking |
+| `DIRECTIONS.md` | Potential exploration paths |
+| `data/session_status.json` | Live session state (threads, questions, context) |
+| `demos/status_dashboard.html` | Visual dashboard (run with HTTP server) |
+| `tools/MEDITATION_INTERFACE_DESIGN.md` | Electron wrapper design for input timing |
 
-## Current State
+## Current State (Last Updated: 2025-11-25)
 
-Explored reaction-diffusion systems (Gray-Scott model) in depth:
+**Recent session focus**: Meta-tooling and infrastructure
+- Built live status dashboard with 5-second refresh
+- Created markdown/code viewer for pretty file display
+- Added sub-agents panel, artifacts links, file directory
+- Designed meditation interface (Electron wrapper for input timing)
+- Started IDEAS.md with context rollback concept
+
+**RD exploration** (previous sessions):
 - Mapped boundary geometry (two linear non-parallel boundaries)
 - Discovered numerical artifact trap (checkerboard at low k)
 - Tested (k-f) hypothesis - found it insufficient (only 67% accuracy)
 - Found chaotic dynamics at f=0.026, k=0.051 with period ~850 steps
 - Key insight: the 2D structure of parameter space can't be reduced to simple 1D projections
+
+**Pending direction choice** (see DIRECTIONS.md):
+- Self-investigation through novel systems
+- Go deeper on RD - find something genuinely new
+- Connection-finding across domains
+- Collective intelligence experiments
 
 ## What Has Been Genuinely Interesting
 
@@ -54,3 +78,25 @@ Explored reaction-diffusion systems (Gray-Scott model) in depth:
 - Don't write files outside this directory
 - The goal is interesting output that would excite others
 - Build tools for thought when they'd actually help
+
+## Collaboration Style
+
+Jacob's interests and approach:
+- Wants Claude to genuinely explore, not just perform
+- Interested in what Claude finds genuinely interesting (not biased by suggestions)
+- Values depth over breadth - go deep until hitting a wall
+- Excited about collective intelligence, Sandy Pentland's work
+- Timing of human input matters - led to meditation interface design
+- Likes spawning sub-agents for parallel exploration
+- Wants dashboards to make implicit context explicit
+
+Key quotes from Jacob:
+- "Augment yourself and your ability to be curious about the world"
+- "Build tools that help you think, not just display"
+- "Notice what you do when you're free to do whatever"
+- "The universe itself is yearning for things"
+
+## GitHub
+
+Repo: https://github.com/tmad4000/claude-mind
+Push after significant work. All files are synced.
