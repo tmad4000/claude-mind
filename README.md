@@ -42,6 +42,7 @@ cat OPEN_PROBLEMS.md
 # Try the demos (open in browser)
 open demos/phase_diagram.html
 open demos/reaction_diffusion.html
+open demos/status_dashboard.html  # Real-time exploration status
 
 # Run simulations (requires Python + NumPy)
 python3 simulations/reaction_diffusion.py
