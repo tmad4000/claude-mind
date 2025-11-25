@@ -172,8 +172,6 @@
             transition: width 0.1s;
         }
     </style>
-    <!-- GIF.js library for GIF export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
 </head>
 <body>
     <div class="container">
@@ -216,7 +214,8 @@
         <div class="info" id="info">Generation: 0 | Population: 0 | Density: 0%</div>
 
         <div class="export-controls">
-            <button class="export-btn" onclick="saveGIF()">🎬 Record GIF</button>
+            <button class="export-btn" onclick="copyLink()">🔗 Copy Link</button>
+            <button class="export-btn" onclick="recordWebM()">🎬 Record Video</button>
             <button class="export-btn" onclick="savePNG()">📷 Save PNG</button>
             <button class="export-btn" onclick="saveConfig()">💾 Save Config</button>
             <div class="control-group">
@@ -418,7 +417,45 @@
             }
         }
 
+        // === URL PARAMETER HANDLING ===
+        function loadFromURL() {
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.has('rule')) {
+                rule = parseInt(params.get('rule'));
+                document.getElementById('ruleInput').value = rule;
+            }
+            if (params.has('initial')) {
+                document.getElementById('initialSelect').value = params.get('initial');
+            }
+            if (params.has('auto') && params.get('auto') === '1') {
+                // Auto-start after a brief delay
+                setTimeout(() => {
+                    run();
+                    toggleAuto();
+                }, 100);
+            }
+        }
+
+        function getShareURL() {
+            const url = new URL(window.location.href.split('?')[0]);
+            url.searchParams.set('rule', rule);
+            url.searchParams.set('initial', document.getElementById('initialSelect').value);
+            return url.toString();
+        }
+
+        function copyLink() {
+            const url = getShareURL();
+            navigator.clipboard.writeText(url).then(() => {
+                updateExportStatus('Link copied! ' + url);
+            }).catch(() => {
+                // Fallback
+                prompt('Copy this URL:', url);
+            });
+        }
+
         // Initialize
+        loadFromURL();  // Load from URL params first
         ruleTable = buildRuleTable(rule);
         displayRule();
         initState();
@@ -499,43 +536,68 @@
             updateExportStatus(`Saved: ${filename}`);
         }
 
-        async function saveGIF() {
+        // Record WebM video using MediaRecorder API
+        let mediaRecorder = null;
+        let recordedChunks = [];
+        let isRecording = false;
+
+        async function recordWebM() {
+            if (isRecording) {
+                stopRecording();
+                return;
+            }
+
             const numFrames = parseInt(document.getElementById('gifFrames').value);
             const frameDelay = parseInt(document.getElementById('gifDelay').value);
-            const filename = `ca_${getConfigString()}_${numFrames}frames.gif`;
 
-            updateExportStatus('Recording frames...');
+            updateExportStatus('Recording video...');
             document.getElementById('gifProgress').style.display = 'block';
             document.getElementById('gifProgressBar').style.width = '0%';
+            isRecording = true;
 
             // Reset and prepare
             reset();
 
-            // Check if GIF.js is loaded
-            if (typeof GIF === 'undefined') {
-                updateExportStatus('Error: GIF.js not loaded. Using fallback...');
-                await saveGIFFallback(numFrames, frameDelay, filename);
-                return;
-            }
-
-            const gif = new GIF({
-                workers: 2,
-                quality: 10,
-                width: canvas.width,
-                height: canvas.height + 30,
-                workerScript: 'https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js'
-            });
-
-            // Create temp canvas for frames with metadata
+            // Create a temp canvas with metadata area
             const tempCanvas = document.createElement('canvas');
             tempCanvas.width = canvas.width;
             tempCanvas.height = canvas.height + 30;
             const tempCtx = tempCanvas.getContext('2d');
 
+            // Set up MediaRecorder
+            const stream = tempCanvas.captureStream(30);
+            const options = { mimeType: 'video/webm;codecs=vp9' };
+
+            try {
+                mediaRecorder = new MediaRecorder(stream, options);
+            } catch (e) {
+                // Fallback to default codec
+                mediaRecorder = new MediaRecorder(stream);
+            }
+
+            recordedChunks = [];
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data.size > 0) recordedChunks.push(e.data);
+            };
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                const filename = `ca_${getConfigString()}_${numFrames}frames.webm`;
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = URL.createObjectURL(blob);
+                link.click();
+                updateExportStatus(`Saved: ${filename}`);
+                document.getElementById('gifProgress').style.display = 'none';
+                isRecording = false;
+            };
+
+            mediaRecorder.start();
+
             // Record frames
-            for (let i = 0; i < numFrames; i++) {
+            for (let i = 0; i < numFrames && isRecording; i++) {
                 // Update progress
-                const progress = ((i + 1) / numFrames * 50).toFixed(0);
+                const progress = ((i + 1) / numFrames * 100).toFixed(0);
                 document.getElementById('gifProgressBar').style.width = progress + '%';
 
                 // Step simulation
@@ -546,45 +608,26 @@
                 tempCtx.fillStyle = '#0a0a0a';
                 tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
                 tempCtx.drawImage(canvas, 0, 0);
-                tempCtx.fillStyle = '#666';
-                tempCtx.font = '12px Monaco, monospace';
-                tempCtx.fillText(`Rule ${rule} | Gen ${generation} | Frame ${i + 1}/${numFrames}`, 10, canvas.height + 20);
+                tempCtx.fillStyle = '#888';
+                tempCtx.font = '14px Monaco, monospace';
+                tempCtx.fillText(`Rule ${rule} | Gen ${generation}`, 10, canvas.height + 20);
 
-                // Add frame to GIF
-                gif.addFrame(tempCtx, { copy: true, delay: frameDelay });
-
-                // Small delay to allow UI update
-                if (i % 10 === 0) {
-                    await new Promise(r => setTimeout(r, 1));
-                }
+                // Wait for frame delay
+                await new Promise(r => setTimeout(r, frameDelay));
             }
 
-            updateExportStatus('Encoding GIF...');
-
-            gif.on('progress', (p) => {
-                const progress = (50 + p * 50).toFixed(0);
-                document.getElementById('gifProgressBar').style.width = progress + '%';
-            });
-
-            gif.on('finished', (blob) => {
-                document.getElementById('gifProgress').style.display = 'none';
-                const link = document.createElement('a');
-                link.download = filename;
-                link.href = URL.createObjectURL(blob);
-                link.click();
-                updateExportStatus(`Saved: ${filename}`);
-            });
-
-            gif.render();
+            // Stop recording
+            if (mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+            }
         }
 
-        // Fallback: Save as series of PNGs in a zip (if GIF.js fails)
-        async function saveGIFFallback(numFrames, frameDelay, filename) {
-            updateExportStatus('GIF.js unavailable - saving as animated WebP or PNG series');
-
-            // Just save a single PNG for now as fallback
-            savePNG();
-            document.getElementById('gifProgress').style.display = 'none';
+        function stopRecording() {
+            isRecording = false;
+            if (mediaRecorder && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+            }
+            updateExportStatus('Recording stopped');
         }
     </script>
 </body>
