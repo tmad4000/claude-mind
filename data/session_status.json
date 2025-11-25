@@ -24,6 +24,13 @@
       "description": "Serving status_dashboard.html",
       "url": "http://localhost:8080",
       "started": "2025-11-25T05:04:00-08:00"
+    },
+    {
+      "name": "Search Server",
+      "status": "running",
+      "description": "Full-text search across all files",
+      "url": "http://localhost:8081",
+      "started": "2025-11-25T07:10:00-08:00"
     }
   ],
   "activity_feed": [
