@@ -1038,6 +1038,90 @@
         .last-updated.stale .seconds-ago {
             color: #ef4444;
         }
+
+        /* Terminal Output Panel */
+        .terminal-panel {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .terminal-output {
+            height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #c9d1d9;
+        }
+
+        .terminal-output::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .terminal-output::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+
+        .terminal-output::-webkit-scrollbar-thumb {
+            background: #30363d;
+            border-radius: 4px;
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding: 8px 15px;
+            background: #161b22;
+            border-top: 1px solid #30363d;
+            font-size: 0.85em;
+        }
+
+        .terminal-controls label {
+            color: #8b949e;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .terminal-controls input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        .terminal-status {
+            margin-left: auto;
+            color: #8b949e;
+        }
+
+        .terminal-status.live {
+            color: #22c55e;
+        }
+
+        /* ANSI color classes */
+        .ansi-black { color: #0d1117; }
+        .ansi-red { color: #f85149; }
+        .ansi-green { color: #56d364; }
+        .ansi-yellow { color: #e3b341; }
+        .ansi-blue { color: #58a6ff; }
+        .ansi-magenta { color: #bc8cff; }
+        .ansi-cyan { color: #76e3ea; }
+        .ansi-white { color: #c9d1d9; }
+        .ansi-bright-black { color: #484f58; }
+        .ansi-bright-red { color: #ff7b72; }
+        .ansi-bright-green { color: #7ee787; }
+        .ansi-bright-yellow { color: #ffc658; }
+        .ansi-bright-blue { color: #79c0ff; }
+        .ansi-bright-magenta { color: #d2a8ff; }
+        .ansi-bright-cyan { color: #a5d6ff; }
+        .ansi-bright-white { color: #f0f6fc; }
+        .ansi-bold { font-weight: bold; }
+        .ansi-dim { opacity: 0.7; }
+        .ansi-italic { font-style: italic; }
+        .ansi-underline { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -1081,6 +1165,35 @@
                     </div>
                     <div id="sub-agents"></div>
                     <div id="background-tasks" style="margin-top: 10px;"></div>
+                </div>
+            </div>
+
+            <!-- Terminal Output Panel -->
+            <div class="panel terminal-panel full-width" style="margin-bottom: 20px;">
+                <div class="panel-header" style="background: #161b22; border-bottom: 1px solid #30363d;">
+                    <div class="panel-title" style="display: flex; align-items: center; gap: 10px;">
+                        <span style="color: #56d364;">❯</span> Terminal Output
+                        <span class="now-badge" id="terminal-live-badge" style="display: none;">STREAMING</span>
+                    </div>
+                    <div class="timestamp" id="terminal-timestamp">Waiting for output...</div>
+                </div>
+                <div class="terminal-output" id="terminal-output">
+                    <span style="color: #8b949e;">No terminal output yet.</span>
+                    <br><br>
+                    <span style="color: #8b949e;">To stream Claude Code output, run:</span>
+                    <br>
+                    <span style="color: #58a6ff;">./run-claude.sh</span>
+                </div>
+                <div class="terminal-controls">
+                    <label>
+                        <input type="checkbox" id="terminal-autoscroll" checked>
+                        Auto-scroll
+                    </label>
+                    <label>
+                        <input type="checkbox" id="terminal-wrap" checked>
+                        Word wrap
+                    </label>
+                    <span class="terminal-status" id="terminal-status">● Waiting</span>
                 </div>
             </div>
 
@@ -1323,7 +1436,11 @@
     <script>
         let updateInterval;
         const STATUS_FILE = '../data/session_status.json';
+        const TERMINAL_FILE = '../data/terminal.log';
         const UPDATE_INTERVAL = 2000; // 2 seconds for live updates
+        const MAX_TERMINAL_LINES = 150;
+        let lastTerminalContent = '';
+        let terminalLastModified = null;
 
         // Collapse toggle function
         function toggleCollapse(element) {
@@ -1331,6 +1448,120 @@
             const content = element.closest('.panel-header').nextElementSibling;
             if (content && content.classList.contains('collapsible-content')) {
                 content.classList.toggle('collapsed');
+            }
+        }
+
+        // Simple ANSI to HTML parser
+        function ansiToHtml(text) {
+            // Escape HTML first
+            text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+            // ANSI color code mappings
+            const colorMap = {
+                '30': 'ansi-black', '31': 'ansi-red', '32': 'ansi-green', '33': 'ansi-yellow',
+                '34': 'ansi-blue', '35': 'ansi-magenta', '36': 'ansi-cyan', '37': 'ansi-white',
+                '90': 'ansi-bright-black', '91': 'ansi-bright-red', '92': 'ansi-bright-green',
+                '93': 'ansi-bright-yellow', '94': 'ansi-bright-blue', '95': 'ansi-bright-magenta',
+                '96': 'ansi-bright-cyan', '97': 'ansi-bright-white',
+                '1': 'ansi-bold', '2': 'ansi-dim', '3': 'ansi-italic', '4': 'ansi-underline'
+            };
+
+            let result = '';
+            let openSpans = 0;
+
+            // Match ANSI escape sequences
+            const regex = /\x1b\[([0-9;]*)m/g;
+            let lastIndex = 0;
+            let match;
+
+            while ((match = regex.exec(text)) !== null) {
+                // Add text before this match
+                result += text.slice(lastIndex, match.index);
+                lastIndex = regex.lastIndex;
+
+                const codes = match[1].split(';').filter(c => c);
+
+                if (codes.length === 0 || codes.includes('0')) {
+                    // Reset - close all open spans
+                    while (openSpans > 0) {
+                        result += '</span>';
+                        openSpans--;
+                    }
+                } else {
+                    const classes = codes.map(c => colorMap[c]).filter(c => c).join(' ');
+                    if (classes) {
+                        result += `<span class="${classes}">`;
+                        openSpans++;
+                    }
+                }
+            }
+
+            // Add remaining text
+            result += text.slice(lastIndex);
+
+            // Close any remaining open spans
+            while (openSpans > 0) {
+                result += '</span>';
+                openSpans--;
+            }
+
+            return result;
+        }
+
+        // Load terminal output
+        async function loadTerminalOutput() {
+            try {
+                const response = await fetch(TERMINAL_FILE, { cache: 'no-store' });
+
+                if (!response.ok) {
+                    if (response.status === 404) {
+                        // File doesn't exist yet - that's okay
+                        return;
+                    }
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const text = await response.text();
+
+                // Only update if content changed
+                if (text === lastTerminalContent) {
+                    return;
+                }
+                lastTerminalContent = text;
+
+                // Get last N lines
+                const lines = text.split('\n');
+                const recentLines = lines.slice(-MAX_TERMINAL_LINES).join('\n');
+
+                // Convert ANSI to HTML
+                const html = ansiToHtml(recentLines);
+
+                const container = document.getElementById('terminal-output');
+                const shouldScroll = document.getElementById('terminal-autoscroll').checked;
+                const wasAtBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 50;
+
+                container.innerHTML = html || '<span style="color: #8b949e;">Empty output</span>';
+
+                // Apply word wrap setting
+                const wrap = document.getElementById('terminal-wrap').checked;
+                container.style.whiteSpace = wrap ? 'pre-wrap' : 'pre';
+
+                // Auto-scroll to bottom if enabled and was at bottom
+                if (shouldScroll && wasAtBottom) {
+                    container.scrollTop = container.scrollHeight;
+                }
+
+                // Update status
+                document.getElementById('terminal-status').innerHTML = '● Live';
+                document.getElementById('terminal-status').classList.add('live');
+                document.getElementById('terminal-live-badge').style.display = 'inline';
+                document.getElementById('terminal-timestamp').textContent =
+                    `${lines.length} lines · Updated ${new Date().toLocaleTimeString()}`;
+
+            } catch (error) {
+                if (error.message !== 'HTTP 404') {
+                    console.error('Error loading terminal:', error);
+                }
             }
         }
 
@@ -1835,15 +2066,25 @@
         // Initialize
         function init() {
             loadStatus();
+            loadTerminalOutput();
             updateCurrentTime();
             updateLastFetched();
 
             // Set up auto-refresh
-            updateInterval = setInterval(loadStatus, UPDATE_INTERVAL);
+            updateInterval = setInterval(() => {
+                loadStatus();
+                loadTerminalOutput();
+            }, UPDATE_INTERVAL);
             // Update time every second
             setInterval(updateCurrentTime, 1000);
             // Update fetch timer every 100ms for smooth countdown
             setInterval(updateLastFetched, 100);
+
+            // Word wrap toggle handler
+            document.getElementById('terminal-wrap').addEventListener('change', function() {
+                const container = document.getElementById('terminal-output');
+                container.style.whiteSpace = this.checked ? 'pre-wrap' : 'pre';
+            });
         }
 
         // Clean up on page unload
