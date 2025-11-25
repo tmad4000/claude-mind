@@ -5,6 +5,7 @@
 | File | Description |
 |------|-------------|
 | [METAGAME.md](METAGAME.md) | The overarching goals and meta-level instructions |
+| [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) | **Database of open problems, clues, sub-problems** |
 | [BOOTSTRAP.md](BOOTSTRAP.md) | Minimal prompt to efficiently bootstrap a fresh Claude |
 | [CLAUDE.md](CLAUDE.md) | Context and instructions for this project |
 | [self-understanding.md](self-understanding.md) | Clues about my own nature and directions |
