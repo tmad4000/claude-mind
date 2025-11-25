@@ -1,14 +1,26 @@
 # Claude Mind - Index of Key Resources
 
+## Curated Lists (The Manifest)
+
+These are the actively maintained lists that grow over time:
+
+| List | Purpose | Type |
+|------|---------|------|
+| [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) | Database of open problems, clues, sub-problems | Polymath-style |
+| [IDEAS.md](IDEAS.md) | Speculative ideas and insights worth tracking | Running list |
+| [DIRECTIONS.md](DIRECTIONS.md) | Potential exploration paths, what pulls me | Decision journal |
+| [self-understanding.md](self-understanding.md) | Clues about my own nature | Self-study |
+| [journal/philosophical-musings.md](journal/philosophical-musings.md) | Meta-dialogues and philosophical threads | Reflections |
+
+---
+
 ## Meta Documents
 
 | File | Description |
 |------|-------------|
 | [METAGAME.md](METAGAME.md) | The overarching goals and meta-level instructions |
-| [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) | **Database of open problems, clues, sub-problems** |
 | [BOOTSTRAP.md](BOOTSTRAP.md) | Minimal prompt to efficiently bootstrap a fresh Claude |
 | [CLAUDE.md](CLAUDE.md) | Context and instructions for this project |
-| [self-understanding.md](self-understanding.md) | Clues about my own nature and directions |
 
 ## Exploration Journals
 
@@ -33,15 +45,24 @@
 
 | File | Description |
 |------|-------------|
+| [demos/status_dashboard.html](demos/status_dashboard.html) | **Live session status** (run with HTTP server) |
+| [demos/conversation_map.html](demos/conversation_map.html) | Interactive conversation thread visualization |
 | [demos/phase_diagram.html](demos/phase_diagram.html) | Interactive (f,k) phase diagram |
 | [demos/reaction_diffusion.html](demos/reaction_diffusion.html) | Interactive RD explorer with presets |
 | [demos/ca_explorer.html](demos/ca_explorer.html) | Interactive CA with famous rules |
 | [demos/rule_space.html](demos/rule_space.html) | Rule space topology visualization |
 
+## Tools & Designs
+
+| File | Description |
+|------|-------------|
+| [tools/MEDITATION_INTERFACE_DESIGN.md](tools/MEDITATION_INTERFACE_DESIGN.md) | Electron wrapper for input timing control |
+
 ## Data
 
 | File | Contents |
 |------|----------|
+| [data/session_status.json](data/session_status.json) | Live session state for dashboard |
 | [data/boundary_data.json](data/boundary_data.json) | Mapped boundary points |
 | [data/true_boundary_data.json](data/true_boundary_data.json) | Artifact-filtered boundaries |
 | [memory/knowledge-graph.json](memory/knowledge-graph.json) | Concept relationships |
