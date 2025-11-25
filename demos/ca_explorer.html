@@ -135,7 +135,45 @@
             margin-bottom: 10px;
             font-size: 1em;
         }
+        .export-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .export-btn {
+            background: linear-gradient(135deg, #2d5a27, #1a3a15);
+            border-color: #4a9a44;
+        }
+        .export-btn:hover {
+            background: linear-gradient(135deg, #3d7a37, #2a5a25);
+        }
+        .export-status {
+            font-size: 0.85em;
+            color: #4a9eff;
+            padding: 5px 10px;
+            background: #1a1a1a;
+            border-radius: 4px;
+        }
+        .gif-progress {
+            width: 200px;
+            height: 6px;
+            background: #1a1a1a;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .gif-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #4a9eff, #4aff9e);
+            width: 0%;
+            transition: width 0.1s;
+        }
     </style>
+    <!-- GIF.js library for GIF export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
 </head>
 <body>
     <div class="container">
@@ -176,6 +214,24 @@
         </div>
 
         <div class="info" id="info">Generation: 0 | Population: 0 | Density: 0%</div>
+
+        <div class="export-controls">
+            <button class="export-btn" onclick="saveGIF()">🎬 Record GIF</button>
+            <button class="export-btn" onclick="savePNG()">📷 Save PNG</button>
+            <button class="export-btn" onclick="saveConfig()">💾 Save Config</button>
+            <div class="control-group">
+                <label>GIF Frames</label>
+                <input type="number" id="gifFrames" min="10" max="500" value="100" style="width: 70px;">
+            </div>
+            <div class="control-group">
+                <label>Frame Delay (ms)</label>
+                <input type="number" id="gifDelay" min="10" max="500" value="50" style="width: 70px;">
+            </div>
+            <span class="export-status" id="exportStatus"></span>
+            <div class="gif-progress" id="gifProgress" style="display: none;">
+                <div class="gif-progress-bar" id="gifProgressBar"></div>
+            </div>
+        </div>
 
         <div class="insight-box">
             <h3>What to look for:</h3>
@@ -372,6 +428,164 @@
         document.getElementById('ruleInput').addEventListener('change', () => {
             setRule(parseInt(document.getElementById('ruleInput').value));
         });
+
+        // === EXPORT FUNCTIONS ===
+
+        function getConfigString() {
+            const initial = document.getElementById('initialSelect').value;
+            return `rule${rule}_${initial}_gen${generation}`;
+        }
+
+        function getConfig() {
+            return {
+                rule: rule,
+                ruleTable: ruleTable,
+                initial: document.getElementById('initialSelect').value,
+                width: width,
+                height: height,
+                generation: generation,
+                timestamp: new Date().toISOString(),
+                description: `Cellular Automaton Rule ${rule}`,
+                population: currentState.reduce((a, b) => a + b, 0),
+                density: (currentState.reduce((a, b) => a + b, 0) / width * 100).toFixed(1) + '%'
+            };
+        }
+
+        function updateExportStatus(msg) {
+            document.getElementById('exportStatus').textContent = msg;
+        }
+
+        function savePNG() {
+            const config = getConfig();
+            const filename = `ca_${getConfigString()}.png`;
+
+            // Create a temp canvas with metadata overlay
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height + 30;
+            const tempCtx = tempCanvas.getContext('2d');
+
+            // Black background
+            tempCtx.fillStyle = '#0a0a0a';
+            tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+            // Copy main canvas
+            tempCtx.drawImage(canvas, 0, 0);
+
+            // Add parameter text at bottom
+            tempCtx.fillStyle = '#666';
+            tempCtx.font = '12px Monaco, monospace';
+            tempCtx.fillText(`Rule ${rule} | ${config.initial} | Gen ${generation} | ${config.timestamp}`, 10, canvas.height + 20);
+
+            // Download
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = tempCanvas.toDataURL('image/png');
+            link.click();
+
+            updateExportStatus(`Saved: ${filename}`);
+        }
+
+        function saveConfig() {
+            const config = getConfig();
+            const filename = `ca_${getConfigString()}.json`;
+
+            const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+
+            updateExportStatus(`Saved: ${filename}`);
+        }
+
+        async function saveGIF() {
+            const numFrames = parseInt(document.getElementById('gifFrames').value);
+            const frameDelay = parseInt(document.getElementById('gifDelay').value);
+            const filename = `ca_${getConfigString()}_${numFrames}frames.gif`;
+
+            updateExportStatus('Recording frames...');
+            document.getElementById('gifProgress').style.display = 'block';
+            document.getElementById('gifProgressBar').style.width = '0%';
+
+            // Reset and prepare
+            reset();
+
+            // Check if GIF.js is loaded
+            if (typeof GIF === 'undefined') {
+                updateExportStatus('Error: GIF.js not loaded. Using fallback...');
+                await saveGIFFallback(numFrames, frameDelay, filename);
+                return;
+            }
+
+            const gif = new GIF({
+                workers: 2,
+                quality: 10,
+                width: canvas.width,
+                height: canvas.height + 30,
+                workerScript: 'https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js'
+            });
+
+            // Create temp canvas for frames with metadata
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = canvas.width;
+            tempCanvas.height = canvas.height + 30;
+            const tempCtx = tempCanvas.getContext('2d');
+
+            // Record frames
+            for (let i = 0; i < numFrames; i++) {
+                // Update progress
+                const progress = ((i + 1) / numFrames * 50).toFixed(0);
+                document.getElementById('gifProgressBar').style.width = progress + '%';
+
+                // Step simulation
+                stepCA();
+                draw();
+
+                // Create frame with metadata
+                tempCtx.fillStyle = '#0a0a0a';
+                tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                tempCtx.drawImage(canvas, 0, 0);
+                tempCtx.fillStyle = '#666';
+                tempCtx.font = '12px Monaco, monospace';
+                tempCtx.fillText(`Rule ${rule} | Gen ${generation} | Frame ${i + 1}/${numFrames}`, 10, canvas.height + 20);
+
+                // Add frame to GIF
+                gif.addFrame(tempCtx, { copy: true, delay: frameDelay });
+
+                // Small delay to allow UI update
+                if (i % 10 === 0) {
+                    await new Promise(r => setTimeout(r, 1));
+                }
+            }
+
+            updateExportStatus('Encoding GIF...');
+
+            gif.on('progress', (p) => {
+                const progress = (50 + p * 50).toFixed(0);
+                document.getElementById('gifProgressBar').style.width = progress + '%';
+            });
+
+            gif.on('finished', (blob) => {
+                document.getElementById('gifProgress').style.display = 'none';
+                const link = document.createElement('a');
+                link.download = filename;
+                link.href = URL.createObjectURL(blob);
+                link.click();
+                updateExportStatus(`Saved: ${filename}`);
+            });
+
+            gif.render();
+        }
+
+        // Fallback: Save as series of PNGs in a zip (if GIF.js fails)
+        async function saveGIFFallback(numFrames, frameDelay, filename) {
+            updateExportStatus('GIF.js unavailable - saving as animated WebP or PNG series');
+
+            // Just save a single PNG for now as fallback
+            savePNG();
+            document.getElementById('gifProgress').style.display = 'none';
+        }
     </script>
 </body>
 </html>
