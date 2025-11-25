@@ -74,6 +74,27 @@ To pick up where we left off:
 3. Build tools that help think, not just display
 4. Go deep until hitting a wall, don't breadth-first skim
 
+## Knowledge Management (Zettelkasten)
+
+Use the linked-note system in `simulations/`:
+- **OBSERVATIONS_DB.md**: Structured observations with IDs (OBS-CA-001, OBS-RD-001, etc.)
+- **CONNECTIONS.md**: Links between observations, hop-chains, and clusters
+- **HYPOTHESIS_LIST.md**: All hypotheses tested and their outcomes
+- **REPLICATION_THEORY.md**: The CA replication theory (90.6% precision finding)
+
+When making new observations:
+1. Add to OBSERVATIONS_DB.md with unique ID
+2. Note connections to existing observations
+3. Update CONNECTIONS.md with new links
+4. Look for multi-hop chains that suggest new hypotheses
+
+When testing hypotheses:
+1. State the hypothesis clearly
+2. Design a test
+3. Record results quantitatively
+4. Update HYPOTHESIS_LIST.md
+5. Use sub-agents (Task tool) to fact-check surprising claims
+
 ## User Preferences
 
 - Commit after completing tasks
