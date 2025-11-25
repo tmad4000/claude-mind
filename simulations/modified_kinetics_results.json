@@ -1,0 +1,74 @@
+{
+  "results": [
+    {
+      "kinetics": "UV2_standard",
+      "f": 0.03,
+      "k": 0.057,
+      "pattern_type": "stripes",
+      "v_std": 0.09647827012178353,
+      "v_mean": 0.17104892200142702,
+      "anisotropy": 0.39437234988992736,
+      "wavelength": 12.8
+    },
+    {
+      "kinetics": "UV2_standard",
+      "f": 0.035,
+      "k": 0.06,
+      "pattern_type": "spots",
+      "v_std": 0.10644239190983688,
+      "v_mean": 0.16818401759420967,
+      "anisotropy": 0.14166809406304565,
+      "wavelength": 10.666666666666666
+    },
+    {
+      "kinetics": "UV2_standard",
+      "f": 0.04,
+      "k": 0.063,
+      "pattern_type": "stripes",
+      "v_std": 0.11854608693653544,
+      "v_mean": 0.1525697726952943,
+      "anisotropy": 0.3084724721376782,
+      "wavelength": 10.666666666666666
+    },
+    {
+      "kinetics": "UV2_standard",
+      "f": 0.045,
+      "k": 0.065,
+      "pattern_type": "spots",
+      "v_std": 0.12782227860951637,
+      "v_mean": 0.1344780467047035,
+      "anisotropy": 0.20602336754961326,
+      "wavelength": 12.8
+    },
+    {
+      "kinetics": "UV2_standard",
+      "f": 0.025,
+      "k": 0.055,
+      "pattern_type": "stripes",
+      "v_std": 0.09421279975310655,
+      "v_mean": 0.15516887996985188,
+      "anisotropy": 0.6741458342952369,
+      "wavelength": 12.8
+    },
+    {
+      "kinetics": "saturable",
+      "f": 0.03,
+      "k": 0.045,
+      "pattern_type": "spots",
+      "v_std": 0.04957723326413402,
+      "v_mean": 0.012451757476250394,
+      "anisotropy": 0.0609931951703556,
+      "wavelength": 21.333333333333332
+    }
+  ],
+  "summary": {
+    "n_results": 6,
+    "kinetics_tested": [
+      "UV2_standard",
+      "UV3_cubic",
+      "U2V_stoich",
+      "saturable",
+      "inhibited"
+    ]
+  }
+}

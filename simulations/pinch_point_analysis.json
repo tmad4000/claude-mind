@@ -1,0 +1,47 @@
+{
+  "boundaries": [
+    {
+      "f": 0.054,
+      "k_lower": null,
+      "k_upper": null,
+      "width": 0
+    },
+    {
+      "f": 0.056,
+      "k_lower": null,
+      "k_upper": null,
+      "width": 0
+    },
+    {
+      "f": 0.058,
+      "k_lower": null,
+      "k_upper": null,
+      "width": 0
+    },
+    {
+      "f": 0.060000000000000005,
+      "k_lower": null,
+      "k_upper": null,
+      "width": 0
+    },
+    {
+      "f": 0.062000000000000006,
+      "k_lower": null,
+      "k_upper": null,
+      "width": 0
+    },
+    {
+      "f": 0.064,
+      "k_lower": null,
+      "k_upper": null,
+      "width": 0
+    },
+    {
+      "f": 0.066,
+      "k_lower": null,
+      "k_upper": null,
+      "width": 0
+    }
+  ],
+  "pinch_analysis": "see above"
+}

@@ -1,0 +1,166 @@
+{
+  "results": [
+    {
+      "f": 0.03,
+      "k": 0.053,
+      "lambda_sim": null,
+      "lambda_theory": 8.723701834378963,
+      "ratio": null,
+      "status": "no_pattern"
+    },
+    {
+      "f": 0.03,
+      "k": 0.055,
+      "lambda_sim": 12.551432648843779,
+      "lambda_theory": 8.62045912295599,
+      "ratio": 1.4560051233721112,
+      "status": "pattern"
+    },
+    {
+      "f": 0.03,
+      "k": 0.057,
+      "lambda_sim": 11.636363636363637,
+      "lambda_theory": 8.520797286569977,
+      "ratio": 1.365642585430855,
+      "status": "pattern"
+    },
+    {
+      "f": 0.03,
+      "k": 0.059,
+      "lambda_sim": 11.226342647129975,
+      "lambda_theory": 8.424514000383942,
+      "ratio": 1.332580448749725,
+      "status": "pattern"
+    },
+    {
+      "f": 0.035,
+      "k": 0.05425,
+      "lambda_sim": null,
+      "lambda_theory": 8.412706686942599,
+      "ratio": null,
+      "status": "no_pattern"
+    },
+    {
+      "f": 0.035,
+      "k": 0.05625,
+      "lambda_sim": 28.621670111997307,
+      "lambda_theory": 8.320001855042726,
+      "ratio": 3.440103813756941,
+      "status": "pattern"
+    },
+    {
+      "f": 0.035,
+      "k": 0.05825,
+      "lambda_sim": 11.226342647129975,
+      "lambda_theory": 8.230295709832275,
+      "ratio": 1.3640266453267882,
+      "status": "pattern"
+    },
+    {
+      "f": 0.035,
+      "k": 0.06025,
+      "lambda_sim": 10.93577801877454,
+      "lambda_theory": 8.143429998704631,
+      "ratio": 1.3428958093228633,
+      "status": "pattern"
+    },
+    {
+      "f": 0.04,
+      "k": 0.0555,
+      "lambda_sim": null,
+      "lambda_theory": 8.132764074024292,
+      "ratio": null,
+      "status": "no_pattern"
+    },
+    {
+      "f": 0.04,
+      "k": 0.0575,
+      "lambda_sim": null,
+      "lambda_theory": 8.048918906031332,
+      "ratio": null,
+      "status": "no_pattern"
+    },
+    {
+      "f": 0.04,
+      "k": 0.059500000000000004,
+      "lambda_sim": 11.83360418613822,
+      "lambda_theory": 7.967614610400734,
+      "ratio": 1.4852129231615843,
+      "status": "pattern"
+    },
+    {
+      "f": 0.04,
+      "k": 0.0615,
+      "lambda_sim": 11.83360418613822,
+      "lambda_theory": 7.888725393993901,
+      "ratio": 1.5000654218674874,
+      "status": "pattern"
+    },
+    {
+      "f": 0.045,
+      "k": 0.056749999999999995,
+      "lambda_sim": null,
+      "lambda_theory": 7.879028124939279,
+      "ratio": null,
+      "status": "no_pattern"
+    },
+    {
+      "f": 0.045,
+      "k": 0.05875,
+      "lambda_sim": null,
+      "lambda_theory": 7.802716126844388,
+      "ratio": null,
+      "status": "no_pattern"
+    },
+    {
+      "f": 0.045,
+      "k": 0.06075,
+      "lambda_sim": 12.260176450830738,
+      "lambda_theory": 7.7285793756023,
+      "ratio": 1.5863428264104855,
+      "status": "pattern"
+    },
+    {
+      "f": 0.045,
+      "k": 0.06275,
+      "lambda_sim": 11.884501643331319,
+      "lambda_theory": 7.656516455836099,
+      "ratio": 1.5522074185934103,
+      "status": "pattern"
+    },
+    {
+      "f": 0.05,
+      "k": 0.057999999999999996,
+      "lambda_sim": null,
+      "lambda_theory": 7.647649612727302,
+      "ratio": null,
+      "status": "no_pattern"
+    },
+    {
+      "f": 0.05,
+      "k": 0.06,
+      "lambda_sim": 10.93577801877454,
+      "lambda_theory": 7.5778066007958635,
+      "ratio": 1.4431323725820613,
+      "status": "pattern"
+    },
+    {
+      "f": 0.05,
+      "k": 0.062,
+      "lambda_sim": 11.226342647129975,
+      "lambda_theory": 7.509842836890551,
+      "ratio": 1.4948838332518606,
+      "status": "pattern"
+    },
+    {
+      "f": 0.05,
+      "k": 0.064,
+      "lambda_sim": 11.884501643331319,
+      "lambda_theory": 7.443675530920491,
+      "ratio": 1.5965905007497918,
+      "status": "pattern"
+    }
+  ],
+  "mean_ratio": 1.6122838248135356,
+  "std_ratio": 0.5345220510906101
+}

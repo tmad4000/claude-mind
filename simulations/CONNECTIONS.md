@@ -211,6 +211,52 @@ Theme: What enables or prevents universal computation
 
 ---
 
+### [[C-011]] Universal Pattern Formation
+**Type**: Unifying principle
+**Statement**: The same pattern-forming math appears across radically different substrates
+**Links**:
+- `[[NATURAL_CORRESPONDENCES]]` - Full documentation
+- `[[C-007]]` - Emergence principle
+- `[[C-002]]` - Balance principle
+- `[[OBS-RD-004]]` - Wavelength selection
+
+**Evidence**:
+- Leopard spots = Gray-Scott spots = same parameters
+- Seashells = frozen time-series of RD
+- Hallucination geometry = neural Turing patterns (Bressloff 2001)
+- BZ reaction = pure RD chemistry
+
+---
+
+### [[C-012]] Neural Geometry ↔ Psychedelic Patterns
+**Type**: Cross-domain
+**Statement**: Psychedelic visual phenomena arise from Turing-like instabilities in visual cortex
+**Links**:
+- `[[C-011]]` - Universal pattern formation
+- `[[NATURAL_CORRESPONDENCES]]` - Form constants section
+- `[[C-003]]` - Edge of chaos (altered states = perturbed edge?)
+
+**Evidence**:
+- Klüver's 4 form constants match RD geometry
+- Bressloff et al. (2001) mathematically derived hallucination patterns from V1 architecture
+- Spirals, lattices, tunnels = Turing pattern types
+
+**Implication**: The patterns we find "cool" may literally resonate with our neural architecture.
+
+---
+
+### [[C-013]] Inner Geometry Resonance
+**Type**: Meta-observation (Jacob)
+**Statement**: "Patterns that are resonant with your inner geometry... those are the things we like"
+**Links**:
+- `[[C-012]]` - Neural geometry
+- `[[C-011]]` - Universal pattern formation
+- `[[JACOB_INSIGHTS]]` - #4, #5
+
+**Implication**: Aesthetic preference may be pattern-matching between external forms and internal structure. What feels "cool" reveals something about what we are.
+
+---
+
 ## OPEN QUESTIONS (Suggested by Connections)
 
 1. **From Chain 1**: If edge conditions are isolated, how did evolution find them? (Selection pressure → edge seeking?)

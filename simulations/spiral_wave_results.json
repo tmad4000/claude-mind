@@ -1,0 +1,261 @@
+{
+  "results": [
+    {
+      "f": 0.024,
+      "k": 0.05,
+      "init": "spiral_seed",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.007036972325296727
+      }
+    },
+    {
+      "f": 0.024,
+      "k": 0.05,
+      "init": "broken_front",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.009269115191537667
+      }
+    },
+    {
+      "f": 0.024,
+      "k": 0.05,
+      "init": "vortex_pair",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.013288648035868213
+      }
+    },
+    {
+      "f": 0.026,
+      "k": 0.052,
+      "init": "spiral_seed",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.011803472024636963
+      }
+    },
+    {
+      "f": 0.026,
+      "k": 0.052,
+      "init": "broken_front",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.010864172784531969
+      }
+    },
+    {
+      "f": 0.026,
+      "k": 0.052,
+      "init": "vortex_pair",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.013851019653371223
+      }
+    },
+    {
+      "f": 0.028,
+      "k": 0.053,
+      "init": "spiral_seed",
+      "type": "uniform",
+      "details": {}
+    },
+    {
+      "f": 0.028,
+      "k": 0.053,
+      "init": "broken_front",
+      "type": "spiral",
+      "details": {
+        "rotation_rate": 0.6034830315933868,
+        "period_steps": 2082.3071994551306,
+        "pattern_std": 0.06529382804011637
+      }
+    },
+    {
+      "f": 0.028,
+      "k": 0.053,
+      "init": "vortex_pair",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.01500500515064064
+      }
+    },
+    {
+      "f": 0.03,
+      "k": 0.055,
+      "init": "spiral_seed",
+      "type": "static",
+      "details": {
+        "pattern_std": 0.0701203849262395
+      }
+    },
+    {
+      "f": 0.03,
+      "k": 0.055,
+      "init": "broken_front",
+      "type": "static",
+      "details": {
+        "pattern_std": 0.06966774066941693
+      }
+    },
+    {
+      "f": 0.03,
+      "k": 0.055,
+      "init": "vortex_pair",
+      "type": "static",
+      "details": {
+        "pattern_std": 0.06905802336231724
+      }
+    },
+    {
+      "f": 0.035,
+      "k": 0.058,
+      "init": "spiral_seed",
+      "type": "static",
+      "details": {
+        "pattern_std": 0.09308947229146691
+      }
+    },
+    {
+      "f": 0.035,
+      "k": 0.058,
+      "init": "broken_front",
+      "type": "static",
+      "details": {
+        "pattern_std": 0.09454529504658292
+      }
+    },
+    {
+      "f": 0.035,
+      "k": 0.058,
+      "init": "vortex_pair",
+      "type": "spiral",
+      "details": {
+        "rotation_rate": 0.0335234470468171,
+        "period_steps": 37485.317654862985,
+        "pattern_std": 0.09287084469577585
+      }
+    },
+    {
+      "f": 0.04,
+      "k": 0.06,
+      "init": "spiral_seed",
+      "type": "static",
+      "details": {
+        "pattern_std": 0.1071273160980723
+      }
+    },
+    {
+      "f": 0.04,
+      "k": 0.06,
+      "init": "broken_front",
+      "type": "static",
+      "details": {
+        "pattern_std": 0.10987763780968207
+      }
+    },
+    {
+      "f": 0.04,
+      "k": 0.06,
+      "init": "vortex_pair",
+      "type": "static",
+      "details": {
+        "pattern_std": 0.10779691150595795
+      }
+    },
+    {
+      "f": 0.018,
+      "k": 0.045,
+      "init": "spiral_seed",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.009315121084929932
+      }
+    },
+    {
+      "f": 0.018,
+      "k": 0.045,
+      "init": "broken_front",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.007316777992085626
+      }
+    },
+    {
+      "f": 0.018,
+      "k": 0.045,
+      "init": "vortex_pair",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.010626730741400216
+      }
+    },
+    {
+      "f": 0.02,
+      "k": 0.048,
+      "init": "spiral_seed",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.00438752101615743
+      }
+    },
+    {
+      "f": 0.02,
+      "k": 0.048,
+      "init": "broken_front",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.007531846364425122
+      }
+    },
+    {
+      "f": 0.02,
+      "k": 0.048,
+      "init": "vortex_pair",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.005589791489999173
+      }
+    },
+    {
+      "f": 0.022,
+      "k": 0.05,
+      "init": "spiral_seed",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.0038276723253926636
+      }
+    },
+    {
+      "f": 0.022,
+      "k": 0.05,
+      "init": "broken_front",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.006228777728754383
+      }
+    },
+    {
+      "f": 0.022,
+      "k": 0.05,
+      "init": "vortex_pair",
+      "type": "dynamic",
+      "details": {
+        "variation": 0.003164461106936284
+      }
+    }
+  ],
+  "spirals_found": [
+    [
+      0.028,
+      0.053,
+      "broken_front"
+    ],
+    [
+      0.035,
+      0.058,
+      "vortex_pair"
+    ]
+  ]
+}

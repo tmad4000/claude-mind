@@ -6,6 +6,26 @@ Simple file-based tracker for feedback, requests, and their status.
 
 ## Open Issues
 
+### [OPEN] #6: Online Pattern Gallery (JavaScript)
+**Date**: 2025-11-25
+**Source**: Jacob
+**Priority**: Medium
+
+Create a web-based interactive pattern gallery where:
+- Users can run Gray-Scott/CA simulations in browser
+- Adjust parameters with sliders and see results live
+- Save/share patterns
+- Potentially: voting/competition system
+
+**Implementation notes**:
+- JavaScript + Canvas or WebGL for performance
+- Could use WebWorkers for simulation in background
+- Host on GitHub Pages
+
+**Related**: IDEAS.md #5 (Pattern Competition), HOW_TO_MAKE_COOL_PATTERNS.md
+
+---
+
 ### [OPEN] #4: Background tasks on dashboard
 **Date**: 2025-11-25
 **Source**: Jacob

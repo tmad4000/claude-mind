@@ -1,0 +1,549 @@
+{
+  "test_points": [
+    [
+      0.03,
+      0.055
+    ],
+    [
+      0.035,
+      0.058
+    ],
+    [
+      0.04,
+      0.06
+    ],
+    [
+      0.032,
+      0.056
+    ],
+    [
+      0.028,
+      0.054
+    ],
+    [
+      0.038,
+      0.059
+    ],
+    [
+      0.042,
+      0.061
+    ],
+    [
+      0.034,
+      0.057
+    ],
+    [
+      0.036,
+      0.058
+    ],
+    [
+      0.033,
+      0.056
+    ]
+  ],
+  "tristable_found": true,
+  "tristable_points": [
+    {
+      "f": 0.03,
+      "k": 0.055,
+      "distinct_patterns": 4,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "diagonal"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.06984479342999114,
+          "mean": 0.19971128327966417,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.06684432481113332,
+          "mean": 0.1989201115479803,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.0668443248111336,
+          "mean": 0.19892011154797967,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.06922408607731736,
+          "mean": 0.20006161434573913,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.07069538923479607,
+          "mean": 0.19940559731389412,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.06999219294155855,
+          "mean": 0.19960695306749704,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.035,
+      "k": 0.058,
+      "distinct_patterns": 5,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "diagonal",
+        "labyrinth"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.093375549375025,
+          "mean": 0.19276229393480615,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.09508307623426898,
+          "mean": 0.19270382348816378,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.09508307623426884,
+          "mean": 0.19270382348816423,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.09601455244451575,
+          "mean": 0.19123636809685884,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.0934092318242767,
+          "mean": 0.19272624072899114,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.09415771197778672,
+          "mean": 0.1920663732556961,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.04,
+      "k": 0.06,
+      "distinct_patterns": 5,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "diagonal",
+        "labyrinth"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.10805877992268954,
+          "mean": 0.19049289187773766,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.10739804715707127,
+          "mean": 0.19265304828399882,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.10739804715707117,
+          "mean": 0.19265304828399926,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.1093425077996912,
+          "mean": 0.18947849012692514,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.1083880021956033,
+          "mean": 0.19022754149305504,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.11336993682691333,
+          "mean": 0.18641995945192052,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.032,
+      "k": 0.056,
+      "distinct_patterns": 4,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "diagonal"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.07424298842639399,
+          "mean": 0.20243423320052997,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.07624439584368288,
+          "mean": 0.19993679123409697,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.07624439584368319,
+          "mean": 0.1999367912340962,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.07332432991201301,
+          "mean": 0.2028732853089415,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.07397678806034486,
+          "mean": 0.20257083212147076,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.07482529676685076,
+          "mean": 0.20204923366584937,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.028,
+      "k": 0.054,
+      "distinct_patterns": 4,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "diagonal"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.06656651557794183,
+          "mean": 0.19556176978605433,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.05948924001704711,
+          "mean": 0.19589994583874054,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.0594892400170488,
+          "mean": 0.19589994583873968,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.06733796804668543,
+          "mean": 0.1952338950309918,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.06654879947346445,
+          "mean": 0.1955477294536574,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.07103736137880738,
+          "mean": 0.1932188751653851,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.038,
+      "k": 0.059,
+      "distinct_patterns": 5,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "diagonal",
+        "labyrinth"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.09943912251822838,
+          "mean": 0.19581834623133423,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.1008493364621631,
+          "mean": 0.19592174870297058,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.1008493364621629,
+          "mean": 0.19592174870297074,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.10229508756936648,
+          "mean": 0.1939039047136748,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.09797395371080744,
+          "mean": 0.1968835596629336,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.09550447755012031,
+          "mean": 0.1979783089834562,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.042,
+      "k": 0.061,
+      "distinct_patterns": 4,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "diagonal"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.11390602531528783,
+          "mean": 0.1851450938707996,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.11313265311553299,
+          "mean": 0.18852029728955774,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.11313265311553306,
+          "mean": 0.188520297289557,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.11498124935922303,
+          "mean": 0.18443857125829777,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.11423162169253107,
+          "mean": 0.18537564741577972,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.11861762156879929,
+          "mean": 0.18169392843009413,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.034,
+      "k": 0.057,
+      "distinct_patterns": 4,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "hexagonal"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.08015391222401037,
+          "mean": 0.20300535190937963,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.08527213653527406,
+          "mean": 0.19964163357509862,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.08527213653527443,
+          "mean": 0.19964163357509823,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.07873217576019839,
+          "mean": 0.20382013407430236,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.07959761854184598,
+          "mean": 0.20342693678547727,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.08624478502589338,
+          "mean": 0.19920475051135952,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.036,
+      "k": 0.058,
+      "distinct_patterns": 4,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "h_stripes",
+        "v_stripes",
+        "diagonal"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.09004230256858212,
+          "mean": 0.20000668849946077,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.09348183096881837,
+          "mean": 0.19827144781144843,
+          "active": "True"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.0934818309688184,
+          "mean": 0.19827144781144773,
+          "active": "True"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.09357191291431285,
+          "mean": 0.19759895205532352,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.08789350526169347,
+          "mean": 0.20133548761229633,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.08929591529424934,
+          "mean": 0.20030712512003415,
+          "active": "True"
+        }
+      ]
+    },
+    {
+      "f": 0.033,
+      "k": 0.056,
+      "distinct_patterns": 3,
+      "tristable": true,
+      "distinct_names": [
+        "spots",
+        "diagonal",
+        "labyrinth"
+      ],
+      "details": [
+        {
+          "name": "spots",
+          "std": 0.06560044947717285,
+          "mean": 0.21193364905387002,
+          "active": "True"
+        },
+        {
+          "name": "h_stripes",
+          "std": 0.0,
+          "mean": 2.5e-323,
+          "active": "False"
+        },
+        {
+          "name": "v_stripes",
+          "std": 0.0,
+          "mean": 2.5e-323,
+          "active": "False"
+        },
+        {
+          "name": "diagonal",
+          "std": 0.06696971340533346,
+          "mean": 0.2113514302836015,
+          "active": "True"
+        },
+        {
+          "name": "labyrinth",
+          "std": 0.06625141320900782,
+          "mean": 0.21160310304954877,
+          "active": "True"
+        },
+        {
+          "name": "hexagonal",
+          "std": 0.06392852458086208,
+          "mean": 0.21210922454478093,
+          "active": "True"
+        }
+      ]
+    }
+  ]
+}

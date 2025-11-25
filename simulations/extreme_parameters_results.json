@@ -1,0 +1,7 @@
+{
+  "results": [
+    {
+      "pattern_type": "uniform_trivial",
+      "final_v_std": 0.0,
+      "final_v_mean": 5.4e-323,
+      "is_oscillating": 

@@ -1,0 +1,287 @@
+{
+  "results": [
+    {
+      "f": 0.022,
+      "k": 0.053,
+      "lyapunov": 0.0020771614850785343,
+      "variance": 7.543311796893044e-05,
+      "autocorr": 0.4819537631953049,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.06292894724240271
+    },
+    {
+      "f": 0.023,
+      "k": 0.053,
+      "lyapunov": 8.270809141109313e-05,
+      "variance": 1.7262582953300749e-06,
+      "autocorr": 0.11887459669136928,
+      "dynamics": "periodic",
+      "spectral_concentration": 0.7029252299626348
+    },
+    {
+      "f": 0.024,
+      "k": 0.053,
+      "lyapunov": 1.4187677889249756e-05,
+      "variance": 1.6971248703727968e-11,
+      "autocorr": 0.6968380929531633,
+      "dynamics": "static",
+      "spectral_concentration": 0.43249721563043575
+    },
+    {
+      "f": 0.025,
+      "k": 0.053,
+      "lyapunov": 0.0010631103232278951,
+      "variance": 2.846972183597424e-05,
+      "autocorr": 0.03857303971773396,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.235823937646236
+    },
+    {
+      "f": 0.026000000000000002,
+      "k": 0.053,
+      "lyapunov": 0.0002999828339819714,
+      "variance": 6.097369588961107e-05,
+      "autocorr": -0.19786290321625008,
+      "dynamics": "periodic",
+      "spectral_concentration": 0.5020986098420808
+    },
+    {
+      "f": 0.027000000000000003,
+      "k": 0.053,
+      "lyapunov": 7.753485908364589e-05,
+      "variance": 2.1660754605417135e-08,
+      "autocorr": -0.3153199291953726,
+      "dynamics": "periodic",
+      "spectral_concentration": 0.7190388012344918
+    },
+    {
+      "f": 0.028000000000000004,
+      "k": 0.053,
+      "lyapunov": 0.0015086106604242594,
+      "variance": 0.001543205893122242,
+      "autocorr": 0.9475117139345375,
+      "dynamics": "quasiperiodic",
+      "spectral_concentration": 0.32242037966373227
+    },
+    {
+      "f": 0.022,
+      "k": 0.055,
+      "lyapunov": 0.0023738270420588506,
+      "variance": 8.424566377437412e-05,
+      "autocorr": 0.3599936870646088,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.1489905590900592
+    },
+    {
+      "f": 0.023,
+      "k": 0.055,
+      "lyapunov": 0.002317418651540016,
+      "variance": 6.139921813929638e-05,
+      "autocorr": 0.3326462590245288,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.11058944054117648
+    },
+    {
+      "f": 0.024,
+      "k": 0.055,
+      "lyapunov": 0.001908237196452306,
+      "variance": 6.0218262993468364e-05,
+      "autocorr": 0.16678264977867868,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.1452556553368532
+    },
+    {
+      "f": 0.025,
+      "k": 0.055,
+      "lyapunov": 8.048195775691653e-05,
+      "variance": 2.453371320436762e-07,
+      "autocorr": -0.19619039922009324,
+      "dynamics": "weakly_varying",
+      "spectral_concentration": 0.4957902320546884
+    },
+    {
+      "f": 0.026000000000000002,
+      "k": 0.055,
+      "lyapunov": 0.0001967886293978528,
+      "variance": 9.129555506629744e-07,
+      "autocorr": 0.10232025685080101,
+      "dynamics": "weakly_varying",
+      "spectral_concentration": 0.0843984051855859
+    },
+    {
+      "f": 0.027000000000000003,
+      "k": 0.055,
+      "lyapunov": 7.322216245930412e-05,
+      "variance": 1.74986414302165e-10,
+      "autocorr": 0.9999995354518134,
+      "dynamics": "static",
+      "spectral_concentration": 0.5663753992009227
+    },
+    {
+      "f": 0.028000000000000004,
+      "k": 0.055,
+      "lyapunov": 6.992346339445284e-05,
+      "variance": 4.996716286007558e-10,
+      "autocorr": 0.9999942030296447,
+      "dynamics": "static",
+      "spectral_concentration": 0.6109186479553842
+    },
+    {
+      "f": 0.029000000000000005,
+      "k": 0.055,
+      "lyapunov": 1.0876642241895083e-05,
+      "variance": 2.1701039410270395e-13,
+      "autocorr": 0.9999633747185299,
+      "dynamics": "static",
+      "spectral_concentration": 0.7790014193256986
+    },
+    {
+      "f": 0.030000000000000006,
+      "k": 0.055,
+      "lyapunov": 7.394105437386281e-05,
+      "variance": 1.2101141012170263e-21,
+      "autocorr": 0.9999992826299458,
+      "dynamics": "static",
+      "spectral_concentration": 0.19508622915855003
+    },
+    {
+      "f": 0.031000000000000007,
+      "k": 0.055,
+      "lyapunov": 8.200478609573912e-05,
+      "variance": 8.861404745870209e-26,
+      "autocorr": 0.9999983173314787,
+      "dynamics": "static",
+      "spectral_concentration": 0.42812500461800757
+    },
+    {
+      "f": 0.022,
+      "k": 0.057,
+      "lyapunov": 0.0020866213611776996,
+      "variance": 0.000124105407930652,
+      "autocorr": 0.23822984631313113,
+      "dynamics": "periodic",
+      "spectral_concentration": 0.6187860113126061
+    },
+    {
+      "f": 0.023,
+      "k": 0.057,
+      "lyapunov": 0.0018212152977235508,
+      "variance": 0.0001122839857745106,
+      "autocorr": 0.21944258664758207,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.46490928728073605
+    },
+    {
+      "f": 0.024,
+      "k": 0.057,
+      "lyapunov": 0.0017709084189509808,
+      "variance": 0.00016096699651083274,
+      "autocorr": 0.23879781597678196,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.17163484377663216
+    },
+    {
+      "f": 0.025,
+      "k": 0.057,
+      "lyapunov": 0.002166521907179365,
+      "variance": 7.62236225720995e-05,
+      "autocorr": 0.23947474408622174,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.18433817246612086
+    },
+    {
+      "f": 0.026000000000000002,
+      "k": 0.057,
+      "lyapunov": 0.001664420661099721,
+      "variance": 3.163844897308657e-05,
+      "autocorr": -0.053999325086046476,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.1968775495865856
+    },
+    {
+      "f": 0.027000000000000003,
+      "k": 0.057,
+      "lyapunov": 0.0008343148634634539,
+      "variance": 5.085881214843526e-05,
+      "autocorr": -0.14301291843012343,
+      "dynamics": "chaotic",
+      "spectral_concentration": 0.40811672652982917
+    },
+    {
+      "f": 0.028000000000000004,
+      "k": 0.057,
+      "lyapunov": 0.0001371871571563242,
+      "variance": 6.241463496551643e-08,
+      "autocorr": 0.9999687481074673,
+      "dynamics": "quasiperiodic",
+      "spectral_concentration": 0.3589632683505869
+    },
+    {
+      "f": 0.029000000000000005,
+      "k": 0.057,
+      "lyapunov": 6.91866664389347e-05,
+      "variance": 1.0018824008468583e-07,
+      "autocorr": 0.996715462554976,
+      "dynamics": "quasiperiodic",
+      "spectral_concentration": 0.42683408530961353
+    },
+    {
+      "f": 0.030000000000000006,
+      "k": 0.057,
+      "lyapunov": 6.669150853425168e-05,
+      "variance": 6.206485324357475e-10,
+      "autocorr": 0.9999999364002815,
+      "dynamics": "static",
+      "spectral_concentration": 0.6017514338593046
+    },
+    {
+      "f": 0.031000000000000007,
+      "k": 0.057,
+      "lyapunov": 8.028114990863821e-05,
+      "variance": 8.424859436373714e-12,
+      "autocorr": 0.9999510459070491,
+      "dynamics": "static",
+      "spectral_concentration": 0.6088175974856715
+    },
+    {
+      "f": 0.03200000000000001,
+      "k": 0.057,
+      "lyapunov": 7.925067718615211e-05,
+      "variance": 1.440243995300071e-09,
+      "autocorr": 0.9999997900970606,
+      "dynamics": "static",
+      "spectral_concentration": 0.5692905350444073
+    },
+    {
+      "f": 0.03300000000000001,
+      "k": 0.057,
+      "lyapunov": 8.181659671085737e-05,
+      "variance": 1.4138190644281936e-08,
+      "autocorr": 0.9986335443712674,
+      "dynamics": "periodic",
+      "spectral_concentration": 0.5531725052826966
+    },
+    {
+      "f": 0.03400000000000001,
+      "k": 0.057,
+      "lyapunov": 6.881648680424709e-05,
+      "variance": 6.491229907121258e-09,
+      "autocorr": 0.9999990339751144,
+      "dynamics": "static",
+      "spectral_concentration": 0.6391850804948683
+    },
+    {
+      "f": 0.03500000000000001,
+      "k": 0.057,
+      "lyapunov": 6.483691236670095e-05,
+      "variance": 8.288593538353172e-08,
+      "autocorr": 0.9982648535926943,
+      "dynamics": "quasiperiodic",
+      "spectral_concentration": 0.26617497888925956
+    }
+  ],
+  "summary": {
+    "n_chaotic": 31,
+    "n_ordered": 0
+  }
+}

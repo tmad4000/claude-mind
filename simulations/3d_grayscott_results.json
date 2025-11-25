@@ -1,0 +1,211 @@
+{
+  "results": [
+    {
+      "v_std": 0.07105769230769225,
+      "v_mean": 0.9289423076923076,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.024,
+      "k": 0.0499
+    },
+    {
+      "v_std": 0.07298076923076917,
+      "v_mean": 0.9270192307692309,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.024,
+      "k": 0.0519
+    },
+    {
+      "v_std": 0.0749038461538461,
+      "v_mean": 0.9250961538461537,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.024,
+      "k": 0.0539
+    },
+    {
+      "v_std": 0.07682692307692301,
+      "v_mean": 0.923173076923077,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.024,
+      "k": 0.055900000000000005
+    },
+    {
+      "v_std": 0.07884615384615384,
+      "v_mean": 0.921153846153846,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.03,
+      "k": 0.052
+    },
+    {
+      "v_std": 0.08076923076923082,
+      "v_mean": 0.9192307692307693,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.03,
+      "k": 0.054
+    },
+    {
+      "v_std": 0.08269230769230773,
+      "v_mean": 0.9173076923076922,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.03,
+      "k": 0.056
+    },
+    {
+      "v_std": 0.08461538461538465,
+      "v_mean": 0.9153846153846155,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.03,
+      "k": 0.057999999999999996
+    },
+    {
+      "v_std": 0.08663461538461542,
+      "v_mean": 0.9133653846153846,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.036,
+      "k": 0.054099999999999995
+    },
+    {
+      "v_std": 0.08855769230769232,
+      "v_mean": 0.9114423076923075,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.036,
+      "k": 0.0561
+    },
+    {
+      "v_std": 0.09048076923076924,
+      "v_mean": 0.9095192307692308,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.036,
+      "k": 0.0581
+    },
+    {
+      "v_std": 0.09240384615384617,
+      "v_mean": 0.9075961538461537,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.036,
+      "k": 0.0601
+    },
+    {
+      "v_std": 0.09442307692307705,
+      "v_mean": 0.9055769230769231,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.042,
+      "k": 0.0562
+    },
+    {
+      "v_std": 0.09634615384615396,
+      "v_mean": 0.9036538461538459,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.042,
+      "k": 0.0582
+    },
+    {
+      "v_std": 0.09826923076923089,
+      "v_mean": 0.9017307692307692,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.042,
+      "k": 0.060200000000000004
+    },
+    {
+      "v_std": 0.1001923076923078,
+      "v_mean": 0.8998076923076921,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.042,
+      "k": 0.062200000000000005
+    },
+    {
+      "v_std": 0.10221153846153852,
+      "v_mean": 0.8977884615384614,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.048,
+      "k": 0.0583
+    },
+    {
+      "v_std": 0.10413461538461544,
+      "v_mean": 0.8958653846153846,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.048,
+      "k": 0.0603
+    },
+    {
+      "v_std": 0.10605769230769237,
+      "v_mean": 0.8939423076923078,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.048,
+      "k": 0.0623
+    },
+    {
+      "v_std": 0.10798076923076921,
+      "v_mean": 0.8920192307692307,
+      "wavelength": 32.0,
+      "anisotropy": 0.0,
+      "fill_fraction": 0.5,
+      "pattern_type": "gyroid_or_network",
+      "f": 0.048,
+      "k": 0.0643
+    }
+  ],
+  "summary": {
+    "type_counts": {
+      "gyroid_or_network": 20
+    },
+    "n_valid": 20,
+    "grid_size": 32
+  }
+}

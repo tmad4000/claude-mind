@@ -1,0 +1,69 @@
+{
+  "results": [
+    {
+      "f": 0.02,
+      "k_theory": null,
+      "k_sim": 0.053000000000000005,
+      "difference": null,
+      "ratio": null
+    },
+    {
+      "f": 0.024,
+      "k_theory": null,
+      "k_sim": 0.05550000000000001,
+      "difference": null,
+      "ratio": null
+    },
+    {
+      "f": 0.028,
+      "k_theory": null,
+      "k_sim": 0.05950000000000001,
+      "difference": null,
+      "ratio": null
+    },
+    {
+      "f": 0.032,
+      "k_theory": null,
+      "k_sim": 0.06350000000000001,
+      "difference": null,
+      "ratio": null
+    },
+    {
+      "f": 0.036000000000000004,
+      "k_theory": null,
+      "k_sim": 0.06500000000000002,
+      "difference": null,
+      "ratio": null
+    },
+    {
+      "f": 0.04,
+      "k_theory": null,
+      "k_sim": 0.06550000000000002,
+      "difference": null,
+      "ratio": null
+    },
+    {
+      "f": 0.044,
+      "k_theory": null,
+      "k_sim": 0.06500000000000002,
+      "difference": null,
+      "ratio": null
+    },
+    {
+      "f": 0.048,
+      "k_theory": null,
+      "k_sim": 0.06400000000000002,
+      "difference": null,
+      "ratio": null
+    },
+    {
+      "f": 0.052000000000000005,
+      "k_theory": null,
+      "k_sim": 0.06350000000000001,
+      "difference": null,
+      "ratio": null
+    }
+  ],
+  "mean_difference": null,
+  "mean_ratio": null
+}

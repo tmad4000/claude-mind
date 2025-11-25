@@ -1,0 +1,54 @@
+{
+  "collision_tests": [
+    {
+      "geometry": "head_on",
+      "outcome": "complex_5",
+      "pos1": [
+        42,
+        64
+      ],
+      "pos2": [
+        85,
+        64
+      ]
+    },
+    {
+      "geometry": "perpendicular",
+      "outcome": "complex_3",
+      "pos1": [
+        64,
+        42
+      ],
+      "pos2": [
+        64,
+        85
+      ]
+    },
+    {
+      "geometry": "diagonal",
+      "outcome": "complex_6",
+      "pos1": [
+        42,
+        42
+      ],
+      "pos2": [
+        85,
+        85
+      ]
+    },
+    {
+      "geometry": "close",
+      "outcome": "complex_4",
+      "pos1": [
+        54,
+        64
+      ],
+      "pos2": [
+        74,
+        64
+      ]
+    }
+  ],
+  "propagation": {
+    "result": {
+      "propagated": 

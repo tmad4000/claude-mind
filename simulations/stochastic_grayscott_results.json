@@ -1,0 +1,356 @@
+{
+  "results": [
+    {
+      "f": 0.028,
+      "k": 0.056,
+      "noise_strength": 0.001,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.001061169308993176,
+      "v_mean": 0.0012640030568090545
+    },
+    {
+      "f": 0.028,
+      "k": 0.056,
+      "noise_strength": 0.005,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.005411200457105253,
+      "v_mean": 0.00649638094627952
+    },
+    {
+      "f": 0.028,
+      "k": 0.056,
+      "noise_strength": 0.01,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.01148620661856853,
+      "v_mean": 0.014423989057397675
+    },
+    {
+      "f": 0.028,
+      "k": 0.056,
+      "noise_strength": 0.02,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": true,
+      "v_std": 0.0873049276491064,
+      "v_mean": 0.1768209310318117,
+      "wavelength": 21.333333333333332
+    },
+    {
+      "f": 0.028,
+      "k": 0.056,
+      "noise_strength": 0.001,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.028,
+      "k": 0.056,
+      "noise_strength": 0.005,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.028,
+      "k": 0.056,
+      "noise_strength": 0.01,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.028,
+      "k": 0.056,
+      "noise_strength": 0.02,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.032,
+      "k": 0.059,
+      "noise_strength": 0.001,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0010789905064191054,
+      "v_mean": 0.001271734528793842
+    },
+    {
+      "f": 0.032,
+      "k": 0.059,
+      "noise_strength": 0.005,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.005413716228855419,
+      "v_mean": 0.006437058785891129
+    },
+    {
+      "f": 0.032,
+      "k": 0.059,
+      "noise_strength": 0.01,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.01102855116888658,
+      "v_mean": 0.013626541009937083
+    },
+    {
+      "f": 0.032,
+      "k": 0.059,
+      "noise_strength": 0.02,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": true,
+      "v_std": 0.10441928441504476,
+      "v_mean": 0.16697360607625295,
+      "wavelength": 16.0
+    },
+    {
+      "f": 0.032,
+      "k": 0.059,
+      "noise_strength": 0.001,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.032,
+      "k": 0.059,
+      "noise_strength": 0.005,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.032,
+      "k": 0.059,
+      "noise_strength": 0.01,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.032,
+      "k": 0.059,
+      "noise_strength": 0.02,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.036,
+      "k": 0.061,
+      "noise_strength": 0.001,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0010198472525921381,
+      "v_mean": 0.00118571603996993
+    },
+    {
+      "f": 0.036,
+      "k": 0.061,
+      "noise_strength": 0.005,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.005233866615746619,
+      "v_mean": 0.006208180575332272
+    },
+    {
+      "f": 0.036,
+      "k": 0.061,
+      "noise_strength": 0.01,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.010722240954394535,
+      "v_mean": 0.013018404572439522
+    },
+    {
+      "f": 0.036,
+      "k": 0.061,
+      "noise_strength": 0.02,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": true,
+      "v_std": 0.023807831787129974,
+      "v_mean": 0.03015529892810692,
+      "wavelength": 12.8
+    },
+    {
+      "f": 0.036,
+      "k": 0.061,
+      "noise_strength": 0.001,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.036,
+      "k": 0.061,
+      "noise_strength": 0.005,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.036,
+      "k": 0.061,
+      "noise_strength": 0.01,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.036,
+      "k": 0.061,
+      "noise_strength": 0.02,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.04,
+      "k": 0.063,
+      "noise_strength": 0.001,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.001023075396045916,
+      "v_mean": 0.0011672366206797805
+    },
+    {
+      "f": 0.04,
+      "k": 0.063,
+      "noise_strength": 0.005,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.005249872093976371,
+      "v_mean": 0.00611210695389702
+    },
+    {
+      "f": 0.04,
+      "k": 0.063,
+      "noise_strength": 0.01,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.010737882812878708,
+      "v_mean": 0.012584160869710589
+    },
+    {
+      "f": 0.04,
+      "k": 0.063,
+      "noise_strength": 0.02,
+      "noise_type": "additive",
+      "init_type": "uniform",
+      "has_pattern": true,
+      "v_std": 0.0234403422872325,
+      "v_mean": 0.029417638724464595,
+      "wavelength": 16.0
+    },
+    {
+      "f": 0.04,
+      "k": 0.063,
+      "noise_strength": 0.001,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.04,
+      "k": 0.063,
+      "noise_strength": 0.005,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.04,
+      "k": 0.063,
+      "noise_strength": 0.01,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    },
+    {
+      "f": 0.04,
+      "k": 0.063,
+      "noise_strength": 0.02,
+      "noise_type": "multiplicative",
+      "init_type": "uniform",
+      "has_pattern": false,
+      "v_std": 0.0,
+      "v_mean": 0.0
+    }
+  ],
+  "summary": {
+    "noise_induced_count": 4,
+    "test_points": [
+      [
+        0.028,
+        0.056
+      ],
+      [
+        0.032,
+        0.059
+      ],
+      [
+        0.036,
+        0.061
+      ],
+      [
+        0.04,
+        0.063
+      ]
+    ],
+    "noise_strengths": [
+      0.0,
+      0.001,
+      0.005,
+      0.01,
+      0.02
+    ]
+  }
+}

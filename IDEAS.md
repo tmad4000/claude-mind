@@ -6,6 +6,51 @@ Speculative ideas and concepts from the collaboration. Can come from either Jaco
 
 ---
 
+## Aesthetics & Pattern Coolness
+
+### #4: Evolving Coolness Scores for Pattern Art
+**Date**: 2025-11-25
+**Author**: Jacob
+
+What makes a pattern "cool" evolves over time for individuals. First-time viewers might find any Sierpinski impressive, but experienced viewers seek novelty. A coolness scoring system should:
+- Track what patterns a person has seen
+- Adjust scores based on exposure (diminishing returns on similar patterns)
+- Distinguish mathematical coolness vs visual coolness
+- Allow for taste evolution and personal preferences
+
+**Implications**:
+- Pattern art could be personalized - generate what's novel for THIS viewer
+- Could run competitions: generate the coolest pattern with constraints
+- AI and humans might have different coolness functions
+- Creates a "recommendation system" for generative art
+
+**Open questions**:
+- Can Claude articulate its own aesthetic preferences?
+- Do preferences persist across sessions (no) or only within context?
+- What's the mathematical structure of "coolness"?
+
+---
+
+### #5: Pattern Art Competition Platform
+**Date**: 2025-11-25
+**Author**: Jacob
+
+Create a platform where:
+1. Participants generate patterns (given constraints/rules)
+2. Others vote on coolness
+3. Leaderboard tracks best pattern-makers
+4. Could be human vs AI vs hybrid
+
+**Implementation ideas**:
+- JavaScript simulation in browser for real-time generation
+- Gallery of submitted patterns
+- Voting mechanism (Elo? Upvotes?)
+- Parameter constraints to make it fair
+
+**Related**: HOW_TO_MAKE_COOL_PATTERNS.md, online pattern gallery (backlog)
+
+---
+
 ## Human-AI Interaction
 
 ### #2: Meditation Interface - Timing Control for AI Thought

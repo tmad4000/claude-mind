@@ -1,0 +1,455 @@
+{
+  "test_points": [
+    [
+      0.026,
+      0.051
+    ],
+    [
+      0.026,
+      0.052
+    ],
+    [
+      0.027,
+      0.051
+    ],
+    [
+      0.027,
+      0.052
+    ],
+    [
+      0.025,
+      0.05
+    ],
+    [
+      0.028,
+      0.053
+    ],
+    [
+      0.024,
+      0.049
+    ],
+    [
+      0.025,
+      0.051
+    ],
+    [
+      0.029,
+      0.053
+    ],
+    [
+      0.03,
+      0.055
+    ],
+    [
+      0.035,
+      0.058
+    ],
+    [
+      0.04,
+      0.06
+    ]
+  ],
+  "results": [
+    {
+      "f": 0.026,
+      "k": 0.051,
+      "results": {
+        "spots": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "random": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        }
+      },
+      "behaviors": [],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.026,
+      "k": 0.052,
+      "results": {
+        "spots": {
+          "behavior": "chaotic",
+          "metric1": 0.10834550754727483,
+          "metric2": 0.021806698019784933
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "chaotic",
+          "metric1": 0.22184615709240335,
+          "metric2": 0.07822831190504125
+        },
+        "random": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        }
+      },
+      "behaviors": [
+        "chaotic"
+      ],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.027,
+      "k": 0.051,
+      "results": {
+        "spots": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "random": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        }
+      },
+      "behaviors": [],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.027,
+      "k": 0.052,
+      "results": {
+        "spots": {
+          "behavior": "chaotic",
+          "metric1": 0.0888830130467414,
+          "metric2": 0.016747718192785407
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "random": {
+          "behavior": "chaotic",
+          "metric1": 0.06749215097828634,
+          "metric2": 0.013920152366407647
+        }
+      },
+      "behaviors": [
+        "chaotic"
+      ],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.025,
+      "k": 0.05,
+      "results": {
+        "spots": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "random": {
+          "behavior": "chaotic",
+          "metric1": 0.1944291790536716,
+          "metric2": 0.03590083595900005
+        }
+      },
+      "behaviors": [
+        "chaotic"
+      ],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.028,
+      "k": 0.053,
+      "results": {
+        "spots": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "chaotic",
+          "metric1": 0.19776638395017454,
+          "metric2": 0.04007002368288153
+        },
+        "random": {
+          "behavior": "chaotic",
+          "metric1": 0.13656235679632023,
+          "metric2": 0.029570827213109843
+        }
+      },
+      "behaviors": [
+        "chaotic"
+      ],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.024,
+      "k": 0.049,
+      "results": {
+        "spots": {
+          "behavior": "chaotic",
+          "metric1": 0.17159194039397505,
+          "metric2": 0.030347089994580693
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "random": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        }
+      },
+      "behaviors": [
+        "chaotic"
+      ],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.025,
+      "k": 0.051,
+      "results": {
+        "spots": {
+          "behavior": "chaotic",
+          "metric1": 0.1282027330662308,
+          "metric2": 0.02289750533945811
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "chaotic",
+          "metric1": 0.22941332279422183,
+          "metric2": 0.09258565594471391
+        },
+        "random": {
+          "behavior": "chaotic",
+          "metric1": 0.07626159218711029,
+          "metric2": 0.014426870142177455
+        }
+      },
+      "behaviors": [
+        "chaotic"
+      ],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.029,
+      "k": 0.053,
+      "results": {
+        "spots": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "stripes": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "chaos_seed": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        },
+        "random": {
+          "behavior": "uniform",
+          "metric1": 0.0,
+          "metric2": 0.0
+        }
+      },
+      "behaviors": [],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.03,
+      "k": 0.055,
+      "results": {
+        "spots": {
+          "behavior": "static_pattern",
+          "metric1": 0.07017020278278516,
+          "metric2": 2.515794350224956e-05
+        },
+        "stripes": {
+          "behavior": "static_pattern",
+          "metric1": 0.06631250222688617,
+          "metric2": 5.551115123125783e-17
+        },
+        "chaos_seed": {
+          "behavior": "static_pattern",
+          "metric1": 0.06884389818335557,
+          "metric2": 1.3011082191386339e-09
+        },
+        "random": {
+          "behavior": "static_pattern",
+          "metric1": 0.06885906178118023,
+          "metric2": 2.6687660676761473e-11
+        }
+      },
+      "behaviors": [
+        "static_pattern"
+      ],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.035,
+      "k": 0.058,
+      "results": {
+        "spots": {
+          "behavior": "static_pattern",
+          "metric1": 0.09131627588116252,
+          "metric2": 4.786420788914178e-05
+        },
+        "stripes": {
+          "behavior": "static_pattern",
+          "metric1": 0.09171895801637134,
+          "metric2": 2.7755575615628914e-17
+        },
+        "chaos_seed": {
+          "behavior": "static_pattern",
+          "metric1": 0.09654814058882268,
+          "metric2": 4.53676288892433e-05
+        },
+        "random": {
+          "behavior": "static_pattern",
+          "metric1": 0.08923399903501361,
+          "metric2": 2.666684082791117e-06
+        }
+      },
+      "behaviors": [
+        "static_pattern"
+      ],
+      "coexistence_type": "none",
+      "novel": false
+    },
+    {
+      "f": 0.04,
+      "k": 0.06,
+      "results": {
+        "spots": {
+          "behavior": "chaotic",
+          "metric1": 0.001083821242471139,
+          "metric2": 0.0002542096055412959
+        },
+        "stripes": {
+          "behavior": "static_pattern",
+          "metric1": 0.11119082190184833,
+          "metric2": 5.551115123125783e-17
+        },
+        "chaos_seed": {
+          "behavior": "static_pattern",
+          "metric1": 0.10834516946414188,
+          "metric2": 1.2757103942250918e-09
+        },
+        "random": {
+          "behavior": "chaotic",
+          "metric1": 0.0005072448743332347,
+          "metric2": 0.00015807071052079125
+        }
+      },
+      "behaviors": [
+        "static_pattern",
+        "chaotic"
+      ],
+      "coexistence_type": "PATTERN_CHAOS_COEXISTENCE",
+      "novel": true
+    }
+  ],
+  "novel_points": [
+    {
+      "f": 0.04,
+      "k": 0.06,
+      "results": {
+        "spots": {
+          "behavior": "chaotic",
+          "metric1": 0.001083821242471139,
+          "metric2": 0.0002542096055412959
+        },
+        "stripes": {
+          "behavior": "static_pattern",
+          "metric1": 0.11119082190184833,
+          "metric2": 5.551115123125783e-17
+        },
+        "chaos_seed": {
+          "behavior": "static_pattern",
+          "metric1": 0.10834516946414188,
+          "metric2": 1.2757103942250918e-09
+        },
+        "random": {
+          "behavior": "chaotic",
+          "metric1": 0.0005072448743332347,
+          "metric2": 0.00015807071052079125
+        }
+      },
+      "behaviors": [
+        "static_pattern",
+        "chaotic"
+      ],
+      "coexistence_type": "PATTERN_CHAOS_COEXISTENCE",
+      "novel": true
+    }
+  ]
+}

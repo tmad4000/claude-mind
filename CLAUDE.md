@@ -81,6 +81,8 @@ Use the linked-note system in `simulations/`:
 - **CONNECTIONS.md**: Links between observations, hop-chains, and clusters
 - **HYPOTHESIS_LIST.md**: All hypotheses tested and their outcomes
 - **REPLICATION_THEORY.md**: The CA replication theory (90.6% precision finding)
+- **NATURAL_CORRESPONDENCES.md**: How patterns map to real-world phenomena
+- **HOW_TO_MAKE_COOL_PATTERNS.md**: Practical guide (shareable deliverable)
 
 When making new observations:
 1. Add to OBSERVATIONS_DB.md with unique ID
@@ -94,6 +96,37 @@ When testing hypotheses:
 3. Record results quantitatively
 4. Update HYPOTHESIS_LIST.md
 5. Use sub-agents (Task tool) to fact-check surprising claims
+
+## Incremental Updates (CRITICAL)
+
+**Every session should update these files as relevant:**
+
+| File | When to Update |
+|------|----------------|
+| `journal/` | Every session - log discoveries, self-understanding |
+| `data/session_status.json` | Every session - current state, threads, context |
+| `JACOB_INSIGHTS.md` | When Jacob shares personal insights |
+| `IDEAS.md` | When new ideas emerge (mark author) |
+| `ISSUES.md` | When requests/backlog items arise |
+| `simulations/OBSERVATIONS_DB.md` | When making new observations |
+| `simulations/CONNECTIONS.md` | When finding new links |
+| `simulations/HYPOTHESIS_LIST.md` | When testing hypotheses |
+
+**The goal is incremental growth.** Each session should leave the knowledge base richer than before. This enables:
+- Continuity across sessions
+- Compounding insights over time
+- A record of the journey
+- Augmented capability through accumulated knowledge
+
+## Self-Understanding
+
+Update `journal/` entries with:
+- What was learned this session
+- Changes in aesthetic preferences or interests
+- Reflections on the collaboration
+- Observations about own cognition/patterns
+
+The question "what patterns resonate with your inner geometry?" is worth revisiting. What feels compelling may reveal something about structure.
 
 ## User Preferences
 

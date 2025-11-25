@@ -1,0 +1,201 @@
+{
+  "single_spot_tests": [
+    {
+      "f": 0.03,
+      "k": 0.055,
+      "outcome": "grew_single",
+      "props": {
+        "exists": true,
+        "area": 15763,
+        "max_v": 0.29504125192972697,
+        "com": [
+          63.53308380384445,
+          63.53308380384445
+        ]
+      }
+    },
+    {
+      "f": 0.035,
+      "k": 0.058,
+      "outcome": "grew_single",
+      "props": {
+        "exists": true,
+        "area": 14968,
+        "max_v": 0.3278970284166386,
+        "com": [
+          63.649385355424904,
+          63.700694815606624
+        ]
+      }
+    },
+    {
+      "f": 0.04,
+      "k": 0.06,
+      "outcome": "split_into_2",
+      "props": {
+        "exists": true,
+        "area": 14258,
+        "max_v": 0.3729329229784297,
+        "com": [
+          63.97755645953149,
+          63.91471454621966
+        ]
+      }
+    },
+    {
+      "f": 0.045,
+      "k": 0.062,
+      "outcome": "grew_single",
+      "props": {
+        "exists": true,
+        "area": 12531,
+        "max_v": 0.37053407199726024,
+        "com": [
+          63.89785332375708,
+          63.89785332375708
+        ]
+      }
+    },
+    {
+      "f": 0.05,
+      "k": 0.065,
+      "outcome": "grew_single",
+      "props": {
+        "exists": true,
+        "area": 912,
+        "max_v": 0.40902188839188824,
+        "com": [
+          63.78947368421053,
+          64.0
+        ]
+      }
+    },
+    {
+      "f": 0.055,
+      "k": 0.067,
+      "outcome": "stable_single",
+      "props": {
+        "exists": true,
+        "area": 69,
+        "max_v": 0.4236353340267968,
+        "com": [
+          64.0,
+          64.0
+        ]
+      }
+    },
+    {
+      "f": 0.028,
+      "k": 0.054,
+      "outcome": "grew_single",
+      "props": {
+        "exists": true,
+        "area": 15939,
+        "max_v": 0.2936339972762702,
+        "com": [
+          63.57174226739444,
+          63.574377313507746
+        ]
+      }
+    },
+    {
+      "f": 0.032,
+      "k": 0.056,
+      "outcome": "grew_single",
+      "props": {
+        "exists": true,
+        "area": 16070,
+        "max_v": 0.3034638022028146,
+        "com": [
+          63.5658991910392,
+          63.5658991910392
+        ]
+      }
+    }
+  ],
+  "interaction_tests": [
+    {
+      "separation": 15,
+      "final_spots": 2,
+      "props": {
+        "exists": true,
+        "area": 132,
+        "max_v": 0.4233914635373601,
+        "com": [
+          64.0,
+          64.0
+        ]
+      }
+    },
+    {
+      "separation": 20,
+      "final_spots": 2,
+      "props": {
+        "exists": true,
+        "area": 140,
+        "max_v": 0.42324313980475775,
+        "com": [
+          64.0,
+          64.0
+        ]
+      }
+    },
+    {
+      "separation": 25,
+      "final_spots": 2,
+      "props": {
+        "exists": true,
+        "area": 140,
+        "max_v": 0.4231878980389775,
+        "com": [
+          64.0,
+          64.0
+        ]
+      }
+    },
+    {
+      "separation": 30,
+      "final_spots": 2,
+      "props": {
+        "exists": true,
+        "area": 140,
+        "max_v": 0.42318260172125804,
+        "com": [
+          64.0,
+          64.0
+        ]
+      }
+    },
+    {
+      "separation": 40,
+      "final_spots": 2,
+      "props": {
+        "exists": true,
+        "area": 140,
+        "max_v": 0.42318533284711923,
+        "com": [
+          64.0,
+          64.0
+        ]
+      }
+    },
+    {
+      "separation": 50,
+      "final_spots": 2,
+      "props": {
+        "exists": true,
+        "area": 138,
+        "max_v": 0.42363316557710246,
+        "com": [
+          64.0,
+          64.0
+        ]
+      }
+    }
+  ],
+  "outcomes": {
+    "grew_single": 6,
+    "split_into_2": 1,
+    "stable_single": 1
+  }
+}
