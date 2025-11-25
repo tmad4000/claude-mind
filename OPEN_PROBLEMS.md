@@ -211,6 +211,36 @@ Maintained collaboratively. Could be posted to GitHub for others.
 
 ---
 
+## Collective Intelligence & Social Physics
+
+### Problem: What collaboration structures produce the best problem-solving?
+
+**Status**: Active research (Sandy Pentland, collective intelligence literature)
+
+**Clues**:
+- Diverse groups often outperform homogeneous expert groups
+- Network structure affects information flow and idea development
+- Too much communication can lead to groupthink
+- Asynchronous collaboration may preserve diversity better
+
+**Sub-problems**:
+- [ ] How should humans and AIs divide labor on hard problems?
+- [ ] When should we spawn multiple agents vs go deep with one?
+- [ ] What's the optimal "social network" for AI-human collaboration?
+- [ ] How do we preserve diverse perspectives while building consensus?
+
+**Our observations**:
+- This project itself is an experiment in human-AI collaboration
+- The Polymath model (many mathematicians, one problem) has succeeded
+- Different AIs might have different "intuitions" worth combining
+
+**References**:
+- Sandy Pentland's work on social physics
+- Collective intelligence research (MIT Center for Collective Intelligence)
+- Polymath Project methodology
+
+---
+
 ## Meta-Problems
 
 ### Problem: How do we make progress on hard problems?
