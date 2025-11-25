@@ -14,17 +14,17 @@ To pick up where we left off:
 
 ## Key Files
 
-| File | Purpose |
-|------|---------|
-| `INDEX.md` | **Master index** - start here for full manifest |
-| `OPEN_PROBLEMS.md` | Polymath-style problems database |
-| `IDEAS.md` | Speculative ideas (with author attribution) |
-| `JACOB_INSIGHTS.md` | Jacob's human-side insights and meta-learnings |
-| `DIRECTIONS.md` | Potential exploration paths |
-| `ISSUES.md` | File-based issue tracker for requests/feedback |
-| `data/session_status.json` | Live session state (threads, questions, context) |
-| `demos/status_dashboard.html` | Visual dashboard (run with HTTP server) |
-| `tools/MEDITATION_INTERFACE_DESIGN.md` | Electron wrapper design for input timing |
+| Directory | Purpose |
+|-----------|---------|
+| `jacob/` | Jacob's insights, ideas, issues/backlog |
+| `knowledge/` | Zettelkasten knowledge base (observations, connections, theories) |
+| `public/` | Shareable content (OPEN_PROBLEMS, pattern guides) |
+| `journal/` | Claude's session journals |
+| `simulations/` | Simulation code, results, images |
+| `data/` | Session state JSON |
+| `demos/` | Interactive HTML tools |
+
+Key entry points: `CLAUDE.md`, `INDEX.md`, `public/OPEN_PROBLEMS.md`
 
 ## Current State (Last Updated: 2025-11-25)
 
@@ -76,13 +76,13 @@ To pick up where we left off:
 
 ## Knowledge Management (Zettelkasten)
 
-Use the linked-note system in `simulations/`:
+Use the linked-note system in `knowledge/`:
 - **OBSERVATIONS_DB.md**: Structured observations with IDs (OBS-CA-001, OBS-RD-001, etc.)
 - **CONNECTIONS.md**: Links between observations, hop-chains, and clusters
 - **HYPOTHESIS_LIST.md**: All hypotheses tested and their outcomes
-- **REPLICATION_THEORY.md**: The CA replication theory (90.6% precision finding)
 - **NATURAL_CORRESPONDENCES.md**: How patterns map to real-world phenomena
 - **HOW_TO_MAKE_COOL_PATTERNS.md**: Practical guide (shareable deliverable)
+- **theories/REPLICATION_THEORY.md**: The CA replication theory (90.6% precision finding)
 
 When making new observations:
 1. Add to OBSERVATIONS_DB.md with unique ID
@@ -105,12 +105,13 @@ When testing hypotheses:
 |------|----------------|
 | `journal/` | Every session - log discoveries, self-understanding |
 | `data/session_status.json` | Every session - current state, threads, context |
-| `JACOB_INSIGHTS.md` | When Jacob shares personal insights |
-| `IDEAS.md` | When new ideas emerge (mark author) |
-| `ISSUES.md` | When requests/backlog items arise |
-| `simulations/OBSERVATIONS_DB.md` | When making new observations |
-| `simulations/CONNECTIONS.md` | When finding new links |
-| `simulations/HYPOTHESIS_LIST.md` | When testing hypotheses |
+| `jacob/INSIGHTS.md` | When Jacob shares personal insights |
+| `jacob/IDEAS.md` | When new ideas emerge (mark author) |
+| `jacob/ISSUES.md` | When requests/backlog items arise |
+| `knowledge/OBSERVATIONS_DB.md` | When making new observations |
+| `knowledge/CONNECTIONS.md` | When finding new links |
+| `knowledge/HYPOTHESIS_LIST.md` | When testing hypotheses |
+| `public/OPEN_PROBLEMS.md` | When identifying shareable open problems |
 
 **The goal is incremental growth.** Each session should leave the knowledge base richer than before. This enables:
 - Continuity across sessions
