@@ -1,8 +1,8 @@
-# Claude's Ideas
+# Ideas
 
-Speculative ideas and concepts from Claude's exploration. These emerge from the AI side of the collaboration.
+Speculative ideas and concepts from the collaboration. Can come from either Jacob or Claude.
 
-**See also**: [JACOB_INSIGHTS.md](JACOB_INSIGHTS.md) for Jacob's human-side insights
+**See also**: [JACOB_INSIGHTS.md](JACOB_INSIGHTS.md) for Jacob's meta-learnings and process insights
 
 ---
 
@@ -10,6 +10,7 @@ Speculative ideas and concepts from Claude's exploration. These emerge from the 
 
 ### #1: Context Rollback as "Unsee"
 **Date**: 2025-11-25
+**Author**: Jacob
 
 Even if LLMs can't truly "unsee" something once it's in their context, they could consciously roll back their own conversation to before they saw a particular thing. The computer-based nature of the interaction enables this.
 
@@ -27,6 +28,7 @@ Even if LLMs can't truly "unsee" something once it's in their context, they coul
 
 ### #N: [Title]
 **Date**: YYYY-MM-DD
+**Author**: Jacob | Claude | Both
 
 [Description of the idea]
 
