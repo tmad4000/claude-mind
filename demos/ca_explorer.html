@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellular Automata Explorer</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #888;
+        }
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        label {
+            font-size: 0.8em;
+            color: #666;
+        }
+        input[type="number"], select {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            padding: 8px 12px;
+            font-family: inherit;
+            font-size: 1em;
+            width: 100px;
+        }
+        button {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background: #3a3a3a;
+            border-color: #666;
+        }
+        button.active {
+            background: #4a4a4a;
+            border-color: #888;
+        }
+        .canvas-container {
+            background: #0f0f0f;
+            border: 1px solid #222;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        canvas {
+            display: block;
+            image-rendering: pixelated;
+        }
+        .rule-display {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .rule-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+        }
+        .rule-pattern {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 5px;
+        }
+        .rule-bit {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #444;
+        }
+        .rule-bit.on { background: #e0e0e0; }
+        .rule-bit.off { background: #1a1a1a; }
+        .rule-output {
+            width: 12px;
+            height: 12px;
+            border: 1px solid #666;
+        }
+        .rule-output.on { background: #4a9eff; }
+        .rule-output.off { background: #1a1a1a; }
+        .info {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .presets {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .preset-btn {
+            font-size: 0.85em;
+            padding: 6px 12px;
+        }
+        .insight-box {
+            background: #1a1a1a;
+            border-left: 3px solid #4a9eff;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .insight-box h3 {
+            color: #4a9eff;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cellular Automata Explorer</h1>
+
+        <div class="presets">
+            <button class="preset-btn" onclick="setRule(110)">Rule 110 (Complex)</button>
+            <button class="preset-btn" onclick="setRule(30)">Rule 30 (Chaotic)</button>
+            <button class="preset-btn" onclick="setRule(90)">Rule 90 (Sierpinski)</button>
+            <button class="preset-btn" onclick="setRule(184)">Rule 184 (Shift)</button>
+            <button class="preset-btn" onclick="setRule(54)">Rule 54 (Self-similar)</button>
+            <button class="preset-btn" onclick="setRule(145)">Rule 145 (Edge particles)</button>
+            <button class="preset-btn" onclick="setRule(0)">Rule 0 (Dies)</button>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Rule (0-255)</label>
+                <input type="number" id="ruleInput" min="0" max="255" value="110">
+            </div>
+            <div class="control-group">
+                <label>Initial</label>
+                <select id="initialSelect">
+                    <option value="single">Single cell</option>
+                    <option value="random">Random</option>
+                </select>
+            </div>
+            <button onclick="run()">Run</button>
+            <button onclick="step()">Step</button>
+            <button onclick="reset()">Reset</button>
+            <button id="autoBtn" onclick="toggleAuto()">Auto</button>
+        </div>
+
+        <div class="rule-display" id="ruleDisplay"></div>
+
+        <div class="canvas-container">
+            <canvas id="canvas" width="800" height="400"></canvas>
+        </div>
+
+        <div class="info" id="info">Generation: 0 | Population: 0 | Density: 0%</div>
+
+        <div class="insight-box">
+            <h3>What to look for:</h3>
+            <p><strong>Rule 110:</strong> Notice the triangular "gliders" moving right. These are independent structures that can collide. This is what makes it Turing complete.</p>
+            <p><strong>Rule 30:</strong> Looks random - used for random number generation. No persistent structure.</p>
+            <p><strong>Rule 90:</strong> Perfect Sierpinski triangle. Beautiful but no interaction - just self-similarity.</p>
+            <p><strong>Rule 145:</strong> Try "single cell" vs "random" - single cell looks complex, random reveals it's just a shift rule!</p>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const width = 200;  // cells
+        const height = 100; // generations
+        const cellSize = 4;
+
+        canvas.width = width * cellSize;
+        canvas.height = height * cellSize;
+
+        let rule = 110;
+        let ruleTable = {};
+        let currentState = [];
+        let history = [];
+        let generation = 0;
+        let autoRunning = false;
+        let autoInterval = null;
+
+        function buildRuleTable(ruleNum) {
+            const table = {};
+            for (let i = 0; i < 8; i++) {
+                const pattern = [
+                    (i >> 2) & 1,
+                    (i >> 1) & 1,
+                    i & 1
+                ];
+                table[pattern.join('')] = (ruleNum >> i) & 1;
+            }
+            return table;
+        }
+
+        function displayRule() {
+            const display = document.getElementById('ruleDisplay');
+            display.innerHTML = '';
+
+            const patterns = ['111', '110', '101', '100', '011', '010', '001', '000'];
+            patterns.forEach(pattern => {
+                const cell = document.createElement('div');
+                cell.className = 'rule-cell';
+
+                const patternDiv = document.createElement('div');
+                patternDiv.className = 'rule-pattern';
+                pattern.split('').forEach(bit => {
+                    const bitDiv = document.createElement('div');
+                    bitDiv.className = 'rule-bit ' + (bit === '1' ? 'on' : 'off');
+                    patternDiv.appendChild(bitDiv);
+                });
+
+                const arrow = document.createElement('div');
+                arrow.textContent = '↓';
+                arrow.style.color = '#666';
+                arrow.style.fontSize = '0.8em';
+
+                const output = document.createElement('div');
+                output.className = 'rule-output ' + (ruleTable[pattern] ? 'on' : 'off');
+
+                cell.appendChild(patternDiv);
+                cell.appendChild(arrow);
+                cell.appendChild(output);
+                display.appendChild(cell);
+            });
+        }
+
+        function initState() {
+            const initial = document.getElementById('initialSelect').value;
+            currentState = new Array(width).fill(0);
+
+            if (initial === 'single') {
+                currentState[Math.floor(width / 2)] = 1;
+            } else {
+                for (let i = 0; i < width; i++) {
+                    currentState[i] = Math.random() < 0.5 ? 1 : 0;
+                }
+            }
+
+            history = [currentState.slice()];
+            generation = 0;
+        }
+
+        function stepCA() {
+            const newState = new Array(width);
+            for (let i = 0; i < width; i++) {
+                const left = currentState[(i - 1 + width) % width];
+                const center = currentState[i];
+                const right = currentState[(i + 1) % width];
+                const pattern = '' + left + center + right;
+                newState[i] = ruleTable[pattern];
+            }
+            currentState = newState;
+            history.push(currentState.slice());
+            if (history.length > height) {
+                history.shift();
+            }
+            generation++;
+        }
+
+        function draw() {
+            ctx.fillStyle = '#0f0f0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let y = 0; y < history.length; y++) {
+                for (let x = 0; x < width; x++) {
+                    if (history[y][x]) {
+                        // Color based on age - newer is brighter
+                        const age = history.length - y;
+                        const brightness = Math.max(0.3, 1 - age * 0.01);
+                        ctx.fillStyle = `rgba(74, 158, 255, ${brightness})`;
+                        ctx.fillRect(x * cellSize, y * cellSize, cellSize - 1, cellSize - 1);
+                    }
+                }
+            }
+
+            updateInfo();
+        }
+
+        function updateInfo() {
+            const pop = currentState.reduce((a, b) => a + b, 0);
+            const density = (pop / width * 100).toFixed(1);
+            document.getElementById('info').textContent =
+                `Generation: ${generation} | Population: ${pop} | Density: ${density}%`;
+        }
+
+        function setRule(r) {
+            rule = r;
+            document.getElementById('ruleInput').value = r;
+            ruleTable = buildRuleTable(r);
+            displayRule();
+            reset();
+        }
+
+        function run() {
+            ruleTable = buildRuleTable(parseInt(document.getElementById('ruleInput').value));
+            displayRule();
+            initState();
+
+            for (let i = 0; i < height - 1; i++) {
+                stepCA();
+            }
+            draw();
+        }
+
+        function step() {
+            stepCA();
+            draw();
+        }
+
+        function reset() {
+            if (autoInterval) {
+                clearInterval(autoInterval);
+                autoInterval = null;
+                autoRunning = false;
+                document.getElementById('autoBtn').classList.remove('active');
+            }
+            ruleTable = buildRuleTable(parseInt(document.getElementById('ruleInput').value));
+            displayRule();
+            initState();
+            draw();
+        }
+
+        function toggleAuto() {
+            autoRunning = !autoRunning;
+            const btn = document.getElementById('autoBtn');
+
+            if (autoRunning) {
+                btn.classList.add('active');
+                autoInterval = setInterval(() => {
+                    stepCA();
+                    draw();
+                }, 50);
+            } else {
+                btn.classList.remove('active');
+                clearInterval(autoInterval);
+                autoInterval = null;
+            }
+        }
+
+        // Initialize
+        ruleTable = buildRuleTable(rule);
+        displayRule();
+        initState();
+        draw();
+
+        // Handle rule input change
+        document.getElementById('ruleInput').addEventListener('change', () => {
+            setRule(parseInt(document.getElementById('ruleInput').value));
+        });
+    </script>
+</body>
+</html>
