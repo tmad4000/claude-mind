@@ -1057,15 +1057,28 @@
         </div>
 
         <div id="dashboard" style="display: none;">
-            <!-- What's Happening NOW -->
-            <div class="panel current-task-panel" style="margin-bottom: 20px;">
-                <div class="panel-header">
-                    <div class="panel-title">What's Happening Now <span class="now-badge">LIVE</span></div>
+            <!-- What's Happening NOW + Sub-Agents (top priority) -->
+            <div class="main-grid" style="margin-bottom: 20px;">
+                <!-- Current Task -->
+                <div class="panel current-task-panel">
+                    <div class="panel-header">
+                        <div class="panel-title">What's Happening Now <span class="now-badge">LIVE</span></div>
+                    </div>
+                    <div id="current-task"></div>
                 </div>
-                <div id="current-task"></div>
+
+                <!-- Sub-Agents & Background Tasks (prominent, not collapsed) -->
+                <div class="panel" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05)); border: 1px solid rgba(139, 92, 246, 0.3);">
+                    <div class="panel-header">
+                        <div class="panel-title">Sub-Agents & Background Tasks <span class="now-badge" style="background: #8b5cf6;">ACTIVE</span></div>
+                        <div class="timestamp" id="agents-count"></div>
+                    </div>
+                    <div id="sub-agents"></div>
+                    <div id="background-tasks" style="margin-top: 10px;"></div>
+                </div>
             </div>
 
-            <!-- Top row: Active Work and Current Direction -->
+            <!-- Second row: Active Work and Current Direction -->
             <div class="main-grid">
                 <!-- Left Column: Main Status / Active Work -->
                 <div>
@@ -1085,18 +1098,6 @@
                             <div class="timestamp" id="questions-count"></div>
                         </div>
                         <div id="pending-questions"></div>
-                    </div>
-
-                    <!-- Sub-Agents & Background Tasks -->
-                    <div class="panel" style="margin-top: 20px;">
-                        <div class="panel-header">
-                            <div class="panel-title collapsible" onclick="toggleCollapse(this)">Sub-Agents & Background Tasks</div>
-                            <div class="timestamp" id="agents-count"></div>
-                        </div>
-                        <div class="collapsible-content">
-                            <div id="sub-agents"></div>
-                            <div id="background-tasks" style="margin-top: 15px;"></div>
-                        </div>
                     </div>
 
                     <!-- Recent Timeline (collapsible) -->
