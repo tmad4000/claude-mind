@@ -156,6 +156,38 @@
             padding-left: 20px;
         }
 
+        .toggle-caret {
+            cursor: pointer;
+            display: inline-block;
+            width: 20px;
+            font-size: 0.8em;
+            color: #a0a0a0;
+            transition: transform 0.2s;
+            user-select: none;
+        }
+
+        .toggle-caret:hover {
+            color: #fff;
+        }
+
+        .toggle-caret.collapsed {
+            transform: rotate(-90deg);
+        }
+
+        .sub-thread.collapsed {
+            display: none;
+        }
+
+        .has-children {
+            cursor: pointer;
+        }
+
+        .child-count {
+            font-size: 0.75em;
+            color: #64748b;
+            margin-left: 8px;
+        }
+
         .connection-line {
             height: 2px;
             background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
@@ -576,10 +608,15 @@
                 node.dataset.threadId = thread.id;
                 node.dataset.status = thread.status;
 
+                const hasChildren = thread.subThreads && thread.subThreads.length > 0;
+                const childCount = hasChildren ? countAllChildren(thread.subThreads) : 0;
+
                 let html = `
-                    <div class="thread-title">
+                    <div class="thread-title ${hasChildren ? 'has-children' : ''}">
+                        ${hasChildren ? `<span class="toggle-caret" onclick="toggleSubThread(event, '${thread.id}')">▼</span>` : '<span style="width: 20px; display: inline-block;"></span>'}
                         ${thread.title}
                         <span class="status-badge status-${thread.status}">${thread.status}</span>
+                        ${hasChildren ? `<span class="child-count">(${childCount} sub-items)</span>` : ''}
                     </div>
                     <div class="thread-content">${thread.description || ''}</div>
                 `;
@@ -599,13 +636,37 @@
                 node.innerHTML = html;
                 container.appendChild(node);
 
-                if (thread.subThreads) {
+                if (hasChildren) {
                     const subContainer = document.createElement('div');
                     subContainer.className = 'sub-thread';
+                    subContainer.dataset.parentId = thread.id;
                     container.appendChild(subContainer);
                     renderTree(thread.subThreads, subContainer, level + 1);
                 }
             });
+        }
+
+        // Count all nested children
+        function countAllChildren(threads) {
+            let count = threads.length;
+            threads.forEach(t => {
+                if (t.subThreads) {
+                    count += countAllChildren(t.subThreads);
+                }
+            });
+            return count;
+        }
+
+        // Toggle sub-thread visibility
+        function toggleSubThread(event, parentId) {
+            event.stopPropagation();
+            const caret = event.target;
+            const subThread = document.querySelector(`.sub-thread[data-parent-id="${parentId}"]`);
+
+            if (subThread) {
+                caret.classList.toggle('collapsed');
+                subThread.classList.toggle('collapsed');
+            }
         }
 
         // Render connections view
@@ -698,13 +759,19 @@
         // Expand/collapse
         function expandAll() {
             document.querySelectorAll('.sub-thread').forEach(el => {
-                el.style.display = 'block';
+                el.classList.remove('collapsed');
+            });
+            document.querySelectorAll('.toggle-caret').forEach(el => {
+                el.classList.remove('collapsed');
             });
         }
 
         function collapseAll() {
             document.querySelectorAll('.sub-thread').forEach(el => {
-                el.style.display = 'none';
+                el.classList.add('collapsed');
+            });
+            document.querySelectorAll('.toggle-caret').forEach(el => {
+                el.classList.add('collapsed');
             });
         }
 

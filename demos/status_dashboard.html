@@ -621,6 +621,106 @@
         .file-list li:last-child:before {
             content: "└── ";
         }
+
+        /* Featured files */
+        .file-list li.featured {
+            background: rgba(59, 130, 246, 0.1);
+            margin: 4px -10px;
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+
+        .featured-badge {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            font-size: 0.65em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            margin-left: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .file-desc {
+            color: #64748b;
+            font-size: 0.85em;
+            margin-left: 5px;
+        }
+
+        .gh-icon {
+            color: #64748b;
+            font-size: 0.8em;
+            margin-left: 5px;
+            text-decoration: none;
+        }
+
+        .gh-icon:hover {
+            color: #3b82f6;
+        }
+
+        .github-link {
+            color: #64748b;
+            font-size: 0.85em;
+            text-decoration: none;
+        }
+
+        .github-link:hover {
+            color: #3b82f6;
+        }
+
+        /* Sub-agents panel */
+        .agent-card {
+            background: rgba(139, 92, 246, 0.1);
+            border-left: 4px solid #8b5cf6;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+
+        .agent-card.idle {
+            border-left-color: #64748b;
+            opacity: 0.7;
+        }
+
+        .agent-card.running {
+            border-left-color: #22c55e;
+            animation: agent-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes agent-pulse {
+            0%, 100% { background: rgba(139, 92, 246, 0.1); }
+            50% { background: rgba(139, 92, 246, 0.15); }
+        }
+
+        .agent-name {
+            font-weight: 600;
+            color: #f1f5f9;
+            margin-bottom: 5px;
+        }
+
+        .agent-task {
+            font-size: 0.9em;
+            color: #94a3b8;
+        }
+
+        .agent-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .agent-status.running {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .agent-status.idle {
+            background: rgba(100, 116, 139, 0.2);
+            color: #94a3b8;
+        }
     </style>
 </head>
 <body>
@@ -663,6 +763,17 @@
                             <div class="timestamp" id="questions-count"></div>
                         </div>
                         <div id="pending-questions"></div>
+                    </div>
+
+                    <!-- Sub-Agents -->
+                    <div class="panel" style="margin-top: 20px;">
+                        <div class="panel-header">
+                            <div class="panel-title collapsible" onclick="toggleCollapse(this)">Sub-Agents</div>
+                            <div class="timestamp" id="agents-count"></div>
+                        </div>
+                        <div class="collapsible-content">
+                            <div id="sub-agents"></div>
+                        </div>
                     </div>
 
                     <!-- Recent Timeline (collapsible) -->
@@ -760,38 +871,80 @@
                 <div class="panel">
                     <div class="panel-header">
                         <div class="panel-title collapsible" onclick="toggleCollapse(this)">Key Files</div>
+                        <a href="https://github.com/tmad4000/claude-mind" target="_blank" class="github-link">View on GitHub</a>
                     </div>
                     <div class="collapsible-content">
                         <div class="file-tree">
                             <div class="file-category">
                                 <div class="file-category-title">📋 Curated Lists</div>
                                 <ul class="file-list">
-                                    <li><a href="../OPEN_PROBLEMS.md" target="_blank">OPEN_PROBLEMS.md</a> - Problems database</li>
-                                    <li><a href="../IDEAS.md" target="_blank">IDEAS.md</a> - Speculative ideas</li>
-                                    <li><a href="../DIRECTIONS.md" target="_blank">DIRECTIONS.md</a> - Exploration paths</li>
-                                    <li><a href="../INDEX.md" target="_blank">INDEX.md</a> - Master index</li>
+                                    <li class="featured">
+                                        <a href="viewer.html?file=OPEN_PROBLEMS.md" target="_blank">OPEN_PROBLEMS.md</a>
+                                        <span class="file-desc">Problems database</span>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/OPEN_PROBLEMS.md" target="_blank" class="gh-icon" title="View on GitHub">↗</a>
+                                        <span class="featured-badge">START HERE</span>
+                                    </li>
+                                    <li>
+                                        <a href="viewer.html?file=IDEAS.md" target="_blank">IDEAS.md</a>
+                                        <span class="file-desc">Speculative ideas</span>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/IDEAS.md" target="_blank" class="gh-icon" title="View on GitHub">↗</a>
+                                    </li>
+                                    <li>
+                                        <a href="viewer.html?file=DIRECTIONS.md" target="_blank">DIRECTIONS.md</a>
+                                        <span class="file-desc">Exploration paths</span>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/DIRECTIONS.md" target="_blank" class="gh-icon" title="View on GitHub">↗</a>
+                                    </li>
+                                    <li class="featured">
+                                        <a href="viewer.html?file=INDEX.md" target="_blank">INDEX.md</a>
+                                        <span class="file-desc">Master index</span>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/INDEX.md" target="_blank" class="gh-icon" title="View on GitHub">↗</a>
+                                        <span class="featured-badge">OVERVIEW</span>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="file-category">
                                 <div class="file-category-title">📓 Journals</div>
                                 <ul class="file-list">
-                                    <li><a href="../journal/philosophical-musings.md" target="_blank">philosophical-musings.md</a></li>
-                                    <li><a href="../journal/11-chaos-discovery.md" target="_blank">11-chaos-discovery.md</a></li>
-                                    <li><a href="../journal/10-boundary-geometry.md" target="_blank">10-boundary-geometry.md</a></li>
+                                    <li class="featured">
+                                        <a href="viewer.html?file=journal/philosophical-musings.md" target="_blank">philosophical-musings.md</a>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/journal/philosophical-musings.md" target="_blank" class="gh-icon">↗</a>
+                                        <span class="featured-badge">META</span>
+                                    </li>
+                                    <li>
+                                        <a href="viewer.html?file=journal/11-chaos-discovery.md" target="_blank">11-chaos-discovery.md</a>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/journal/11-chaos-discovery.md" target="_blank" class="gh-icon">↗</a>
+                                    </li>
+                                    <li>
+                                        <a href="viewer.html?file=journal/10-boundary-geometry.md" target="_blank">10-boundary-geometry.md</a>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/journal/10-boundary-geometry.md" target="_blank" class="gh-icon">↗</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="file-category">
                                 <div class="file-category-title">🔧 Tools & Designs</div>
                                 <ul class="file-list">
-                                    <li><a href="../tools/MEDITATION_INTERFACE_DESIGN.md" target="_blank">MEDITATION_INTERFACE_DESIGN.md</a></li>
+                                    <li>
+                                        <a href="viewer.html?file=tools/MEDITATION_INTERFACE_DESIGN.md" target="_blank">MEDITATION_INTERFACE_DESIGN.md</a>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/tools/MEDITATION_INTERFACE_DESIGN.md" target="_blank" class="gh-icon">↗</a>
+                                    </li>
                                 </ul>
                             </div>
                             <div class="file-category">
                                 <div class="file-category-title">🐍 Simulations</div>
                                 <ul class="file-list">
-                                    <li><a href="../simulations/reaction_diffusion.py" target="_blank">reaction_diffusion.py</a></li>
-                                    <li><a href="../simulations/boundary_finder.py" target="_blank">boundary_finder.py</a></li>
-                                    <li><a href="../simulations/cellular_automata.py" target="_blank">cellular_automata.py</a></li>
+                                    <li class="featured">
+                                        <a href="viewer.html?file=simulations/reaction_diffusion.py" target="_blank">reaction_diffusion.py</a>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/simulations/reaction_diffusion.py" target="_blank" class="gh-icon">↗</a>
+                                        <span class="featured-badge">CORE</span>
+                                    </li>
+                                    <li>
+                                        <a href="viewer.html?file=simulations/boundary_finder.py" target="_blank">boundary_finder.py</a>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/simulations/boundary_finder.py" target="_blank" class="gh-icon">↗</a>
+                                    </li>
+                                    <li>
+                                        <a href="viewer.html?file=simulations/cellular_automata.py" target="_blank">cellular_automata.py</a>
+                                        <a href="https://github.com/tmad4000/claude-mind/blob/main/simulations/cellular_automata.py" target="_blank" class="gh-icon">↗</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -899,6 +1052,29 @@
                     <div class="question-text">${q.question}</div>
                     <div class="question-context">${q.context}</div>
                     <span class="priority-tag priority-${q.priority}">${q.priority} priority</span>
+                </div>
+            `).join('');
+        }
+
+        function renderSubAgents(agents) {
+            const container = document.getElementById('sub-agents');
+            const running = agents ? agents.filter(a => a.status === 'running').length : 0;
+            document.getElementById('agents-count').textContent =
+                running > 0 ? `${running} active` : '';
+
+            if (!agents || agents.length === 0) {
+                container.innerHTML = '<div class="context-content">No sub-agents spawned</div>';
+                return;
+            }
+
+            container.innerHTML = agents.map(agent => `
+                <div class="agent-card ${agent.status}">
+                    <div class="agent-name">
+                        ${agent.name}
+                        <span class="agent-status ${agent.status}">${agent.status}</span>
+                    </div>
+                    <div class="agent-task">${agent.task}</div>
+                    ${agent.result ? `<div class="context-content" style="margin-top: 8px; font-size: 0.85em;">${agent.result}</div>` : ''}
                 </div>
             `).join('');
         }
@@ -1063,6 +1239,7 @@
                 renderAssumptions(data.implicit_context.working_assumptions);
                 renderDomainKnowledge(data.implicit_context.domain_knowledge);
                 renderMetaInfo(data.meta_state);
+                renderSubAgents(data.sub_agents);
 
             } catch (error) {
                 console.error('Error loading status:', error);

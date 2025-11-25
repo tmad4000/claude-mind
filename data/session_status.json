@@ -189,12 +189,26 @@
       "Research literature connection"
     ]
   },
+  "sub_agents": [
+    {
+      "name": "Dashboard Builder",
+      "status": "completed",
+      "task": "Create status_dashboard.html and conversation_map.html",
+      "result": "Created interactive dashboards with live updates"
+    },
+    {
+      "name": "Anti-Prompt Researcher",
+      "status": "completed",
+      "task": "Research whether anti-prompts or prompt erasers exist",
+      "result": "No true anti-prompts; priming dilution techniques available"
+    }
+  ],
   "system_info": {
-    "version": "0.2.0",
-    "last_updated": "2025-11-25T06:30:00Z",
-    "update_interval_seconds": 30,
+    "version": "0.3.0",
+    "last_updated": "2025-11-25T07:00:00Z",
+    "update_interval_seconds": 5,
     "active_agents": ["primary"],
-    "session_duration_minutes": 180,
+    "session_duration_minutes": 210,
     "github_repo": "https://github.com/tmad4000/claude-mind"
   }
 }

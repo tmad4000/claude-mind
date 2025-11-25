@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claude Mind - File Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .breadcrumb {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-bottom: 10px;
+        }
+
+        .breadcrumb a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        h1.file-title {
+            font-size: 1.8em;
+            color: #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .file-icon {
+            font-size: 1.2em;
+        }
+
+        .file-meta {
+            font-size: 0.85em;
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        .content {
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 12px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Markdown styling */
+        .content h1 {
+            font-size: 2em;
+            color: #f1f5f9;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.3);
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+        }
+
+        .content h1:first-child {
+            margin-top: 0;
+        }
+
+        .content h2 {
+            font-size: 1.5em;
+            color: #e2e8f0;
+            margin: 25px 0 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+
+        .content h3 {
+            font-size: 1.25em;
+            color: #cbd5e1;
+            margin: 20px 0 10px;
+        }
+
+        .content p {
+            margin: 15px 0;
+            color: #cbd5e1;
+        }
+
+        .content a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            text-decoration: underline;
+        }
+
+        .content ul, .content ol {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+
+        .content li {
+            margin: 8px 0;
+            color: #cbd5e1;
+        }
+
+        .content code {
+            background: rgba(59, 130, 246, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9em;
+            color: #93c5fd;
+        }
+
+        .content pre {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .content pre code {
+            background: none;
+            padding: 0;
+            color: #e6edf3;
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+
+        .content blockquote {
+            border-left: 4px solid #3b82f6;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 0 8px 8px 0;
+            color: #94a3b8;
+            font-style: italic;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .content th, .content td {
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        .content th {
+            background: rgba(59, 130, 246, 0.2);
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .content td {
+            color: #cbd5e1;
+        }
+
+        .content tr:nth-child(even) {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .content hr {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin: 30px 0;
+        }
+
+        .content img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Checkbox styling */
+        .content input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #64748b;
+        }
+
+        .spinner {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Error state */
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            color: #fca5a5;
+        }
+
+        /* Raw code display for non-markdown */
+        .raw-code {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            color: #e6edf3;
+            white-space: pre;
+        }
+
+        /* Back button */
+        .back-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(59, 130, 246, 0.6);
+        }
+
+        /* File type badge */
+        .file-type {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 10px;
+        }
+
+        .file-type.md {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .file-type.py {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+
+        .file-type.json {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+
+        .file-type.html {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="breadcrumb">
+                <a href="status_dashboard.html">Dashboard</a> / <span id="path-display"></span>
+            </div>
+            <h1 class="file-title">
+                <span class="file-icon" id="file-icon"></span>
+                <span id="file-name"></span>
+                <span class="file-type" id="file-type"></span>
+            </h1>
+            <div class="file-meta" id="file-meta"></div>
+        </header>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <div>Loading file...</div>
+        </div>
+
+        <div id="error" class="error" style="display: none;">
+            <h2>Unable to Load File</h2>
+            <p id="error-message"></p>
+        </div>
+
+        <div id="content" class="content" style="display: none;"></div>
+    </div>
+
+    <a href="status_dashboard.html" class="back-btn">
+        <span>←</span> Back to Dashboard
+    </a>
+
+    <script>
+        // Get file path from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const filePath = urlParams.get('file');
+
+        // File type configurations
+        const fileTypes = {
+            'md': { icon: '📄', label: 'Markdown', render: 'markdown' },
+            'py': { icon: '🐍', label: 'Python', render: 'code', lang: 'python' },
+            'json': { icon: '📋', label: 'JSON', render: 'code', lang: 'json' },
+            'html': { icon: '🌐', label: 'HTML', render: 'code', lang: 'html' },
+            'js': { icon: '⚡', label: 'JavaScript', render: 'code', lang: 'javascript' },
+            'txt': { icon: '📝', label: 'Text', render: 'text' }
+        };
+
+        function getFileExtension(path) {
+            return path.split('.').pop().toLowerCase();
+        }
+
+        function getFileName(path) {
+            return path.split('/').pop();
+        }
+
+        async function loadFile() {
+            if (!filePath) {
+                showError('No file specified. Add ?file=path/to/file.md to the URL.');
+                return;
+            }
+
+            const ext = getFileExtension(filePath);
+            const config = fileTypes[ext] || { icon: '📄', label: ext.toUpperCase(), render: 'text' };
+            const fileName = getFileName(filePath);
+
+            // Update header
+            document.getElementById('path-display').textContent = filePath;
+            document.getElementById('file-name').textContent = fileName;
+            document.getElementById('file-icon').textContent = config.icon;
+            document.getElementById('file-type').textContent = config.label;
+            document.getElementById('file-type').className = `file-type ${ext}`;
+            document.title = `${fileName} - Claude Mind`;
+
+            try {
+                const response = await fetch('../' + filePath);
+
+                if (!response.ok) {
+                    throw new Error(`File not found (${response.status})`);
+                }
+
+                const text = await response.text();
+
+                // Hide loading, show content
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+
+                const contentDiv = document.getElementById('content');
+
+                if (config.render === 'markdown') {
+                    // Configure marked for GFM
+                    marked.setOptions({
+                        gfm: true,
+                        breaks: true,
+                        highlight: function(code, lang) {
+                            if (lang && hljs.getLanguage(lang)) {
+                                return hljs.highlight(code, { language: lang }).value;
+                            }
+                            return hljs.highlightAuto(code).value;
+                        }
+                    });
+                    contentDiv.innerHTML = marked.parse(text);
+                } else if (config.render === 'code') {
+                    const highlighted = config.lang && hljs.getLanguage(config.lang)
+                        ? hljs.highlight(text, { language: config.lang }).value
+                        : hljs.highlightAuto(text).value;
+                    contentDiv.innerHTML = `<pre><code>${highlighted}</code></pre>`;
+                } else {
+                    contentDiv.innerHTML = `<pre class="raw-code">${escapeHtml(text)}</pre>`;
+                }
+
+                // Update file meta
+                const lines = text.split('\n').length;
+                const size = new Blob([text]).size;
+                document.getElementById('file-meta').textContent =
+                    `${lines} lines • ${formatBytes(size)}`;
+
+            } catch (error) {
+                showError(error.message);
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('error').style.display = 'block';
+            document.getElementById('error-message').textContent = message;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function formatBytes(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // Load on page ready
+        window.addEventListener('DOMContentLoaded', loadFile);
+    </script>
+</body>
+</html>
