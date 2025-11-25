@@ -3,13 +3,36 @@
   "timestamp": "2025-11-25T14:00:00Z",
   "claude_status": "processing",
   "current_task": {
-    "description": "Testing Claude's theoretical understanding of RD boundaries",
-    "details": "Spawned sub-agents to probe whether theory predicts quadratic boundaries from first principles",
-    "started": "2025-11-25T14:30:00Z",
-    "step": "Analyzing LSA derivation results"
+    "description": "Testing novel theories with simulations",
+    "details": "Using skeptical peer reviewer protocol to validate discoveries",
+    "started": "2025-11-25T06:45:00-08:00",
+    "step": "Testing Theory 1: Hysteresis",
+    "subtasks": [
+      {"name": "Create NOVEL_THEORIES.md", "status": "completed"},
+      {"name": "Create PEER_REVIEW_PROTOCOL.md", "status": "completed"},
+      {"name": "Get baseline prediction for hysteresis", "status": "completed", "result": "Predicts Δk ≈ 0.005-0.015"},
+      {"name": "Run hysteresis simulation", "status": "completed", "result": "Δk ≈ 0.0003"},
+      {"name": "Compare to baseline", "status": "completed", "result": "BASELINE WRONG - predicted 0.005-0.015"},
+      {"name": "Test Theory 2: Wavelength scaling", "status": "pending"},
+      {"name": "Test Theory 6: Multi-stability", "status": "pending"}
+    ]
   },
-  "background_tasks": [],
+  "background_tasks": [
+    {
+      "name": "Dashboard HTTP Server",
+      "status": "running",
+      "description": "Serving status_dashboard.html",
+      "url": "http://localhost:8080",
+      "started": "2025-11-25T05:04:00-08:00"
+    }
+  ],
   "activity_feed": [
+    {
+      "id": "act-019",
+      "timestamp": "2025-11-25T07:00:00-08:00",
+      "type": "discovery",
+      "message": "THEORY TEST: Hysteresis - Baseline WRONG! Predicted Δk≈0.01, actual Δk≈0.0003. Gray-Scott is supercritical."
+    },
     {
       "id": "act-018",
       "timestamp": "2025-11-25T14:35:00Z",

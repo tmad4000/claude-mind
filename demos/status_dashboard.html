@@ -1441,12 +1441,39 @@
             updateUnreadCount(unreadCount);
         }
 
-        // Render current task
+        // Render current task with subtasks
         function renderCurrentTask(currentTask) {
             const container = document.getElementById('current-task');
             if (!currentTask) {
                 container.innerHTML = '<div class="context-content">No active task tracked</div>';
                 return;
+            }
+
+            // Render subtasks if present
+            let subtasksHtml = '';
+            if (currentTask.subtasks && currentTask.subtasks.length > 0) {
+                const statusIcons = {
+                    'completed': '✓',
+                    'in_progress': '●',
+                    'pending': '○'
+                };
+                const statusColors = {
+                    'completed': '#22c55e',
+                    'in_progress': '#eab308',
+                    'pending': '#64748b'
+                };
+                subtasksHtml = `
+                    <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                        <div style="font-size: 0.85em; color: #94a3b8; margin-bottom: 8px;">Subtasks:</div>
+                        ${currentTask.subtasks.map(st => `
+                            <div style="display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 0.9em;">
+                                <span style="color: ${statusColors[st.status]}; font-weight: bold;">${statusIcons[st.status]}</span>
+                                <span style="color: ${st.status === 'completed' ? '#94a3b8' : '#f1f5f9'}; ${st.status === 'completed' ? 'text-decoration: line-through;' : ''}">${st.name}</span>
+                                ${st.result ? `<span style="color: #64748b; font-size: 0.85em; margin-left: auto;">${st.result}</span>` : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
             }
 
             container.innerHTML = `
@@ -1456,8 +1483,9 @@
                 ${currentTask.details ? `<div class="context-content">${currentTask.details}</div>` : ''}
                 <div class="thread-meta" style="margin-top: 10px;">
                     <span>Started: ${formatTime(currentTask.started)}</span>
-                    ${currentTask.step ? `<span>Step: ${currentTask.step}</span>` : ''}
+                    ${currentTask.step ? `<span style="background: rgba(234, 179, 8, 0.2); color: #eab308; padding: 2px 8px; border-radius: 10px;">● ${currentTask.step}</span>` : ''}
                 </div>
+                ${subtasksHtml}
             `;
         }
 
@@ -1576,6 +1604,7 @@
                         <span class="bg-task-status ${task.status}">${task.status}</span>
                     </div>
                     <div class="bg-task-desc">${task.description}</div>
+                    ${task.url ? `<a href="${task.url}" target="_blank" style="color: #60a5fa; font-size: 0.85em; text-decoration: none;">${task.url}</a>` : ''}
                 </div>
             `).join('');
         }
