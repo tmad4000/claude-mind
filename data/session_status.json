@@ -1,10 +1,21 @@
 {
   "session_id": "session_003_dashboard_complete",
   "timestamp": "2025-11-25T14:00:00Z",
-  "claude_status": "idle",
-  "current_task": null,
+  "claude_status": "processing",
+  "current_task": {
+    "description": "Discovered boundary curvature in Gray-Scott system",
+    "details": "Found that pattern boundaries are QUADRATIC not linear. k ≈ -6.5f² + 0.8f + c",
+    "started": "2025-11-25T14:15:00Z",
+    "step": "Documenting discovery"
+  },
   "background_tasks": [],
   "activity_feed": [
+    {
+      "id": "act-016",
+      "timestamp": "2025-11-25T14:20:00Z",
+      "type": "discovery",
+      "message": "DISCOVERY: Gray-Scott boundaries are QUADRATIC not linear! Pattern region curves downward at high f."
+    },
     {
       "id": "act-015",
       "timestamp": "2025-11-25T14:00:00Z",

@@ -30,6 +30,7 @@ These are the actively maintained lists that grow over time:
 | File | Key Findings |
 |------|-------------|
 | [journal/philosophical-musings.md](journal/philosophical-musings.md) | Meta-dialogue and philosophical threads |
+| [journal/12-boundary-curvature.md](journal/12-boundary-curvature.md) | **NEW**: Boundaries are QUADRATIC not linear! |
 | [journal/10-boundary-geometry.md](journal/10-boundary-geometry.md) | Linear boundaries, (k-f) hypothesis failure |
 | [journal/11-chaos-discovery.md](journal/11-chaos-discovery.md) | Relaxation oscillation, quasi-periodic chaos |
 | [journal/09-classifier-failure.md](journal/09-classifier-failure.md) | Numerical artifacts vs physical patterns |
@@ -73,10 +74,11 @@ These are the actively maintained lists that grow over time:
 ## Key Insights (Quick Reference)
 
 1. **Metrics miss structure** - Statistical measures don't distinguish physical from numerical patterns
-2. **Boundaries are linear** - Upper: k ≈ 0.13f + 0.061, Lower: k ≈ 0.50f + 0.037
-3. **Band narrows at high f** - The pattern region shrinks as feed rate increases
+2. **Boundaries are QUADRATIC** - k ≈ -6.5f² + 0.8f + c (refines earlier linear approximation)
+3. **Band curves downward at high f** - Pattern region persists but shifts to lower k values
 4. **Chaos exists** - At f=0.026, k=0.051, quasi-periodic oscillation with ~850 step period
 5. **Simple hypotheses fail** - (k-f) alone gets only 67% accuracy
+6. **Linear models are local** - The linear boundary fit was valid in limited f range but fails at high f
 
 ## Outputs (Shareable Summaries)
 
