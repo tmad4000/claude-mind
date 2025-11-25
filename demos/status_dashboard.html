@@ -721,6 +721,47 @@
             background: rgba(100, 116, 139, 0.2);
             color: #94a3b8;
         }
+
+        .current-time {
+            font-size: 1.1em;
+            color: #94a3b8;
+            margin-top: 10px;
+            font-family: 'Monaco', 'Consolas', monospace;
+        }
+
+        .timezone {
+            font-size: 0.85em;
+            color: #64748b;
+            margin-left: 10px;
+        }
+
+        /* Current task highlight */
+        .current-task-panel {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(34, 197, 94, 0.05));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            animation: current-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes current-pulse {
+            0%, 100% { border-color: rgba(34, 197, 94, 0.3); }
+            50% { border-color: rgba(34, 197, 94, 0.6); }
+        }
+
+        .now-badge {
+            background: #22c55e;
+            color: #000;
+            font-size: 0.7em;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            margin-left: 10px;
+            animation: now-blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes now-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
     </style>
 </head>
 <body>
@@ -730,6 +771,7 @@
                 <span class="status-indicator" id="live-indicator">● LIVE</span>
             </h1>
             <div class="subtitle">Real-time exploration monitoring</div>
+            <div class="current-time" id="current-time"></div>
         </header>
 
         <div id="loading" class="loading">
@@ -743,6 +785,14 @@
         </div>
 
         <div id="dashboard" style="display: none;">
+            <!-- What's Happening NOW -->
+            <div class="panel current-task-panel" style="margin-bottom: 20px;">
+                <div class="panel-header">
+                    <div class="panel-title">What's Happening Now <span class="now-badge">LIVE</span></div>
+                </div>
+                <div id="current-task"></div>
+            </div>
+
             <!-- Top row: Active Work and Current Direction -->
             <div class="main-grid">
                 <!-- Left Column: Main Status / Active Work -->
@@ -978,6 +1028,46 @@
             if (content && content.classList.contains('collapsible-content')) {
                 content.classList.toggle('collapsed');
             }
+        }
+
+        // Update current time display
+        function updateCurrentTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            const dateStr = now.toLocaleDateString('en-US', {
+                weekday: 'short',
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            document.getElementById('current-time').innerHTML =
+                `${dateStr} ${timeStr} <span class="timezone">(${timezone})</span>`;
+        }
+
+        // Render current task
+        function renderCurrentTask(currentTask) {
+            const container = document.getElementById('current-task');
+            if (!currentTask) {
+                container.innerHTML = '<div class="context-content">No active task tracked</div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div style="font-size: 1.2em; color: #f1f5f9; margin-bottom: 10px;">
+                    ${currentTask.description}
+                </div>
+                ${currentTask.details ? `<div class="context-content">${currentTask.details}</div>` : ''}
+                <div class="thread-meta" style="margin-top: 10px;">
+                    <span>Started: ${formatTime(currentTask.started)}</span>
+                    ${currentTask.step ? `<span>Step: ${currentTask.step}</span>` : ''}
+                </div>
+            `;
         }
 
         function formatTime(isoString) {
@@ -1240,6 +1330,7 @@
                 renderDomainKnowledge(data.implicit_context.domain_knowledge);
                 renderMetaInfo(data.meta_state);
                 renderSubAgents(data.sub_agents);
+                renderCurrentTask(data.current_task);
 
             } catch (error) {
                 console.error('Error loading status:', error);
@@ -1254,9 +1345,12 @@
         // Initialize
         function init() {
             loadStatus();
+            updateCurrentTime();
 
             // Set up auto-refresh
             updateInterval = setInterval(loadStatus, UPDATE_INTERVAL);
+            // Update time every second
+            setInterval(updateCurrentTime, 1000);
         }
 
         // Clean up on page unload

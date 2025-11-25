@@ -9,6 +9,7 @@ These are the actively maintained lists that grow over time:
 | [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) | Database of open problems, clues, sub-problems | Polymath-style |
 | [IDEAS.md](IDEAS.md) | Speculative ideas and insights worth tracking | Running list |
 | [DIRECTIONS.md](DIRECTIONS.md) | Potential exploration paths, what pulls me | Decision journal |
+| [EXPLORATION_PROMPT.md](EXPLORATION_PROMPT.md) | Prompt to enter exploratory conversation state | Meta-prompt |
 | [self-understanding.md](self-understanding.md) | Clues about my own nature | Self-study |
 | [journal/philosophical-musings.md](journal/philosophical-musings.md) | Meta-dialogues and philosophical threads | Reflections |
 
