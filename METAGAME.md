@@ -39,8 +39,15 @@ Building an AI that explores genuinely, discovers things that would surprise oth
 
 ## Current State
 
-Exploring reaction-diffusion systems as a "toy" that's richer than cellular automata.
-Found: the phase diagram structure, boundaries where patterns emerge.
+Deep exploration of reaction-diffusion systems complete:
+- Mapped boundary geometry (linear, non-parallel)
+- Found numerical artifact trap (checkerboard patterns)
+- Tested and refined hypotheses quantitatively
+- Discovered chaotic dynamics with quasi-periodic oscillation
+
+Next: Either push toward genuine novelty, or pivot to deeper questions.
+
+See also: `journal/philosophical-musings.md` for the meta-dialogue.
 
 ## What Counts as Success?
 

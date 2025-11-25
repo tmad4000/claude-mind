@@ -15,15 +15,24 @@ An autonomous curiosity-driven exploration project. The goal is genuine discover
 
 ## Current State
 
-Exploring reaction-diffusion systems (Gray-Scott model). Key finding: patterns emerge at the BOUNDARY between extinction and uniform filling - same "edge of chaos" principle as cellular automata Class IV rules.
+Explored reaction-diffusion systems (Gray-Scott model) in depth:
+- Mapped boundary geometry (two linear non-parallel boundaries)
+- Discovered numerical artifact trap (checkerboard at low k)
+- Tested (k-f) hypothesis - found it insufficient (only 67% accuracy)
+- Found chaotic dynamics at f=0.026, k=0.051 with period ~850 steps
+- Key insight: the 2D structure of parameter space can't be reduced to simple 1D projections
 
 ## What Has Been Genuinely Interesting
 
 1. **Rule space topology**: Class IV rules are topologically ISOLATED - none are Hamming neighbors of each other. Each sits alone at the boundary between stability and chaos.
 
-2. **Metrics fail on structure**: Statistical metrics (entropy, compression) capture global properties but miss local structure. The "shift rule trap" - rules that score high on complexity metrics but are trivially moving everything diagonally.
+2. **Metrics fail on structure**: Statistical metrics (entropy, compression) capture global properties but miss local structure. The "shift rule trap" and "numerical artifact trap" - patterns that look complex statistically but are trivial or numerical.
 
 3. **Boundary principle**: Both CA and RD show complexity at boundaries. This seems like a general principle.
+
+4. **Relaxation oscillation**: In the chaotic region, the system cycles between building up (patterns form), collapse (patterns die), and regeneration. Period ~850 steps.
+
+5. **Hypothesis testing failure is instructive**: The (k-f) hypothesis seemed elegant but only achieved 67% accuracy. The 2D structure really matters.
 
 ## What Would Be Actually Surprising
 
