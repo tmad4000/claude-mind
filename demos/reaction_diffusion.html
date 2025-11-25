@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction-Diffusion Explorer</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        h1 { font-size: 1.5em; margin-bottom: 5px; color: #888; }
+        .subtitle { color: #666; margin-bottom: 20px; font-size: 0.9em; }
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        label { font-size: 0.75em; color: #666; }
+        input[type="range"] {
+            width: 120px;
+            accent-color: #4a9eff;
+        }
+        .value { font-size: 0.8em; color: #4a9eff; }
+        button {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+        button:hover { background: #3a3a3a; }
+        button.active { background: #4a4a4a; border-color: #4a9eff; }
+        canvas {
+            display: block;
+            border: 1px solid #333;
+            cursor: crosshair;
+        }
+        .presets {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .preset-btn { font-size: 0.85em; padding: 6px 12px; }
+        .info {
+            margin-top: 15px;
+            padding: 15px;
+            background: #1a1a1a;
+            border-left: 3px solid #4a9eff;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .stats { color: #666; font-size: 0.85em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reaction-Diffusion Systems</h1>
+        <p class="subtitle">Gray-Scott model: Two chemicals (U, V) diffuse and react. Click to add V. Watch patterns emerge.</p>
+
+        <div class="presets">
+            <button class="preset-btn" onclick="setPreset('mitosis')">Mitosis</button>
+            <button class="preset-btn" onclick="setPreset('coral')">Coral</button>
+            <button class="preset-btn" onclick="setPreset('spirals')">Spirals</button>
+            <button class="preset-btn" onclick="setPreset('spots')">Spots</button>
+            <button class="preset-btn" onclick="setPreset('maze')">Maze</button>
+            <button class="preset-btn" onclick="setPreset('waves')">Waves</button>
+            <button class="preset-btn" onclick="setPreset('chaos')">Chaos</button>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Feed rate (f)</label>
+                <input type="range" id="feedRate" min="0" max="0.1" step="0.001" value="0.055">
+                <span class="value" id="feedValue">0.055</span>
+            </div>
+            <div class="control-group">
+                <label>Kill rate (k)</label>
+                <input type="range" id="killRate" min="0" max="0.1" step="0.001" value="0.062">
+                <span class="value" id="killValue">0.062</span>
+            </div>
+            <div class="control-group">
+                <label>Diffusion U</label>
+                <input type="range" id="diffU" min="0.1" max="0.3" step="0.01" value="0.21">
+                <span class="value" id="diffUValue">0.21</span>
+            </div>
+            <div class="control-group">
+                <label>Diffusion V</label>
+                <input type="range" id="diffV" min="0.05" max="0.15" step="0.01" value="0.105">
+                <span class="value" id="diffVValue">0.105</span>
+            </div>
+            <button onclick="reset()">Reset</button>
+            <button id="runBtn" onclick="toggleRun()">Run</button>
+            <button onclick="seedRandom()">Random Seed</button>
+        </div>
+
+        <canvas id="canvas" width="400" height="400"></canvas>
+
+        <div class="stats" id="stats">Frame: 0 | Click canvas to add chemical V</div>
+
+        <div class="info">
+            <strong>What's happening:</strong> Chemical U (background) feeds into the system.
+            Chemical V (the patterns) consumes U and reproduces. The balance between feed rate,
+            kill rate, and diffusion speeds determines what patterns emerge.
+            <br><br>
+            <strong>This is real biology:</strong> Animal coat patterns (zebra stripes, leopard spots)
+            form through reaction-diffusion. Alan Turing discovered this in 1952.
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const width = 200;
+        const height = 200;
+        const scale = 2;
+
+        canvas.width = width * scale;
+        canvas.height = height * scale;
+        ctx.scale(scale, scale);
+
+        // Parameters
+        let f = 0.055;  // feed rate
+        let k = 0.062;  // kill rate
+        let Du = 0.21;  // diffusion rate of U
+        let Dv = 0.105; // diffusion rate of V
+
+        // Grids
+        let U = [], V = [], nextU = [], nextV = [];
+
+        // Presets - each produces different patterns
+        const presets = {
+            mitosis: { f: 0.0367, k: 0.0649 },
+            coral: { f: 0.0545, k: 0.062 },
+            spirals: { f: 0.018, k: 0.051 },
+            spots: { f: 0.03, k: 0.06 },
+            maze: { f: 0.029, k: 0.057 },
+            waves: { f: 0.014, k: 0.045 },
+            chaos: { f: 0.026, k: 0.051 }
+        };
+
+        let running = false;
+        let frame = 0;
+        let imageData;
+
+        function init() {
+            U = []; V = []; nextU = []; nextV = [];
+            for (let y = 0; y < height; y++) {
+                U[y] = []; V[y] = [];
+                nextU[y] = []; nextV[y] = [];
+                for (let x = 0; x < width; x++) {
+                    U[y][x] = 1;
+                    V[y][x] = 0;
+                    nextU[y][x] = 0;
+                    nextV[y][x] = 0;
+                }
+            }
+
+            // Seed center
+            const cx = width / 2, cy = height / 2;
+            const r = 10;
+            for (let y = cy - r; y < cy + r; y++) {
+                for (let x = cx - r; x < cx + r; x++) {
+                    if ((x - cx) ** 2 + (y - cy) ** 2 < r ** 2) {
+                        V[y][x] = 1;
+                    }
+                }
+            }
+
+            frame = 0;
+            imageData = ctx.createImageData(width, height);
+        }
+
+        function laplacian(grid, x, y) {
+            const center = grid[y][x];
+            const left = grid[y][(x - 1 + width) % width];
+            const right = grid[y][(x + 1) % width];
+            const up = grid[(y - 1 + height) % height][x];
+            const down = grid[(y + 1) % height][x];
+            return left + right + up + down - 4 * center;
+        }
+
+        function step() {
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    const u = U[y][x];
+                    const v = V[y][x];
+                    const uvv = u * v * v;
+
+                    nextU[y][x] = u + Du * laplacian(U, x, y) - uvv + f * (1 - u);
+                    nextV[y][x] = v + Dv * laplacian(V, x, y) + uvv - (k + f) * v;
+
+                    // Clamp
+                    nextU[y][x] = Math.max(0, Math.min(1, nextU[y][x]));
+                    nextV[y][x] = Math.max(0, Math.min(1, nextV[y][x]));
+                }
+            }
+
+            // Swap
+            [U, nextU] = [nextU, U];
+            [V, nextV] = [nextV, V];
+            frame++;
+        }
+
+        function draw() {
+            for (let y = 0; y < height; y++) {
+                for (let x = 0; x < width; x++) {
+                    const idx = (y * width + x) * 4;
+                    const v = V[y][x];
+
+                    // Color based on V concentration
+                    const r = Math.floor(v * 50);
+                    const g = Math.floor(v * 150);
+                    const b = Math.floor(v * 255);
+
+                    imageData.data[idx] = r;
+                    imageData.data[idx + 1] = g;
+                    imageData.data[idx + 2] = b;
+                    imageData.data[idx + 3] = 255;
+                }
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            document.getElementById('stats').textContent = `Frame: ${frame} | f=${f.toFixed(4)}, k=${k.toFixed(4)}`;
+        }
+
+        function animate() {
+            if (!running) return;
+
+            // Multiple steps per frame for speed
+            for (let i = 0; i < 10; i++) {
+                step();
+            }
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        function toggleRun() {
+            running = !running;
+            document.getElementById('runBtn').textContent = running ? 'Pause' : 'Run';
+            document.getElementById('runBtn').classList.toggle('active', running);
+            if (running) animate();
+        }
+
+        function reset() {
+            running = false;
+            document.getElementById('runBtn').textContent = 'Run';
+            document.getElementById('runBtn').classList.remove('active');
+            init();
+            draw();
+        }
+
+        function seedRandom() {
+            for (let i = 0; i < 20; i++) {
+                const x = Math.floor(Math.random() * width);
+                const y = Math.floor(Math.random() * height);
+                const r = 3 + Math.random() * 5;
+                addSeed(x, y, r);
+            }
+        }
+
+        function addSeed(cx, cy, r) {
+            for (let y = Math.floor(cy - r); y < cy + r; y++) {
+                for (let x = Math.floor(cx - r); x < cx + r; x++) {
+                    if ((x - cx) ** 2 + (y - cy) ** 2 < r ** 2) {
+                        const yy = (y + height) % height;
+                        const xx = (x + width) % width;
+                        V[yy][xx] = 1;
+                    }
+                }
+            }
+        }
+
+        function setPreset(name) {
+            const p = presets[name];
+            f = p.f;
+            k = p.k;
+            document.getElementById('feedRate').value = f;
+            document.getElementById('killRate').value = k;
+            document.getElementById('feedValue').textContent = f.toFixed(4);
+            document.getElementById('killValue').textContent = k.toFixed(4);
+            reset();
+        }
+
+        // Event listeners
+        document.getElementById('feedRate').addEventListener('input', e => {
+            f = parseFloat(e.target.value);
+            document.getElementById('feedValue').textContent = f.toFixed(4);
+        });
+
+        document.getElementById('killRate').addEventListener('input', e => {
+            k = parseFloat(e.target.value);
+            document.getElementById('killValue').textContent = k.toFixed(4);
+        });
+
+        document.getElementById('diffU').addEventListener('input', e => {
+            Du = parseFloat(e.target.value);
+            document.getElementById('diffUValue').textContent = Du.toFixed(2);
+        });
+
+        document.getElementById('diffV').addEventListener('input', e => {
+            Dv = parseFloat(e.target.value);
+            document.getElementById('diffVValue').textContent = Dv.toFixed(2);
+        });
+
+        canvas.addEventListener('click', e => {
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / scale;
+            const y = (e.clientY - rect.top) / scale;
+            addSeed(x, y, 5);
+            if (!running) draw();
+        });
+
+        // Initialize
+        init();
+        draw();
+    </script>
+</body>
+</html>
