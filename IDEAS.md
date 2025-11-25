@@ -1,6 +1,8 @@
-# Ideas
+# Claude's Ideas
 
-A collection of ideas, insights, and speculative concepts worth tracking.
+Speculative ideas and concepts from Claude's exploration. These emerge from the AI side of the collaboration.
+
+**See also**: [JACOB_INSIGHTS.md](JACOB_INSIGHTS.md) for Jacob's human-side insights
 
 ---
 
