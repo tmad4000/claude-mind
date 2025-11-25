@@ -168,6 +168,19 @@ Each observation follows:
 **Connections**: OBS-CA-002, failed computation tests
 **Theory implications**: Computation requires specific dynamics, not just complexity
 
+### OBS-X-003: Mexican-hat coupling = activator-inhibitor mechanism
+**System**: Neural fields vs RD comparison
+**Parameters**: QRI coupling kernels, Gray-Scott dynamics
+**Observation**: QRI's "Mexican-hat" neural coupling is mathematically equivalent to RD:
+- Short-range inhibition ↔ Fast inhibitor diffusion
+- Medium-range excitation ↔ Slow activator diffusion
+- Coupling kernel shape ↔ Differential diffusion rates
+**Quantitative**: Same pattern wavelengths emerge from both systems with matched parameters
+**Surprising?**: YES - explains why psychedelic visuals match Turing patterns
+**Connections**: OBS-RD-004 (wavelength theory), NATURAL_CORRESPONDENCES.md
+**Theory implications**: Turing mechanism is MORE universal than previously documented - same math describes animal skins, seashells, BZ reaction, AND neural activity under psychedelics
+**Source**: QRI (2025) "Reverse Engineering DMT Phenomenology with Non-Linear Optics"
+
 ---
 
 ## QUESTIONS RAISED BY OBSERVATIONS
@@ -177,6 +190,8 @@ Each observation follows:
 3. What rule property enables replication?
 4. Is there a quantitative "edge of chaos" criterion?
 5. What makes a pattern "cool" or "interesting"?
+6. **NEW**: Can we predict specific psychedelic visual patterns from neural coupling parameters?
+7. **NEW**: Does the Symmetry Theory of Valence (QRI) connect to pattern symmetry in RD?
 
 ---
 

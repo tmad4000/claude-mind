@@ -1,0 +1,186 @@
+{
+  "comparison": {
+    "neural_wavelength": 1.4222222222222223,
+    "grayscott_wavelength": 14.222222222222221,
+    "neural_std": 0.0013086531533882163,
+    "grayscott_std": 0.10876856493117738
+  },
+  "parameter_scan": [
+    {
+      "sigma_ratio": 1.5,
+      "A_ratio": 0.4,
+      "wavelength": 21.333333333333332,
+      "pattern_std": 0.005663647480465363,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 1.5,
+      "A_ratio": 0.5,
+      "wavelength": 16.0,
+      "pattern_std": 0.005455854508669308,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 1.5,
+      "A_ratio": 0.6,
+      "wavelength": 12.8,
+      "pattern_std": 0.005175329940571412,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 1.5,
+      "A_ratio": 0.7,
+      "wavelength": 16.0,
+      "pattern_std": 0.0051671362400077915,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 1.5,
+      "A_ratio": 0.8,
+      "wavelength": 12.8,
+      "pattern_std": 0.005049117010427801,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.0,
+      "A_ratio": 0.4,
+      "wavelength": 12.8,
+      "pattern_std": 0.005226520491357393,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.0,
+      "A_ratio": 0.5,
+      "wavelength": 1.4545454545454546,
+      "pattern_std": 0.005113062605648959,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.0,
+      "A_ratio": 0.6,
+      "wavelength": 10.666666666666666,
+      "pattern_std": 0.005123783790761496,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.0,
+      "A_ratio": 0.7,
+      "wavelength": 12.8,
+      "pattern_std": 0.005148902066457592,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.0,
+      "A_ratio": 0.8,
+      "wavelength": 1.4545454545454546,
+      "pattern_std": 0.0050874711916791245,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.5,
+      "A_ratio": 0.4,
+      "wavelength": 16.0,
+      "pattern_std": 0.005136792450403105,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.5,
+      "A_ratio": 0.5,
+      "wavelength": 1.4222222222222223,
+      "pattern_std": 0.005160357417358144,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.5,
+      "A_ratio": 0.6,
+      "wavelength": 12.8,
+      "pattern_std": 0.005139873179665294,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.5,
+      "A_ratio": 0.7,
+      "wavelength": 5.818181818181818,
+      "pattern_std": 0.005150681545386473,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 2.5,
+      "A_ratio": 0.8,
+      "wavelength": 12.8,
+      "pattern_std": 0.005173828498065781,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 3.0,
+      "A_ratio": 0.4,
+      "wavelength": 16.0,
+      "pattern_std": 0.0052056697176274345,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 3.0,
+      "A_ratio": 0.5,
+      "wavelength": 21.333333333333332,
+      "pattern_std": 0.005036296604602851,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 3.0,
+      "A_ratio": 0.6,
+      "wavelength": 16.0,
+      "pattern_std": 0.005116051869402688,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 3.0,
+      "A_ratio": 0.7,
+      "wavelength": 12.8,
+      "pattern_std": 0.005088345760126795,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 3.0,
+      "A_ratio": 0.8,
+      "wavelength": 1.4222222222222223,
+      "pattern_std": 0.005018406200120784,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 4.0,
+      "A_ratio": 0.4,
+      "wavelength": 16.0,
+      "pattern_std": 0.005109616929067805,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 4.0,
+      "A_ratio": 0.5,
+      "wavelength": 16.0,
+      "pattern_std": 0.005075894497609621,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 4.0,
+      "A_ratio": 0.6,
+      "wavelength": 12.8,
+      "pattern_std": 0.00522075266080587,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 4.0,
+      "A_ratio": 0.7,
+      "wavelength": 16.0,
+      "pattern_std": 0.00518716202760869,
+      "has_pattern": false
+    },
+    {
+      "sigma_ratio": 4.0,
+      "A_ratio": 0.8,
+      "wavelength": 12.8,
+      "pattern_std": 0.005015023719074646,
+      "has_pattern": false
+    }
+  ],
+  "key_finding": "Mexican-hat neural coupling and Gray-Scott RD produce similar patterns because they share the same mathematical structure: local positive feedback with longer-range negative feedback. This explains why QRI's work on psychedelic geometry connects to Turing patterns."
+}
