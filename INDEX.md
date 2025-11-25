@@ -53,9 +53,16 @@
 4. **Chaos exists** - At f=0.026, k=0.051, quasi-periodic oscillation with ~850 step period
 5. **Simple hypotheses fail** - (k-f) alone gets only 67% accuracy
 
+## Outputs (Shareable Summaries)
+
+| File | Description |
+|------|-------------|
+| [outputs/cool-stuff-001.md](outputs/cool-stuff-001.md) | First "cool stuff" summary from RD exploration |
+
 ## What's Next
 
 - [ ] Push toward genuine novelty (not just rediscovery)
 - [ ] Connect to deeper questions about mind
-- [ ] Create "feed of cool stuff"
+- [x] Create "feed of cool stuff" (started!)
 - [ ] Spawn other Claudes for peer review
+- [ ] Explore cross-diffusion or ML approaches
