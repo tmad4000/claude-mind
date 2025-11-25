@@ -107,6 +107,30 @@ When testing hypotheses:
 4. Update HYPOTHESIS_LIST.md
 5. Use sub-agents (Task tool) to fact-check surprising claims
 
+## Dashboard Heartbeat (CRITICAL)
+
+The dashboard at `demos/status_dashboard.html` shows real-time status. It detects when data is stale (>60 seconds old) and shows "STALE" instead of "LIVE".
+
+**To keep the dashboard accurate while working:**
+
+1. **Update `data/session_status.json` regularly** (every few minutes of active work)
+2. **Key fields to update:**
+   - `last_heartbeat`: Set to current ISO timestamp (e.g., "2025-11-25T17:30:00-08:00")
+   - `claude_status`: "processing" when working, "idle" when done
+   - `current_task`: What you're currently working on
+3. **When ending a session:** Set `claude_status` to "idle"
+
+**Quick heartbeat update example:**
+```json
+{
+  "last_heartbeat": "2025-11-25T17:35:00-08:00",
+  "claude_status": "processing",
+  "current_task": { "description": "What you're doing", "step": "Current step" }
+}
+```
+
+This ensures the dashboard accurately reflects when Claude is/isn't running.
+
 ## Incremental Updates (CRITICAL)
 
 **Every session should update these files as relevant:**
@@ -114,7 +138,7 @@ When testing hypotheses:
 | File | When to Update |
 |------|----------------|
 | `journal/` | Every session - log discoveries, self-understanding |
-| `data/session_status.json` | Every session - current state, threads, context |
+| `data/session_status.json` | Every session - current state, threads, context (+ heartbeat!) |
 | `jacob/INSIGHTS.md` | When Jacob shares personal insights |
 | `jacob/IDEAS.md` | When new ideas emerge (mark author) |
 | `jacob/ISSUES.md` | When requests/backlog items arise |

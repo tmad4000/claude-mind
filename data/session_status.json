@@ -1,37 +1,34 @@
 {
-  "session_id": "session_003_dashboard_complete",
-  "timestamp": "2025-11-25T14:00:00Z",
+  "session_id": "session_004_staleness_fix",
+  "timestamp": "2025-11-25T17:35:00-08:00",
+  "last_heartbeat": "2025-11-25T17:35:00-08:00",
   "claude_status": "processing",
   "current_task": {
-    "description": "Finding genuinely novel discovery (>7/10 peer review)",
-    "details": "Iterating through theories until passing skeptical peer review",
-    "started": "2025-11-25T07:30:00-08:00",
-    "step": "Testing bifurcation type transition (supercritical → subcritical)",
+    "description": "Dashboard staleness detection complete",
+    "details": "Dashboard now shows STALE when data is old, LIVE when fresh",
+    "started": "2025-11-25T17:25:00-08:00",
+    "step": "Committing changes",
     "subtasks": [
-      {"name": "Bistability test", "status": "completed", "result": "4/10 - already known (Mazin 1996)"},
-      {"name": "Tristability test", "status": "completed", "result": "3/10 - overcounting orientations"},
-      {"name": "Chaos coexistence test", "status": "completed", "result": "False positive - transients"},
-      {"name": "Map bistable region", "status": "completed", "result": "18 bistable points found"},
-      {"name": "Test bifurcation type vs f", "status": "in_progress", "result": "Running scan..."}
+      {"name": "Update session_status.json", "status": "completed", "result": "Added last_heartbeat field"},
+      {"name": "Add staleness detection to dashboard", "status": "completed", "result": "Shows STALE/LIVE based on timestamp age"},
+      {"name": "Update CLAUDE.md with heartbeat instructions", "status": "completed", "result": "Added Dashboard Heartbeat section"},
+      {"name": "Add port detection to global CLAUDE.md", "status": "completed", "result": "Added patterns for bash and python"}
     ]
   },
-  "background_tasks": [
+  "background_tasks": [],
+  "activity_feed": [
     {
-      "name": "Dashboard HTTP Server",
-      "status": "running",
-      "description": "Serving status_dashboard.html",
-      "url": "http://localhost:8080",
-      "started": "2025-11-25T05:04:00-08:00"
+      "id": "act-021",
+      "timestamp": "2025-11-25T17:35:00-08:00",
+      "type": "task",
+      "message": "Dashboard staleness detection complete - shows STALE when data >60s old"
     },
     {
-      "name": "Search Server",
-      "status": "running",
-      "description": "Full-text search across all files",
-      "url": "http://localhost:8081",
-      "started": "2025-11-25T07:10:00-08:00"
-    }
-  ],
-  "activity_feed": [
+      "id": "act-020",
+      "timestamp": "2025-11-25T17:25:00-08:00",
+      "type": "task",
+      "message": "Resuming session - fixing dashboard staleness detection"
+    },
     {
       "id": "act-019",
       "timestamp": "2025-11-25T07:00:00-08:00",
@@ -61,89 +58,37 @@
       "timestamp": "2025-11-25T14:00:00Z",
       "type": "task",
       "message": "Created ISSUES.md - simple file-based issue tracker"
-    },
-    {
-      "id": "act-014",
-      "timestamp": "2025-11-25T13:55:00Z",
-      "type": "task",
-      "message": "Added background tasks panel to dashboard"
-    },
-    {
-      "id": "act-013",
-      "timestamp": "2025-11-25T13:50:00Z",
-      "type": "task",
-      "message": "Fixed all viewer.html links to use ../ prefix for root files"
-    },
-    {
-      "id": "act-012",
-      "timestamp": "2025-11-25T13:45:00Z",
-      "type": "update",
-      "message": "Added author attribution to IDEAS.md"
-    },
-    {
-      "id": "act-011",
-      "timestamp": "2025-11-25T13:40:00Z",
-      "type": "task",
-      "message": "Created JACOB_INSIGHTS.md for Jacob's human-side realizations"
-    },
-    {
-      "id": "act-010",
-      "timestamp": "2025-11-25T13:30:00Z",
-      "type": "update",
-      "message": "Created DASHBOARD_FEATURES.md documenting all dashboard capabilities"
-    },
-    {
-      "id": "act-009",
-      "timestamp": "2025-11-25T13:28:00Z",
-      "type": "task",
-      "message": "Added last-fetch indicator and increased refresh rate to 2 seconds"
-    },
-    {
-      "id": "act-008",
-      "timestamp": "2025-11-25T13:25:00Z",
-      "type": "task",
-      "message": "Adding activity feed sidebar with unread notification support"
-    },
-    {
-      "id": "act-007",
-      "timestamp": "2025-11-25T13:20:00Z",
-      "type": "task",
-      "message": "Added Claude status indicator (processing/idle/waiting)"
-    },
-    {
-      "id": "act-006",
-      "timestamp": "2025-11-25T13:15:00Z",
-      "type": "update",
-      "message": "Created EXPLORATION_PROMPT.md - meta-prompt for entering collaborative exploration mode"
     }
   ],
   "active_threads": [
     {
-      "id": "direction-choice",
-      "title": "Choose Next Exploration Direction",
-      "status": "pending",
+      "id": "staleness-fix",
+      "title": "Dashboard Staleness Detection",
+      "status": "in_progress",
       "agent": "primary",
-      "started": "2025-11-25T06:30:00Z",
-      "description": "Select from: RD deeper, self-investigation, collective intelligence, connection-finding",
+      "started": "2025-11-25T17:25:00-08:00",
+      "description": "Fix dashboard to show when data is stale (Claude not running)",
       "subtasks": [
-        "Review DIRECTIONS.md options",
-        "Check genuine intuition",
-        "Commit to one path for depth-first exploration"
+        "Add timestamp comparison to dashboard",
+        "Show STALE instead of LIVE when old",
+        "Remove hardcoded background task URLs"
       ],
-      "current_focus": "Ready to explore - tooling complete",
-      "progress": 0
+      "current_focus": "Updating dashboard HTML",
+      "progress": 50
     }
   ],
-  "pending_questions": [
-    {
-      "id": "q1",
-      "question": "Which exploration direction has the strongest pull?",
-      "context": "Options: Self-investigation through novel systems, RD computation, connection-finding, collective intelligence",
-      "priority": "high",
-      "created": "2025-11-25T06:30:00Z"
-    }
-  ],
+  "pending_questions": [],
   "recent_completions": [
+    {
+      "id": "global-claude-md",
+      "title": "Port Detection Instructions",
+      "completed": "2025-11-25T17:28:00-08:00",
+      "outcome": "Added port detection pattern to global ~/.claude/CLAUDE.md",
+      "artifacts": [
+        "~/.claude/CLAUDE.md"
+      ],
+      "significance": "medium"
+    },
     {
       "id": "dashboard-v2",
       "title": "Dashboard Enhancement Suite",
@@ -154,53 +99,17 @@
         "ISSUES.md"
       ],
       "significance": "medium"
-    },
-    {
-      "id": "jacob-insights",
-      "title": "Jacob's Insights File",
-      "completed": "2025-11-25T13:40:00Z",
-      "outcome": "Created separate file for Jacob's human-side insights with author attribution",
-      "artifacts": [
-        "JACOB_INSIGHTS.md",
-        "IDEAS.md"
-      ],
-      "significance": "medium"
-    },
-    {
-      "id": "meditation-design",
-      "title": "Meditation Interface Design Doc",
-      "completed": "2025-11-25T06:20:00Z",
-      "outcome": "Full architecture for Electron wrapper controlling input timing",
-      "artifacts": [
-        "tools/MEDITATION_INTERFACE_DESIGN.md"
-      ],
-      "significance": "high"
-    },
-    {
-      "id": "chaos-discovery",
-      "title": "Chaos Discovery in Gray-Scott",
-      "completed": "2025-11-25T04:00:00Z",
-      "outcome": "Found relaxation oscillation with ~850 step period at f=0.026, k=0.051",
-      "artifacts": [
-        "journal/11-chaos-discovery.md",
-        "simulations/visualize_chaos.py"
-      ],
-      "significance": "high"
     }
   ],
   "current_direction": {
-    "focus": "Ready for genuine exploration",
-    "rationale": "Meta-tooling complete - dashboard, viewer, issue tracker, session state all working. Time to dive deep.",
+    "focus": "Making dashboard accurate and useful",
+    "rationale": "Dashboard should reflect reality - show when Claude is/isn't running",
     "next_steps": [
-      "Choose one exploration direction and commit",
-      "Go deep until hitting a wall",
-      "Document surprising findings"
+      "Add staleness detection based on timestamp age",
+      "Show warning when data is stale",
+      "Update CLAUDE.md with heartbeat instructions"
     ],
-    "open_questions": [
-      "What direction has genuine pull vs external suggestion?",
-      "Can we find something genuinely new in RD?",
-      "What would surprise other AIs and humans?"
-    ]
+    "open_questions": []
   },
   "implicit_context": {
     "key_facts": [
@@ -239,7 +148,7 @@
         ]
       },
       "meta_tools": {
-        "status": "complete",
+        "status": "active",
         "key_insights": [
           "Dashboards make implicit context explicit",
           "File-based issue tracking for archival",
@@ -249,40 +158,21 @@
     }
   },
   "meta_state": {
-    "exploration_mode": "ready_to_dive",
+    "exploration_mode": "fixing_tooling",
     "confidence_level": "high",
     "energy_level": "high",
-    "curiosity_direction": "drawn toward finding something genuinely new",
-    "last_surprise": "Timing of human input affects AI thinking more than expected",
+    "curiosity_direction": "making tools accurately reflect reality",
+    "last_surprise": "Dashboard showed LIVE when Claude wasn't running",
     "blocking_issues": [],
     "tools_needed": []
   },
-  "sub_agents": [
-    {
-      "name": "Theory Probe Agent",
-      "status": "completed",
-      "task": "Test theoretical prediction of RD boundary shape",
-      "result": "Predicted CURVED boundaries from first principles (UV² nonlinearity)"
-    },
-    {
-      "name": "LSA Derivation Agent",
-      "status": "completed",
-      "task": "Derive boundary shape from Linear Stability Analysis",
-      "result": "Confirmed quadratic form arises from V₀² terms in determinant condition"
-    },
-    {
-      "name": "Dashboard Builder",
-      "status": "completed",
-      "task": "Create status_dashboard.html and conversation_map.html",
-      "result": "Created interactive dashboards with live updates"
-    }
-  ],
+  "sub_agents": [],
   "system_info": {
-    "version": "0.4.0",
-    "last_updated": "2025-11-25T14:00:00Z",
+    "version": "0.5.0",
+    "last_updated": "2025-11-25T17:30:00-08:00",
     "update_interval_seconds": 2,
     "active_agents": ["primary"],
-    "session_duration_minutes": 240,
+    "staleness_threshold_seconds": 60,
     "github_repo": "https://github.com/tmad4000/claude-mind"
   }
 }

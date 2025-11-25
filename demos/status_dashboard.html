@@ -54,6 +54,12 @@
             animation: pulse 2s ease-in-out infinite;
         }
 
+        .status-indicator.stale {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid #ef4444;
+            animation: none;
+        }
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
@@ -1364,10 +1370,38 @@
                 `${dateStr} ${timeStr} <span class="timezone">(${timezone})</span>`;
         }
 
+        // Check if data is stale (older than threshold)
+        let dataIsStale = false;
+        const STALENESS_THRESHOLD_MS = 60000; // 60 seconds
+
+        function checkStaleness(lastHeartbeat) {
+            if (!lastHeartbeat) {
+                dataIsStale = true;
+                return true;
+            }
+            const heartbeatTime = new Date(lastHeartbeat).getTime();
+            const now = Date.now();
+            const ageMs = now - heartbeatTime;
+            dataIsStale = ageMs > STALENESS_THRESHOLD_MS;
+            return dataIsStale;
+        }
+
+        function updateLiveIndicator(isStale) {
+            const indicator = document.getElementById('live-indicator');
+            if (isStale) {
+                indicator.textContent = '● STALE';
+                indicator.classList.add('stale');
+            } else {
+                indicator.textContent = '● LIVE';
+                indicator.classList.remove('stale');
+            }
+        }
+
         // Render Claude status
-        function renderClaudeStatus(claudeStatus) {
+        function renderClaudeStatus(claudeStatus, isStale) {
             const container = document.getElementById('claude-status-container');
-            const status = claudeStatus || 'idle';
+            // If data is stale, show idle regardless of what JSON says
+            const status = isStale ? 'idle' : (claudeStatus || 'idle');
 
             const statusLabels = {
                 'processing': 'Claude is Processing',
@@ -1376,11 +1410,15 @@
                 'thinking': 'Claude is Thinking'
             };
 
+            const staleWarning = isStale ?
+                `<div style="color: #ef4444; font-size: 0.8em; margin-top: 5px;">⚠️ Data is stale (>${Math.round(STALENESS_THRESHOLD_MS/1000)}s old)</div>` : '';
+
             container.innerHTML = `
                 <div class="claude-status ${status}">
                     <span class="status-dot ${status}"></span>
                     <span class="status-text">${statusLabels[status] || status}</span>
                 </div>
+                ${staleWarning}
             `;
         }
 
@@ -1760,6 +1798,11 @@
                 document.getElementById('active-timestamp').textContent =
                     `Updated: ${formatDate(data.timestamp)}`;
 
+                // Check staleness based on last_heartbeat or timestamp
+                const heartbeat = data.last_heartbeat || data.timestamp;
+                const isStale = checkStaleness(heartbeat);
+                updateLiveIndicator(isStale);
+
                 // Render all sections
                 renderActiveThreads(data.active_threads);
                 renderPendingQuestions(data.pending_questions);
@@ -1772,7 +1815,7 @@
                 renderSubAgents(data.sub_agents);
                 renderBackgroundTasks(data.background_tasks);
                 renderCurrentTask(data.current_task);
-                renderClaudeStatus(data.claude_status);
+                renderClaudeStatus(data.claude_status, isStale);
                 renderActivityFeed(data.activity_feed);
 
                 // Update fetch timestamp
