@@ -1,31 +1,26 @@
 #!/bin/bash
 # Start the Claude Mind dashboard
 
+cd "$(dirname "$0")"
+
+# Find an available port starting from 8080
 PORT=8080
+while lsof -i :$PORT > /dev/null 2>&1; do
+    echo "Port $PORT in use, trying next..."
+    ((PORT++))
+    if [ $PORT -gt 8099 ]; then
+        echo "No available ports found (tried 8080-8099)"
+        exit 1
+    fi
+done
+
 URL="http://localhost:$PORT/demos/status_dashboard.html"
 
-# Check if port is in use
-if lsof -i :$PORT > /dev/null 2>&1; then
-    echo "Port $PORT already in use."
-    read -p "Kill existing process and restart? [y/N] " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        pkill -f "python3 -m http.server $PORT"
-        sleep 1
-    else
-        echo "Opening existing dashboard..."
-        open "$URL"
-        exit 0
-    fi
-fi
-
 echo "Starting dashboard on port $PORT..."
-cd "$(dirname "$0")"
 python3 -m http.server $PORT &
 SERVER_PID=$!
 sleep 1
 
-# Check if server started successfully
 if kill -0 $SERVER_PID 2>/dev/null; then
     echo ""
     echo "Dashboard ready at: $URL"
