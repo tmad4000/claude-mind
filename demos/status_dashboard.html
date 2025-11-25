@@ -1279,9 +1279,11 @@
                 el.textContent = 'Last fetch: --';
                 return;
             }
-            const secondsAgo = Math.floor((Date.now() - lastFetchTime) / 1000);
-            el.innerHTML = `Last fetch: <span class="seconds-ago">${secondsAgo}s ago</span> (every 2s)`;
-            el.classList.toggle('stale', secondsAgo > 10);
+            const msAgo = Date.now() - lastFetchTime;
+            const secondsAgo = (msAgo / 1000).toFixed(1);
+            const nextFetchIn = Math.max(0, (UPDATE_INTERVAL - msAgo) / 1000).toFixed(1);
+            el.innerHTML = `Fetched <span class="seconds-ago">${secondsAgo}s</span> ago · Next in <span class="seconds-ago">${nextFetchIn}s</span>`;
+            el.classList.toggle('stale', msAgo > 10000);
         }
 
         // Update current time display
@@ -1683,14 +1685,14 @@
         function init() {
             loadStatus();
             updateCurrentTime();
+            updateLastFetched();
 
             // Set up auto-refresh
             updateInterval = setInterval(loadStatus, UPDATE_INTERVAL);
-            // Update time and last-fetched every second
-            setInterval(() => {
-                updateCurrentTime();
-                updateLastFetched();
-            }, 1000);
+            // Update time every second
+            setInterval(updateCurrentTime, 1000);
+            // Update fetch timer every 100ms for smooth countdown
+            setInterval(updateLastFetched, 100);
         }
 
         // Clean up on page unload
