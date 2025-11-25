@@ -1,14 +1,21 @@
 {
   "session_id": "session_002_resumed",
-  "timestamp": "2025-11-25T13:25:00Z",
-  "claude_status": "processing",
-  "current_task": {
-    "description": "Adding activity feed with unread notifications",
-    "details": "Building collapsible sidebar with activity stream, unread badges, mark-all-read functionality",
-    "started": "2025-11-25T13:20:00Z",
-    "step": "Updating session data with activity feed"
-  },
+  "timestamp": "2025-11-25T13:30:00Z",
+  "claude_status": "idle",
+  "current_task": null,
   "activity_feed": [
+    {
+      "id": "act-010",
+      "timestamp": "2025-11-25T13:30:00Z",
+      "type": "update",
+      "message": "Created DASHBOARD_FEATURES.md documenting all dashboard capabilities"
+    },
+    {
+      "id": "act-009",
+      "timestamp": "2025-11-25T13:28:00Z",
+      "type": "task",
+      "message": "Added last-fetch indicator and increased refresh rate to 2 seconds"
+    },
     {
       "id": "act-008",
       "timestamp": "2025-11-25T13:25:00Z",

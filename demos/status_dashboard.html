@@ -967,6 +967,21 @@
         .activity-type.update { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
         .activity-type.discovery { background: rgba(234, 179, 8, 0.2); color: #eab308; }
         .activity-type.question { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+        .last-updated {
+            font-size: 0.85em;
+            color: #64748b;
+            margin-top: 8px;
+        }
+
+        .last-updated .seconds-ago {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .last-updated.stale .seconds-ago {
+            color: #ef4444;
+        }
     </style>
 </head>
 <body>
@@ -978,6 +993,7 @@
             <div class="subtitle">Real-time exploration monitoring</div>
             <div class="current-time" id="current-time"></div>
             <div id="claude-status-container"></div>
+            <div class="last-updated" id="last-updated">Last fetch: --</div>
         </header>
 
         <div id="loading" class="loading">
@@ -1243,7 +1259,7 @@
     <script>
         let updateInterval;
         const STATUS_FILE = '../data/session_status.json';
-        const UPDATE_INTERVAL = 5000; // 5 seconds for live updates
+        const UPDATE_INTERVAL = 2000; // 2 seconds for live updates
 
         // Collapse toggle function
         function toggleCollapse(element) {
@@ -1252,6 +1268,20 @@
             if (content && content.classList.contains('collapsible-content')) {
                 content.classList.toggle('collapsed');
             }
+        }
+
+        // Track last fetch time
+        let lastFetchTime = null;
+
+        function updateLastFetched() {
+            const el = document.getElementById('last-updated');
+            if (!lastFetchTime) {
+                el.textContent = 'Last fetch: --';
+                return;
+            }
+            const secondsAgo = Math.floor((Date.now() - lastFetchTime) / 1000);
+            el.innerHTML = `Last fetch: <span class="seconds-ago">${secondsAgo}s ago</span> (every 2s)`;
+            el.classList.toggle('stale', secondsAgo > 10);
         }
 
         // Update current time display
@@ -1635,6 +1665,10 @@
                 renderClaudeStatus(data.claude_status);
                 renderActivityFeed(data.activity_feed);
 
+                // Update fetch timestamp
+                lastFetchTime = Date.now();
+                updateLastFetched();
+
             } catch (error) {
                 console.error('Error loading status:', error);
                 document.getElementById('loading').style.display = 'none';
@@ -1652,8 +1686,11 @@
 
             // Set up auto-refresh
             updateInterval = setInterval(loadStatus, UPDATE_INTERVAL);
-            // Update time every second
-            setInterval(updateCurrentTime, 1000);
+            // Update time and last-fetched every second
+            setInterval(() => {
+                updateCurrentTime();
+                updateLastFetched();
+            }, 1000);
         }
 
         // Clean up on page unload
