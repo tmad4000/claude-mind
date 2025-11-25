@@ -762,6 +762,211 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.6; }
         }
+
+        /* Claude status indicator */
+        .claude-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .claude-status.processing {
+            background: rgba(34, 197, 94, 0.2);
+            border: 2px solid #22c55e;
+            color: #22c55e;
+        }
+
+        .claude-status.idle {
+            background: rgba(100, 116, 139, 0.2);
+            border: 2px solid #64748b;
+            color: #94a3b8;
+        }
+
+        .claude-status.waiting {
+            background: rgba(234, 179, 8, 0.2);
+            border: 2px solid #eab308;
+            color: #eab308;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .status-dot.processing {
+            background: #22c55e;
+            animation: pulse-dot 1s ease-in-out infinite;
+        }
+
+        .status-dot.idle {
+            background: #64748b;
+        }
+
+        .status-dot.waiting {
+            background: #eab308;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+
+        .status-text {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+        }
+
+        /* Activity Feed */
+        .activity-feed-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .activity-feed-toggle:hover {
+            transform: translateY(-2px);
+        }
+
+        .unread-badge {
+            background: #ef4444;
+            color: white;
+            font-size: 0.75em;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+            animation: badge-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .activity-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.98);
+            border-left: 1px solid rgba(255,255,255,0.1);
+            box-shadow: -5px 0 30px rgba(0,0,0,0.5);
+            z-index: 999;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .activity-sidebar.open {
+            right: 0;
+        }
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .activity-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #f1f5f9;
+        }
+
+        .mark-read-btn {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            cursor: pointer;
+        }
+
+        .activity-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 8px;
+            border-left: 3px solid #3b82f6;
+            transition: all 0.2s;
+        }
+
+        .activity-item.unread {
+            background: rgba(59, 130, 246, 0.1);
+            border-left-color: #22c55e;
+        }
+
+        .activity-item.unread::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .activity-time {
+            font-size: 0.8em;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .activity-content {
+            color: #e2e8f0;
+            font-size: 0.95em;
+        }
+
+        .activity-type {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7em;
+            font-weight: 600;
+            margin-left: 8px;
+            text-transform: uppercase;
+        }
+
+        .activity-type.task { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .activity-type.update { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .activity-type.discovery { background: rgba(234, 179, 8, 0.2); color: #eab308; }
+        .activity-type.question { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
     </style>
 </head>
 <body>
@@ -772,6 +977,7 @@
             </h1>
             <div class="subtitle">Real-time exploration monitoring</div>
             <div class="current-time" id="current-time"></div>
+            <div id="claude-status-container"></div>
         </header>
 
         <div id="loading" class="loading">
@@ -1014,6 +1220,24 @@
         </div>
 
         <button class="refresh-btn" onclick="loadStatus()">↻ Refresh</button>
+
+        <!-- Activity Feed Toggle -->
+        <button class="activity-feed-toggle" onclick="toggleActivityFeed()">
+            Activity
+            <span class="unread-badge" id="unread-count" style="display: none;">0</span>
+        </button>
+
+        <!-- Activity Sidebar -->
+        <div class="activity-sidebar" id="activity-sidebar">
+            <div class="activity-header">
+                <div class="activity-title">Activity Feed</div>
+                <div>
+                    <button class="mark-read-btn" onclick="markAllRead()">Mark all read</button>
+                    <button class="close-btn" onclick="toggleActivityFeed()">×</button>
+                </div>
+            </div>
+            <div id="activity-list"></div>
+        </div>
     </div>
 
     <script>
@@ -1048,6 +1272,83 @@
             const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
             document.getElementById('current-time').innerHTML =
                 `${dateStr} ${timeStr} <span class="timezone">(${timezone})</span>`;
+        }
+
+        // Render Claude status
+        function renderClaudeStatus(claudeStatus) {
+            const container = document.getElementById('claude-status-container');
+            const status = claudeStatus || 'idle';
+
+            const statusLabels = {
+                'processing': 'Claude is Processing',
+                'idle': 'Claude is Idle',
+                'waiting': 'Waiting for Input',
+                'thinking': 'Claude is Thinking'
+            };
+
+            container.innerHTML = `
+                <div class="claude-status ${status}">
+                    <span class="status-dot ${status}"></span>
+                    <span class="status-text">${statusLabels[status] || status}</span>
+                </div>
+            `;
+        }
+
+        // Activity feed state
+        let readActivityIds = JSON.parse(localStorage.getItem('readActivityIds') || '[]');
+
+        function toggleActivityFeed() {
+            document.getElementById('activity-sidebar').classList.toggle('open');
+        }
+
+        function markAllRead() {
+            const items = document.querySelectorAll('.activity-item.unread');
+            items.forEach(item => {
+                item.classList.remove('unread');
+                const id = item.dataset.activityId;
+                if (id && !readActivityIds.includes(id)) {
+                    readActivityIds.push(id);
+                }
+            });
+            localStorage.setItem('readActivityIds', JSON.stringify(readActivityIds));
+            updateUnreadCount(0);
+        }
+
+        function updateUnreadCount(count) {
+            const badge = document.getElementById('unread-count');
+            if (count > 0) {
+                badge.textContent = count;
+                badge.style.display = 'inline';
+            } else {
+                badge.style.display = 'none';
+            }
+        }
+
+        function renderActivityFeed(activities) {
+            const container = document.getElementById('activity-list');
+            if (!activities || activities.length === 0) {
+                container.innerHTML = '<div class="context-content">No recent activity</div>';
+                updateUnreadCount(0);
+                return;
+            }
+
+            let unreadCount = 0;
+            container.innerHTML = activities.map(activity => {
+                const isUnread = !readActivityIds.includes(activity.id);
+                if (isUnread) unreadCount++;
+
+                return `
+                    <div class="activity-item ${isUnread ? 'unread' : ''}" data-activity-id="${activity.id}">
+                        <div class="activity-time">
+                            ${formatDate(activity.timestamp)}
+                            <span class="activity-type ${activity.type}">${activity.type}</span>
+                        </div>
+                        <div class="activity-content">${activity.message}</div>
+                    </div>
+                `;
+            }).join('');
+
+            updateUnreadCount(unreadCount);
         }
 
         // Render current task
@@ -1331,6 +1632,8 @@
                 renderMetaInfo(data.meta_state);
                 renderSubAgents(data.sub_agents);
                 renderCurrentTask(data.current_task);
+                renderClaudeStatus(data.claude_status);
+                renderActivityFeed(data.activity_feed);
 
             } catch (error) {
                 console.error('Error loading status:', error);

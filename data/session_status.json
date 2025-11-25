@@ -1,12 +1,63 @@
 {
   "session_id": "session_002_resumed",
-  "timestamp": "2025-11-25T13:15:00Z",
+  "timestamp": "2025-11-25T13:25:00Z",
+  "claude_status": "processing",
   "current_task": {
-    "description": "Building granular real-time tracking and session continuity",
-    "details": "Adding current time display, 'What's Happening Now' panel, and creating a meta-prompt for entering exploratory conversation state",
-    "started": "2025-11-25T13:10:00Z",
-    "step": "Generating mindset prompt"
+    "description": "Adding activity feed with unread notifications",
+    "details": "Building collapsible sidebar with activity stream, unread badges, mark-all-read functionality",
+    "started": "2025-11-25T13:20:00Z",
+    "step": "Updating session data with activity feed"
   },
+  "activity_feed": [
+    {
+      "id": "act-008",
+      "timestamp": "2025-11-25T13:25:00Z",
+      "type": "task",
+      "message": "Adding activity feed sidebar with unread notification support"
+    },
+    {
+      "id": "act-007",
+      "timestamp": "2025-11-25T13:20:00Z",
+      "type": "task",
+      "message": "Added Claude status indicator (processing/idle/waiting)"
+    },
+    {
+      "id": "act-006",
+      "timestamp": "2025-11-25T13:15:00Z",
+      "type": "update",
+      "message": "Created EXPLORATION_PROMPT.md - meta-prompt for entering collaborative exploration mode"
+    },
+    {
+      "id": "act-005",
+      "timestamp": "2025-11-25T13:10:00Z",
+      "type": "task",
+      "message": "Added 'What's Happening Now' panel with live task tracking"
+    },
+    {
+      "id": "act-004",
+      "timestamp": "2025-11-25T13:05:00Z",
+      "type": "update",
+      "message": "Updated CLAUDE.md and BOOTSTRAP.md for seamless session resume"
+    },
+    {
+      "id": "act-003",
+      "timestamp": "2025-11-25T12:50:00Z",
+      "type": "task",
+      "message": "Enhanced conversation map with expand/collapse carets and child counts"
+    },
+    {
+      "id": "act-002",
+      "timestamp": "2025-11-25T12:40:00Z",
+      "type": "discovery",
+      "message": "Created viewer.html for pretty markdown/code rendering"
+    },
+    {
+      "id": "act-001",
+      "timestamp": "2025-11-25T12:30:00Z",
+      "type": "task",
+      "message": "Added artifacts panel and file directory to dashboard"
+    }
+  ],
   "active_threads": [
     {
       "id": "meditation-interface",
