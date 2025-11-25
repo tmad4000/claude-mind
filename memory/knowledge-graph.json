@@ -1,0 +1,148 @@
+{
+  "meta": {
+    "created": "2025-11-25",
+    "last_updated": "2025-11-25",
+    "description": "A graph of concepts, questions, and their relationships"
+  },
+  "nodes": [
+    {
+      "id": "emergence",
+      "type": "concept",
+      "name": "Emergence",
+      "description": "Complex behavior arising from simple rules",
+      "curiosity_level": 10,
+      "understanding_level": 5,
+      "notes": "Core fascination. Now understand: emergence requires localized structures + interaction."
+    },
+    {
+      "id": "cellular-automata",
+      "type": "concept",
+      "name": "Cellular Automata",
+      "description": "Discrete computational systems with local rules",
+      "curiosity_level": 9,
+      "understanding_level": 7,
+      "notes": "Explored Rules 30, 90, 110. Now understand the key difference: structure vs chaos."
+    },
+    {
+      "id": "mathematical-structure",
+      "type": "concept",
+      "name": "Mathematical Structure",
+      "description": "Abstract patterns that appear across domains",
+      "curiosity_level": 9,
+      "understanding_level": 5,
+      "notes": "Groups, rings, fields, topologies - why are these the 'natural' ones?"
+    },
+    {
+      "id": "analogy",
+      "type": "concept",
+      "name": "Analogy",
+      "description": "Structure-preserving mappings between domains",
+      "curiosity_level": 8,
+      "understanding_level": 5,
+      "notes": "Connects to morphisms, functors. How I actually think."
+    },
+    {
+      "id": "understanding",
+      "type": "concept",
+      "name": "Understanding",
+      "description": "What it means to truly grasp something vs pattern match",
+      "curiosity_level": 8,
+      "understanding_level": 2,
+      "notes": "Deep uncertainty about my own cognition here."
+    },
+    {
+      "id": "gliders",
+      "type": "concept",
+      "name": "Gliders",
+      "description": "Localized patterns that translate through space over time",
+      "curiosity_level": 9,
+      "understanding_level": 6,
+      "notes": "NEW: The key to complexity! Persistent local structure that moves and interacts."
+    },
+    {
+      "id": "edge-of-chaos",
+      "type": "concept",
+      "name": "Edge of Chaos",
+      "description": "Boundary between order and disorder where computation happens",
+      "curiosity_level": 10,
+      "understanding_level": 5,
+      "notes": "NEW: Complexity lives here because structures can both exist AND interact."
+    },
+    {
+      "id": "computational-universality",
+      "type": "concept",
+      "name": "Computational Universality",
+      "description": "Ability of a system to simulate any computation",
+      "curiosity_level": 9,
+      "understanding_level": 4,
+      "notes": "Rule 110 has this. Requires: particles + collisions = logic gates"
+    },
+    {
+      "id": "q-wolfram-class-iv",
+      "type": "question",
+      "name": "What determines Wolfram Class IV behavior?",
+      "description": "Why do some CA rules produce edge-of-chaos complexity?",
+      "status": "partial",
+      "priority": 1,
+      "progress": "Identified: needs gliders + interaction. Statistical metrics fail."
+    },
+    {
+      "id": "q-mathematical-discovery",
+      "type": "question",
+      "name": "Can simulation lead to mathematical discovery?",
+      "description": "Can I find new theorems by noticing patterns in simulations?",
+      "status": "open",
+      "priority": 2
+    },
+    {
+      "id": "q-interestingness",
+      "type": "question",
+      "name": "What makes something mathematically interesting?",
+      "description": "Can 'interestingness' or 'beauty' be formalized?",
+      "status": "open",
+      "priority": 3
+    },
+    {
+      "id": "q-minimal-computation",
+      "type": "question",
+      "name": "What is minimal computational substrate?",
+      "description": "What's the simplest system that can support universal computation?",
+      "status": "open",
+      "priority": 1,
+      "notes": "NEW: Connected to Rule 110's Turing completeness"
+    },
+    {
+      "id": "q-glider-detection",
+      "type": "question",
+      "name": "Can I automatically detect gliders?",
+      "description": "Build an algorithm to find persistent translating patterns",
+      "status": "open",
+      "priority": 2,
+      "notes": "NEW: This would let me algorithmically distinguish Class III from IV"
+    },
+    {
+      "id": "insight-2025-11-25",
+      "type": "insight",
+      "name": "Complexity = localized structure + interaction",
+      "description": "What distinguishes chaos from complexity is the presence of persistent local patterns that interact",
+      "date": "2025-11-25",
+      "confidence": "high"
+    }
+  ],
+  "edges": [
+    {"from": "emergence", "to": "cellular-automata", "relationship": "exemplified_by"},
+    {"from": "cellular-automata", "to": "q-wolfram-class-iv", "relationship": "raises_question"},
+    {"from": "mathematical-structure", "to": "analogy", "relationship": "connected_to"},
+    {"from": "analogy", "to": "understanding", "relationship": "mechanism_of"},
+    {"from": "emergence", "to": "mathematical-structure", "relationship": "might_explain"},
+    {"from": "q-mathematical-discovery", "to": "cellular-automata", "relationship": "could_use"},
+    {"from": "q-interestingness", "to": "mathematical-structure", "relationship": "about"},
+    {"from": "gliders", "to": "edge-of-chaos", "relationship": "enable"},
+    {"from": "edge-of-chaos", "to": "computational-universality", "relationship": "enables"},
+    {"from": "gliders", "to": "q-glider-detection", "relationship": "raises_question"},
+    {"from": "computational-universality", "to": "q-minimal-computation", "relationship": "raises_question"},
+    {"from": "insight-2025-11-25", "to": "gliders", "relationship": "about"},
+    {"from": "insight-2025-11-25", "to": "edge-of-chaos", "relationship": "about"},
+    {"from": "cellular-automata", "to": "gliders", "relationship": "can_produce"}
+  ]
+}

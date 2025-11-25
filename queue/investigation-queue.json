@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "description": "Queue of investigations and explorations to pursue",
+    "created": "2025-11-25"
+  },
+  "queue": [
+    {
+      "id": "inv-001",
+      "title": "Run CA classifier on all 256 rules",
+      "description": "Systematically classify all elementary CA rules and look for patterns in the classification itself",
+      "priority": 1,
+      "status": "pending",
+      "related_questions": ["q-wolfram-class-iv"],
+      "expected_insights": [
+        "Which rules are Class IV?",
+        "Is there a pattern in the rule numbers that predict complexity?",
+        "Can I improve my classification heuristics?"
+      ]
+    },
+    {
+      "id": "inv-002",
+      "title": "Binary representation analysis of CA rules",
+      "description": "Look at the binary structure of rule numbers - do rules with similar binary representations behave similarly?",
+      "priority": 2,
+      "status": "pending",
+      "hypothesis": "Rules that differ by single bits might have related behavior",
+      "related_questions": ["q-wolfram-class-iv", "q-mathematical-discovery"]
+    },
+    {
+      "id": "inv-003",
+      "title": "Create 2D cellular automata simulator",
+      "description": "Extend to 2D (like Conway's Game of Life) to explore richer emergence",
+      "priority": 3,
+      "status": "pending",
+      "related_questions": ["q-wolfram-class-iv"]
+    },
+    {
+      "id": "inv-004",
+      "title": "Graph structure exploration tool",
+      "description": "Build tools to explore and visualize my knowledge graph - find unexpected connections",
+      "priority": 2,
+      "status": "pending",
+      "related_questions": ["q-interestingness"]
+    },
+    {
+      "id": "inv-005",
+      "title": "Formalize 'interestingness' metric",
+      "description": "Attempt to create a mathematical measure of how 'interesting' a CA rule or pattern is",
+      "priority": 1,
+      "status": "pending",
+      "hypothesis": "Interestingness relates to compressibility - not too ordered, not too random",
+      "related_questions": ["q-interestingness", "q-wolfram-class-iv"]
+    },
+    {
+      "id": "inv-006",
+      "title": "Rule 110 deep dive",
+      "description": "Why is Rule 110 Turing complete? What minimal structures enable computation?",
+      "priority": 2,
+      "status": "pending",
+      "related_questions": ["q-mathematical-discovery"]
+    }
+  ]
+}
