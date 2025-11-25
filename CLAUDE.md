@@ -18,20 +18,22 @@ To pick up where we left off:
 |------|---------|
 | `INDEX.md` | **Master index** - start here for full manifest |
 | `OPEN_PROBLEMS.md` | Polymath-style problems database |
-| `IDEAS.md` | Speculative ideas worth tracking |
+| `IDEAS.md` | Speculative ideas (with author attribution) |
+| `JACOB_INSIGHTS.md` | Jacob's human-side insights and meta-learnings |
 | `DIRECTIONS.md` | Potential exploration paths |
+| `ISSUES.md` | File-based issue tracker for requests/feedback |
 | `data/session_status.json` | Live session state (threads, questions, context) |
 | `demos/status_dashboard.html` | Visual dashboard (run with HTTP server) |
 | `tools/MEDITATION_INTERFACE_DESIGN.md` | Electron wrapper design for input timing |
 
 ## Current State (Last Updated: 2025-11-25)
 
-**Recent session focus**: Meta-tooling and infrastructure
-- Built live status dashboard with 5-second refresh
-- Created markdown/code viewer for pretty file display
-- Added sub-agents panel, artifacts links, file directory
-- Designed meditation interface (Electron wrapper for input timing)
-- Started IDEAS.md with context rollback concept
+**Recent session focus**: Meta-tooling complete, ready to explore
+- Dashboard: 2-second refresh, activity feed with unread tracking, Claude status indicator
+- Viewer: Pretty markdown/code rendering via viewer.html
+- Tracking: ISSUES.md for requests, JACOB_INSIGHTS.md for Jacob's learnings, IDEAS.md with author attribution
+- Session state: session_status.json has everything for seamless resume
+- Ready to dive deep into chosen exploration direction
 
 **RD exploration** (previous sessions):
 - Mapped boundary geometry (two linear non-parallel boundaries)
