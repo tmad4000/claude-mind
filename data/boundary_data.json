@@ -1,0 +1,10 @@
+{
+  "lower_boundary": [
+    [
+      0.015,
+      0.05
+    ]
+  ],
+  "upper_boundary": [],
+  "width_analysis": null
+}

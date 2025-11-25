@@ -85,6 +85,40 @@ class GrayScott:
             self.step()
         return self.V.copy()
 
+    def estimate_wavelength(self) -> float:
+        """Estimate dominant wavelength using autocorrelation."""
+        v = self.V
+        # Use center row for speed
+        row = v[self.size // 2, :]
+        row = row - row.mean()
+
+        if row.std() < 0.01:
+            return float('inf')  # No variation
+
+        # Autocorrelation
+        autocorr = np.correlate(row, row, mode='full')
+        autocorr = autocorr[len(autocorr)//2:]  # Take positive lags
+        autocorr = autocorr / autocorr[0]  # Normalize
+
+        # Find first minimum then first maximum after that
+        # This gives us the half-wavelength
+        for i in range(1, len(autocorr) - 1):
+            if autocorr[i] < autocorr[i-1] and autocorr[i] < autocorr[i+1]:
+                # Found minimum, now look for next max
+                for j in range(i+1, len(autocorr) - 1):
+                    if autocorr[j] > autocorr[j-1] and autocorr[j] > autocorr[j+1]:
+                        return float(j)  # This is approximately the wavelength
+                break
+
+        # Fallback: count zero crossings
+        threshold = (row.max() + row.min()) / 2
+        binary = row > threshold
+        crossings = np.sum(np.abs(np.diff(binary.astype(int))))
+        if crossings > 0:
+            return float(self.size / crossings)
+
+        return float('inf')
+
     def analyze(self) -> dict:
         """Analyze current state."""
         v = self.V
@@ -96,12 +130,19 @@ class GrayScott:
             'coverage': float(np.mean(v > 0.1)),  # Fraction with significant V
         }
 
+        # Estimate wavelength to detect numerical artifacts
+        wavelength = self.estimate_wavelength()
+        metrics['wavelength'] = wavelength
+
         # Pattern detection heuristics
         if metrics['mean_v'] < 0.01:
             metrics['pattern'] = 'extinction'
         elif metrics['std_v'] < 0.05:
             metrics['pattern'] = 'uniform'
-        elif metrics['coverage'] > 0.8:
+        elif wavelength < 3:
+            # Grid-scale pattern = numerical artifact
+            metrics['pattern'] = 'artifact'
+        elif metrics['coverage'] > 0.8 and wavelength > 10:
             metrics['pattern'] = 'filled'
         else:
             metrics['pattern'] = 'structured'

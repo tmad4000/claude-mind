@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction-Diffusion Phase Diagram</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        h1 { font-size: 1.3em; margin-bottom: 15px; color: #888; width: 100%; }
+        .left-panel { flex: 1; min-width: 300px; }
+        .right-panel { flex: 1; min-width: 400px; }
+        .phase-map {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border: 1px solid #333;
+            cursor: crosshair;
+        }
+        .phase-map canvas { position: absolute; top: 0; left: 0; }
+        .cursor {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border: 2px solid white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        .axis-label {
+            position: absolute;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .sim-canvas {
+            border: 1px solid #333;
+            display: block;
+        }
+        .params {
+            margin: 15px 0;
+            padding: 10px;
+            background: #1a1a1a;
+        }
+        .info {
+            padding: 15px;
+            background: #1a1a1a;
+            border-left: 3px solid #4a9eff;
+            margin-top: 15px;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        .legend {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+            font-size: 0.85em;
+        }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-color { width: 15px; height: 15px; }
+        button {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: inherit;
+            margin-right: 10px;
+        }
+        button:hover { background: #3a3a3a; }
+        button.active { background: #4a4a4a; border-color: #4a9eff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reaction-Diffusion Phase Diagram</h1>
+        <p style="color: #666; margin-bottom: 20px; width: 100%;">
+            Click anywhere on the phase map to see the pattern that emerges at those parameters.
+            The boundary regions (where colors meet) are where complexity lives!
+        </p>
+
+        <div class="left-panel">
+            <div class="phase-map" id="phaseMap">
+                <canvas id="phaseCanvas" width="300" height="300"></canvas>
+                <div class="cursor" id="cursor"></div>
+                <div class="axis-label" style="bottom: -20px; left: 50%; transform: translateX(-50%);">feed rate (f) →</div>
+                <div class="axis-label" style="left: -25px; top: 50%; transform: rotate(-90deg) translateX(-50%);">kill rate (k) →</div>
+            </div>
+
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #1a3a1a;"></div>
+                    <span>Extinction</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #3a3a1a;"></div>
+                    <span>Uniform</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #1a1a4a;"></div>
+                    <span>Patterns!</span>
+                </div>
+            </div>
+
+            <div class="params" id="params">
+                f = 0.040, k = 0.060<br>
+                Click phase map to change
+            </div>
+
+            <button onclick="toggleRun()" id="runBtn">Run</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+
+        <div class="right-panel">
+            <canvas id="simCanvas" class="sim-canvas" width="400" height="400"></canvas>
+        </div>
+
+        <div class="info" style="width: 100%;">
+            <strong>What you're seeing:</strong> This is a map of the Gray-Scott reaction-diffusion parameter space.
+            Each point (f, k) produces different behavior:
+            <ul style="margin: 10px 0 0 20px;">
+                <li><strong>Green regions:</strong> The pattern dies out (extinction)</li>
+                <li><strong>Yellow regions:</strong> The pattern fills everything uniformly</li>
+                <li><strong>Blue regions:</strong> Turing patterns emerge (spots, stripes, mazes)!</li>
+            </ul>
+            <br>
+            <strong>Key insight:</strong> Patterns only exist at the BOUNDARY between extinction and uniform filling.
+            This is "edge of chaos" made visible - complexity emerges where order meets disorder.
+        </div>
+    </div>
+
+    <script>
+        // Phase diagram
+        const phaseCanvas = document.getElementById('phaseCanvas');
+        const phaseCtx = phaseCanvas.getContext('2d');
+        const cursor = document.getElementById('cursor');
+
+        // Simulation
+        const simCanvas = document.getElementById('simCanvas');
+        const simCtx = simCanvas.getContext('2d');
+
+        const simSize = 100;
+        const simScale = 4;
+        simCanvas.width = simSize * simScale;
+        simCanvas.height = simSize * simScale;
+
+        // Parameters
+        let f = 0.04;
+        let k = 0.06;
+        const Du = 0.21;
+        const Dv = 0.105;
+
+        // Phase map ranges
+        const fMin = 0.01, fMax = 0.08;
+        const kMin = 0.03, kMax = 0.07;
+
+        // Grids
+        let U, V, nextU, nextV;
+        let running = false;
+        let imageData;
+
+        // Pre-computed phase classification (approximation)
+        function getPhaseColor(f, k) {
+            // Simplified classification based on known boundaries
+            const sum = f + k;
+
+            if (sum < 0.06 || (k > 0.065 && f < 0.03)) {
+                return [26, 58, 26]; // Extinction (green)
+            }
+
+            // Pattern regions
+            if (k < 0.04 && f > 0.04) {
+                return [26, 26, 74]; // Pattern (blue)
+            }
+            if (k > 0.055 && f < 0.06 && f > 0.02) {
+                return [26, 26, 74]; // Pattern (blue)
+            }
+            if (sum > 0.095 && sum < 0.12 && k < 0.065) {
+                return [26, 26, 74]; // Pattern (blue)
+            }
+
+            return [58, 58, 26]; // Uniform (yellow)
+        }
+
+        function drawPhaseMap() {
+            const w = phaseCanvas.width;
+            const h = phaseCanvas.height;
+            const imgData = phaseCtx.createImageData(w, h);
+
+            for (let y = 0; y < h; y++) {
+                for (let x = 0; x < w; x++) {
+                    const ff = fMin + (x / w) * (fMax - fMin);
+                    const kk = kMax - (y / h) * (kMax - kMin); // Flip y
+
+                    const [r, g, b] = getPhaseColor(ff, kk);
+                    const idx = (y * w + x) * 4;
+                    imgData.data[idx] = r;
+                    imgData.data[idx + 1] = g;
+                    imgData.data[idx + 2] = b;
+                    imgData.data[idx + 3] = 255;
+                }
+            }
+
+            phaseCtx.putImageData(imgData, 0, 0);
+        }
+
+        function initSim() {
+            U = []; V = []; nextU = []; nextV = [];
+            for (let y = 0; y < simSize; y++) {
+                U[y] = []; V[y] = [];
+                nextU[y] = []; nextV[y] = [];
+                for (let x = 0; x < simSize; x++) {
+                    U[y][x] = 1;
+                    V[y][x] = 0;
+                }
+            }
+
+            // Seed center
+            const cx = simSize / 2, cy = simSize / 2, r = 10;
+            for (let y = 0; y < simSize; y++) {
+                for (let x = 0; x < simSize; x++) {
+                    if ((x - cx) ** 2 + (y - cy) ** 2 < r ** 2) {
+                        V[y][x] = 1;
+                    }
+                }
+            }
+
+            imageData = simCtx.createImageData(simSize, simSize);
+        }
+
+        function laplacian(grid, x, y) {
+            const s = simSize;
+            return grid[y][(x - 1 + s) % s] +
+                   grid[y][(x + 1) % s] +
+                   grid[(y - 1 + s) % s][x] +
+                   grid[(y + 1) % s][x] -
+                   4 * grid[y][x];
+        }
+
+        function stepSim() {
+            for (let y = 0; y < simSize; y++) {
+                for (let x = 0; x < simSize; x++) {
+                    const u = U[y][x];
+                    const v = V[y][x];
+                    const uvv = u * v * v;
+
+                    nextU[y][x] = u + Du * laplacian(U, x, y) - uvv + f * (1 - u);
+                    nextV[y][x] = v + Dv * laplacian(V, x, y) + uvv - (k + f) * v;
+
+                    nextU[y][x] = Math.max(0, Math.min(1, nextU[y][x]));
+                    nextV[y][x] = Math.max(0, Math.min(1, nextV[y][x]));
+                }
+            }
+            [U, nextU] = [nextU, U];
+            [V, nextV] = [nextV, V];
+        }
+
+        function drawSim() {
+            for (let y = 0; y < simSize; y++) {
+                for (let x = 0; x < simSize; x++) {
+                    const v = V[y][x];
+                    const idx = (y * simSize + x) * 4;
+                    imageData.data[idx] = v * 30;
+                    imageData.data[idx + 1] = v * 100;
+                    imageData.data[idx + 2] = v * 255;
+                    imageData.data[idx + 3] = 255;
+                }
+            }
+
+            // Scale up
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = simSize;
+            tempCanvas.height = simSize;
+            tempCanvas.getContext('2d').putImageData(imageData, 0, 0);
+
+            simCtx.imageSmoothingEnabled = false;
+            simCtx.drawImage(tempCanvas, 0, 0, simCanvas.width, simCanvas.height);
+        }
+
+        function animate() {
+            if (!running) return;
+            for (let i = 0; i < 20; i++) stepSim();
+            drawSim();
+            requestAnimationFrame(animate);
+        }
+
+        function toggleRun() {
+            running = !running;
+            document.getElementById('runBtn').textContent = running ? 'Pause' : 'Run';
+            document.getElementById('runBtn').classList.toggle('active', running);
+            if (running) animate();
+        }
+
+        function reset() {
+            initSim();
+            drawSim();
+        }
+
+        function updateParams(ff, kk) {
+            f = ff;
+            k = kk;
+            document.getElementById('params').innerHTML =
+                `f = ${f.toFixed(3)}, k = ${k.toFixed(3)}<br>` +
+                `<small style="color:#666">sum = ${(f+k).toFixed(3)}</small>`;
+            reset();
+        }
+
+        // Event handlers
+        const phaseMap = document.getElementById('phaseMap');
+
+        phaseMap.addEventListener('click', e => {
+            const rect = phaseCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const ff = fMin + (x / phaseCanvas.width) * (fMax - fMin);
+            const kk = kMax - (y / phaseCanvas.height) * (kMax - kMin);
+
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+
+            updateParams(ff, kk);
+            if (!running) {
+                toggleRun();
+            }
+        });
+
+        phaseMap.addEventListener('mousemove', e => {
+            const rect = phaseCanvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+        });
+
+        // Initialize
+        drawPhaseMap();
+        initSim();
+        drawSim();
+
+        // Position cursor at default
+        const defaultX = ((f - fMin) / (fMax - fMin)) * phaseCanvas.width;
+        const defaultY = ((kMax - k) / (kMax - kMin)) * phaseCanvas.height;
+        cursor.style.left = defaultX + 'px';
+        cursor.style.top = defaultY + 'px';
+    </script>
+</body>
+</html>
