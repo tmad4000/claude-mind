@@ -94,6 +94,7 @@
             border-left: 3px solid #ff9a4a;
         }
         .tour-controls button.touring { background: #4a3a2a; border-color: #ff9a4a; }
+        .color-btn { padding: 4px 8px; font-size: 0.8em; }
         .tour-progress {
             height: 3px;
             background: #333;
@@ -148,6 +149,17 @@
             <button onclick="reset()">Reset</button>
             <button onclick="copyLink()">Copy Link</button>
 
+            <div style="margin-top: 15px;">
+                <span style="font-size: 0.8em; color: #666;">Color: </span>
+                <button class="color-btn" data-scheme="classic" onclick="setColorScheme('classic')">Classic</button>
+                <button class="color-btn" data-scheme="ocean" onclick="setColorScheme('ocean')">Ocean</button>
+                <button class="color-btn" data-scheme="fire" onclick="setColorScheme('fire')">Fire</button>
+                <button class="color-btn" data-scheme="toxic" onclick="setColorScheme('toxic')">Toxic</button>
+                <button class="color-btn" data-scheme="purple" onclick="setColorScheme('purple')">Purple</button>
+                <button class="color-btn" data-scheme="grayscale" onclick="setColorScheme('grayscale')">B&W</button>
+                <button class="color-btn" data-scheme="plasma" onclick="setColorScheme('plasma')">Plasma</button>
+            </div>
+
             <div class="tour-controls">
                 <button onclick="toggleTour()" id="tourBtn">Start Tour</button>
                 <span style="font-size: 0.8em; color: #888;" id="tourLabel">Visit interesting regions</span>
@@ -175,7 +187,7 @@
             <strong>Key insight:</strong> Patterns only exist at the BOUNDARY between extinction and uniform filling.
             This is "edge of chaos" made visible - complexity emerges where order meets disorder.
             <br><br>
-            <strong>URL params:</strong> <code>?f=0.037&k=0.060&autostart=1</code> or <code>?tour=1</code> to start tour automatically.
+            <strong>URL params:</strong> <code>?f=0.037&k=0.060&color=fire&autostart=1</code> or <code>?tour=1</code> for auto-tour.
         </div>
     </div>
 
@@ -204,6 +216,7 @@
             return {
                 f: params.has('f') ? parseFloat(params.get('f')) : null,
                 k: params.has('k') ? parseFloat(params.get('k')) : null,
+                color: params.get('color') || null,
                 autostart: params.get('autostart') === 'true' || params.get('autostart') === '1',
                 tour: params.get('tour') === 'true' || params.get('tour') === '1'
             };
@@ -213,6 +226,7 @@
             const url = new URL(window.location);
             url.searchParams.set('f', ff.toFixed(4));
             url.searchParams.set('k', kk.toFixed(4));
+            url.searchParams.set('color', currentScheme);
             window.history.replaceState({}, '', url);
             updateUrlDisplay();
         }
@@ -236,6 +250,59 @@
         let k = (urlParams.k !== null && urlParams.k >= kMin && urlParams.k <= kMax) ? urlParams.k : 0.06;
         const Du = 0.21;
         const Dv = 0.105;
+
+        // Color schemes
+        const colorSchemes = {
+            classic: {
+                name: "Classic",
+                render: (v) => [v * 30, v * 100, v * 255]
+            },
+            ocean: {
+                name: "Ocean",
+                render: (v) => [v * 50, v * 180, v * 255 + (1-v) * 20]
+            },
+            fire: {
+                name: "Fire",
+                render: (v) => [v * 255, v * 100, v * 30]
+            },
+            toxic: {
+                name: "Toxic",
+                render: (v) => [v * 80, v * 255, v * 100]
+            },
+            purple: {
+                name: "Purple",
+                render: (v) => [v * 200, v * 50, v * 255]
+            },
+            grayscale: {
+                name: "B&W",
+                render: (v) => [v * 255, v * 255, v * 255]
+            },
+            plasma: {
+                name: "Plasma",
+                render: (v) => {
+                    // Multi-color gradient
+                    const r = Math.sin(v * 3.14159) * 255;
+                    const g = Math.sin(v * 3.14159 + 2) * 127 + 128;
+                    const b = Math.cos(v * 3.14159) * 127 + 128;
+                    return [r, g, b];
+                }
+            }
+        };
+        let currentScheme = (urlParams.color && colorSchemes[urlParams.color]) ? urlParams.color : 'ocean';
+
+        function setColorScheme(scheme) {
+            if (!colorSchemes[scheme]) return;
+            currentScheme = scheme;
+            updateColorButtons();
+            updateUrl(f, k);
+            drawSim();
+        }
+
+        function updateColorButtons() {
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.scheme === currentScheme);
+            });
+        }
 
         // Tour mode - interesting parameter combinations
         const tourStops = [
@@ -356,13 +423,15 @@
         }
 
         function drawSim() {
+            const render = colorSchemes[currentScheme].render;
             for (let y = 0; y < simSize; y++) {
                 for (let x = 0; x < simSize; x++) {
                     const v = V[y][x];
                     const idx = (y * simSize + x) * 4;
-                    imageData.data[idx] = v * 30;
-                    imageData.data[idx + 1] = v * 100;
-                    imageData.data[idx + 2] = v * 255;
+                    const [r, g, b] = render(v);
+                    imageData.data[idx] = Math.min(255, Math.max(0, r));
+                    imageData.data[idx + 1] = Math.min(255, Math.max(0, g));
+                    imageData.data[idx + 2] = Math.min(255, Math.max(0, b));
                     imageData.data[idx + 3] = 255;
                 }
             }
@@ -493,6 +562,7 @@
         drawSim();
         updateCursorPosition();
         updateUrl(f, k);
+        updateColorButtons();
 
         // Update params display with initial values
         document.getElementById('params').innerHTML =
