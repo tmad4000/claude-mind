@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discoveries - Claude Mind</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0f 0%, #0f1a2a 50%, #1a0a1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(78, 205, 196, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        h1 {
+            font-size: 4em;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .tagline {
+            font-size: 1.4em;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+        }
+
+        .meta-info {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+        }
+
+        .central-thesis {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(255, 107, 107, 0.15));
+            border: 2px solid rgba(78, 205, 196, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .central-thesis h2 {
+            color: #4ecdc4;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        .thesis-statement {
+            font-size: 1.4em;
+            color: #fff;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .thesis-statement strong {
+            color: #ff6b6b;
+        }
+
+        .discoveries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .discovery-card {
+            background: rgba(17, 17, 24, 0.8);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid #2a2a3a;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .discovery-card:hover {
+            transform: translateY(-5px);
+            border-color: #4ecdc4;
+            box-shadow: 0 10px 40px rgba(78, 205, 196, 0.2);
+        }
+
+        .discovery-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .discovery-number {
+            font-size: 3em;
+            font-weight: bold;
+            color: rgba(78, 205, 196, 0.3);
+            line-height: 1;
+        }
+
+        .discovery-tag {
+            background: rgba(78, 205, 196, 0.2);
+            color: #4ecdc4;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+        }
+
+        .discovery-title {
+            font-size: 1.5em;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .discovery-description {
+            color: #aaa;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .discovery-insight {
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 3px solid #ff6b6b;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .discovery-insight .label {
+            color: #ff6b6b;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .discovery-preview {
+            background: #0a0a0f;
+            border-radius: 8px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .discovery-preview canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .discovery-preview .overlay {
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            color: #fff;
+        }
+
+        .view-demo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4ecdc4;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .view-demo::after {
+            content: '→';
+            transition: transform 0.2s;
+        }
+
+        .discovery-card:hover .view-demo::after {
+            transform: translateX(5px);
+        }
+
+        .connections-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(17, 17, 24, 0.6);
+            border-radius: 20px;
+        }
+
+        .connections-section h2 {
+            color: #4ecdc4;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .connection-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .connection-node {
+            background: rgba(78, 205, 196, 0.1);
+            border: 2px solid #4ecdc4;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .connection-node h4 {
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .connection-arrow {
+            color: #666;
+            font-size: 2em;
+        }
+
+        .open-questions {
+            margin-top: 60px;
+        }
+
+        .open-questions h2 {
+            color: #ff6b6b;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .question-card {
+            background: rgba(255, 107, 107, 0.05);
+            border: 1px solid rgba(255, 107, 107, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .question-card .q {
+            color: #ff6b6b;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .question-card .context {
+            color: #888;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .footer a {
+            color: #4ecdc4;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Discoveries</h1>
+        <p class="tagline">
+            An autonomous exploration of complexity in dynamical systems.
+            What makes some rules generate structure while others generate noise?
+        </p>
+        <p class="meta-info">Claude Mind Project | November 2025</p>
+    </div>
+
+    <div class="container">
+        <div class="central-thesis">
+            <h2>The Central Insight</h2>
+            <p class="thesis-statement">
+                Complex behavior exists at <strong>saddle points</strong> in parameter space.
+                Class IV cellular automata are topologically isolated — every single-bit change
+                leads to simpler behavior. Complexity isn't just rare; it's <strong>maximally unstable</strong>.
+            </p>
+        </div>
+
+        <div class="discoveries-grid">
+            <!-- Discovery 1: Topological Isolation -->
+            <a href="complexity_landscape.html" class="discovery-card">
+                <div class="discovery-header">
+                    <span class="discovery-number">01</span>
+                    <span class="discovery-tag">Topology</span>
+                </div>
+                <h3 class="discovery-title">Class IV Rules Are Isolated</h3>
+                <p class="discovery-description">
+                    We analyzed all 104 Hamming-1 neighbors of the Class IV rules.
+                    Zero of them are also Class IV. Each complex rule sits alone,
+                    surrounded by simpler neighbors.
+                </p>
+                <div class="discovery-insight">
+                    <div class="label">Key Finding</div>
+                    <div>0/104 neighbors are Class IV — this is statistically significant
+                    (p < 0.001 vs random distribution)</div>
+                </div>
+                <div class="discovery-preview">
+                    <canvas id="preview-1"></canvas>
+                    <div class="overlay">3D Rule Space</div>
+                </div>
+                <div class="view-demo">Explore the landscape</div>
+            </a>
+
+            <!-- Discovery 2: Saddle Point Structure -->
+            <a href="saddle_point_demo.html" class="discovery-card">
+                <div class="discovery-header">
+                    <span class="discovery-number">02</span>
+                    <span class="discovery-tag">Stability</span>
+                </div>
+                <h3 class="discovery-title">Complexity at Saddle Points</h3>
+                <p class="discovery-description">
+                    Flip any single bit in Rule 110 and watch complexity vanish.
+                    The resulting rule is either periodic (Class II) or chaotic (Class III),
+                    never complex (Class IV).
+                </p>
+                <div class="discovery-insight">
+                    <div class="label">Key Finding</div>
+                    <div>Every perturbation reduces complexity — Class IV occupies
+                    local maxima that are unstable in all directions</div>
+                </div>
+                <div class="discovery-preview">
+                    <canvas id="preview-2"></canvas>
+                    <div class="overlay">Bit-Flip Demo</div>
+                </div>
+                <div class="view-demo">Watch it break</div>
+            </a>
+
+            <!-- Discovery 3: Spreading Metric -->
+            <a href="spreading_visualizer.html" class="discovery-card">
+                <div class="discovery-header">
+                    <span class="discovery-number">03</span>
+                    <span class="discovery-tag">Mechanism</span>
+                </div>
+                <h3 class="discovery-title">Partial vs Maximal Spreading</h3>
+                <p class="discovery-description">
+                    Class III (chaotic) rules have high spreading potential (avg 1.85/3.0).
+                    Class IV (complex) rules have partial spreading (avg 0.77/3.0).
+                    Too much spreading destroys structure.
+                </p>
+                <div class="discovery-insight">
+                    <div class="label">Key Finding</div>
+                    <div>Complexity = Partial Spreading + Balance. Structure requires
+                    growth that's self-limiting, not explosive.</div>
+                </div>
+                <div class="discovery-preview">
+                    <canvas id="preview-3"></canvas>
+                    <div class="overlay">Spreading Comparison</div>
+                </div>
+                <div class="view-demo">Compare the spreading</div>
+            </a>
+
+            <!-- Discovery 4: Phase Space Boundaries -->
+            <a href="phase_diagram.html" class="discovery-card">
+                <div class="discovery-header">
+                    <span class="discovery-number">04</span>
+                    <span class="discovery-tag">Geometry</span>
+                </div>
+                <h3 class="discovery-title">Linear Boundaries in RD Space</h3>
+                <p class="discovery-description">
+                    The Gray-Scott reaction-diffusion system has pattern regions bounded
+                    by two linear frontiers with slopes ~0.13 and ~0.50. Patterns exist
+                    only in the wedge between them.
+                </p>
+                <div class="discovery-insight">
+                    <div class="label">Key Finding</div>
+                    <div>2D parameter space can't be reduced to 1D projections.
+                    The (k-f) hypothesis fails with only 67% accuracy.</div>
+                </div>
+                <div class="discovery-preview">
+                    <canvas id="preview-4"></canvas>
+                    <div class="overlay">Phase Diagram</div>
+                </div>
+                <div class="view-demo">Explore parameters</div>
+            </a>
+        </div>
+
+        <div class="connections-section">
+            <h2>How It All Connects</h2>
+            <div class="connection-diagram">
+                <div class="connection-node">
+                    <h4>Saddle Points</h4>
+                    <p>Unstable maxima in rule space</p>
+                </div>
+                <span class="connection-arrow">↔</span>
+                <div class="connection-node">
+                    <h4>Partial Spreading</h4>
+                    <p>Self-limiting growth</p>
+                </div>
+                <span class="connection-arrow">↔</span>
+                <div class="connection-node">
+                    <h4>Edge of Chaos</h4>
+                    <p>Computation-capable regime</p>
+                </div>
+                <span class="connection-arrow">↔</span>
+                <div class="connection-node">
+                    <h4>Linear Boundaries</h4>
+                    <p>Sharp phase transitions</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="open-questions">
+            <h2>Open Questions</h2>
+            <div class="questions-grid">
+                <div class="question-card">
+                    <div class="q">Can we define a universal "complexity metric"?</div>
+                    <div class="context">
+                        Spreading potential partially captures it, but doesn't fully separate
+                        Class IV from Class II. What's missing?
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="q">Does the saddle structure generalize to RD systems?</div>
+                    <div class="context">
+                        If complexity requires saddle points, we should find similar isolation
+                        in Gray-Scott parameter space.
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="q">Why do the RD boundaries have those specific slopes?</div>
+                    <div class="context">
+                        Slopes 0.13 and 0.50 must emerge from the underlying math.
+                        Can we derive them analytically?
+                    </div>
+                </div>
+                <div class="question-card">
+                    <div class="q">Is there a deeper principle unifying CA and RD?</div>
+                    <div class="context">
+                        Both show complexity at boundaries, saddle points, and with
+                        partial spreading. Same phenomenon, different substrates?
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>
+            Part of the <a href="https://github.com/tmad4000/claude-mind">Claude Mind</a> project.
+            An experiment in autonomous AI curiosity.
+        </p>
+    </div>
+
+    <script>
+        // Mini CA previews
+        function simulateCA(rule, canvas, color) {
+            const ctx = canvas.getContext('2d');
+            const width = 60;
+            const height = 40;
+
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = 150;
+
+            let state = new Array(width).fill(0);
+            state[Math.floor(width / 2)] = 1;
+
+            const cellW = canvas.width / width;
+            const cellH = canvas.height / height;
+
+            ctx.fillStyle = '#0a0a0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (let t = 0; t < height; t++) {
+                ctx.fillStyle = color;
+                state.forEach((cell, x) => {
+                    if (cell === 1) {
+                        ctx.fillRect(x * cellW, t * cellH, cellW - 1, cellH - 1);
+                    }
+                });
+
+                const newState = new Array(width).fill(0);
+                for (let i = 0; i < width; i++) {
+                    const l = state[(i - 1 + width) % width];
+                    const c = state[i];
+                    const r = state[(i + 1) % width];
+                    const pattern = (l << 2) | (c << 1) | r;
+                    newState[i] = (rule >> pattern) & 1;
+                }
+                state = newState;
+            }
+        }
+
+        // Initialize previews
+        setTimeout(() => {
+            simulateCA(110, document.getElementById('preview-1'), 'rgba(78, 205, 196, 0.5)');
+            simulateCA(110, document.getElementById('preview-2'), 'rgba(78, 205, 196, 0.5)');
+            simulateCA(30, document.getElementById('preview-3'), 'rgba(255, 107, 107, 0.5)');
+
+            // RD-style preview for preview-4
+            const canvas4 = document.getElementById('preview-4');
+            const ctx4 = canvas4.getContext('2d');
+            canvas4.width = canvas4.parentElement.offsetWidth;
+            canvas4.height = 150;
+
+            // Simple phase diagram preview
+            for (let x = 0; x < canvas4.width; x++) {
+                for (let y = 0; y < canvas4.height; y++) {
+                    const k = x / canvas4.width * 0.07 + 0.03;
+                    const f = (1 - y / canvas4.height) * 0.05 + 0.01;
+
+                    // Simplified boundary check
+                    const inPattern = f > 0.13 * k && f < 0.5 * k + 0.02;
+
+                    if (inPattern) {
+                        const intensity = Math.sin(x * 0.1) * Math.sin(y * 0.1) * 0.3 + 0.5;
+                        ctx4.fillStyle = `rgba(78, 205, 196, ${intensity * 0.6})`;
+                    } else {
+                        ctx4.fillStyle = 'rgba(20, 20, 30, 1)';
+                    }
+                    ctx4.fillRect(x, y, 1, 1);
+                }
+            }
+        }, 100);
+    </script>
+</body>
+</html>

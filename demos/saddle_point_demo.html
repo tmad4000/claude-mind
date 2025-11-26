@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saddle Point Demonstrator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2f 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr 300px;
+            gap: 25px;
+        }
+
+        .panel {
+            background: rgba(17, 17, 24, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3a;
+        }
+
+        .panel h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+            font-size: 1em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .center-rule {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .center-rule .rule-number {
+            font-size: 4em;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .center-rule .class-label {
+            font-size: 1.2em;
+            color: #ff6b6b;
+            margin-top: 5px;
+        }
+
+        .binary-display {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 20px 0;
+        }
+
+        .bit {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .bit-0 {
+            background: #2a2a3a;
+            color: #666;
+        }
+
+        .bit-1 {
+            background: #4ecdc4;
+            color: #000;
+        }
+
+        .bit:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(78, 205, 196, 0.5);
+        }
+
+        .bit-label {
+            text-align: center;
+            font-size: 0.7em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .rule-selector {
+            margin-bottom: 20px;
+        }
+
+        .rule-selector select {
+            width: 100%;
+            padding: 10px;
+            background: #2a2a3a;
+            border: 1px solid #4ecdc4;
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-family: inherit;
+            font-size: 1em;
+        }
+
+        .neighbor-card {
+            background: #1a1a24;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+
+        .neighbor-card:hover {
+            border-color: #4ecdc4;
+        }
+
+        .neighbor-card.active {
+            border-color: #ff6b6b;
+        }
+
+        .neighbor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .neighbor-rule {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .neighbor-class {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+        }
+
+        .class-i { background: #333; color: #888; }
+        .class-ii { background: #335; color: #88f; }
+        .class-iii { background: #533; color: #f88; }
+        .class-iv { background: #244; color: #4ecdc4; }
+
+        .bit-change {
+            color: #ff6b6b;
+            font-size: 0.9em;
+        }
+
+        .ca-display {
+            display: grid;
+            gap: 0;
+            background: #0a0a0f;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .ca-row {
+            display: flex;
+        }
+
+        .ca-cell {
+            width: 8px;
+            height: 8px;
+            background: #111;
+        }
+
+        .ca-cell.alive {
+            background: #4ecdc4;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .comparison-item {
+            background: #1a1a24;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .comparison-item h4 {
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 8px;
+        }
+
+        .comparison-item .value {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .insight-panel {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border: 1px solid #4ecdc4;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .insight-panel h4 {
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .insight-panel p {
+            color: #aaa;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .stat-box {
+            background: #1a1a24;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-box .label {
+            color: #888;
+            font-size: 0.8em;
+        }
+
+        .stat-box .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .stat-box .value.good { color: #4ecdc4; }
+        .stat-box .value.bad { color: #f66; }
+
+        #main-ca {
+            width: 100%;
+            aspect-ratio: 1;
+        }
+
+        .ca-wrapper {
+            position: relative;
+        }
+
+        .ca-title {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .arrow-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ff6b6b;
+            font-size: 2em;
+            padding: 10px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.1s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button.secondary {
+            background: #2a2a3a;
+            color: #e0e0e0;
+        }
+
+        .transition-table {
+            font-size: 0.8em;
+            margin-top: 15px;
+        }
+
+        .transition-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #2a2a3a;
+        }
+
+        .transition-pattern {
+            color: #888;
+        }
+
+        .transition-output {
+            font-weight: bold;
+        }
+
+        .changed {
+            color: #ff6b6b;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Saddle Point Demonstrator</h1>
+            <p class="subtitle">
+                Class IV (complex) rules sit at saddle points in rule space.
+                Flip any single bit and complexity vanishes - watch it happen live.
+            </p>
+        </header>
+
+        <div class="main-grid">
+            <!-- Left panel: neighbors -->
+            <div class="panel" id="neighbors-panel">
+                <h3>Hamming-1 Neighbors</h3>
+                <p style="color: #888; font-size: 0.85em; margin-bottom: 15px;">
+                    Each neighbor differs by exactly 1 bit. Click to compare.
+                </p>
+                <div id="neighbors-list"></div>
+            </div>
+
+            <!-- Center: main visualization -->
+            <div class="panel">
+                <div class="center-rule">
+                    <div class="rule-number" id="center-rule-number">110</div>
+                    <div class="class-label">CLASS IV - COMPLEX</div>
+                </div>
+
+                <div class="binary-display" id="binary-display"></div>
+
+                <div class="rule-selector">
+                    <select id="rule-select" onchange="selectCenterRule(this.value)">
+                        <option value="54">Rule 54</option>
+                        <option value="106">Rule 106</option>
+                        <option value="110" selected>Rule 110</option>
+                        <option value="124">Rule 124</option>
+                        <option value="137">Rule 137</option>
+                        <option value="147">Rule 147</option>
+                        <option value="193">Rule 193</option>
+                    </select>
+                </div>
+
+                <div class="ca-wrapper">
+                    <canvas id="main-ca"></canvas>
+                    <div class="ca-title" id="ca-title">Rule 110 - Class IV</div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-item">
+                        <h4>Entropy</h4>
+                        <div class="value" id="entropy">0.87</div>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Density</h4>
+                        <div class="value" id="density">0.52</div>
+                    </div>
+                    <div class="comparison-item">
+                        <h4>Spreading</h4>
+                        <div class="value" id="spreading">0.77</div>
+                    </div>
+                </div>
+
+                <button onclick="animateAllNeighbors()">Cycle Through All Neighbors</button>
+                <button onclick="resetToCenter()" class="secondary">Reset to Center Rule</button>
+            </div>
+
+            <!-- Right panel: analysis -->
+            <div class="panel">
+                <h3>Topological Analysis</h3>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="label">Total Neighbors</div>
+                        <div class="value">8</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Class IV Neighbors</div>
+                        <div class="value bad" id="class4-count">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Class III Neighbors</div>
+                        <div class="value" id="class3-count">3</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Class I/II Neighbors</div>
+                        <div class="value" id="class12-count">5</div>
+                    </div>
+                </div>
+
+                <div class="insight-panel">
+                    <h4>The Saddle Point Principle</h4>
+                    <p id="insight-text">
+                        Rule 110 has zero Class IV neighbors. Every single-bit
+                        change leads to simpler behavior - either periodic (Class II)
+                        or chaotic (Class III). Complexity is maximally unstable.
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 20px;">Transition Table Comparison</h3>
+                <div class="transition-table" id="transition-table"></div>
+
+                <div class="insight-panel" style="margin-top: 20px;">
+                    <h4>Pattern Change</h4>
+                    <p>
+                        <span id="pattern-name">111→0</span>: This single bit change
+                        transforms <span id="change-desc">structured gliders</span> into
+                        <span id="result-desc">chaotic noise</span>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Rule classifications
+        const CLASS_IV_RULES = [54, 106, 110, 124, 137, 147, 193];
+        const CLASS_III_RULES = [18, 22, 30, 45, 60, 73, 75, 86, 89, 90, 101, 102, 105,
+                                  109, 120, 121, 122, 126, 129, 135, 146, 149, 150, 151,
+                                  153, 161, 165, 169, 182, 183, 195, 210, 225];
+        const CLASS_I_RULES = [0, 8, 32, 40, 64, 72, 96, 104, 128, 136, 160, 168, 192,
+                               200, 224, 232, 234, 235, 238, 239, 248, 249, 250, 251,
+                               252, 253, 254, 255];
+
+        let centerRule = 110;
+        let displayedRule = 110;
+        let animationInterval = null;
+
+        function getRuleClass(rule) {
+            if (CLASS_IV_RULES.includes(rule)) return 4;
+            if (CLASS_III_RULES.includes(rule)) return 3;
+            if (CLASS_I_RULES.includes(rule)) return 1;
+            return 2;
+        }
+
+        function getClassName(classNum) {
+            return ['', 'I - Uniform', 'II - Periodic', 'III - Chaotic', 'IV - Complex'][classNum];
+        }
+
+        function ruleToBinary(rule) {
+            return rule.toString(2).padStart(8, '0');
+        }
+
+        function getNeighbors(rule) {
+            const neighbors = [];
+            for (let bit = 0; bit < 8; bit++) {
+                neighbors.push({
+                    rule: rule ^ (1 << bit),
+                    bit: bit,
+                    pattern: ['000', '001', '010', '011', '100', '101', '110', '111'][bit]
+                });
+            }
+            return neighbors;
+        }
+
+        function calcSpreading(rule) {
+            let spreading = 0;
+            for (let i = 0; i < 8; i++) {
+                const left = (i >> 2) & 1;
+                const center = (i >> 1) & 1;
+                const right = i & 1;
+                const output = (rule >> i) & 1;
+                if (center === 1 && output === 1) spreading += 0.25;
+                if ((left === 1 || right === 1) && center === 0 && output === 1) spreading += 0.5;
+            }
+            return spreading;
+        }
+
+        function simulateCA(rule, width = 100, steps = 100) {
+            let state = new Array(width).fill(0);
+            // Random initial condition for more interesting patterns
+            for (let i = 0; i < width; i++) {
+                state[i] = Math.random() < 0.3 ? 1 : 0;
+            }
+
+            const history = [state.slice()];
+
+            for (let t = 0; t < steps - 1; t++) {
+                const newState = new Array(width).fill(0);
+                for (let i = 0; i < width; i++) {
+                    const left = state[(i - 1 + width) % width];
+                    const center = state[i];
+                    const right = state[(i + 1) % width];
+                    const pattern = (left << 2) | (center << 1) | right;
+                    newState[i] = (rule >> pattern) & 1;
+                }
+                state = newState;
+                history.push(state.slice());
+            }
+
+            return history;
+        }
+
+        function calcEntropy(history) {
+            // Calculate spatial entropy
+            let totalEntropy = 0;
+            history.forEach(row => {
+                const ones = row.filter(x => x === 1).length;
+                const p1 = ones / row.length;
+                const p0 = 1 - p1;
+                if (p1 > 0 && p0 > 0) {
+                    totalEntropy += -p1 * Math.log2(p1) - p0 * Math.log2(p0);
+                }
+            });
+            return totalEntropy / history.length;
+        }
+
+        function calcDensity(history) {
+            let total = 0;
+            let ones = 0;
+            history.forEach(row => {
+                row.forEach(cell => {
+                    total++;
+                    if (cell === 1) ones++;
+                });
+            });
+            return ones / total;
+        }
+
+        function drawCA(canvas, history) {
+            const ctx = canvas.getContext('2d');
+            const width = history[0].length;
+            const height = history.length;
+
+            canvas.width = width * 5;
+            canvas.height = height * 5;
+
+            ctx.fillStyle = '#0a0a0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            const ruleClass = getRuleClass(displayedRule);
+            const colors = {
+                1: '#444',
+                2: '#66f',
+                3: '#f66',
+                4: '#4ecdc4'
+            };
+
+            ctx.fillStyle = colors[ruleClass] || '#4ecdc4';
+
+            history.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    if (cell === 1) {
+                        ctx.fillRect(x * 5, y * 5, 4, 4);
+                    }
+                });
+            });
+        }
+
+        function updateBinaryDisplay() {
+            const container = document.getElementById('binary-display');
+            const binary = ruleToBinary(displayedRule);
+            const centerBinary = ruleToBinary(centerRule);
+
+            container.innerHTML = '';
+            for (let i = 7; i >= 0; i--) {
+                const bit = binary[7 - i];
+                const centerBit = centerBinary[7 - i];
+                const isChanged = bit !== centerBit;
+
+                const div = document.createElement('div');
+                div.className = `bit bit-${bit}`;
+                if (isChanged) {
+                    div.style.boxShadow = '0 0 10px #ff6b6b';
+                    div.style.border = '2px solid #ff6b6b';
+                }
+                div.textContent = bit;
+                div.onclick = () => flipBit(i);
+                container.appendChild(div);
+            }
+        }
+
+        function flipBit(bit) {
+            displayedRule = displayedRule ^ (1 << bit);
+            updateDisplay();
+        }
+
+        function updateNeighborsList() {
+            const container = document.getElementById('neighbors-list');
+            const neighbors = getNeighbors(centerRule);
+
+            container.innerHTML = '';
+            let class4Count = 0;
+            let class3Count = 0;
+            let class12Count = 0;
+
+            neighbors.forEach(n => {
+                const ruleClass = getRuleClass(n.rule);
+                if (ruleClass === 4) class4Count++;
+                else if (ruleClass === 3) class3Count++;
+                else class12Count++;
+
+                const card = document.createElement('div');
+                card.className = 'neighbor-card' + (n.rule === displayedRule ? ' active' : '');
+                card.innerHTML = `
+                    <div class="neighbor-header">
+                        <span class="neighbor-rule">${n.rule}</span>
+                        <span class="neighbor-class class-${['', 'i', 'ii', 'iii', 'iv'][ruleClass]}">
+                            ${getClassName(ruleClass)}
+                        </span>
+                    </div>
+                    <div class="bit-change">Bit ${n.bit}: ${n.pattern}→${(centerRule >> n.bit) & 1 ? '0' : '1'}</div>
+                `;
+                card.onclick = () => {
+                    displayedRule = n.rule;
+                    updateDisplay();
+                };
+                container.appendChild(card);
+            });
+
+            document.getElementById('class4-count').textContent = class4Count;
+            document.getElementById('class3-count').textContent = class3Count;
+            document.getElementById('class12-count').textContent = class12Count;
+        }
+
+        function updateTransitionTable() {
+            const container = document.getElementById('transition-table');
+            const patterns = ['111', '110', '101', '100', '011', '010', '001', '000'];
+
+            container.innerHTML = '';
+            patterns.forEach((p, i) => {
+                const bitIndex = 7 - i;
+                const centerOutput = (centerRule >> bitIndex) & 1;
+                const displayOutput = (displayedRule >> bitIndex) & 1;
+                const changed = centerOutput !== displayOutput;
+
+                const row = document.createElement('div');
+                row.className = 'transition-row';
+                row.innerHTML = `
+                    <span class="transition-pattern">${p} →</span>
+                    <span class="transition-output ${changed ? 'changed' : ''}">${displayOutput}</span>
+                `;
+                container.appendChild(row);
+            });
+        }
+
+        function updateDisplay() {
+            // Update CA visualization
+            const canvas = document.getElementById('main-ca');
+            const history = simulateCA(displayedRule);
+            drawCA(canvas, history);
+
+            // Update title
+            const ruleClass = getRuleClass(displayedRule);
+            document.getElementById('ca-title').textContent =
+                `Rule ${displayedRule} - ${getClassName(ruleClass)}`;
+
+            // Update metrics
+            const entropy = calcEntropy(history);
+            const density = calcDensity(history);
+            const spreading = calcSpreading(displayedRule);
+
+            document.getElementById('entropy').textContent = entropy.toFixed(2);
+            document.getElementById('density').textContent = density.toFixed(2);
+            document.getElementById('spreading').textContent = spreading.toFixed(2);
+
+            // Update binary display
+            updateBinaryDisplay();
+
+            // Update neighbors list highlight
+            updateNeighborsList();
+
+            // Update transition table
+            updateTransitionTable();
+
+            // Update insight text
+            if (displayedRule === centerRule) {
+                document.getElementById('insight-text').textContent =
+                    `Rule ${centerRule} has zero Class IV neighbors. Every single-bit change leads to simpler behavior.`;
+            } else {
+                const changedBit = Math.log2(centerRule ^ displayedRule);
+                const pattern = ['000', '001', '010', '011', '100', '101', '110', '111'][changedBit];
+                document.getElementById('insight-text').textContent =
+                    `Flipping bit ${changedBit} (${pattern}→${(displayedRule >> changedBit) & 1}) transforms Class IV complexity into Class ${getRuleClass(displayedRule)} behavior.`;
+            }
+        }
+
+        function selectCenterRule(rule) {
+            centerRule = parseInt(rule);
+            displayedRule = centerRule;
+            document.getElementById('center-rule-number').textContent = centerRule;
+            updateDisplay();
+        }
+
+        function resetToCenter() {
+            if (animationInterval) {
+                clearInterval(animationInterval);
+                animationInterval = null;
+            }
+            displayedRule = centerRule;
+            updateDisplay();
+        }
+
+        function animateAllNeighbors() {
+            if (animationInterval) {
+                clearInterval(animationInterval);
+                animationInterval = null;
+                return;
+            }
+
+            const neighbors = getNeighbors(centerRule);
+            let index = 0;
+
+            const cycle = () => {
+                displayedRule = neighbors[index].rule;
+                updateDisplay();
+                index = (index + 1) % neighbors.length;
+            };
+
+            cycle();
+            animationInterval = setInterval(cycle, 1500);
+        }
+
+        // Initialize
+        updateDisplay();
+    </script>
+</body>
+</html>

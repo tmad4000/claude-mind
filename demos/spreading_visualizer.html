@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spreading Metric Visualizer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .key-insight {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(255, 107, 107, 0.1));
+            border: 1px solid #4ecdc4;
+            border-radius: 12px;
+            padding: 20px 30px;
+            margin: 30px auto;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .key-insight h2 {
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .key-insight p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .key-insight .formula {
+            font-size: 1.3em;
+            color: #fff;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .class-panel {
+            background: #111118;
+            border-radius: 12px;
+            padding: 25px;
+            border: 2px solid transparent;
+        }
+
+        .class-panel.class-iii {
+            border-color: rgba(255, 102, 102, 0.3);
+        }
+
+        .class-panel.class-iv {
+            border-color: rgba(78, 205, 196, 0.3);
+        }
+
+        .class-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .class-label {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .class-iii .class-label { color: #f66; }
+        .class-iv .class-label { color: #4ecdc4; }
+
+        .spreading-score {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .class-iii .spreading-score { color: #f66; }
+        .class-iv .spreading-score { color: #4ecdc4; }
+
+        .rule-select {
+            margin-bottom: 20px;
+        }
+
+        .rule-select select {
+            width: 100%;
+            padding: 10px;
+            background: #1a1a24;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #e0e0e0;
+            font-family: inherit;
+        }
+
+        .ca-canvas {
+            width: 100%;
+            border-radius: 8px;
+            background: #0a0a0f;
+        }
+
+        .spreading-diagram {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #1a1a24;
+            border-radius: 8px;
+        }
+
+        .transition-cell {
+            text-align: center;
+            padding: 10px 5px;
+            border-radius: 6px;
+            font-size: 0.85em;
+        }
+
+        .transition-cell .pattern {
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .transition-cell .output {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .transition-cell.spreads {
+            background: rgba(78, 205, 196, 0.2);
+            border: 1px solid #4ecdc4;
+        }
+
+        .transition-cell.spreads .output {
+            color: #4ecdc4;
+        }
+
+        .transition-cell.maintains {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid #ffc107;
+        }
+
+        .transition-cell.maintains .output {
+            color: #ffc107;
+        }
+
+        .transition-cell.dies {
+            background: rgba(108, 117, 125, 0.2);
+            border: 1px solid #6c757d;
+        }
+
+        .transition-cell.dies .output {
+            color: #6c757d;
+        }
+
+        .metrics-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .metric-box {
+            background: #1a1a24;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-box .label {
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        .metric-box .value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .spectrum {
+            position: relative;
+            height: 80px;
+            margin: 40px 0;
+            background: linear-gradient(90deg,
+                #444 0%,      /* Class I - dies */
+                #66f 25%,     /* Class II - maintains */
+                #4ecdc4 50%,  /* Class IV - partial spread */
+                #f66 100%    /* Class III - maximal spread */
+            );
+            border-radius: 8px;
+        }
+
+        .spectrum-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .spectrum-marker {
+            position: absolute;
+            top: -15px;
+            width: 30px;
+            height: 110px;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #fff;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 5px;
+        }
+
+        .spectrum-marker .rule-num {
+            background: #fff;
+            color: #000;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .summary-box {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1), rgba(255, 107, 107, 0.1));
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .summary-box h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-item .class-name {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .summary-item .spread-range {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .summary-item .behavior {
+            margin-top: 8px;
+            font-size: 0.85em;
+        }
+
+        .live-spread {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .spread-step {
+            text-align: center;
+        }
+
+        .spread-step canvas {
+            border-radius: 8px;
+            background: #0a0a0f;
+        }
+
+        .spread-step .label {
+            color: #888;
+            margin-top: 8px;
+            font-size: 0.9em;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            margin: 5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button.secondary {
+            background: #2a2a3a;
+            color: #e0e0e0;
+        }
+
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spreading Metric Visualizer</h1>
+            <p class="subtitle">
+                Why is Class IV complex while Class III is chaotic?
+                The answer lies in how patterns SPREAD through the system.
+            </p>
+        </header>
+
+        <div class="key-insight">
+            <h2>The Spreading Hypothesis</h2>
+            <div class="formula">
+                Complexity = Partial Spreading + Balance
+            </div>
+            <p>
+                Class III rules spread information maximally (avg: 1.85/3.0).
+                Class IV rules spread information partially (avg: 0.77/3.0).
+                Partial spreading creates structure; maximal spreading destroys it.
+            </p>
+        </div>
+
+        <div class="spectrum">
+            <div class="spectrum-marker" style="left: 10%;" id="marker-class1">
+                <span class="rule-num">0</span>
+            </div>
+            <div class="spectrum-marker" style="left: 30%;" id="marker-class2">
+                <span class="rule-num">4</span>
+            </div>
+            <div class="spectrum-marker" style="left: 50%;" id="marker-class4">
+                <span class="rule-num">110</span>
+            </div>
+            <div class="spectrum-marker" style="left: 85%;" id="marker-class3">
+                <span class="rule-num">30</span>
+            </div>
+        </div>
+        <div class="spectrum-labels">
+            <span>No Spreading (Dies)</span>
+            <span>Maintains Only</span>
+            <span>Partial Spreading</span>
+            <span>Maximal Spreading</span>
+        </div>
+
+        <div class="controls">
+            <button onclick="startSpreadAnimation()">Watch Live Spreading</button>
+            <button onclick="stopSpreadAnimation()" class="secondary">Stop</button>
+        </div>
+
+        <div class="live-spread">
+            <div class="spread-step">
+                <canvas id="spread-canvas-1" width="100" height="100"></canvas>
+                <div class="label">t = 0 (single cell)</div>
+            </div>
+            <div class="spread-step">
+                <canvas id="spread-canvas-2" width="100" height="100"></canvas>
+                <div class="label">t = 10</div>
+            </div>
+            <div class="spread-step">
+                <canvas id="spread-canvas-3" width="100" height="100"></canvas>
+                <div class="label">t = 25</div>
+            </div>
+            <div class="spread-step">
+                <canvas id="spread-canvas-4" width="100" height="100"></canvas>
+                <div class="label">t = 50</div>
+            </div>
+        </div>
+
+        <div class="comparison-grid">
+            <!-- Class III Panel -->
+            <div class="class-panel class-iii">
+                <div class="class-header">
+                    <span class="class-label">Class III - Chaotic</span>
+                    <span class="spreading-score" id="class3-spread">1.85</span>
+                </div>
+
+                <div class="rule-select">
+                    <select id="class3-rule" onchange="updateClass3()">
+                        <option value="30">Rule 30</option>
+                        <option value="45">Rule 45</option>
+                        <option value="90">Rule 90</option>
+                        <option value="105">Rule 105</option>
+                        <option value="150">Rule 150</option>
+                    </select>
+                </div>
+
+                <canvas id="ca-class3" class="ca-canvas" width="400" height="200"></canvas>
+
+                <div class="spreading-diagram" id="spread-diagram-3"></div>
+
+                <div class="metrics-row">
+                    <div class="metric-box">
+                        <div class="label">Spread Transitions</div>
+                        <div class="value" id="spread-trans-3">4</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Maintain Transitions</div>
+                        <div class="value" id="maintain-trans-3">2</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Die Transitions</div>
+                        <div class="value" id="die-trans-3">2</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Class IV Panel -->
+            <div class="class-panel class-iv">
+                <div class="class-header">
+                    <span class="class-label">Class IV - Complex</span>
+                    <span class="spreading-score" id="class4-spread">0.77</span>
+                </div>
+
+                <div class="rule-select">
+                    <select id="class4-rule" onchange="updateClass4()">
+                        <option value="110">Rule 110</option>
+                        <option value="54">Rule 54</option>
+                        <option value="106">Rule 106</option>
+                        <option value="124">Rule 124</option>
+                        <option value="137">Rule 137</option>
+                    </select>
+                </div>
+
+                <canvas id="ca-class4" class="ca-canvas" width="400" height="200"></canvas>
+
+                <div class="spreading-diagram" id="spread-diagram-4"></div>
+
+                <div class="metrics-row">
+                    <div class="metric-box">
+                        <div class="label">Spread Transitions</div>
+                        <div class="value" id="spread-trans-4">2</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Maintain Transitions</div>
+                        <div class="value" id="maintain-trans-4">3</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Die Transitions</div>
+                        <div class="value" id="die-trans-4">3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h3>The Four Regimes of Spreading</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="class-name" style="color: #666;">Class I</div>
+                    <div class="spread-range">Spread: 0 - 0.3</div>
+                    <div class="behavior">Everything dies. No information propagates.</div>
+                </div>
+                <div class="summary-item">
+                    <div class="class-name" style="color: #88f;">Class II</div>
+                    <div class="spread-range">Spread: 0.3 - 0.7</div>
+                    <div class="behavior">Maintains but doesn't spread. Static or periodic.</div>
+                </div>
+                <div class="summary-item">
+                    <div class="class-name" style="color: #4ecdc4;">Class IV</div>
+                    <div class="spread-range">Spread: 0.7 - 1.2</div>
+                    <div class="behavior">Partial spread. Creates localized structures.</div>
+                </div>
+                <div class="summary-item">
+                    <div class="class-name" style="color: #f88;">Class III</div>
+                    <div class="spread-range">Spread: 1.5 - 2.5</div>
+                    <div class="behavior">Maximal spread. Fills space chaotically.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const patterns = ['111', '110', '101', '100', '011', '010', '001', '000'];
+
+        function calcSpreading(rule) {
+            let spreading = 0;
+            for (let i = 0; i < 8; i++) {
+                const left = (i >> 2) & 1;
+                const center = (i >> 1) & 1;
+                const right = i & 1;
+                const output = (rule >> i) & 1;
+
+                // Spreading: adjacent 1 creates new 1
+                if ((left === 1 || right === 1) && center === 0 && output === 1) spreading += 1;
+                // Maintenance: center 1 stays 1
+                if (center === 1 && output === 1) spreading += 0.25;
+            }
+            return spreading;
+        }
+
+        function getTransitionType(rule, bitIndex) {
+            const left = (bitIndex >> 2) & 1;
+            const center = (bitIndex >> 1) & 1;
+            const right = bitIndex & 1;
+            const output = (rule >> bitIndex) & 1;
+
+            // Spreading: neighbor 1 creates new 1
+            if ((left === 1 || right === 1) && center === 0 && output === 1) return 'spreads';
+            // Maintaining: 1 stays 1
+            if (center === 1 && output === 1) return 'maintains';
+            // Dying: 1 becomes 0
+            if (center === 1 && output === 0) return 'dies';
+            // Staying dead
+            return 'dies';
+        }
+
+        function countTransitions(rule) {
+            let spreads = 0, maintains = 0, dies = 0;
+            for (let i = 0; i < 8; i++) {
+                const type = getTransitionType(rule, i);
+                if (type === 'spreads') spreads++;
+                else if (type === 'maintains') maintains++;
+                else dies++;
+            }
+            return { spreads, maintains, dies };
+        }
+
+        function simulateCA(rule, width = 100, steps = 50, singleCenter = false) {
+            let state = new Array(width).fill(0);
+            if (singleCenter) {
+                state[Math.floor(width / 2)] = 1;
+            } else {
+                for (let i = 0; i < width; i++) {
+                    state[i] = Math.random() < 0.3 ? 1 : 0;
+                }
+            }
+
+            const history = [state.slice()];
+
+            for (let t = 0; t < steps - 1; t++) {
+                const newState = new Array(width).fill(0);
+                for (let i = 0; i < width; i++) {
+                    const l = state[(i - 1 + width) % width];
+                    const c = state[i];
+                    const r = state[(i + 1) % width];
+                    const pattern = (l << 2) | (c << 1) | r;
+                    newState[i] = (rule >> pattern) & 1;
+                }
+                state = newState;
+                history.push(state.slice());
+            }
+
+            return history;
+        }
+
+        function drawCA(canvas, history, color) {
+            const ctx = canvas.getContext('2d');
+            const cellW = canvas.width / history[0].length;
+            const cellH = canvas.height / history.length;
+
+            ctx.fillStyle = '#0a0a0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = color;
+            history.forEach((row, y) => {
+                row.forEach((cell, x) => {
+                    if (cell === 1) {
+                        ctx.fillRect(x * cellW, y * cellH, cellW - 0.5, cellH - 0.5);
+                    }
+                });
+            });
+        }
+
+        function drawSpreadDiagram(containerId, rule) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+
+            for (let i = 7; i >= 0; i--) {
+                const output = (rule >> i) & 1;
+                const type = getTransitionType(rule, i);
+
+                const cell = document.createElement('div');
+                cell.className = `transition-cell ${type}`;
+                cell.innerHTML = `
+                    <div class="pattern">${patterns[7 - i]}</div>
+                    <div class="output">${output}</div>
+                `;
+                container.appendChild(cell);
+            }
+        }
+
+        function updateClass3() {
+            const rule = parseInt(document.getElementById('class3-rule').value);
+            const spread = calcSpreading(rule);
+            const counts = countTransitions(rule);
+
+            document.getElementById('class3-spread').textContent = spread.toFixed(2);
+            document.getElementById('spread-trans-3').textContent = counts.spreads;
+            document.getElementById('maintain-trans-3').textContent = counts.maintains;
+            document.getElementById('die-trans-3').textContent = counts.dies;
+
+            const history = simulateCA(rule, 100, 50);
+            drawCA(document.getElementById('ca-class3'), history, '#f66');
+            drawSpreadDiagram('spread-diagram-3', rule);
+        }
+
+        function updateClass4() {
+            const rule = parseInt(document.getElementById('class4-rule').value);
+            const spread = calcSpreading(rule);
+            const counts = countTransitions(rule);
+
+            document.getElementById('class4-spread').textContent = spread.toFixed(2);
+            document.getElementById('spread-trans-4').textContent = counts.spreads;
+            document.getElementById('maintain-trans-4').textContent = counts.maintains;
+            document.getElementById('die-trans-4').textContent = counts.dies;
+
+            const history = simulateCA(rule, 100, 50);
+            drawCA(document.getElementById('ca-class4'), history, '#4ecdc4');
+            drawSpreadDiagram('spread-diagram-4', rule);
+        }
+
+        let spreadAnimation = null;
+
+        function startSpreadAnimation() {
+            if (spreadAnimation) return;
+
+            const rule3 = parseInt(document.getElementById('class3-rule').value);
+            const rule4 = parseInt(document.getElementById('class4-rule').value);
+
+            const history3 = simulateCA(rule3, 25, 51, true);
+            const history4 = simulateCA(rule4, 25, 51, true);
+
+            const canvases = [
+                document.getElementById('spread-canvas-1'),
+                document.getElementById('spread-canvas-2'),
+                document.getElementById('spread-canvas-3'),
+                document.getElementById('spread-canvas-4')
+            ];
+
+            const steps = [0, 10, 25, 50];
+            let frame = 0;
+
+            function animate() {
+                const currentSteps = steps.map(s => Math.min(s, Math.floor(frame / 2)));
+
+                canvases.forEach((canvas, i) => {
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#0a0a0f';
+                    ctx.fillRect(0, 0, 100, 100);
+
+                    const step = currentSteps[i];
+
+                    // Draw Class III (top)
+                    ctx.fillStyle = '#f66';
+                    const row3 = history3[step];
+                    row3.forEach((cell, x) => {
+                        if (cell === 1) {
+                            ctx.fillRect(x * 4, 10, 3, 35);
+                        }
+                    });
+
+                    // Draw Class IV (bottom)
+                    ctx.fillStyle = '#4ecdc4';
+                    const row4 = history4[step];
+                    row4.forEach((cell, x) => {
+                        if (cell === 1) {
+                            ctx.fillRect(x * 4, 55, 3, 35);
+                        }
+                    });
+
+                    // Labels
+                    ctx.fillStyle = '#666';
+                    ctx.font = '8px Courier New';
+                    ctx.fillText('III', 2, 8);
+                    ctx.fillText('IV', 2, 53);
+                });
+
+                frame++;
+                if (frame < 100) {
+                    spreadAnimation = requestAnimationFrame(animate);
+                } else {
+                    frame = 0;
+                    spreadAnimation = requestAnimationFrame(animate);
+                }
+            }
+
+            animate();
+        }
+
+        function stopSpreadAnimation() {
+            if (spreadAnimation) {
+                cancelAnimationFrame(spreadAnimation);
+                spreadAnimation = null;
+            }
+        }
+
+        // Initialize
+        updateClass3();
+        updateClass4();
+        startSpreadAnimation();
+    </script>
+</body>
+</html>

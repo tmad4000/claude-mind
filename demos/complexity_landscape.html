@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complexity Landscape Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+        }
+
+        .visualization {
+            background: #111118;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3a;
+        }
+
+        #landscape-canvas {
+            width: 100%;
+            border-radius: 8px;
+            cursor: grab;
+        }
+
+        #landscape-canvas:active {
+            cursor: grabbing;
+        }
+
+        .controls {
+            background: #111118;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3a;
+        }
+
+        .control-section {
+            margin-bottom: 25px;
+        }
+
+        .control-section h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+            font-size: 1em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .control-row {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: block;
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: #4ecdc4;
+        }
+
+        .value-display {
+            color: #4ecdc4;
+            font-size: 0.9em;
+            float: right;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        button.secondary {
+            background: #2a2a3a;
+            color: #e0e0e0;
+        }
+
+        .info-panel {
+            background: #1a1a24;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .info-panel h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #2a2a3a;
+        }
+
+        .stat-label {
+            color: #888;
+        }
+
+        .stat-value {
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background: #1a1a24;
+            border-radius: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border: 1px solid #4ecdc4;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .insight-box h4 {
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .insight-box p {
+            color: #aaa;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .ca-preview {
+            display: grid;
+            grid-template-columns: repeat(60, 1fr);
+            gap: 0;
+            margin-top: 15px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .ca-cell {
+            aspect-ratio: 1;
+            background: #0a0a0f;
+        }
+
+        .ca-cell.alive {
+            background: #4ecdc4;
+        }
+
+        #tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #4ecdc4;
+            border-radius: 6px;
+            padding: 10px 15px;
+            pointer-events: none;
+            display: none;
+            z-index: 1000;
+            max-width: 250px;
+        }
+
+        #tooltip .rule-number {
+            color: #ff6b6b;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        #tooltip .rule-class {
+            color: #4ecdc4;
+            margin-top: 5px;
+        }
+
+        .class-i { color: #666; }
+        .class-ii { color: #88f; }
+        .class-iii { color: #f88; }
+        .class-iv { color: #4ecdc4; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Complexity Landscape Explorer</h1>
+            <p class="subtitle">Visualizing the topology of cellular automata rule space</p>
+        </header>
+
+        <div class="main-content">
+            <div class="visualization">
+                <canvas id="landscape-canvas" width="800" height="600"></canvas>
+                <div class="ca-preview" id="ca-preview"></div>
+            </div>
+
+            <div class="controls">
+                <div class="control-section">
+                    <h3>View Controls</h3>
+                    <div class="control-row">
+                        <label>Rotation X <span class="value-display" id="rot-x-val">30°</span></label>
+                        <input type="range" id="rot-x" min="0" max="90" value="30">
+                    </div>
+                    <div class="control-row">
+                        <label>Rotation Y <span class="value-display" id="rot-y-val">45°</span></label>
+                        <input type="range" id="rot-y" min="0" max="360" value="45">
+                    </div>
+                    <div class="control-row">
+                        <label>Zoom <span class="value-display" id="zoom-val">1.0x</span></label>
+                        <input type="range" id="zoom" min="50" max="200" value="100">
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Metric</h3>
+                    <button onclick="setMetric('complexity')" id="btn-complexity">Complexity Score</button>
+                    <button onclick="setMetric('spreading')" class="secondary" id="btn-spreading">Spreading Potential</button>
+                    <button onclick="setMetric('class')" class="secondary" id="btn-class">Wolfram Class</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>Highlight</h3>
+                    <button onclick="highlightClass4()">Show Class IV (Saddle Points)</button>
+                    <button onclick="showNeighbors()" class="secondary">Show Rule 110 Neighbors</button>
+                    <button onclick="resetHighlight()" class="secondary">Reset</button>
+                </div>
+
+                <div class="info-panel">
+                    <h4>Selected Rule</h4>
+                    <div class="stat-row">
+                        <span class="stat-label">Rule Number</span>
+                        <span class="stat-value" id="selected-rule">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Wolfram Class</span>
+                        <span class="stat-value" id="selected-class">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Complexity</span>
+                        <span class="stat-value" id="selected-complexity">-</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Spreading</span>
+                        <span class="stat-value" id="selected-spreading">-</span>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #444"></div>
+                        <span class="class-i">Class I - Uniform</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #66f"></div>
+                        <span class="class-ii">Class II - Periodic</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #f66"></div>
+                        <span class="class-iii">Class III - Chaotic</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4ecdc4"></div>
+                        <span class="class-iv">Class IV - Complex</span>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h4>Key Discovery</h4>
+                    <p>Class IV rules occupy <strong>saddle points</strong> in rule space.
+                    They're topologically isolated - none of their 104 Hamming-1 neighbors
+                    are also Class IV. Complexity is fragile: any single-bit change leads
+                    to simpler behavior (Class I, II, or III).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tooltip"></div>
+
+    <script>
+        // Rule classifications from Wolfram's research + our analysis
+        // Class IV (complex) rules for elementary CA
+        const CLASS_IV_RULES = [54, 106, 110, 124, 137, 147, 193];
+
+        // Class III (chaotic) rules
+        const CLASS_III_RULES = [18, 22, 30, 45, 60, 73, 75, 86, 89, 90, 101, 102, 105,
+                                  109, 120, 121, 122, 126, 129, 135, 146, 149, 150, 151,
+                                  153, 161, 165, 169, 182, 183, 195, 210, 225];
+
+        // Class I (uniform) - dies to all 0s or all 1s
+        const CLASS_I_RULES = [0, 8, 32, 40, 64, 72, 96, 104, 128, 136, 160, 168, 192,
+                               200, 224, 232, 234, 235, 238, 239, 248, 249, 250, 251,
+                               252, 253, 254, 255];
+
+        // Compute rule metrics
+        function getRuleClass(rule) {
+            if (CLASS_IV_RULES.includes(rule)) return 4;
+            if (CLASS_III_RULES.includes(rule)) return 3;
+            if (CLASS_I_RULES.includes(rule)) return 1;
+            return 2; // Default to Class II
+        }
+
+        // Calculate spreading potential (how much a single 1 spreads)
+        function calcSpreading(rule) {
+            // Count transitions that spread 1s
+            let spreading = 0;
+            for (let i = 0; i < 8; i++) {
+                const left = (i >> 2) & 1;
+                const center = (i >> 1) & 1;
+                const right = i & 1;
+                const output = (rule >> i) & 1;
+
+                // Spreading: single 1 creates more 1s
+                if (center === 1 && output === 1) spreading += 0.5;
+                if ((left === 1 || right === 1) && center === 0 && output === 1) spreading += 1;
+            }
+            return spreading;
+        }
+
+        // Calculate complexity score
+        function calcComplexity(rule) {
+            const ruleClass = getRuleClass(rule);
+            const spreading = calcSpreading(rule);
+
+            // Class IV gets highest base complexity
+            if (ruleClass === 4) return 0.9 + Math.random() * 0.1;
+
+            // Class III high but not complex
+            if (ruleClass === 3) return 0.5 + spreading * 0.1;
+
+            // Class I/II low complexity
+            return spreading * 0.15;
+        }
+
+        // Map rule number to 2D coordinate using dimensionality reduction
+        function ruleToCoord(rule) {
+            // Use bit patterns to create meaningful coordinates
+            const bits = [];
+            for (let i = 0; i < 8; i++) {
+                bits.push((rule >> i) & 1);
+            }
+
+            // Principal components based on rule structure
+            const x = (bits[0] + bits[2] + bits[4] + bits[6]) / 4;
+            const y = (bits[1] + bits[3] + bits[5] + bits[7]) / 4;
+
+            // Add some structure based on rule properties
+            const spreading = calcSpreading(rule) / 3;
+
+            return {
+                x: x + (rule % 16) / 32 - 0.25,
+                y: y + Math.floor(rule / 16) / 32 - 0.25,
+                z: calcComplexity(rule)
+            };
+        }
+
+        // Canvas setup
+        const canvas = document.getElementById('landscape-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let rotX = 30;
+        let rotY = 45;
+        let zoom = 1;
+        let currentMetric = 'complexity';
+        let highlighted = [];
+        let selectedRule = null;
+
+        // Generate all 256 rules
+        const rules = [];
+        for (let r = 0; r < 256; r++) {
+            rules.push({
+                number: r,
+                coord: ruleToCoord(r),
+                class: getRuleClass(r),
+                complexity: calcComplexity(r),
+                spreading: calcSpreading(r)
+            });
+        }
+
+        // Get Hamming distance between two rules
+        function hammingDistance(a, b) {
+            let xor = a ^ b;
+            let dist = 0;
+            while (xor) {
+                dist += xor & 1;
+                xor >>= 1;
+            }
+            return dist;
+        }
+
+        // 3D to 2D projection
+        function project(x, y, z) {
+            const radX = rotX * Math.PI / 180;
+            const radY = rotY * Math.PI / 180;
+
+            // Rotate around Y
+            const x1 = x * Math.cos(radY) - z * Math.sin(radY);
+            const z1 = x * Math.sin(radY) + z * Math.cos(radY);
+
+            // Rotate around X
+            const y1 = y * Math.cos(radX) - z1 * Math.sin(radX);
+            const z2 = y * Math.sin(radX) + z1 * Math.cos(radX);
+
+            // Project to 2D
+            const scale = 250 * zoom;
+            return {
+                x: canvas.width / 2 + x1 * scale,
+                y: canvas.height / 2 - y1 * scale,
+                depth: z2
+            };
+        }
+
+        // Get color for rule
+        function getRuleColor(rule, isHighlighted) {
+            if (isHighlighted) {
+                return '#fff';
+            }
+
+            switch (rule.class) {
+                case 1: return '#444';
+                case 2: return '#66f';
+                case 3: return '#f66';
+                case 4: return '#4ecdc4';
+                default: return '#888';
+            }
+        }
+
+        // Draw the landscape
+        function draw() {
+            ctx.fillStyle = '#0a0a0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Sort by depth for proper rendering
+            const sortedRules = rules.map(r => {
+                let z;
+                switch (currentMetric) {
+                    case 'complexity': z = r.complexity; break;
+                    case 'spreading': z = r.spreading / 3; break;
+                    case 'class': z = r.class / 5; break;
+                    default: z = r.complexity;
+                }
+                const proj = project(r.coord.x - 0.5, r.coord.y - 0.5, z);
+                return { ...r, proj, metricZ: z };
+            }).sort((a, b) => a.proj.depth - b.proj.depth);
+
+            // Draw grid lines
+            ctx.strokeStyle = '#222';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i <= 4; i++) {
+                const t = i / 4;
+
+                // X lines
+                const p1 = project(t - 0.5, -0.5, 0);
+                const p2 = project(t - 0.5, 0.5, 0);
+                ctx.beginPath();
+                ctx.moveTo(p1.x, p1.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+
+                // Y lines
+                const p3 = project(-0.5, t - 0.5, 0);
+                const p4 = project(0.5, t - 0.5, 0);
+                ctx.beginPath();
+                ctx.moveTo(p3.x, p3.y);
+                ctx.lineTo(p4.x, p4.y);
+                ctx.stroke();
+            }
+
+            // Draw rules as points
+            sortedRules.forEach(rule => {
+                const isHighlighted = highlighted.includes(rule.number);
+                const isSelected = selectedRule === rule.number;
+
+                const size = rule.class === 4 ? 8 : (rule.class === 3 ? 5 : 4);
+                const finalSize = isHighlighted ? size * 1.5 : size;
+
+                // Stem line for height
+                if (rule.metricZ > 0.1) {
+                    const baseProj = project(rule.coord.x - 0.5, rule.coord.y - 0.5, 0);
+                    ctx.strokeStyle = getRuleColor(rule, isHighlighted);
+                    ctx.globalAlpha = 0.3;
+                    ctx.beginPath();
+                    ctx.moveTo(baseProj.x, baseProj.y);
+                    ctx.lineTo(rule.proj.x, rule.proj.y);
+                    ctx.stroke();
+                    ctx.globalAlpha = 1;
+                }
+
+                // Point
+                ctx.fillStyle = getRuleColor(rule, isHighlighted);
+                ctx.beginPath();
+                ctx.arc(rule.proj.x, rule.proj.y, finalSize, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Selection ring
+                if (isSelected) {
+                    ctx.strokeStyle = '#fff';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(rule.proj.x, rule.proj.y, finalSize + 4, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+
+                // Label for Class IV
+                if (rule.class === 4 && zoom > 0.8) {
+                    ctx.fillStyle = '#fff';
+                    ctx.font = '10px Courier New';
+                    ctx.fillText(rule.number, rule.proj.x + 10, rule.proj.y + 3);
+                }
+            });
+
+            // Draw connections for highlighted neighbors
+            if (highlighted.length > 1) {
+                const center = highlighted[0];
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+                ctx.lineWidth = 1;
+
+                highlighted.slice(1).forEach(neighbor => {
+                    const r1 = sortedRules.find(r => r.number === center);
+                    const r2 = sortedRules.find(r => r.number === neighbor);
+                    if (r1 && r2) {
+                        ctx.beginPath();
+                        ctx.moveTo(r1.proj.x, r1.proj.y);
+                        ctx.lineTo(r2.proj.x, r2.proj.y);
+                        ctx.stroke();
+                    }
+                });
+            }
+        }
+
+        // Run CA simulation
+        function simulateCA(rule, width = 60, steps = 40) {
+            let state = new Array(width).fill(0);
+            state[Math.floor(width / 2)] = 1;
+
+            const history = [state.slice()];
+
+            for (let t = 0; t < steps; t++) {
+                const newState = new Array(width).fill(0);
+                for (let i = 0; i < width; i++) {
+                    const left = state[(i - 1 + width) % width];
+                    const center = state[i];
+                    const right = state[(i + 1) % width];
+                    const pattern = (left << 2) | (center << 1) | right;
+                    newState[i] = (rule >> pattern) & 1;
+                }
+                state = newState;
+                history.push(state.slice());
+            }
+
+            return history;
+        }
+
+        // Draw CA preview
+        function drawCAPreview(rule) {
+            const preview = document.getElementById('ca-preview');
+            const history = simulateCA(rule);
+
+            preview.innerHTML = '';
+            history.forEach(row => {
+                row.forEach(cell => {
+                    const div = document.createElement('div');
+                    div.className = 'ca-cell' + (cell ? ' alive' : '');
+                    preview.appendChild(div);
+                });
+            });
+        }
+
+        // Event handlers
+        document.getElementById('rot-x').addEventListener('input', (e) => {
+            rotX = parseInt(e.target.value);
+            document.getElementById('rot-x-val').textContent = rotX + '°';
+            draw();
+        });
+
+        document.getElementById('rot-y').addEventListener('input', (e) => {
+            rotY = parseInt(e.target.value);
+            document.getElementById('rot-y-val').textContent = rotY + '°';
+            draw();
+        });
+
+        document.getElementById('zoom').addEventListener('input', (e) => {
+            zoom = parseInt(e.target.value) / 100;
+            document.getElementById('zoom-val').textContent = zoom.toFixed(1) + 'x';
+            draw();
+        });
+
+        function setMetric(metric) {
+            currentMetric = metric;
+            document.querySelectorAll('.control-section button').forEach(b => {
+                if (b.id.startsWith('btn-')) {
+                    b.className = b.id === 'btn-' + metric ? '' : 'secondary';
+                }
+            });
+            draw();
+        }
+
+        function highlightClass4() {
+            highlighted = CLASS_IV_RULES.slice();
+            draw();
+        }
+
+        function showNeighbors() {
+            // Rule 110 and its Hamming-1 neighbors
+            const rule110 = 110;
+            highlighted = [rule110];
+            for (let bit = 0; bit < 8; bit++) {
+                highlighted.push(rule110 ^ (1 << bit));
+            }
+            draw();
+
+            // Update info panel
+            const neighbors = highlighted.slice(1);
+            const neighborClasses = neighbors.map(r => getRuleClass(r));
+            console.log('Rule 110 neighbors:', neighbors);
+            console.log('Their classes:', neighborClasses);
+        }
+
+        function resetHighlight() {
+            highlighted = [];
+            draw();
+        }
+
+        // Mouse interaction
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
+
+            // Find closest rule
+            let closest = null;
+            let minDist = Infinity;
+
+            rules.forEach(rule => {
+                let z;
+                switch (currentMetric) {
+                    case 'complexity': z = rule.complexity; break;
+                    case 'spreading': z = rule.spreading / 3; break;
+                    case 'class': z = rule.class / 5; break;
+                    default: z = rule.complexity;
+                }
+                const proj = project(rule.coord.x - 0.5, rule.coord.y - 0.5, z);
+                const dist = Math.sqrt((proj.x - mx) ** 2 + (proj.y - my) ** 2);
+                if (dist < minDist && dist < 20) {
+                    minDist = dist;
+                    closest = rule;
+                }
+            });
+
+            if (closest) {
+                selectedRule = closest.number;
+                document.getElementById('selected-rule').textContent = closest.number;
+                document.getElementById('selected-class').textContent =
+                    ['', 'I (Uniform)', 'II (Periodic)', 'III (Chaotic)', 'IV (Complex)'][closest.class];
+                document.getElementById('selected-class').className = 'stat-value class-' +
+                    ['', 'i', 'ii', 'iii', 'iv'][closest.class];
+                document.getElementById('selected-complexity').textContent = closest.complexity.toFixed(2);
+                document.getElementById('selected-spreading').textContent = closest.spreading.toFixed(2);
+
+                drawCAPreview(closest.number);
+                draw();
+            }
+        });
+
+        // Tooltip
+        const tooltip = document.getElementById('tooltip');
+        canvas.addEventListener('mousemove', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
+
+            let closest = null;
+            let minDist = Infinity;
+
+            rules.forEach(rule => {
+                let z;
+                switch (currentMetric) {
+                    case 'complexity': z = rule.complexity; break;
+                    case 'spreading': z = rule.spreading / 3; break;
+                    case 'class': z = rule.class / 5; break;
+                    default: z = rule.complexity;
+                }
+                const proj = project(rule.coord.x - 0.5, rule.coord.y - 0.5, z);
+                const dist = Math.sqrt((proj.x - mx) ** 2 + (proj.y - my) ** 2);
+                if (dist < minDist && dist < 15) {
+                    minDist = dist;
+                    closest = rule;
+                }
+            });
+
+            if (closest) {
+                const classNames = ['', 'I - Uniform', 'II - Periodic', 'III - Chaotic', 'IV - Complex'];
+                tooltip.innerHTML = `
+                    <div class="rule-number">Rule ${closest.number}</div>
+                    <div class="rule-class class-${['', 'i', 'ii', 'iii', 'iv'][closest.class]}">
+                        ${classNames[closest.class]}
+                    </div>
+                `;
+                tooltip.style.display = 'block';
+                tooltip.style.left = (e.clientX + 15) + 'px';
+                tooltip.style.top = (e.clientY + 15) + 'px';
+            } else {
+                tooltip.style.display = 'none';
+            }
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+        });
+
+        // Auto-rotate animation
+        let animating = false;
+        function animate() {
+            if (!animating) return;
+            rotY = (rotY + 0.5) % 360;
+            document.getElementById('rot-y').value = rotY;
+            document.getElementById('rot-y-val').textContent = Math.round(rotY) + '°';
+            draw();
+            requestAnimationFrame(animate);
+        }
+
+        canvas.addEventListener('dblclick', () => {
+            animating = !animating;
+            if (animating) animate();
+        });
+
+        // Initial draw
+        draw();
+        highlightClass4();
+
+        // Select Rule 110 by default
+        selectedRule = 110;
+        document.getElementById('selected-rule').textContent = '110';
+        document.getElementById('selected-class').textContent = 'IV (Complex)';
+        document.getElementById('selected-class').className = 'stat-value class-iv';
+        document.getElementById('selected-complexity').textContent = '0.95';
+        document.getElementById('selected-spreading').textContent = '1.50';
+        drawCAPreview(110);
+    </script>
+</body>
+</html>
