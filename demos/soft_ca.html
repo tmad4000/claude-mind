@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soft Cellular Automata</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a0f;
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .question-box {
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(255, 107, 107, 0.15));
+            border: 1px solid #4ecdc4;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .question-box h2 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+
+        .question-box p {
+            color: #aaa;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+        }
+
+        .viz-panel {
+            background: #111118;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3a;
+        }
+
+        #ca-canvas {
+            width: 100%;
+            background: #0a0a0f;
+            border-radius: 8px;
+        }
+
+        .controls {
+            background: #111118;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #2a2a3a;
+        }
+
+        .control-section {
+            margin-bottom: 25px;
+        }
+
+        .control-section h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+            font-size: 1em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 8px;
+        }
+
+        .control-row {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 5px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: #4ecdc4;
+        }
+
+        .value-display {
+            color: #4ecdc4;
+            float: right;
+        }
+
+        .rule-display {
+            background: #1a1a24;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .rule-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .rule-number {
+            font-size: 1.5em;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .interpolation-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .trans-cell {
+            background: #2a2a3a;
+            border-radius: 4px;
+            padding: 5px;
+            text-align: center;
+            font-size: 0.75em;
+        }
+
+        .trans-cell .pattern {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .trans-cell .output {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 3px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button.secondary {
+            background: #2a2a3a;
+            color: #e0e0e0;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(78, 205, 196, 0.1));
+            border: 1px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .insight-box h4 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+
+        .insight-box p {
+            color: #aaa;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .metric-box {
+            background: #1a1a24;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .metric-box .label {
+            color: #666;
+            font-size: 0.75em;
+        }
+
+        .metric-box .value {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+
+        .blend-viz {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #1a1a24;
+            border-radius: 8px;
+        }
+
+        .blend-rule {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .blend-arrow {
+            color: #666;
+            font-size: 1.5em;
+        }
+
+        .blend-rule.rule-a { background: rgba(78, 205, 196, 0.3); color: #4ecdc4; }
+        .blend-rule.rule-b { background: rgba(255, 107, 107, 0.3); color: #ff6b6b; }
+        .blend-rule.result { background: rgba(255, 193, 7, 0.3); color: #ffc107; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Soft Cellular Automata</h1>
+            <p class="subtitle">
+                Can we make complexity more robust by "softening" the discrete rules?
+                Explore continuous interpolations between CA rules.
+            </p>
+        </header>
+
+        <div class="question-box">
+            <h2>The Experiment</h2>
+            <p>
+                In discrete CA, Class IV rules are isolated saddle points - ANY single-bit change destroys complexity.
+                What if we allow continuous interpolation between rules?
+                Does complexity become more robust, like in reaction-diffusion systems?
+            </p>
+        </div>
+
+        <div class="main-content">
+            <div class="viz-panel">
+                <canvas id="ca-canvas" width="800" height="600"></canvas>
+                <div class="metrics-grid">
+                    <div class="metric-box">
+                        <div class="label">Entropy</div>
+                        <div class="value" id="entropy">0.00</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Density</div>
+                        <div class="value" id="density">0.00</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Complexity</div>
+                        <div class="value" id="complexity">0.00</div>
+                    </div>
+                    <div class="metric-box">
+                        <div class="label">Edge Density</div>
+                        <div class="value" id="edge-density">0.00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-section">
+                    <h3>Interpolation</h3>
+                    <div class="blend-viz">
+                        <div class="blend-rule rule-a" id="rule-a-display">110</div>
+                        <div class="blend-arrow">→</div>
+                        <div class="blend-rule result" id="blend-display">?</div>
+                        <div class="blend-arrow">←</div>
+                        <div class="blend-rule rule-b" id="rule-b-display">30</div>
+                    </div>
+                    <div class="control-row">
+                        <label>Blend (0 = Rule A, 1 = Rule B) <span class="value-display" id="blend-val">0.00</span></label>
+                        <input type="range" id="blend" min="0" max="100" value="0" oninput="updateBlend()">
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Rule Selection</h3>
+                    <div class="control-row">
+                        <label>Rule A (Complex) <span class="value-display" id="rule-a-val">110</span></label>
+                        <input type="range" id="rule-a" min="0" max="255" value="110" oninput="updateRules()">
+                    </div>
+                    <div class="control-row">
+                        <label>Rule B (Simple/Chaotic) <span class="value-display" id="rule-b-val">30</span></label>
+                        <input type="range" id="rule-b" min="0" max="255" value="30" oninput="updateRules()">
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Presets</h3>
+                    <button onclick="setPreset(110, 30)">110 → 30 (Complex → Chaotic)</button>
+                    <button onclick="setPreset(110, 0)" class="secondary">110 → 0 (Complex → Dead)</button>
+                    <button onclick="setPreset(110, 4)" class="secondary">110 → 4 (Complex → Periodic)</button>
+                    <button onclick="setPreset(110, 126)" class="secondary">110 → 126 (Neighbor flip)</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>Animation</h3>
+                    <button onclick="animateBlend()">Animate Interpolation</button>
+                    <button onclick="stopAnimation()" class="secondary">Stop</button>
+                </div>
+
+                <div class="rule-display">
+                    <div class="rule-header">
+                        <span>Transition Table</span>
+                        <span class="rule-number" id="effective-rule">110</span>
+                    </div>
+                    <div class="interpolation-grid" id="trans-grid"></div>
+                </div>
+
+                <div class="insight-box">
+                    <h4>What We're Testing</h4>
+                    <p>
+                        <strong>Soft CA</strong>: Instead of discrete outputs (0 or 1),
+                        each transition outputs a probability, then we threshold.
+                        Blend slider interpolates between two rule's probabilities.
+                    </p>
+                    <p style="margin-top: 10px;">
+                        <strong>Question</strong>: Is there a smooth path from complex to simple,
+                        or does complexity collapse suddenly even in continuous space?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('ca-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let ruleA = 110;
+        let ruleB = 30;
+        let blend = 0;
+        let animationId = null;
+
+        const patterns = ['111', '110', '101', '100', '011', '010', '001', '000'];
+
+        // Get interpolated output for a pattern
+        function getSoftOutput(pattern, ruleA, ruleB, blend) {
+            const bitIndex = 7 - patterns.indexOf(pattern);
+            const outputA = (ruleA >> bitIndex) & 1;
+            const outputB = (ruleB >> bitIndex) & 1;
+
+            // Interpolate between outputs
+            const prob = outputA * (1 - blend) + outputB * blend;
+
+            // Add small noise for stochastic behavior
+            const noise = (Math.random() - 0.5) * 0.1;
+            return prob + noise;
+        }
+
+        // Run soft CA simulation
+        function simulateSoftCA(width = 200, steps = 300) {
+            // Use continuous state values
+            let state = new Array(width).fill(0);
+            state[Math.floor(width / 2)] = 1;
+
+            // Add some initial noise
+            for (let i = 0; i < width; i++) {
+                if (Math.random() < 0.01) state[i] = Math.random();
+            }
+
+            const history = [state.slice()];
+
+            for (let t = 0; t < steps - 1; t++) {
+                const newState = new Array(width).fill(0);
+
+                for (let i = 0; i < width; i++) {
+                    const left = state[(i - 1 + width) % width];
+                    const center = state[i];
+                    const right = state[(i + 1) % width];
+
+                    // Threshold to get discrete neighborhood
+                    const l = left > 0.5 ? 1 : 0;
+                    const c = center > 0.5 ? 1 : 0;
+                    const r = right > 0.5 ? 1 : 0;
+                    const pattern = patterns[7 - ((l << 2) | (c << 1) | r)];
+
+                    // Get soft output
+                    newState[i] = getSoftOutput(pattern, ruleA, ruleB, blend);
+
+                    // Clamp
+                    newState[i] = Math.max(0, Math.min(1, newState[i]));
+                }
+
+                state = newState;
+                history.push(state.slice());
+            }
+
+            return history;
+        }
+
+        // Draw the CA
+        function drawCA(history) {
+            const cellW = canvas.width / history[0].length;
+            const cellH = canvas.height / history.length;
+
+            ctx.fillStyle = '#0a0a0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            history.forEach((row, y) => {
+                row.forEach((val, x) => {
+                    if (val > 0.1) {
+                        // Color based on blend
+                        const r = Math.floor(78 + (255 - 78) * blend);
+                        const g = Math.floor(205 - 98 * blend);
+                        const b = Math.floor(196 - 89 * blend);
+                        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${val})`;
+                        ctx.fillRect(x * cellW, y * cellH, cellW, cellH);
+                    }
+                });
+            });
+        }
+
+        // Calculate metrics
+        function calcMetrics(history) {
+            // Take last 100 rows
+            const recent = history.slice(-100);
+
+            let totalOnes = 0;
+            let totalCells = 0;
+            let edgeCount = 0;
+
+            recent.forEach(row => {
+                row.forEach((val, i) => {
+                    totalCells++;
+                    if (val > 0.5) totalOnes++;
+
+                    // Edge detection
+                    if (i > 0) {
+                        const diff = Math.abs(val - row[i-1]);
+                        if (diff > 0.3) edgeCount++;
+                    }
+                });
+            });
+
+            const density = totalOnes / totalCells;
+            const edgeDensity = edgeCount / totalCells;
+
+            // Entropy from histogram
+            const bins = new Array(20).fill(0);
+            recent.flat().forEach(val => {
+                const bin = Math.min(19, Math.floor(val * 20));
+                bins[bin]++;
+            });
+            const total = bins.reduce((a, b) => a + b, 0);
+            let entropy = 0;
+            bins.forEach(count => {
+                if (count > 0) {
+                    const p = count / total;
+                    entropy -= p * Math.log2(p);
+                }
+            });
+            entropy /= Math.log2(20); // Normalize
+
+            // Complexity heuristic
+            const complexity = edgeDensity * (1 - Math.abs(density - 0.5)) * entropy;
+
+            return { entropy, density, edgeDensity, complexity };
+        }
+
+        // Update display
+        function updateDisplay() {
+            const history = simulateSoftCA();
+            drawCA(history);
+
+            const metrics = calcMetrics(history);
+            document.getElementById('entropy').textContent = metrics.entropy.toFixed(3);
+            document.getElementById('density').textContent = metrics.density.toFixed(3);
+            document.getElementById('edge-density').textContent = metrics.edgeDensity.toFixed(3);
+            document.getElementById('complexity').textContent = metrics.complexity.toFixed(4);
+
+            updateTransitionTable();
+        }
+
+        // Update transition table
+        function updateTransitionTable() {
+            const grid = document.getElementById('trans-grid');
+            grid.innerHTML = '';
+
+            patterns.forEach((pattern, i) => {
+                const bitIndex = 7 - i;
+                const outputA = (ruleA >> bitIndex) & 1;
+                const outputB = (ruleB >> bitIndex) & 1;
+                const blended = outputA * (1 - blend) + outputB * blend;
+
+                const cell = document.createElement('div');
+                cell.className = 'trans-cell';
+                cell.innerHTML = `
+                    <div class="pattern">${pattern}</div>
+                    <div class="output" style="color: rgba(${78 + 177*blend}, ${205 - 98*blend}, ${196 - 89*blend}, 1)">${blended.toFixed(2)}</div>
+                `;
+                grid.appendChild(cell);
+            });
+
+            // Update effective rule display (nearest discrete rule)
+            let effectiveRule = 0;
+            patterns.forEach((pattern, i) => {
+                const bitIndex = 7 - i;
+                const outputA = (ruleA >> bitIndex) & 1;
+                const outputB = (ruleB >> bitIndex) & 1;
+                const blended = outputA * (1 - blend) + outputB * blend;
+                if (blended > 0.5) {
+                    effectiveRule |= (1 << bitIndex);
+                }
+            });
+            document.getElementById('effective-rule').textContent = effectiveRule;
+        }
+
+        function updateBlend() {
+            blend = parseInt(document.getElementById('blend').value) / 100;
+            document.getElementById('blend-val').textContent = blend.toFixed(2);
+            document.getElementById('blend-display').textContent = Math.round(blend * 100) + '%';
+            updateDisplay();
+        }
+
+        function updateRules() {
+            ruleA = parseInt(document.getElementById('rule-a').value);
+            ruleB = parseInt(document.getElementById('rule-b').value);
+            document.getElementById('rule-a-val').textContent = ruleA;
+            document.getElementById('rule-b-val').textContent = ruleB;
+            document.getElementById('rule-a-display').textContent = ruleA;
+            document.getElementById('rule-b-display').textContent = ruleB;
+            updateDisplay();
+        }
+
+        function setPreset(a, b) {
+            document.getElementById('rule-a').value = a;
+            document.getElementById('rule-b').value = b;
+            document.getElementById('blend').value = 0;
+            blend = 0;
+            ruleA = a;
+            ruleB = b;
+            updateRules();
+            updateBlend();
+        }
+
+        let animating = false;
+        function animateBlend() {
+            if (animating) return;
+            animating = true;
+
+            let direction = 1;
+            let current = 0;
+
+            function step() {
+                if (!animating) return;
+
+                current += direction * 2;
+                if (current >= 100) direction = -1;
+                if (current <= 0) direction = 1;
+
+                document.getElementById('blend').value = current;
+                updateBlend();
+
+                animationId = requestAnimationFrame(step);
+            }
+
+            step();
+        }
+
+        function stopAnimation() {
+            animating = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        }
+
+        // Initial draw
+        updateDisplay();
+    </script>
+</body>
+</html>

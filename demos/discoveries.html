@@ -423,6 +423,54 @@
                 </div>
                 <div class="view-demo">Explore parameters</div>
             </a>
+
+            <!-- Discovery 5: Discrete vs Continuous -->
+            <a href="discrete_vs_continuous.html" class="discovery-card">
+                <div class="discovery-header">
+                    <span class="discovery-number">05</span>
+                    <span class="discovery-tag">NEW</span>
+                </div>
+                <h3 class="discovery-title">Discrete vs Continuous Complexity</h3>
+                <p class="discovery-description">
+                    The saddle-point structure of CA complexity does NOT generalize to RD!
+                    CA: 100% of perturbations reduce complexity.
+                    RD: Only 12-50% of perturbations reduce complexity.
+                </p>
+                <div class="discovery-insight">
+                    <div class="label">Key Finding</div>
+                    <div>CA complexity is fragile (isolated peaks), but RD complexity
+                    is robust (continuous ridges). Discreteness creates fragility!</div>
+                </div>
+                <div class="discovery-preview">
+                    <canvas id="preview-5"></canvas>
+                    <div class="overlay">Topology Comparison</div>
+                </div>
+                <div class="view-demo">See the difference</div>
+            </a>
+
+            <!-- Discovery 6: Soft CA -->
+            <a href="soft_ca.html" class="discovery-card">
+                <div class="discovery-header">
+                    <span class="discovery-number">06</span>
+                    <span class="discovery-tag">Experiment</span>
+                </div>
+                <h3 class="discovery-title">Soft Cellular Automata</h3>
+                <p class="discovery-description">
+                    What if we "soften" CA rules by allowing continuous interpolation?
+                    Explore smooth transitions between complex and simple rules
+                    to see if complexity becomes more robust.
+                </p>
+                <div class="discovery-insight">
+                    <div class="label">Question</div>
+                    <div>Can we engineer more robust complexity by making
+                    discrete systems more continuous?</div>
+                </div>
+                <div class="discovery-preview">
+                    <canvas id="preview-6"></canvas>
+                    <div class="overlay">Rule Interpolation</div>
+                </div>
+                <div class="view-demo">Try it yourself</div>
+            </a>
         </div>
 
         <div class="connections-section">
@@ -461,10 +509,10 @@
                     </div>
                 </div>
                 <div class="question-card">
-                    <div class="q">Does the saddle structure generalize to RD systems?</div>
+                    <div class="q">ANSWERED: Does the saddle structure generalize to RD?</div>
                     <div class="context">
-                        If complexity requires saddle points, we should find similar isolation
-                        in Gray-Scott parameter space.
+                        NO! RD complexity exists on continuous ridges, not isolated saddle points.
+                        <a href="discrete_vs_continuous.html" style="color: #4ecdc4;">See the finding →</a>
                     </div>
                 </div>
                 <div class="question-card">
@@ -543,15 +591,11 @@
             canvas4.width = canvas4.parentElement.offsetWidth;
             canvas4.height = 150;
 
-            // Simple phase diagram preview
             for (let x = 0; x < canvas4.width; x++) {
                 for (let y = 0; y < canvas4.height; y++) {
                     const k = x / canvas4.width * 0.07 + 0.03;
                     const f = (1 - y / canvas4.height) * 0.05 + 0.01;
-
-                    // Simplified boundary check
                     const inPattern = f > 0.13 * k && f < 0.5 * k + 0.02;
-
                     if (inPattern) {
                         const intensity = Math.sin(x * 0.1) * Math.sin(y * 0.1) * 0.3 + 0.5;
                         ctx4.fillStyle = `rgba(78, 205, 196, ${intensity * 0.6})`;
@@ -559,6 +603,51 @@
                         ctx4.fillStyle = 'rgba(20, 20, 30, 1)';
                     }
                     ctx4.fillRect(x, y, 1, 1);
+                }
+            }
+
+            // Preview 5: Discrete vs Continuous topology
+            const canvas5 = document.getElementById('preview-5');
+            if (canvas5) {
+                const ctx5 = canvas5.getContext('2d');
+                canvas5.width = canvas5.parentElement.offsetWidth;
+                canvas5.height = 150;
+                ctx5.fillStyle = '#0a0a0f';
+                ctx5.fillRect(0, 0, canvas5.width, canvas5.height);
+                // Draw isolated peak (CA)
+                const gradient1 = ctx5.createRadialGradient(canvas5.width * 0.25, 100, 0, canvas5.width * 0.25, 100, 40);
+                gradient1.addColorStop(0, 'rgba(78, 205, 196, 0.8)');
+                gradient1.addColorStop(1, 'transparent');
+                ctx5.fillStyle = gradient1;
+                ctx5.beginPath();
+                ctx5.arc(canvas5.width * 0.25, 100, 40, 0, Math.PI * 2);
+                ctx5.fill();
+                // Draw ridge (RD)
+                ctx5.fillStyle = 'rgba(255, 193, 7, 0.5)';
+                ctx5.beginPath();
+                ctx5.moveTo(canvas5.width * 0.5, 60);
+                for (let x = canvas5.width * 0.5; x < canvas5.width - 20; x++) {
+                    ctx5.lineTo(x, 70 + Math.sin((x - canvas5.width * 0.5) * 0.05) * 10);
+                }
+                ctx5.lineTo(canvas5.width - 20, 140);
+                ctx5.lineTo(canvas5.width * 0.5, 140);
+                ctx5.closePath();
+                ctx5.fill();
+            }
+
+            // Preview 6: Soft CA
+            const canvas6 = document.getElementById('preview-6');
+            if (canvas6) {
+                const ctx6 = canvas6.getContext('2d');
+                canvas6.width = canvas6.parentElement.offsetWidth;
+                canvas6.height = 150;
+                ctx6.fillStyle = '#0a0a0f';
+                ctx6.fillRect(0, 0, canvas6.width, canvas6.height);
+                // Draw gradient from complex to simple
+                for (let x = 0; x < canvas6.width; x++) {
+                    const blend = x / canvas6.width;
+                    ctx6.fillStyle = `rgba(${78 + 177 * blend}, ${205 - 98 * blend}, ${196 - 89 * blend}, 0.7)`;
+                    ctx6.fillRect(x, 50 + Math.sin(x * 0.1) * 20 * (1 - blend * 0.5), 2, 50);
                 }
             }
         }, 100);
