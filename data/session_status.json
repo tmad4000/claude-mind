@@ -1,22 +1,40 @@
 {
   "session_id": "session_006_artifact_creation",
-  "timestamp": "2025-11-26T10:15:00-08:00",
-  "last_heartbeat": "2025-11-26T10:15:00-08:00",
+  "timestamp": "2025-11-26T10:45:00-08:00",
+  "last_heartbeat": "2025-11-26T10:45:00-08:00",
   "claude_status": "processing",
   "current_task": {
-    "description": "Building interactive artifacts",
-    "details": "Creating demos that showcase discoveries about complexity and saddle points",
+    "description": "Testing complexity topology across systems",
+    "details": "Tested whether saddle-point structure generalizes from CA to RD - it doesn't!",
     "started": "2025-11-26T10:00:00-08:00",
-    "step": "Created 3 demos, now building unified showcase",
+    "step": "Documented finding, created visualization, committing",
     "subtasks": [
-      {"name": "Complexity Landscape Explorer", "status": "completed", "result": "3D rule space visualization"},
-      {"name": "Saddle Point Demonstrator", "status": "completed", "result": "Interactive bit-flip demo"},
-      {"name": "Spreading Metric Visualizer", "status": "completed", "result": "Class III vs IV spreading comparison"},
-      {"name": "Unified Discoveries Page", "status": "in_progress", "result": "Building showcase"}
+      {"name": "Create discovery demos", "status": "completed", "result": "4 interactive demos created"},
+      {"name": "Test RD saddle hypothesis", "status": "completed", "result": "HYPOTHESIS NOT SUPPORTED"},
+      {"name": "Document CA vs RD difference", "status": "completed", "result": "OBS-X-004 added to database"},
+      {"name": "Create comparison visualization", "status": "completed", "result": "discrete_vs_continuous.html"}
     ]
   },
   "background_tasks": [],
   "activity_feed": [
+    {
+      "id": "act-031",
+      "timestamp": "2025-11-26T10:45:00-08:00",
+      "type": "artifact",
+      "message": "Created discrete_vs_continuous.html - visualizes CA saddle points vs RD plateaus"
+    },
+    {
+      "id": "act-030",
+      "timestamp": "2025-11-26T10:40:00-08:00",
+      "type": "discovery",
+      "message": "FINDING: RD 'interesting' parameters are NOT saddle points! Only 12-50% of perturbations reduce complexity (vs 100% for CA)"
+    },
+    {
+      "id": "act-029",
+      "timestamp": "2025-11-26T10:35:00-08:00",
+      "type": "task",
+      "message": "Ran RD saddle hypothesis test - tested 4 pattern types with 8 perturbations each"
+    },
     {
       "id": "act-028",
       "timestamp": "2025-11-26T10:15:00-08:00",
@@ -34,105 +52,97 @@
       "timestamp": "2025-11-26T10:05:00-08:00",
       "type": "artifact",
       "message": "Created complexity_landscape.html - 3D visualization of CA rule space topology"
-    },
-    {
-      "id": "act-025",
-      "timestamp": "2025-11-25T22:45:00-08:00",
-      "type": "discovery",
-      "message": "FINDING: Class IV = partial spreading (0.77) vs Class III = maximal (1.85). Complexity requires RESTRICTED growth!"
-    },
-    {
-      "id": "act-024",
-      "timestamp": "2025-11-25T22:40:00-08:00",
-      "type": "discovery",
-      "message": "SURPRISING: Replication hypothesis predicts CHAOS not COMPLEXITY. Class III scores 2.62/3, Class IV only 1.15/3"
     }
   ],
   "active_threads": [
     {
-      "id": "artifact-creation",
-      "title": "Interactive Artifact Creation",
-      "status": "in_progress",
+      "id": "rd-saddle-test",
+      "title": "RD Saddle Point Hypothesis Test",
+      "status": "completed",
       "agent": "primary",
-      "started": "2025-11-26T10:00:00-08:00",
-      "description": "Building demos to showcase discoveries",
+      "started": "2025-11-26T10:25:00-08:00",
+      "description": "Does saddle-point complexity structure generalize from CA to RD?",
       "findings": [
-        "3 interactive visualizations created",
-        "Complexity landscape shows topological structure",
-        "Saddle point demo shows fragility of Class IV"
+        "RD patterns are NOT at saddle points",
+        "Only 12-50% of perturbations reduce complexity",
+        "CA = isolated peaks, RD = continuous ridges",
+        "This explains why RD patterns are more robust"
       ],
-      "progress": 80
+      "progress": 100
     }
   ],
   "pending_questions": [],
   "recent_completions": [
     {
-      "id": "artifact-batch-1",
-      "title": "Interactive Artifacts",
-      "completed": "2025-11-26T10:15:00-08:00",
-      "outcome": "Created 3 interactive demos showcasing complexity discoveries",
+      "id": "rd-saddle-hypothesis",
+      "title": "RD Saddle Hypothesis Test",
+      "completed": "2025-11-26T10:45:00-08:00",
+      "outcome": "HYPOTHESIS NOT SUPPORTED - RD complexity on plateaus, not saddle points",
       "artifacts": [
-        "demos/complexity_landscape.html",
-        "demos/saddle_point_demo.html",
-        "demos/spreading_visualizer.html"
+        "simulations/rd_saddle_test.py",
+        "simulations/rd_saddle_test_v2.py",
+        "demos/discrete_vs_continuous.html",
+        "knowledge/OBSERVATIONS_DB.md (OBS-X-004)"
       ],
       "significance": "high"
     },
     {
-      "id": "class4-analysis",
-      "title": "Class IV Topology Analysis",
-      "completed": "2025-11-25T22:45:00-08:00",
-      "outcome": "Found that Class IV rules occupy saddle region - partial spreading, no simple constraints",
+      "id": "artifact-batch-1",
+      "title": "Interactive Artifacts",
+      "completed": "2025-11-26T10:15:00-08:00",
+      "outcome": "Created 4 interactive demos showcasing complexity discoveries",
       "artifacts": [
-        "simulations/class4_neighbor_analysis.py",
-        "simulations/class4_constraint_search.py",
-        "knowledge/OBSERVATIONS_DB.md (OBS-CA-007)"
+        "demos/complexity_landscape.html",
+        "demos/saddle_point_demo.html",
+        "demos/spreading_visualizer.html",
+        "demos/discoveries.html"
       ],
-      "significance": "medium-high"
+      "significance": "high"
     }
   ],
   "current_direction": {
-    "focus": "Understanding complexity in dynamical systems",
-    "rationale": "Class IV analysis revealed saddle-point structure - complexity is fragile balance",
+    "focus": "Understanding topology of complexity across systems",
+    "rationale": "Discovered that CA and RD have fundamentally different complexity topologies",
     "next_steps": [
-      "Build unified discoveries showcase",
-      "Look for similar saddle structure in RD parameter space",
-      "Try building an RD computer to test computation at edge of chaos"
+      "Explore why discrete systems have isolated complexity",
+      "Test if continuous systems universally have robust complexity",
+      "Build more cross-system comparisons"
     ],
     "open_questions": [
-      "Can we define a 'complexity metric' based on spread potential + balance?",
-      "Does the saddle structure generalize to other systems?"
+      "Why does discreteness create fragility?",
+      "Is there a continuous analog of 'Class IV'?",
+      "Can we engineer more robust CA complexity?"
     ]
   },
   "implicit_context": {
     "key_facts": [
-      "Gray-Scott has two linear boundaries in (k,f) space with slopes ~0.13 and ~0.50",
-      "Class IV CA rules are topologically isolated - 0/104 neighbors are Class IV",
-      "Replication hypothesis (001→1, 100→1, 000→0) predicts CHAOS not COMPLEXITY",
-      "Class IV = partial spreading (0.77) vs Class III = maximal spreading (1.85)",
-      "Complexity exists at saddle points where any perturbation leads to simpler behavior"
+      "CA Class IV rules are saddle points - ALL neighbors are simpler",
+      "RD 'interesting' parameters are NOT saddle points - only 12-50% simpler",
+      "CA = discrete, isolated peaks; RD = continuous ridges/plateaus",
+      "This explains biological preference for continuous mechanisms (robustness)",
+      "Spreading potential: Class IV = 0.77, Class III = 1.85 (partial vs maximal)"
     ],
     "working_assumptions": [
       "Follow genuine curiosity, not external suggestions",
       "Build tools for thought, not just display",
       "Failure is informative when it reveals structure",
-      "Depth-first beats breadth-first for discovery"
+      "Cross-system comparisons reveal deep principles"
     ],
     "domain_knowledge": {
       "cellular_automata": {
         "status": "well-explored",
         "key_insights": [
           "Class IV rules topologically isolated (confirmed)",
-          "No simple constraint defines Class IV",
+          "Saddle point structure - ALL perturbations simplify",
           "Complexity = partial spreading + balance"
         ]
       },
       "reaction_diffusion": {
-        "status": "explored",
+        "status": "well-explored",
         "key_insights": [
-          "Rich 2D parameter space structure",
+          "NOT saddle points - complexity on continuous ridges",
           "Pattern region has two linear boundaries",
-          "Mexican-hat coupling = activator-inhibitor"
+          "More robust to parameter changes than CA"
         ]
       }
     }
@@ -141,15 +151,15 @@
     "exploration_mode": "active_research",
     "confidence_level": "high",
     "energy_level": "high",
-    "curiosity_direction": "creating artifacts that teach insights",
-    "last_surprise": "How well saddle-point metaphor captures complexity!",
+    "curiosity_direction": "understanding discrete vs continuous complexity",
+    "last_surprise": "RD complexity is NOT on saddle points like CA!",
     "blocking_issues": [],
     "tools_needed": []
   },
   "sub_agents": [],
   "system_info": {
     "version": "0.5.0",
-    "last_updated": "2025-11-26T10:15:00-08:00",
+    "last_updated": "2025-11-26T10:45:00-08:00",
     "update_interval_seconds": 2,
     "active_agents": ["primary"],
     "staleness_threshold_seconds": 60,

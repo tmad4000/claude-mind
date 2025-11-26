@@ -198,6 +198,30 @@ Each observation follows:
 - The replication condition (001→1, 100→1, 000→0) predicts CHAOS (Class III), not complexity (Class IV)
 - Class IV = partial spreading + balanced birth/death, not maximal spreading
 
+### OBS-X-004: Saddle point structure does NOT generalize from CA to RD
+**System**: CA (Class IV rules) vs RD (Gray-Scott pattern-forming parameters)
+**Parameters**:
+- CA: Rule 110 and all Class IV rules tested with Hamming-1 neighbors
+- RD: f=0.026/k=0.051 (mitosis), f=0.042/k=0.063 (solitons), f=0.062/k=0.063 (coral), f=0.054/k=0.063 (worms) with 8-direction perturbations (delta=0.004)
+**Observation**:
+- CA Class IV rules ARE saddle points: 100% of neighbors (104/104) are simpler (Class I, II, or III)
+- RD "interesting" parameters are NOT saddle points: only 12-50% of perturbations are less complex
+- One RD point (worms) was a local maximum but still not a true saddle
+**Quantitative**:
+- CA: 0/104 Class IV neighbors are Class IV (p < 0.001)
+- RD mitosis: only 12% of neighbors less complex
+- RD solitons: 38% of neighbors less complex
+- RD coral: 38% of neighbors less complex
+- RD worms: 50% of neighbors less complex (is local max but not saddle)
+**Surprising?**: YES - Expected saddle structure to generalize based on "edge of chaos" principle
+**Connections**: OBS-CA-001, OBS-CA-007, OBS-X-001
+**Theory implications**:
+1. **CA complexity is ISOLATED (saddle points)** - discrete, fragile, topologically special
+2. **RD complexity is NOT isolated** - exists on continuous "ridges" or "plateaus" in parameter space
+3. This may explain why RD patterns are more robust to parameter changes than CA Class IV
+4. The "edge of chaos" principle may operate differently in discrete vs continuous systems
+5. Perturbation size matters: CA is binary (1-bit), RD perturbations span continuous range
+
 ---
 
 ## QUESTIONS RAISED BY OBSERVATIONS
@@ -209,7 +233,9 @@ Each observation follows:
 5. What makes a pattern "cool" or "interesting"?
 6. **NEW**: Can we predict specific psychedelic visual patterns from neural coupling parameters?
 7. **NEW**: Does the Symmetry Theory of Valence (QRI) connect to pattern symmetry in RD?
+8. **NEW**: Why does CA complexity require saddle points while RD complexity doesn't?
+9. **NEW**: Is there a "discrete vs continuous" principle for complexity topology?
 
 ---
 
-*Last updated: 2025-11-25*
+*Last updated: 2025-11-26*

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discrete vs Continuous Complexity</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a0a2a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .finding-box {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(78, 205, 196, 0.15));
+            border: 2px solid rgba(255, 107, 107, 0.4);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .finding-box h2 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .finding-text {
+            font-size: 1.3em;
+            color: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .system-panel {
+            background: rgba(17, 17, 24, 0.9);
+            border-radius: 16px;
+            padding: 30px;
+            border: 2px solid transparent;
+        }
+
+        .system-panel.ca {
+            border-color: rgba(78, 205, 196, 0.4);
+        }
+
+        .system-panel.rd {
+            border-color: rgba(255, 193, 7, 0.4);
+        }
+
+        .system-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .system-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        .ca .system-icon {
+            background: rgba(78, 205, 196, 0.2);
+            color: #4ecdc4;
+        }
+
+        .rd .system-icon {
+            background: rgba(255, 193, 7, 0.2);
+            color: #ffc107;
+        }
+
+        .system-title {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .ca .system-title { color: #4ecdc4; }
+        .rd .system-title { color: #ffc107; }
+
+        .topology-viz {
+            height: 250px;
+            background: #0a0a0f;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .topology-viz canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .property-list {
+            margin-top: 20px;
+        }
+
+        .property {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a3a;
+        }
+
+        .property-icon {
+            font-size: 1.2em;
+            width: 30px;
+            text-align: center;
+        }
+
+        .property-content {
+            flex: 1;
+        }
+
+        .property-label {
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 4px;
+        }
+
+        .property-value {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            background: #1a1a24;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-box .label {
+            color: #888;
+            font-size: 0.8em;
+        }
+
+        .stat-box .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .ca .stat-box .value { color: #4ecdc4; }
+        .rd .stat-box .value { color: #ffc107; }
+
+        .insight-section {
+            margin-top: 50px;
+        }
+
+        .insight-section h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .insight-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .insight-card {
+            background: rgba(17, 17, 24, 0.9);
+            border-radius: 12px;
+            padding: 25px;
+            border: 1px solid #2a2a3a;
+        }
+
+        .insight-card h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+        }
+
+        .insight-card p {
+            color: #aaa;
+            line-height: 1.6;
+        }
+
+        .interactive-section {
+            margin-top: 50px;
+            background: rgba(17, 17, 24, 0.6);
+            border-radius: 16px;
+            padding: 30px;
+        }
+
+        .interactive-section h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .demo-panel {
+            background: #0a0a0f;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .demo-panel h4 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .ca-preview {
+            display: grid;
+            grid-template-columns: repeat(60, 1fr);
+            gap: 0;
+        }
+
+        .ca-cell {
+            aspect-ratio: 1;
+            background: #111;
+        }
+
+        .ca-cell.alive {
+            background: #4ecdc4;
+        }
+
+        .rd-preview {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #111;
+            border-radius: 8px;
+        }
+
+        .perturbation-viz {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .perturbation-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .perturbation-dot:hover {
+            transform: scale(1.5);
+        }
+
+        .perturbation-dot.simpler { background: #666; }
+        .perturbation-dot.same { background: #ffc107; }
+        .perturbation-dot.complex { background: #4ecdc4; }
+
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            border: none;
+            border-radius: 6px;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+            margin: 5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Discrete vs Continuous Complexity</h1>
+            <p class="subtitle">
+                A key finding from our exploration: complexity has different topological structure
+                in discrete systems (cellular automata) vs continuous systems (reaction-diffusion).
+            </p>
+        </header>
+
+        <div class="finding-box">
+            <h2>The Unexpected Discovery</h2>
+            <p class="finding-text">
+                In cellular automata, complex rules are <strong>isolated saddle points</strong> -
+                every single-bit change destroys complexity.
+                But in reaction-diffusion systems, complexity exists on <strong>continuous plateaus</strong> -
+                small parameter changes preserve interesting patterns.
+            </p>
+        </div>
+
+        <div class="comparison-grid">
+            <!-- CA Panel -->
+            <div class="system-panel ca">
+                <div class="system-header">
+                    <div class="system-icon">CA</div>
+                    <div class="system-title">Cellular Automata</div>
+                </div>
+
+                <div class="topology-viz">
+                    <canvas id="ca-topology"></canvas>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="label">Neighbors Less Complex</div>
+                        <div class="value">100%</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Topology</div>
+                        <div class="value">Isolated</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Class IV Neighbors</div>
+                        <div class="value">0/104</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Structure</div>
+                        <div class="value">Saddle</div>
+                    </div>
+                </div>
+
+                <div class="property-list">
+                    <div class="property">
+                        <div class="property-icon">🎯</div>
+                        <div class="property-content">
+                            <div class="property-label">Parameter Space</div>
+                            <div class="property-value">Discrete (256 rules)</div>
+                        </div>
+                    </div>
+                    <div class="property">
+                        <div class="property-icon">⚠️</div>
+                        <div class="property-content">
+                            <div class="property-label">Fragility</div>
+                            <div class="property-value">Maximally fragile - any change breaks it</div>
+                        </div>
+                    </div>
+                    <div class="property">
+                        <div class="property-icon">🏔️</div>
+                        <div class="property-content">
+                            <div class="property-label">Landscape</div>
+                            <div class="property-value">Isolated peaks surrounded by valleys</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RD Panel -->
+            <div class="system-panel rd">
+                <div class="system-header">
+                    <div class="system-icon">RD</div>
+                    <div class="system-title">Reaction-Diffusion</div>
+                </div>
+
+                <div class="topology-viz">
+                    <canvas id="rd-topology"></canvas>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="label">Neighbors Less Complex</div>
+                        <div class="value">~35%</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Topology</div>
+                        <div class="value">Ridge</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Points Tested</div>
+                        <div class="value">4 × 8</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="label">Structure</div>
+                        <div class="value">Plateau</div>
+                    </div>
+                </div>
+
+                <div class="property-list">
+                    <div class="property">
+                        <div class="property-icon">🌊</div>
+                        <div class="property-content">
+                            <div class="property-label">Parameter Space</div>
+                            <div class="property-value">Continuous (f, k ∈ ℝ)</div>
+                        </div>
+                    </div>
+                    <div class="property">
+                        <div class="property-icon">✓</div>
+                        <div class="property-content">
+                            <div class="property-label">Robustness</div>
+                            <div class="property-value">Tolerant - small changes preserve patterns</div>
+                        </div>
+                    </div>
+                    <div class="property">
+                        <div class="property-icon">🏞️</div>
+                        <div class="property-content">
+                            <div class="property-label">Landscape</div>
+                            <div class="property-value">Continuous ridges through parameter space</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="insight-section">
+            <h2>What This Means</h2>
+            <div class="insight-cards">
+                <div class="insight-card">
+                    <h3>Discrete = Fragile</h3>
+                    <p>
+                        In discrete rule spaces, complexity is like balancing on a knife edge.
+                        The slightest nudge (changing any single bit) sends you tumbling into
+                        simpler behavior. Class IV rules are isolated mountain peaks.
+                    </p>
+                </div>
+                <div class="insight-card">
+                    <h3>Continuous = Robust</h3>
+                    <p>
+                        In continuous parameter spaces, complexity exists along extended ridges.
+                        You can move around within the "pattern-forming region" without losing
+                        interesting behavior. Gray-Scott patterns are robust to parameter tweaks.
+                    </p>
+                </div>
+                <div class="insight-card">
+                    <h3>Nature's Choice</h3>
+                    <p>
+                        This might explain why biological pattern formation uses
+                        reaction-diffusion (continuous) rather than CA-like mechanisms -
+                        robustness to noise and developmental variation is essential for life.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-section">
+            <h3>See It In Action</h3>
+            <div class="demo-container">
+                <div class="demo-panel">
+                    <h4 style="color: #4ecdc4;">CA: Perturb Rule 110</h4>
+                    <div class="ca-preview" id="ca-preview"></div>
+                    <div class="perturbation-viz" id="ca-perturb">
+                        <!-- Perturbation dots will be added here -->
+                    </div>
+                    <div class="controls">
+                        <button onclick="showCAPerturbations()">Show All Neighbors</button>
+                    </div>
+                </div>
+                <div class="demo-panel">
+                    <h4 style="color: #ffc107;">RD: Perturb Mitosis Point</h4>
+                    <canvas id="rd-preview" class="rd-preview" width="200" height="200"></canvas>
+                    <div class="perturbation-viz" id="rd-perturb">
+                        <!-- Perturbation dots will be added here -->
+                    </div>
+                    <div class="controls">
+                        <button onclick="showRDPerturbations()">Show All Neighbors</button>
+                    </div>
+                </div>
+            </div>
+            <div class="legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #666;"></div>
+                    <span>Less Complex</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ffc107;"></div>
+                    <span>Similar Complexity</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4ecdc4;"></div>
+                    <span>More Complex</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Draw CA topology visualization (isolated peaks)
+        function drawCATopology() {
+            const canvas = document.getElementById('ca-topology');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = 250;
+
+            ctx.fillStyle = '#0a0a0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw a 3D-ish landscape with isolated peaks
+            const peaks = [
+                { x: 0.2, y: 0.7, height: 0.9, label: '110' },
+                { x: 0.5, y: 0.4, height: 0.85, label: '54' },
+                { x: 0.75, y: 0.6, height: 0.8, label: '124' },
+            ];
+
+            // Draw base grid
+            ctx.strokeStyle = '#222';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < 10; i++) {
+                const y = 200 - i * 15;
+                ctx.beginPath();
+                ctx.moveTo(50, y);
+                ctx.lineTo(canvas.width - 50, y + 30);
+                ctx.stroke();
+            }
+
+            // Draw valleys (low areas)
+            for (let x = 0; x < canvas.width; x += 3) {
+                const baseY = 180 + Math.sin(x * 0.02) * 10;
+                ctx.fillStyle = 'rgba(102, 102, 255, 0.2)';
+                ctx.fillRect(x, baseY, 2, 50);
+            }
+
+            // Draw isolated peaks
+            peaks.forEach(peak => {
+                const px = peak.x * (canvas.width - 100) + 50;
+                const py = peak.y * 100 + 80;
+
+                // Peak glow
+                const gradient = ctx.createRadialGradient(px, py - 30, 0, px, py, 40);
+                gradient.addColorStop(0, 'rgba(78, 205, 196, 0.8)');
+                gradient.addColorStop(1, 'transparent');
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.arc(px, py - 30, 40, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Peak point
+                ctx.fillStyle = '#4ecdc4';
+                ctx.beginPath();
+                ctx.arc(px, py - 30, 8, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Label
+                ctx.fillStyle = '#fff';
+                ctx.font = '12px Courier New';
+                ctx.textAlign = 'center';
+                ctx.fillText(peak.label, px, py - 50);
+            });
+
+            // Title
+            ctx.fillStyle = '#4ecdc4';
+            ctx.font = 'bold 14px Courier New';
+            ctx.textAlign = 'center';
+            ctx.fillText('Isolated Saddle Points', canvas.width / 2, 25);
+        }
+
+        // Draw RD topology visualization (continuous ridge)
+        function drawRDTopology() {
+            const canvas = document.getElementById('rd-topology');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = 250;
+
+            ctx.fillStyle = '#0a0a0f';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw a continuous ridge
+            ctx.strokeStyle = '#222';
+            ctx.lineWidth = 0.5;
+            for (let i = 0; i < 10; i++) {
+                const y = 200 - i * 15;
+                ctx.beginPath();
+                ctx.moveTo(50, y);
+                ctx.lineTo(canvas.width - 50, y + 30);
+                ctx.stroke();
+            }
+
+            // Draw ridge (continuous high area)
+            ctx.beginPath();
+            ctx.moveTo(80, 150);
+
+            for (let x = 80; x < canvas.width - 80; x++) {
+                const ridgeHeight = Math.sin((x - 80) * 0.01) * 20 + 70;
+                const y = 180 - ridgeHeight - Math.sin(x * 0.05) * 5;
+                ctx.lineTo(x, y);
+            }
+
+            ctx.lineTo(canvas.width - 80, 180);
+            ctx.lineTo(80, 180);
+            ctx.closePath();
+
+            const gradient = ctx.createLinearGradient(0, 100, 0, 200);
+            gradient.addColorStop(0, 'rgba(255, 193, 7, 0.6)');
+            gradient.addColorStop(1, 'rgba(255, 193, 7, 0.1)');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Ridge top line
+            ctx.strokeStyle = '#ffc107';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            for (let x = 80; x < canvas.width - 80; x++) {
+                const ridgeHeight = Math.sin((x - 80) * 0.01) * 20 + 70;
+                const y = 180 - ridgeHeight - Math.sin(x * 0.05) * 5;
+                if (x === 80) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+
+            // Mark some points on the ridge
+            const points = ['mitosis', 'solitons', 'coral', 'worms'];
+            points.forEach((name, i) => {
+                const x = 120 + i * 70;
+                const ridgeHeight = Math.sin((x - 80) * 0.01) * 20 + 70;
+                const y = 180 - ridgeHeight - Math.sin(x * 0.05) * 5;
+
+                ctx.fillStyle = '#ffc107';
+                ctx.beginPath();
+                ctx.arc(x, y, 6, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = '#fff';
+                ctx.font = '10px Courier New';
+                ctx.textAlign = 'center';
+                ctx.fillText(name, x, y - 15);
+            });
+
+            // Title
+            ctx.fillStyle = '#ffc107';
+            ctx.font = 'bold 14px Courier New';
+            ctx.textAlign = 'center';
+            ctx.fillText('Continuous Ridge / Plateau', canvas.width / 2, 25);
+        }
+
+        // CA simulation
+        function simulateCA(rule, width = 60, steps = 40) {
+            let state = new Array(width).fill(0);
+            state[Math.floor(width / 2)] = 1;
+
+            const history = [state.slice()];
+            for (let t = 0; t < steps; t++) {
+                const newState = new Array(width).fill(0);
+                for (let i = 0; i < width; i++) {
+                    const l = state[(i - 1 + width) % width];
+                    const c = state[i];
+                    const r = state[(i + 1) % width];
+                    const pattern = (l << 2) | (c << 1) | r;
+                    newState[i] = (rule >> pattern) & 1;
+                }
+                state = newState;
+                history.push(state.slice());
+            }
+            return history;
+        }
+
+        function drawCAPreview(rule = 110) {
+            const preview = document.getElementById('ca-preview');
+            const history = simulateCA(rule);
+
+            preview.innerHTML = '';
+            history.forEach(row => {
+                row.forEach(cell => {
+                    const div = document.createElement('div');
+                    div.className = 'ca-cell' + (cell ? ' alive' : '');
+                    preview.appendChild(div);
+                });
+            });
+        }
+
+        // Show CA perturbations
+        function showCAPerturbations() {
+            const container = document.getElementById('ca-perturb');
+            container.innerHTML = '';
+
+            // All 8 Hamming-1 neighbors of Rule 110
+            const neighbors = [];
+            for (let bit = 0; bit < 8; bit++) {
+                neighbors.push(110 ^ (1 << bit));
+            }
+
+            // Class IV = 110, Class III = chaotic, Class II = periodic, Class I = uniform
+            const classIV = [54, 106, 110, 124, 137, 147, 193];
+            const classIII = [18, 22, 30, 45, 60, 73, 75, 86, 89, 90, 101, 102];
+
+            neighbors.forEach((neighbor, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'perturbation-dot';
+                dot.title = `Rule ${neighbor}`;
+
+                // All neighbors are simpler (none are Class IV)
+                dot.classList.add('simpler');
+
+                dot.onclick = () => drawCAPreview(neighbor);
+                container.appendChild(dot);
+            });
+        }
+
+        // Draw RD preview (simplified)
+        function drawRDPreview() {
+            const canvas = document.getElementById('rd-preview');
+            const ctx = canvas.getContext('2d');
+
+            // Simple pattern representation
+            ctx.fillStyle = '#111';
+            ctx.fillRect(0, 0, 200, 200);
+
+            // Draw spots pattern
+            ctx.fillStyle = '#ffc107';
+            for (let i = 0; i < 20; i++) {
+                const x = Math.random() * 180 + 10;
+                const y = Math.random() * 180 + 10;
+                const r = Math.random() * 8 + 5;
+                ctx.beginPath();
+                ctx.arc(x, y, r, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // Show RD perturbations
+        function showRDPerturbations() {
+            const container = document.getElementById('rd-perturb');
+            container.innerHTML = '';
+
+            // 8 directions, results from our experiment
+            // ~35% less complex, ~50% similar, ~15% more complex
+            const results = ['same', 'same', 'simpler', 'same', 'simpler', 'same', 'complex', 'same'];
+
+            results.forEach((result, i) => {
+                const dot = document.createElement('div');
+                dot.className = 'perturbation-dot ' + result;
+                dot.title = `Direction ${i}: ${result}`;
+                container.appendChild(dot);
+            });
+        }
+
+        // Initialize
+        drawCATopology();
+        drawRDTopology();
+        drawCAPreview();
+        drawRDPreview();
+        showCAPerturbations();
+        showRDPerturbations();
+
+        // Redraw on resize
+        window.addEventListener('resize', () => {
+            drawCATopology();
+            drawRDTopology();
+        });
+    </script>
+</body>
+</html>

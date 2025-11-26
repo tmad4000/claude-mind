@@ -1,0 +1,636 @@
+{
+  "experiment": "rd_saddle_hypothesis_test_v2",
+  "timestamp": "2025-11-26T12:23:02.157172",
+  "hypothesis": "Interesting RD parameters are saddle points in complexity space",
+  "results": {
+    "mitosis": {
+      "point": {
+        "name": "mitosis",
+        "f": 0.026,
+        "k": 0.051
+      },
+      "perturbation_results": [
+        {
+          "f": 0.026,
+          "k": 0.051,
+          "direction": "center",
+          "pattern_strength": 0.15502875071045258,
+          "autocorrelation": 0.5683809149195921,
+          "entropy": -10.271866753879884,
+          "edge_density": 0.005806435979807042,
+          "complexity": -0.09296945531264758,
+          "v_std": 0.035401315124197676,
+          "v_range": 0.3012716566113847,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.03,
+          "k": 0.051,
+          "direction": "angle_0",
+          "pattern_strength": 1.4780933437899265e-15,
+          "autocorrelation": 0.04568505318272685,
+          "entropy": 0.0,
+          "edge_density": 2.0005564522019867e-16,
+          "complexity": 2.025803190602325e-18,
+          "v_std": 3.7205145592477664e-16,
+          "v_range": 1.9984014443252818e-15,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.02882842712474619,
+          "k": 0.053828427124746184,
+          "direction": "angle_45",
+          "pattern_strength": 0.22246847141720746,
+          "autocorrelation": 0.03660945671174959,
+          "entropy": -5.030183722055405,
+          "edge_density": 0.019015252734349702,
+          "complexity": -0.004585032169804842,
+          "v_std": 0.045463107636119736,
+          "v_range": 0.2010552773974408,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.026,
+          "k": 0.05499999999999999,
+          "direction": "angle_90",
+          "pattern_strength": 0.5591442059736489,
+          "autocorrelation": 0.18247141002185077,
+          "entropy": -3.2347445249963043,
+          "edge_density": 0.042083537506055486,
+          "complexity": -0.042543451364883376,
+          "v_std": 0.0932487272548047,
+          "v_range": 0.3385884425130132,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.02317157287525381,
+          "k": 0.053828427124746184,
+          "direction": "angle_135",
+          "pattern_strength": 0.5932582664972867,
+          "autocorrelation": 0.34178039449153613,
+          "entropy": -2.788994718700501,
+          "edge_density": 0.041846722264071434,
+          "complexity": -0.07158701024967368,
+          "v_std": 0.09512531259139792,
+          "v_range": 0.3551424767243838,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.022,
+          "k": 0.051,
+          "direction": "angle_180",
+          "pattern_strength": 0.4815346190671924,
+          "autocorrelation": 0.12519438323057738,
+          "entropy": -2.025941675032061,
+          "edge_density": 0.03397824327905812,
+          "complexity": -0.013940320376927873,
+          "v_std": 0.08059347722574417,
+          "v_range": 0.32064788053014504,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.02317157287525381,
+          "k": 0.04817157287525381,
+          "direction": "angle_225",
+          "pattern_strength": 0.18463906555499462,
+          "autocorrelation": 0.44367187733805263,
+          "entropy": -13.603047789059225,
+          "edge_density": 0.009556438580707533,
+          "complexity": -0.1193918143422204,
+          "v_std": 0.04248299105639928,
+          "v_range": 0.41209798819241467,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.026,
+          "k": 0.047,
+          "direction": "angle_270",
+          "pattern_strength": 1.2770596067322707e-15,
+          "autocorrelation": 0.857888250871811,
+          "entropy": 0.0,
+          "edge_density": 4.6303618206706124e-17,
+          "complexity": 3.286723296835773e-17,
+          "v_std": 3.252266604916302e-16,
+          "v_range": 1.6653345369377348e-15,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.02882842712474619,
+          "k": 0.0481715728752538,
+          "direction": "angle_315",
+          "pattern_strength": 1.822395234719857e-16,
+          "autocorrelation": 0.18230318802862722,
+          "entropy": 0.0,
+          "edge_density": 3.401750310398199e-17,
+          "complexity": 9.966853834128255e-19,
+          "v_std": 4.86633687656182e-17,
+          "v_range": 2.7755575615628914e-16,
+          "pattern_type": "uniform"
+        }
+      ],
+      "analysis": {
+        "center_complexity": -0.09296945531264758,
+        "center_type": "transitional",
+        "mean_neighbor_complexity": -0.03150595356293877,
+        "num_perturbations": 8,
+        "less_complex_count": 1,
+        "fraction_less_complex": 0.125,
+        "is_local_max": "False",
+        "is_saddle": false,
+        "perturbation_complexities": [
+          2.025803190602325e-18,
+          -0.004585032169804842,
+          -0.042543451364883376,
+          -0.07158701024967368,
+          -0.013940320376927873,
+          -0.1193918143422204,
+          3.286723296835773e-17,
+          9.966853834128255e-19
+        ],
+        "perturbation_types": [
+          "uniform",
+          "transitional",
+          "noise",
+          "transitional",
+          "transitional",
+          "transitional",
+          "uniform",
+          "uniform"
+        ]
+      }
+    },
+    "solitons": {
+      "point": {
+        "name": "solitons",
+        "f": 0.042,
+        "k": 0.063
+      },
+      "perturbation_results": [
+        {
+          "f": 0.042,
+          "k": 0.063,
+          "direction": "center",
+          "pattern_strength": 0.7638554793424556,
+          "autocorrelation": 0.18265796768216985,
+          "entropy": -2.934219693359092,
+          "edge_density": 0.057692004525633715,
+          "complexity": -0.057957745770419795,
+          "v_std": 0.12133331911632854,
+          "v_range": 0.39382529334418437,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.046,
+          "k": 0.063,
+          "direction": "angle_0",
+          "pattern_strength": 0.7457644831009868,
+          "autocorrelation": 0.20890985254162295,
+          "entropy": -2.991206766003213,
+          "edge_density": 0.05801378565676737,
+          "complexity": -0.06625255979842898,
+          "v_std": 0.1255350850975881,
+          "v_range": 0.40729619038287934,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.04482842712474619,
+          "k": 0.0658284271247462,
+          "direction": "angle_45",
+          "pattern_strength": 1.378922354609984,
+          "autocorrelation": 0.0492597037130896,
+          "entropy": -12.9872668436974,
+          "edge_density": 0.04285455268814361,
+          "complexity": -0.12311012363778999,
+          "v_std": 0.1227399298315611,
+          "v_range": 0.41449820784616825,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.042,
+          "k": 0.067,
+          "direction": "angle_90",
+          "pattern_strength": 0.0,
+          "autocorrelation": NaN,
+          "entropy": 0.0,
+          "edge_density": 0.0,
+          "complexity": NaN,
+          "v_std": 0.0,
+          "v_range": 0.0,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.039171572875253816,
+          "k": 0.0658284271247462,
+          "direction": "angle_135",
+          "pattern_strength": 1.7524135148285038,
+          "autocorrelation": 0.1501574338496436,
+          "entropy": -21.39532881880369,
+          "edge_density": 0.028485631399085186,
+          "complexity": -0.7132212821958582,
+          "v_std": 0.10537375269460514,
+          "v_range": 0.40799861010389615,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.038000000000000006,
+          "k": 0.063,
+          "direction": "angle_180",
+          "pattern_strength": 0.8274126123612082,
+          "autocorrelation": 0.09107056371717634,
+          "entropy": -3.1932282922905415,
+          "edge_density": 0.056995180674200674,
+          "complexity": -0.03422702765186085,
+          "v_std": 0.1183014856573803,
+          "v_range": 0.3859709836555566,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.03917157287525381,
+          "k": 0.06017157287525381,
+          "direction": "angle_225",
+          "pattern_strength": 0.5856148259588106,
+          "autocorrelation": 0.06113097961552359,
+          "entropy": -2.6899965022200165,
+          "edge_density": 0.05138668726055213,
+          "complexity": -0.01295264221799773,
+          "v_std": 0.1087771822684518,
+          "v_range": 0.35998922049112253,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.042,
+          "k": 0.059,
+          "direction": "angle_270",
+          "pattern_strength": 0.3783075588297771,
+          "autocorrelation": 0.12408592312486252,
+          "entropy": -4.581767992204596,
+          "edge_density": 0.03572303346099329,
+          "complexity": -0.027279991072507587,
+          "v_std": 0.08482703737343414,
+          "v_range": 0.3177675025933428,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.04482842712474619,
+          "k": 0.060171572875253806,
+          "direction": "angle_315",
+          "pattern_strength": 0.4909052908956101,
+          "autocorrelation": 0.08766859649390531,
+          "entropy": -2.148913172302505,
+          "edge_density": 0.04746804381581805,
+          "complexity": -0.011734273396390014,
+          "v_std": 0.10431342297498722,
+          "v_range": 0.3437815140787279,
+          "pattern_type": "transitional"
+        }
+      ],
+      "analysis": {
+        "center_complexity": -0.057957745770419795,
+        "center_type": "noise",
+        "mean_neighbor_complexity": NaN,
+        "num_perturbations": 8,
+        "less_complex_count": 3,
+        "fraction_less_complex": 0.375,
+        "is_local_max": "False",
+        "is_saddle": false,
+        "perturbation_complexities": [
+          -0.06625255979842898,
+          -0.12311012363778999,
+          NaN,
+          -0.7132212821958582,
+          -0.03422702765186085,
+          -0.01295264221799773,
+          -0.027279991072507587,
+          -0.011734273396390014
+        ],
+        "perturbation_types": [
+          "noise",
+          "noise",
+          "uniform",
+          "noise",
+          "noise",
+          "noise",
+          "transitional",
+          "transitional"
+        ]
+      }
+    },
+    "coral": {
+      "point": {
+        "name": "coral",
+        "f": 0.062,
+        "k": 0.063
+      },
+      "perturbation_results": [
+        {
+          "f": 0.062,
+          "k": 0.063,
+          "direction": "center",
+          "pattern_strength": 1.1088731699709526,
+          "autocorrelation": 0.23679988315349995,
+          "entropy": -10.714838103027226,
+          "edge_density": 0.04473335467626884,
+          "complexity": -0.39580794820484116,
+          "v_std": 0.14833091855882052,
+          "v_range": 0.4209190680547204,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.066,
+          "k": 0.063,
+          "direction": "angle_0",
+          "pattern_strength": 1.826797900471374,
+          "autocorrelation": 0.44731518073281645,
+          "entropy": -25.648614209301012,
+          "edge_density": 0.024201411513924753,
+          "complexity": -2.5726748107235062,
+          "v_std": 0.127779452643387,
+          "v_range": 0.4057047616238375,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.0648284271247462,
+          "k": 0.0658284271247462,
+          "direction": "angle_45",
+          "pattern_strength": 5.712132498512605,
+          "autocorrelation": 0.2428360565658778,
+          "entropy": -45.954001689840524,
+          "edge_density": 0.0037429643810047764,
+          "complexity": -6.56975158769263,
+          "v_std": 0.04423496767854612,
+          "v_range": 0.45036145400488503,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.062,
+          "k": 0.067,
+          "direction": "angle_90",
+          "pattern_strength": 0.0,
+          "autocorrelation": NaN,
+          "entropy": 0.0,
+          "edge_density": 0.0,
+          "complexity": NaN,
+          "v_std": 0.0,
+          "v_range": 0.0,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.05917157287525381,
+          "k": 0.0658284271247462,
+          "direction": "angle_135",
+          "pattern_strength": 5.349630200834675,
+          "autocorrelation": 0.30322788879373025,
+          "entropy": -45.95449554229833,
+          "edge_density": 0.00389401548940411,
+          "complexity": -7.694262248998626,
+          "v_std": 0.046412155601888834,
+          "v_range": 0.4178654930305228,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.057999999999999996,
+          "k": 0.063,
+          "direction": "angle_180",
+          "pattern_strength": 0.7460180168938515,
+          "autocorrelation": 0.048675988586622115,
+          "entropy": -3.3051154317273577,
+          "edge_density": 0.06026186572116173,
+          "complexity": -0.017488616313078388,
+          "v_std": 0.13855670836294012,
+          "v_range": 0.4322112268707274,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.059171572875253806,
+          "k": 0.06017157287525381,
+          "direction": "angle_225",
+          "pattern_strength": 2.1990768938309306e-15,
+          "autocorrelation": 0.8758927026915523,
+          "entropy": 0.0,
+          "edge_density": 7.87839084330861e-17,
+          "complexity": 5.778466211892358e-17,
+          "v_std": 6.524907850793724e-16,
+          "v_range": 2.1094237467877974e-15,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.062,
+          "k": 0.059,
+          "direction": "angle_270",
+          "pattern_strength": 1.3606773858064875e-15,
+          "autocorrelation": 0.765826109105346,
+          "entropy": 0.0,
+          "edge_density": 8.515138840659269e-17,
+          "complexity": 3.126126804359451e-17,
+          "v_std": 4.3202977756717203e-16,
+          "v_range": 1.5543122344752192e-15,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.0648284271247462,
+          "k": 0.060171572875253806,
+          "direction": "angle_315",
+          "pattern_strength": 1.5149246560622402e-15,
+          "autocorrelation": 0.826783488474152,
+          "entropy": 0.0,
+          "edge_density": 8.786745021052733e-17,
+          "complexity": 3.757544075743934e-17,
+          "v_std": 4.688057222732159e-16,
+          "v_range": 1.9984014443252818e-15,
+          "pattern_type": "uniform"
+        }
+      ],
+      "analysis": {
+        "center_complexity": -0.39580794820484116,
+        "center_type": "noise",
+        "mean_neighbor_complexity": NaN,
+        "num_perturbations": 8,
+        "less_complex_count": 3,
+        "fraction_less_complex": 0.375,
+        "is_local_max": "False",
+        "is_saddle": false,
+        "perturbation_complexities": [
+          -2.5726748107235062,
+          -6.56975158769263,
+          NaN,
+          -7.694262248998626,
+          -0.017488616313078388,
+          5.778466211892358e-17,
+          3.126126804359451e-17,
+          3.757544075743934e-17
+        ],
+        "perturbation_types": [
+          "transitional",
+          "noise",
+          "uniform",
+          "transitional",
+          "noise",
+          "uniform",
+          "uniform",
+          "uniform"
+        ]
+      }
+    },
+    "worms": {
+      "point": {
+        "name": "worms",
+        "f": 0.054,
+        "k": 0.063
+      },
+      "perturbation_results": [
+        {
+          "f": 0.054,
+          "k": 0.063,
+          "direction": "center",
+          "pattern_strength": 0.7230843492483615,
+          "autocorrelation": 0.06248036729044763,
+          "entropy": -3.161089914659696,
+          "edge_density": 0.05977670712391135,
+          "complexity": -0.02065273194769292,
+          "v_std": 0.13315864408935815,
+          "v_range": 0.42532598241934777,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.057999999999999996,
+          "k": 0.063,
+          "direction": "angle_0",
+          "pattern_strength": 0.7460180168938515,
+          "autocorrelation": 0.048675988586622115,
+          "entropy": -3.3051154317273577,
+          "edge_density": 0.06026186572116173,
+          "complexity": -0.017488616313078388,
+          "v_std": 0.13855670836294012,
+          "v_range": 0.4322112268707274,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.056828427124746186,
+          "k": 0.0658284271247462,
+          "direction": "angle_45",
+          "pattern_strength": 5.217794819458967,
+          "autocorrelation": 0.3190189711302671,
+          "entropy": -45.41150326594745,
+          "edge_density": 0.003949202472446801,
+          "complexity": -7.805702023715732,
+          "v_std": 0.047013888414409795,
+          "v_range": 0.409012968457879,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.054,
+          "k": 0.067,
+          "direction": "angle_90",
+          "pattern_strength": 6.094915487771654,
+          "autocorrelation": 0.27557323224362534,
+          "entropy": -46.82019948944839,
+          "edge_density": 0.002726004631370555,
+          "complexity": -8.026508757485429,
+          "v_std": 0.03732969266368374,
+          "v_range": 0.41815423624876824,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.05117157287525381,
+          "k": 0.0658284271247462,
+          "direction": "angle_135",
+          "pattern_strength": 1.7334293245068202,
+          "autocorrelation": 0.1590054712968889,
+          "entropy": -22.107062270852865,
+          "edge_density": 0.02902202271554857,
+          "complexity": -0.7754953848872902,
+          "v_std": 0.11570132610874975,
+          "v_range": 0.4275310697191842,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.05,
+          "k": 0.063,
+          "direction": "angle_180",
+          "pattern_strength": 0.7258496195583207,
+          "autocorrelation": 0.008302348888501407,
+          "entropy": -3.1729788507902428,
+          "edge_density": 0.059547038149521725,
+          "complexity": -0.002762287057373459,
+          "v_std": 0.1293387746700908,
+          "v_range": 0.41363195393809854,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.051171572875253805,
+          "k": 0.06017157287525381,
+          "direction": "angle_225",
+          "pattern_strength": 0.1890020103928132,
+          "autocorrelation": 0.06085864990182655,
+          "entropy": -15.28258334222866,
+          "edge_density": 0.01581985806513826,
+          "complexity": -0.01995990491076492,
+          "v_std": 0.049817874771113456,
+          "v_range": 0.2880683640606877,
+          "pattern_type": "transitional"
+        },
+        {
+          "f": 0.054,
+          "k": 0.059,
+          "direction": "angle_270",
+          "pattern_strength": 2.0060855184071027e-15,
+          "autocorrelation": 0.8204282335366614,
+          "entropy": 0.0,
+          "edge_density": 8.808862186027655e-17,
+          "complexity": 4.9375475945706546e-17,
+          "v_std": 5.928752077182244e-16,
+          "v_range": 1.7208456881689926e-15,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.056828427124746186,
+          "k": 0.060171572875253806,
+          "direction": "angle_315",
+          "pattern_strength": 2.4908591765513827e-15,
+          "autocorrelation": 0.851819510587353,
+          "entropy": 0.0,
+          "edge_density": 9.152303262004404e-17,
+          "complexity": 6.365287334136053e-17,
+          "v_std": 7.22931890719331e-16,
+          "v_range": 2.1649348980190553e-15,
+          "pattern_type": "uniform"
+        }
+      ],
+      "analysis": {
+        "center_complexity": -0.02065273194769292,
+        "center_type": "noise",
+        "mean_neighbor_complexity": -2.0809896217962085,
+        "num_perturbations": 8,
+        "less_complex_count": 4,
+        "fraction_less_complex": 0.5,
+        "is_local_max": "True",
+        "is_saddle": false,
+        "perturbation_complexities": [
+          -0.017488616313078388,
+          -7.805702023715732,
+          -8.026508757485429,
+          -0.7754953848872902,
+          -0.002762287057373459,
+          -0.01995990491076492,
+          4.9375475945706546e-17,
+          6.365287334136053e-17
+        ],
+        "perturbation_types": [
+          "noise",
+          "transitional",
+          "noise",
+          "noise",
+          "noise",
+          "transitional",
+          "uniform",
+          "uniform"
+        ]
+      }
+    }
+  },
+  "summary": {
+    "total_points_tested": 4,
+    "saddle_points_found": 0,
+    "local_maxima_found": 1
+  }
+}

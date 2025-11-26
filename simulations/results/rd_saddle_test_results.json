@@ -1,0 +1,632 @@
+{
+  "experiment": "rd_saddle_hypothesis_test",
+  "timestamp": "2025-11-26T12:21:00.630890",
+  "hypothesis": "Interesting RD parameters are saddle points in complexity space",
+  "results": {
+    "mitosis": {
+      "point": {
+        "name": "mitosis",
+        "f": 0.026,
+        "k": 0.051
+      },
+      "perturbation_results": [
+        {
+          "f": 0.026,
+          "k": 0.051,
+          "direction": "center",
+          "delta_f": 0,
+          "delta_k": 0,
+          "entropy": -4.335699269835107,
+          "structure": 1.555882782931989e-07,
+          "activity": 0.026859744457536385,
+          "edge_density": 0.0019713753300236703,
+          "complexity": -1.6029622743481817e-08,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.028999999999999998,
+          "k": 0.051,
+          "direction": "angle_0",
+          "delta_f": 0.003,
+          "delta_k": 0.0,
+          "entropy": -3.7031917620625894,
+          "structure": 2.131428712989263e-24,
+          "activity": 2.1313325500150538e-10,
+          "edge_density": 1.3646645008526106e-11,
+          "complexity": -1.4551406344593899e-33,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.02812132034355964,
+          "k": 0.05312132034355964,
+          "direction": "angle_45",
+          "delta_f": 0.002121320343559643,
+          "delta_k": 0.0021213203435596424,
+          "entropy": -7.805923984824323,
+          "structure": 0.00016114637306758643,
+          "activity": 0.03834937090855107,
+          "edge_density": 0.015439725278153396,
+          "complexity": -4.514960223764735e-05,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.026,
+          "k": 0.054,
+          "direction": "angle_90",
+          "delta_f": 1.8369701987210298e-19,
+          "delta_k": 0.003,
+          "entropy": -1.6948011051724843,
+          "structure": 0.0002190751691368994,
+          "activity": 0.08669517038935931,
+          "edge_density": 0.03869004062722101,
+          "complexity": -2.2692569582550927e-05,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.023878679656440357,
+          "k": 0.05312132034355964,
+          "direction": "angle_135",
+          "delta_f": -0.0021213203435596424,
+          "delta_k": 0.002121320343559643,
+          "entropy": -2.5727824564904798,
+          "structure": 0.00013855161641079567,
+          "activity": 0.08379435032317918,
+          "edge_density": 0.036922272336272405,
+          "complexity": -2.406467823670152e-05,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.023,
+          "k": 0.051,
+          "direction": "angle_180",
+          "delta_f": -0.003,
+          "delta_k": 3.6739403974420597e-19,
+          "entropy": -3.734651233701476,
+          "structure": 0.00015458042936819424,
+          "activity": 0.05579420784341705,
+          "edge_density": 0.022453022094705427,
+          "complexity": -2.78978725740684e-05,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.023878679656440357,
+          "k": 0.048878679656440355,
+          "direction": "angle_225",
+          "delta_f": -0.0021213203435596433,
+          "delta_k": -0.0021213203435596424,
+          "entropy": -1.2637029015164793,
+          "structure": 2.414467416133522e-08,
+          "activity": 0.01909510311858763,
+          "edge_density": 0.001253847623120824,
+          "complexity": -3.521014369737283e-10,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.026,
+          "k": 0.047999999999999994,
+          "direction": "angle_270",
+          "delta_f": -5.510910596163089e-19,
+          "delta_k": -0.003,
+          "entropy": 0,
+          "structure": 0,
+          "activity": 0,
+          "edge_density": 0,
+          "complexity": 0,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.02812132034355964,
+          "k": 0.048878679656440355,
+          "direction": "angle_315",
+          "delta_f": 0.002121320343559642,
+          "delta_k": -0.0021213203435596433,
+          "entropy": 0,
+          "structure": 0,
+          "activity": 0,
+          "edge_density": 0,
+          "complexity": 0,
+          "pattern_type": "uniform"
+        }
+      ],
+      "analysis": {
+        "center_complexity": -1.6029622743481817e-08,
+        "center_type": "noise",
+        "num_perturbations": 8,
+        "less_complex_count": 4,
+        "fraction_less_complex": 0.5,
+        "type_changes": 3,
+        "is_saddle": false,
+        "perturbation_complexities": [
+          -1.4551406344593899e-33,
+          -4.514960223764735e-05,
+          -2.2692569582550927e-05,
+          -2.406467823670152e-05,
+          -2.78978725740684e-05,
+          -3.521014369737283e-10,
+          0,
+          0
+        ],
+        "perturbation_types": [
+          "uniform",
+          "noise",
+          "noise",
+          "noise",
+          "noise",
+          "noise",
+          "uniform",
+          "uniform"
+        ]
+      }
+    },
+    "solitons": {
+      "point": {
+        "name": "solitons",
+        "f": 0.042,
+        "k": 0.063
+      },
+      "perturbation_results": [
+        {
+          "f": 0.042,
+          "k": 0.063,
+          "direction": "center",
+          "delta_f": 0,
+          "delta_k": 0,
+          "entropy": -8.903388522825821,
+          "structure": 0.0007111263237139641,
+          "activity": 0.1267279731012841,
+          "edge_density": 0.04135311582514349,
+          "complexity": -0.0007573099923488019,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.045000000000000005,
+          "k": 0.063,
+          "direction": "angle_0",
+          "delta_f": 0.003,
+          "delta_k": 0.0,
+          "entropy": -3.921480156783059,
+          "structure": 0.0007314489450353139,
+          "activity": 0.12817169816418456,
+          "edge_density": 0.052447819328898825,
+          "complexity": -0.0003207673689046921,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.044121320343559645,
+          "k": 0.06512132034355965,
+          "direction": "angle_45",
+          "delta_f": 0.002121320343559643,
+          "delta_k": 0.0021213203435596424,
+          "entropy": -15.68638058023696,
+          "structure": 0.0012125972262457428,
+          "activity": 0.1189779591820165,
+          "edge_density": 0.03646555936845252,
+          "complexity": -0.002190974712381641,
+          "pattern_type": "structured"
+        },
+        {
+          "f": 0.042,
+          "k": 0.066,
+          "direction": "angle_90",
+          "delta_f": 1.8369701987210298e-19,
+          "delta_k": 0.003,
+          "entropy": -42.85805441436601,
+          "structure": 0.0005354742216111398,
+          "activity": 0.05168297035534344,
+          "edge_density": 0.005268488706425374,
+          "complexity": -0.0011722548490174958,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.03987867965644036,
+          "k": 0.06512132034355965,
+          "direction": "angle_135",
+          "delta_f": -0.0021213203435596424,
+          "delta_k": 0.002121320343559643,
+          "entropy": -15.952429891348315,
+          "structure": 0.001144696879024657,
+          "activity": 0.11394791790352014,
+          "edge_density": 0.03511929714197412,
+          "complexity": -0.00201555045651584,
+          "pattern_type": "structured"
+        },
+        {
+          "f": 0.039,
+          "k": 0.063,
+          "direction": "angle_180",
+          "delta_f": -0.003,
+          "delta_k": 3.6739403974420597e-19,
+          "entropy": -4.516928184244606,
+          "structure": 0.0007543120319871162,
+          "activity": 0.12202089042449478,
+          "edge_density": 0.049848446500409066,
+          "complexity": -0.00036972540418928057,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.03987867965644036,
+          "k": 0.06087867965644036,
+          "direction": "angle_225",
+          "delta_f": -0.0021213203435596433,
+          "delta_k": -0.0021213203435596424,
+          "entropy": -2.430359526075744,
+          "structure": 0.000343787417463858,
+          "activity": 0.11229662014630423,
+          "edge_density": 0.051077122930705314,
+          "complexity": -7.452377843094708e-05,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.042,
+          "k": 0.06,
+          "direction": "angle_270",
+          "delta_f": -5.510910596163089e-19,
+          "delta_k": -0.003,
+          "entropy": -2.302556125775987,
+          "structure": 0.0003284542188469318,
+          "activity": 0.10190347554740728,
+          "edge_density": 0.044592525238398115,
+          "complexity": -6.033268275670948e-05,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.044121320343559645,
+          "k": 0.06087867965644036,
+          "direction": "angle_315",
+          "delta_f": 0.002121320343559642,
+          "delta_k": -0.0021213203435596433,
+          "entropy": -2.406134264490848,
+          "structure": 0.00036787582367656373,
+          "activity": 0.1105600605991843,
+          "edge_density": 0.049466573771150435,
+          "complexity": -7.75270044770984e-05,
+          "pattern_type": "noise"
+        }
+      ],
+      "analysis": {
+        "center_complexity": -0.0007573099923488019,
+        "center_type": "noise",
+        "num_perturbations": 8,
+        "less_complex_count": 3,
+        "fraction_less_complex": 0.375,
+        "type_changes": 2,
+        "is_saddle": false,
+        "perturbation_complexities": [
+          -0.0003207673689046921,
+          -0.002190974712381641,
+          -0.0011722548490174958,
+          -0.00201555045651584,
+          -0.00036972540418928057,
+          -7.452377843094708e-05,
+          -6.033268275670948e-05,
+          -7.75270044770984e-05
+        ],
+        "perturbation_types": [
+          "noise",
+          "structured",
+          "noise",
+          "structured",
+          "noise",
+          "noise",
+          "noise",
+          "noise"
+        ]
+      }
+    },
+    "coral": {
+      "point": {
+        "name": "coral",
+        "f": 0.062,
+        "k": 0.063
+      },
+      "perturbation_results": [
+        {
+          "f": 0.062,
+          "k": 0.063,
+          "direction": "center",
+          "delta_f": 0,
+          "delta_k": 0,
+          "entropy": -29.812792361970764,
+          "structure": 0.0007582722494364677,
+          "activity": 0.11466528792754925,
+          "edge_density": 0.018180394689461674,
+          "complexity": -0.0025486741841734837,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.065,
+          "k": 0.063,
+          "direction": "angle_0",
+          "delta_f": 0.003,
+          "delta_k": 0.0,
+          "entropy": -39.86657296463333,
+          "structure": 0.0005321908248862557,
+          "activity": 0.0824652090844995,
+          "edge_density": 0.00825284512525995,
+          "complexity": -0.0017276897493849305,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.06412132034355965,
+          "k": 0.06512132034355965,
+          "direction": "angle_45",
+          "delta_f": 0.002121320343559643,
+          "delta_k": 0.0021213203435596424,
+          "entropy": -45.50692913741744,
+          "structure": 0.0006684770299017013,
+          "activity": 0.047484178073725056,
+          "edge_density": 0.0039722684489898255,
+          "complexity": -0.0014286136499224774,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.062,
+          "k": 0.066,
+          "direction": "angle_90",
+          "delta_f": 1.8369701987210298e-19,
+          "delta_k": 0.003,
+          "entropy": -45.654799360785105,
+          "structure": 0.0006834383815118722,
+          "activity": 0.044713530628082275,
+          "edge_density": 0.003764991456084083,
+          "complexity": -0.0013798829400295223,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.05987867965644036,
+          "k": 0.06512132034355965,
+          "direction": "angle_135",
+          "delta_f": -0.0021213203435596424,
+          "delta_k": 0.002121320343559643,
+          "entropy": -44.87452050653516,
+          "structure": 0.0005820256799143792,
+          "activity": 0.049743642565605005,
+          "edge_density": 0.004166677556644524,
+          "complexity": -0.0012847345516569448,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.059,
+          "k": 0.063,
+          "direction": "angle_180",
+          "delta_f": -0.003,
+          "delta_k": 3.6739403974420597e-19,
+          "entropy": -19.704653736897974,
+          "structure": 0.0008579057976805865,
+          "activity": 0.13539132974830878,
+          "edge_density": 0.029670799265547363,
+          "complexity": -0.0022306782750710647,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.05987867965644036,
+          "k": 0.06087867965644036,
+          "direction": "angle_225",
+          "delta_f": -0.0021213203435596433,
+          "delta_k": -0.0021213203435596424,
+          "entropy": -16.485601360965013,
+          "structure": 0.0006921375262151844,
+          "activity": 0.06498298425417046,
+          "edge_density": 0.018336337177162612,
+          "complexity": -0.0007189869815641972,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.062,
+          "k": 0.06,
+          "direction": "angle_270",
+          "delta_f": -5.510910596163089e-19,
+          "delta_k": -0.003,
+          "entropy": 0,
+          "structure": 0,
+          "activity": 0,
+          "edge_density": 0,
+          "complexity": 0,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.06412132034355963,
+          "k": 0.06087867965644036,
+          "direction": "angle_315",
+          "delta_f": 0.002121320343559642,
+          "delta_k": -0.0021213203435596433,
+          "entropy": -17.848824978464656,
+          "structure": 0.0008286760975098665,
+          "activity": 0.07406497565550817,
+          "edge_density": 0.02061581888162436,
+          "complexity": -0.0010647993130733537,
+          "pattern_type": "noise"
+        }
+      ],
+      "analysis": {
+        "center_complexity": -0.0025486741841734837,
+        "center_type": "noise",
+        "num_perturbations": 8,
+        "less_complex_count": 0,
+        "fraction_less_complex": 0.0,
+        "type_changes": 1,
+        "is_saddle": false,
+        "perturbation_complexities": [
+          -0.0017276897493849305,
+          -0.0014286136499224774,
+          -0.0013798829400295223,
+          -0.0012847345516569448,
+          -0.0022306782750710647,
+          -0.0007189869815641972,
+          0,
+          -0.0010647993130733537
+        ],
+        "perturbation_types": [
+          "noise",
+          "noise",
+          "noise",
+          "noise",
+          "noise",
+          "noise",
+          "uniform",
+          "noise"
+        ]
+      }
+    },
+    "waves": {
+      "point": {
+        "name": "waves",
+        "f": 0.014,
+        "k": 0.045
+      },
+      "perturbation_results": [
+        {
+          "f": 0.014,
+          "k": 0.045,
+          "direction": "center",
+          "delta_f": 0,
+          "delta_k": 0,
+          "entropy": 0,
+          "structure": 0,
+          "activity": 0,
+          "edge_density": 0,
+          "complexity": 0,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.017,
+          "k": 0.045,
+          "direction": "angle_0",
+          "delta_f": 0.003,
+          "delta_k": 0.0,
+          "entropy": -3.646352787426778,
+          "structure": 0.0006672701609039234,
+          "activity": 0.0892343698827879,
+          "edge_density": 0.02278564924542678,
+          "complexity": -0.00018734464434690237,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.016121320343559644,
+          "k": 0.04712132034355964,
+          "direction": "angle_45",
+          "delta_f": 0.002121320343559643,
+          "delta_k": 0.0021213203435596424,
+          "entropy": -23.52809066347721,
+          "structure": 0.0008911780591784076,
+          "activity": 0.11245280451192143,
+          "edge_density": 0.01891569789381854,
+          "complexity": -0.0023077709768056127,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.014,
+          "k": 0.048,
+          "direction": "angle_90",
+          "delta_f": 1.8369701987210298e-19,
+          "delta_k": 0.003,
+          "entropy": -39.48061984795473,
+          "structure": 0.0005602658414487103,
+          "activity": 0.06806882359255738,
+          "edge_density": 0.0061290135726146475,
+          "complexity": -0.0014865897385155562,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.011878679656440358,
+          "k": 0.04712132034355964,
+          "direction": "angle_135",
+          "delta_f": -0.0021213203435596424,
+          "delta_k": 0.002121320343559643,
+          "entropy": -30.97468729556529,
+          "structure": 0.00025372768340288195,
+          "activity": 0.05876830046459861,
+          "edge_density": 0.007499275618774635,
+          "complexity": -0.00045441247299997183,
+          "pattern_type": "noise"
+        },
+        {
+          "f": 0.011,
+          "k": 0.045,
+          "direction": "angle_180",
+          "delta_f": -0.003,
+          "delta_k": 3.6739403974420597e-19,
+          "entropy": 0,
+          "structure": 0,
+          "activity": 0,
+          "edge_density": 0,
+          "complexity": 0,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.011878679656440357,
+          "k": 0.042878679656440356,
+          "direction": "angle_225",
+          "delta_f": -0.0021213203435596433,
+          "delta_k": -0.0021213203435596424,
+          "entropy": 0,
+          "structure": 0,
+          "activity": 0,
+          "edge_density": 0,
+          "complexity": 0,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.014,
+          "k": 0.041999999999999996,
+          "direction": "angle_270",
+          "delta_f": -5.510910596163089e-19,
+          "delta_k": -0.003,
+          "entropy": 0,
+          "structure": 0,
+          "activity": 0,
+          "edge_density": 0,
+          "complexity": 0,
+          "pattern_type": "uniform"
+        },
+        {
+          "f": 0.01612132034355964,
+          "k": 0.042878679656440356,
+          "direction": "angle_315",
+          "delta_f": 0.002121320343559642,
+          "delta_k": -0.0021213203435596433,
+          "entropy": -5.172346193663813,
+          "structure": 0.00023744672832097413,
+          "activity": 0.05252681497130499,
+          "edge_density": 0.014429355706826007,
+          "complexity": -5.827499857915988e-05,
+          "pattern_type": "noise"
+        }
+      ],
+      "analysis": {
+        "center_complexity": 0,
+        "center_type": "uniform",
+        "num_perturbations": 8,
+        "less_complex_count": 5,
+        "fraction_less_complex": 0.625,
+        "type_changes": 5,
+        "is_saddle": false,
+        "perturbation_complexities": [
+          -0.00018734464434690237,
+          -0.0023077709768056127,
+          -0.0014865897385155562,
+          -0.00045441247299997183,
+          0,
+          0,
+          0,
+          -5.827499857915988e-05
+        ],
+        "perturbation_types": [
+          "noise",
+          "noise",
+          "noise",
+          "noise",
+          "uniform",
+          "uniform",
+          "uniform",
+          "noise"
+        ]
+      }
+    }
+  },
+  "summary": {
+    "total_points_tested": 4,
+    "saddle_points_found": 0,
+    "support_for_hypothesis": 0.0
+  }
+}
