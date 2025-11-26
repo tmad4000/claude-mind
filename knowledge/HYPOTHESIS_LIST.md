@@ -233,3 +233,31 @@ All hypotheses tested during Gray-Scott exploration, organized by category.
 - Exact formula that matches simulation to many decimal places
 - Universal constant analogous to Feigenbaum's
 - Demonstration of computation in RD patterns
+
+---
+
+## CATEGORY 9: CLASS IV TOPOLOGY (NEW - 2025-11-25)
+
+### H9.1: Class IV rules satisfy a simple constraint
+**Hypothesis**: Class IV rules share some universal bit pattern (e.g., all have 000→0, or all have 111→0).
+**Test**: Checked all 8 bits across 13 Class IV rules for invariants.
+**Result**: **NEGATIVE** - No bit is constant across all Class IV rules. No partial invariant >80% either.
+**Novelty**: 5/10 - Confirms Class IV is NOT definable by simple constraints.
+
+### H9.2: The replication condition predicts Class IV
+**Hypothesis**: Rules with bidirectional spread (001→1, 100→1), no spontaneous birth (000→0), and crowding death (111→0) are Class IV.
+**Test**: Scored all Class IV and Class III rules on this 3-point criterion.
+**Result**: **OPPOSITE OF EXPECTED** - Class III scores 2.62/3, Class IV scores only 1.15/3!
+**Novelty**: 6/10 - The replication condition predicts CHAOS, not complexity. This is surprising.
+
+### H9.3: Class IV rules have restricted spreading
+**Hypothesis**: Class IV rules have lower "spread potential" than chaotic rules.
+**Test**: Measured spread potential (001→1 + 100→1) across classes.
+**Result**: **CONFIRMED** - Class IV mean 0.77, Class III mean 1.85.
+**Novelty**: 5/10 - Complexity requires PARTIAL spreading, not maximal spreading.
+
+### H9.4: Class IV isolation is due to saddle-point structure
+**Hypothesis**: Class IV rules occupy a "saddle region" where any perturbation pushes toward simpler attractors.
+**Test**: Classified all 104 Hamming-1 neighbors of Class IV rules.
+**Result**: **CONFIRMED** - 0/104 neighbors are Class IV. Distribution: 32.7% fills, 24% chaotic, 17.3% periodic, 13.5% static, 8.7% other, 3.8% dies.
+**Novelty**: 6/10 - Confirms saddle structure. Complexity is unstable to perturbation in ALL directions.

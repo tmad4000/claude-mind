@@ -1,0 +1,587 @@
+{
+  "30": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "31": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21920 to 000\u21921",
+        "class": "periodic"
+      },
+      "28": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21921 to 001\u21920",
+        "class": "chaotic"
+      },
+      "26": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21921 to 010\u21920",
+        "class": "chaotic"
+      },
+      "22": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21921 to 011\u21920",
+        "class": "chaotic"
+      },
+      "14": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21921 to 100\u21920",
+        "class": "other"
+      },
+      "62": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21920 to 101\u21921",
+        "class": "chaotic"
+      },
+      "94": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21920 to 110\u21921",
+        "class": "periodic"
+      },
+      "158": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21920 to 111\u21921",
+        "class": "chaotic"
+      }
+    }
+  },
+  "45": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "44": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "static"
+      },
+      "47": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "fills"
+      },
+      "41": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21921 to 010\u21920",
+        "class": "fills"
+      },
+      "37": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21921 to 011\u21920",
+        "class": "periodic"
+      },
+      "61": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21920 to 100\u21921",
+        "class": "fills"
+      },
+      "13": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21921 to 101\u21920",
+        "class": "static"
+      },
+      "109": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21920 to 110\u21921",
+        "class": "periodic"
+      },
+      "173": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21920 to 111\u21921",
+        "class": "fills"
+      }
+    }
+  },
+  "73": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "72": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "dies"
+      },
+      "75": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "chaotic"
+      },
+      "77": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21920 to 010\u21921",
+        "class": "static"
+      },
+      "65": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21921 to 011\u21920",
+        "class": "fills"
+      },
+      "89": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21920 to 100\u21921",
+        "class": "chaotic"
+      },
+      "105": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21920 to 101\u21921",
+        "class": "chaotic"
+      },
+      "9": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21921 to 110\u21920",
+        "class": "fills"
+      },
+      "201": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21920 to 111\u21921",
+        "class": "periodic"
+      }
+    }
+  },
+  "89": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "88": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "other"
+      },
+      "91": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "periodic"
+      },
+      "93": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21920 to 010\u21921",
+        "class": "chaotic"
+      },
+      "81": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21921 to 011\u21920",
+        "class": "fills"
+      },
+      "73": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21921 to 100\u21920",
+        "class": "chaotic"
+      },
+      "121": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21920 to 101\u21921",
+        "class": "fills"
+      },
+      "25": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21921 to 110\u21920",
+        "class": "fills"
+      },
+      "217": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21920 to 111\u21921",
+        "class": "static"
+      }
+    }
+  },
+  "101": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "100": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "static"
+      },
+      "103": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "fills"
+      },
+      "97": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21921 to 010\u21920",
+        "class": "fills"
+      },
+      "109": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21920 to 011\u21921",
+        "class": "periodic"
+      },
+      "117": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21920 to 100\u21921",
+        "class": "fills"
+      },
+      "69": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21921 to 101\u21920",
+        "class": "static"
+      },
+      "37": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21921 to 110\u21920",
+        "class": "periodic"
+      },
+      "229": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21920 to 111\u21921",
+        "class": "fills"
+      }
+    }
+  },
+  "105": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "104": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "dies"
+      },
+      "107": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "fills"
+      },
+      "109": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21920 to 010\u21921",
+        "class": "periodic"
+      },
+      "97": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21921 to 011\u21920",
+        "class": "fills"
+      },
+      "121": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21920 to 100\u21921",
+        "class": "fills"
+      },
+      "73": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21921 to 101\u21920",
+        "class": "chaotic"
+      },
+      "41": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21921 to 110\u21920",
+        "class": "fills"
+      },
+      "233": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21920 to 111\u21921",
+        "class": "static"
+      }
+    }
+  },
+  "110": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "111": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21920 to 000\u21921",
+        "class": "fills"
+      },
+      "108": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21921 to 001\u21920",
+        "class": "static"
+      },
+      "106": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21921 to 010\u21920",
+        "class": "other"
+      },
+      "102": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21921 to 011\u21920",
+        "class": "chaotic"
+      },
+      "126": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21920 to 100\u21921",
+        "class": "chaotic"
+      },
+      "78": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21921 to 101\u21920",
+        "class": "chaotic"
+      },
+      "46": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21921 to 110\u21920",
+        "class": "other"
+      },
+      "238": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21920 to 111\u21921",
+        "class": "chaotic"
+      }
+    }
+  },
+  "124": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "125": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21920 to 000\u21921",
+        "class": "fills"
+      },
+      "126": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "chaotic"
+      },
+      "120": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21921 to 010\u21920",
+        "class": "other"
+      },
+      "116": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21921 to 011\u21920",
+        "class": "other"
+      },
+      "108": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21921 to 100\u21920",
+        "class": "static"
+      },
+      "92": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21921 to 101\u21920",
+        "class": "chaotic"
+      },
+      "60": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21921 to 110\u21920",
+        "class": "chaotic"
+      },
+      "252": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21920 to 111\u21921",
+        "class": "chaotic"
+      }
+    }
+  },
+  "137": {
+    "own_class": "other",
+    "neighbors": {
+      "136": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "dies"
+      },
+      "139": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "fills"
+      },
+      "141": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21920 to 010\u21921",
+        "class": "static"
+      },
+      "129": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21921 to 011\u21920",
+        "class": "fills"
+      },
+      "153": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21920 to 100\u21921",
+        "class": "fills"
+      },
+      "169": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21920 to 101\u21921",
+        "class": "fills"
+      },
+      "201": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21920 to 110\u21921",
+        "class": "periodic"
+      },
+      "9": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21921 to 111\u21920",
+        "class": "fills"
+      }
+    }
+  },
+  "147": {
+    "own_class": "other",
+    "neighbors": {
+      "146": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "chaotic"
+      },
+      "145": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21921 to 001\u21920",
+        "class": "periodic"
+      },
+      "151": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21920 to 010\u21921",
+        "class": "static"
+      },
+      "155": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21920 to 011\u21921",
+        "class": "fills"
+      },
+      "131": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21921 to 100\u21920",
+        "class": "periodic"
+      },
+      "179": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21920 to 101\u21921",
+        "class": "periodic"
+      },
+      "211": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21920 to 110\u21921",
+        "class": "fills"
+      },
+      "19": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21921 to 111\u21920",
+        "class": "periodic"
+      }
+    }
+  },
+  "149": {
+    "own_class": "fills",
+    "neighbors": {
+      "148": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "other"
+      },
+      "151": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "static"
+      },
+      "145": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21921 to 010\u21920",
+        "class": "periodic"
+      },
+      "157": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21920 to 011\u21921",
+        "class": "fills"
+      },
+      "133": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21921 to 100\u21920",
+        "class": "periodic"
+      },
+      "181": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21920 to 101\u21921",
+        "class": "fills"
+      },
+      "213": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21920 to 110\u21921",
+        "class": "fills"
+      },
+      "21": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21921 to 111\u21920",
+        "class": "periodic"
+      }
+    }
+  },
+  "150": {
+    "own_class": "chaotic",
+    "neighbors": {
+      "151": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21920 to 000\u21921",
+        "class": "static"
+      },
+      "148": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21921 to 001\u21920",
+        "class": "other"
+      },
+      "146": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21921 to 010\u21920",
+        "class": "chaotic"
+      },
+      "158": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21920 to 011\u21921",
+        "class": "chaotic"
+      },
+      "134": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21921 to 100\u21920",
+        "class": "other"
+      },
+      "182": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21920 to 101\u21921",
+        "class": "chaotic"
+      },
+      "214": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21920 to 110\u21921",
+        "class": "chaotic"
+      },
+      "22": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21921 to 111\u21920",
+        "class": "chaotic"
+      }
+    }
+  },
+  "193": {
+    "own_class": "other",
+    "neighbors": {
+      "192": {
+        "bit_flipped": 0,
+        "flip_desc": "000\u21921 to 000\u21920",
+        "class": "dies"
+      },
+      "195": {
+        "bit_flipped": 1,
+        "flip_desc": "001\u21920 to 001\u21921",
+        "class": "fills"
+      },
+      "197": {
+        "bit_flipped": 2,
+        "flip_desc": "010\u21920 to 010\u21921",
+        "class": "static"
+      },
+      "201": {
+        "bit_flipped": 3,
+        "flip_desc": "011\u21920 to 011\u21921",
+        "class": "periodic"
+      },
+      "209": {
+        "bit_flipped": 4,
+        "flip_desc": "100\u21920 to 100\u21921",
+        "class": "fills"
+      },
+      "225": {
+        "bit_flipped": 5,
+        "flip_desc": "101\u21920 to 101\u21921",
+        "class": "fills"
+      },
+      "129": {
+        "bit_flipped": 6,
+        "flip_desc": "110\u21921 to 110\u21920",
+        "class": "fills"
+      },
+      "65": {
+        "bit_flipped": 7,
+        "flip_desc": "111\u21921 to 111\u21920",
+        "class": "fills"
+      }
+    }
+  }
+}

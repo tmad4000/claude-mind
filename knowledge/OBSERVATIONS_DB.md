@@ -181,11 +181,28 @@ Each observation follows:
 **Theory implications**: Turing mechanism is MORE universal than previously documented - same math describes animal skins, seashells, BZ reaction, AND neural activity under psychedelics
 **Source**: QRI (2025) "Reverse Engineering DMT Phenomenology with Non-Linear Optics"
 
+### OBS-CA-007: Class IV isolation is NOT due to simple constraints
+**System**: Elementary CA (256 rules)
+**Parameters**: All 13 Class IV rules, all 104 Hamming-1 neighbors analyzed
+**Observation**: Class IV rules do NOT share any universal bit pattern. No single transition is constant across all Class IV rules.
+**Quantitative**:
+- 0/104 neighbors of Class IV rules are also Class IV (confirms isolation)
+- Hamming weight: 3.92 ± 0.62 (vs random 4.0, vs Class III 4.38, vs Class II 3.05)
+- Spread potential: 0.77 (vs Class III 1.85) - Class IV has LESS spreading than chaotic rules
+- The "replication hypothesis" (bidirectional spread + no spontaneous birth + crowding death) scores only 1.15/3 for Class IV but 2.62/3 for Class III!
+**Surprising?**: YES - The hypothesis that worked for replication BETTER predicts chaotic behavior than complex behavior
+**Connections**: OBS-CA-001 (topological isolation), OBS-CA-003 (replication theory)
+**Theory implications**:
+- Class IV rules are defined by BALANCE, not by specific transitions
+- They occupy a "saddle region" in rule space where any single-bit change pushes toward simpler attractors
+- The replication condition (001→1, 100→1, 000→0) predicts CHAOS (Class III), not complexity (Class IV)
+- Class IV = partial spreading + balanced birth/death, not maximal spreading
+
 ---
 
 ## QUESTIONS RAISED BY OBSERVATIONS
 
-1. What exactly makes Class IV CA rules special?
+1. ~~What exactly makes Class IV CA rules special?~~ **PARTIALLY ANSWERED**: They're balanced, not constraint-satisfying
 2. Why is Gray-Scott so deeply subcritical?
 3. What rule property enables replication?
 4. Is there a quantitative "edge of chaos" criterion?
