@@ -81,6 +81,31 @@
         }
         button:hover { background: #3a3a3a; }
         button.active { background: #4a4a4a; border-color: #4a9eff; }
+        .url-info {
+            font-size: 0.75em;
+            color: #555;
+            margin-top: 10px;
+            word-break: break-all;
+        }
+        .tour-controls {
+            margin-top: 15px;
+            padding: 10px;
+            background: #1a1a1a;
+            border-left: 3px solid #ff9a4a;
+        }
+        .tour-controls button.touring { background: #4a3a2a; border-color: #ff9a4a; }
+        .tour-progress {
+            height: 3px;
+            background: #333;
+            margin-top: 8px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .tour-progress-bar {
+            height: 100%;
+            background: #ff9a4a;
+            transition: width 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -121,6 +146,17 @@
 
             <button onclick="toggleRun()" id="runBtn">Run</button>
             <button onclick="reset()">Reset</button>
+            <button onclick="copyLink()">Copy Link</button>
+
+            <div class="tour-controls">
+                <button onclick="toggleTour()" id="tourBtn">Start Tour</button>
+                <span style="font-size: 0.8em; color: #888;" id="tourLabel">Visit interesting regions</span>
+                <div class="tour-progress">
+                    <div class="tour-progress-bar" id="tourProgress" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <div class="url-info" id="urlInfo"></div>
         </div>
 
         <div class="right-panel">
@@ -138,6 +174,8 @@
             <br>
             <strong>Key insight:</strong> Patterns only exist at the BOUNDARY between extinction and uniform filling.
             This is "edge of chaos" made visible - complexity emerges where order meets disorder.
+            <br><br>
+            <strong>URL params:</strong> <code>?f=0.037&k=0.060&autostart=1</code> or <code>?tour=1</code> to start tour automatically.
         </div>
     </div>
 
@@ -156,15 +194,65 @@
         simCanvas.width = simSize * simScale;
         simCanvas.height = simSize * simScale;
 
-        // Parameters
-        let f = 0.04;
-        let k = 0.06;
-        const Du = 0.21;
-        const Dv = 0.105;
-
         // Phase map ranges
         const fMin = 0.01, fMax = 0.08;
         const kMin = 0.03, kMax = 0.07;
+
+        // URL parameter handling
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                f: params.has('f') ? parseFloat(params.get('f')) : null,
+                k: params.has('k') ? parseFloat(params.get('k')) : null,
+                autostart: params.get('autostart') === 'true' || params.get('autostart') === '1',
+                tour: params.get('tour') === 'true' || params.get('tour') === '1'
+            };
+        }
+
+        function updateUrl(ff, kk) {
+            const url = new URL(window.location);
+            url.searchParams.set('f', ff.toFixed(4));
+            url.searchParams.set('k', kk.toFixed(4));
+            window.history.replaceState({}, '', url);
+            updateUrlDisplay();
+        }
+
+        function updateUrlDisplay() {
+            const url = new URL(window.location);
+            document.getElementById('urlInfo').textContent = url.toString();
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            const btn = event.target;
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = orig, 1000);
+        }
+
+        // Initialize from URL or defaults
+        const urlParams = getUrlParams();
+        let f = (urlParams.f !== null && urlParams.f >= fMin && urlParams.f <= fMax) ? urlParams.f : 0.04;
+        let k = (urlParams.k !== null && urlParams.k >= kMin && urlParams.k <= kMax) ? urlParams.k : 0.06;
+        const Du = 0.21;
+        const Dv = 0.105;
+
+        // Tour mode - interesting parameter combinations
+        const tourStops = [
+            { f: 0.037, k: 0.060, name: "Mitosis (dividing cells)" },
+            { f: 0.030, k: 0.055, name: "Coral growth" },
+            { f: 0.025, k: 0.060, name: "Pulsating chaos" },
+            { f: 0.040, k: 0.063, name: "Worms" },
+            { f: 0.014, k: 0.054, name: "Wandering bubbles" },
+            { f: 0.062, k: 0.061, name: "U-skate world" },
+            { f: 0.050, k: 0.065, name: "Sparse spots" },
+            { f: 0.046, k: 0.063, name: "Maze (Turing stripes)" },
+            { f: 0.058, k: 0.065, name: "Negative spots" }
+        ];
+        let touring = false;
+        let tourIndex = 0;
+        let tourTimer = null;
+        const tourDuration = 8000; // ms per stop
 
         // Grids
         let U, V, nextU, nextV;
@@ -308,19 +396,73 @@
             drawSim();
         }
 
-        function updateParams(ff, kk) {
+        function updateParams(ff, kk, tourName = null) {
             f = ff;
             k = kk;
-            document.getElementById('params').innerHTML =
-                `f = ${f.toFixed(3)}, k = ${k.toFixed(3)}<br>` +
+            let html = `f = ${f.toFixed(3)}, k = ${k.toFixed(3)}<br>` +
                 `<small style="color:#666">sum = ${(f+k).toFixed(3)}</small>`;
+            if (tourName) {
+                html += `<br><span style="color:#ff9a4a">${tourName}</span>`;
+            }
+            document.getElementById('params').innerHTML = html;
+            updateUrl(ff, kk);
+            updateCursorPosition();
             reset();
+        }
+
+        function updateCursorPosition() {
+            const x = ((f - fMin) / (fMax - fMin)) * phaseCanvas.width;
+            const y = ((kMax - k) / (kMax - kMin)) * phaseCanvas.height;
+            cursor.style.left = x + 'px';
+            cursor.style.top = y + 'px';
+        }
+
+        // Tour functions
+        function toggleTour() {
+            touring = !touring;
+            const btn = document.getElementById('tourBtn');
+            btn.textContent = touring ? 'Stop Tour' : 'Start Tour';
+            btn.classList.toggle('touring', touring);
+
+            if (touring) {
+                if (!running) toggleRun();
+                advanceTour();
+            } else {
+                if (tourTimer) clearTimeout(tourTimer);
+                document.getElementById('tourProgress').style.width = '0%';
+                document.getElementById('tourLabel').textContent = 'Visit interesting regions';
+            }
+        }
+
+        function advanceTour() {
+            if (!touring) return;
+
+            const stop = tourStops[tourIndex];
+            updateParams(stop.f, stop.k, stop.name);
+            document.getElementById('tourLabel').textContent = `${tourIndex + 1}/${tourStops.length}: ${stop.name}`;
+
+            // Animate progress bar
+            const progressBar = document.getElementById('tourProgress');
+            progressBar.style.width = '0%';
+            progressBar.style.transition = 'none';
+            requestAnimationFrame(() => {
+                progressBar.style.transition = `width ${tourDuration}ms linear`;
+                progressBar.style.width = '100%';
+            });
+
+            tourIndex = (tourIndex + 1) % tourStops.length;
+            tourTimer = setTimeout(advanceTour, tourDuration);
         }
 
         // Event handlers
         const phaseMap = document.getElementById('phaseMap');
 
         phaseMap.addEventListener('click', e => {
+            // Stop tour if running
+            if (touring) {
+                toggleTour();
+            }
+
             const rect = phaseCanvas.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
@@ -349,12 +491,20 @@
         drawPhaseMap();
         initSim();
         drawSim();
+        updateCursorPosition();
+        updateUrl(f, k);
 
-        // Position cursor at default
-        const defaultX = ((f - fMin) / (fMax - fMin)) * phaseCanvas.width;
-        const defaultY = ((kMax - k) / (kMax - kMin)) * phaseCanvas.height;
-        cursor.style.left = defaultX + 'px';
-        cursor.style.top = defaultY + 'px';
+        // Update params display with initial values
+        document.getElementById('params').innerHTML =
+            `f = ${f.toFixed(3)}, k = ${k.toFixed(3)}<br>` +
+            `<small style="color:#666">sum = ${(f+k).toFixed(3)}</small>`;
+
+        // Handle autostart and tour from URL
+        if (urlParams.tour) {
+            setTimeout(() => toggleTour(), 100);
+        } else if (urlParams.autostart) {
+            setTimeout(() => toggleRun(), 100);
+        }
     </script>
 </body>
 </html>
