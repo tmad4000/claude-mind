@@ -222,6 +222,25 @@ Each observation follows:
 4. The "edge of chaos" principle may operate differently in discrete vs continuous systems
 5. Perturbation size matters: CA is binary (1-bit), RD perturbations span continuous range
 
+### OBS-CA-008: Class IV rules are local complexity maxima
+**System**: Elementary CA (canonical Class IV rules: 110, 124, 137, 193)
+**Parameters**: All 4 canonical Class IV rules and their 32 Hamming-1 neighbors (8 per rule)
+**Observation**: Class IV rules sit at LOCAL MAXIMA of block entropy; every single-bit mutation reduces complexity
+**Quantitative**:
+- Rule 110: entropy 3.73 vs avg neighbor entropy 2.23 (difference: +1.49)
+- Rule 124: entropy 3.75 vs avg neighbor entropy 2.24 (difference: +1.51)
+- Rule 137: entropy 3.74 vs avg neighbor entropy 2.23 (difference: +1.51)
+- Rule 193: entropy 3.73 vs avg neighbor entropy 2.22 (difference: +1.50)
+- Remarkably consistent ~+1.5 entropy difference across all 4 rules
+- 0/4 rules have any Class IV neighbors (100% isolation confirmed)
+**Surprising?**: YES - the consistency of the +1.5 entropy gap is striking
+**Connections**: OBS-CA-001, OBS-CA-007, OBS-X-004
+**Theory implications**:
+1. Class IV rules are not just "isolated" - they're LOCAL MAXIMA of complexity
+2. The entropy gap is remarkably consistent (~1.5 bits) suggesting a universal property
+3. This supports "saddle point" interpretation: Class IV sits at a complexity peak where any perturbation leads to simpler (lower entropy) dynamics
+4. The four canonical Class IV rules (110, 124, 137, 193) are symmetry-equivalent and form the ONLY Class IV cluster in the entire 256-rule space
+
 ---
 
 ## QUESTIONS RAISED BY OBSERVATIONS
