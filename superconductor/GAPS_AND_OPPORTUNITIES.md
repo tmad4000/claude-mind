@@ -107,7 +107,18 @@ The field is moving fast. My pattern analysis independently predicted several co
 2. The "obvious" candidates are being explored
 3. Real breakthroughs may require less obvious combinations or new structure types
 
-The Mg2XH6 ambient pressure prediction stands out as potentially the most important unexploited result.
+## CURRENT STATE OF AMBIENT-PRESSURE CANDIDATES (Updated 2025-11-27)
+
+| Material | Predicted Tc | Precursor Status | Approach |
+|----------|--------------|------------------|----------|
+| **Mg2IrH6** | 103-160K | Mg2IrH5 SYNTHESIZED | MH6 octahedra |
+| PbNH4B6C6 | 115K | SrB3C3 synthesized (50 GPa) | B-C clathrate + NH4 |
+| SrNH4B6C6 | 85K | SrB3C3 synthesized | B-C clathrate + NH4 |
+| MB2C8 (M=Na,K,Rb,Cs) | ~70K | Unknown | B-C clathrate |
+| Mg2RhH6 | 45-80K | Unknown | MH6 octahedra |
+| Li2AgH6 | Near limit | Unknown | Theoretical ceiling |
+
+**Conclusion**: Mg2IrH6 remains the closest path due to Mg2IrH5 already existing. This should be the top experimental priority.
 
 ---
 

@@ -48,7 +48,24 @@ A log of key prompts and directions given to Claude Mind across sessions. Captur
 - "This should totally be running all the time, contributing to the world"
 - "What are the pieces I'm missing about how science is done?"
 
-**Outcome**: [In progress - building infrastructure]
+**Outcome**: Created research infrastructure, discovered Mg2IrH6 pathway
+
+### 2025-11-27 - Keep Running on Superconductors
+
+**Context**: After initial infrastructure built and Q&A about phonons
+
+**Prompt Summary**: Keep running and working on room-temperature superconductors as long as progress can be made
+
+**Key Phrases**:
+- "I'd like you to just keep running and working on room-temperature superconductors"
+- "As long as you can make progress on our general plan"
+
+**Outcome**:
+- Built ternary_hydride_explorer.py
+- Found that several predictions matched existing papers
+- Identified gaps: CeBeH8, NdBeH8, La-Li-H unexplored
+- MAJOR FINDING: Mg2IrH5 synthesis exists, pathway to ambient-pressure Mg2IrH6
+- Created detailed research proposal for Mg2IrH6 synthesis
 
 ---
 

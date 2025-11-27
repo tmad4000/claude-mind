@@ -207,4 +207,33 @@ This is potentially the closest anyone has gotten to an ambient-pressure high-Tc
 
 ---
 
+#### Insight: Multiple Paths to Ambient Pressure Superconductivity
+
+Searching for other ambient-pressure candidates revealed the field is converging on several approaches:
+
+**Approach 1: Mg2XH6 Family (MH6 octahedra)**
+- Mg2IrH6: 103-160K (precursor Mg2IrH5 synthesized)
+- Mg2RhH6, Mg2PdH6, Mg2PtH6: 45-80K predicted
+- Mechanism: IrH6⁴⁻ molecular vibrations
+
+**Approach 2: B-C Clathrates with Hydride Units**
+- SrNH4B6C6: 85K ambient pressure
+- PbNH4B6C6: 115K ambient pressure
+- 24 compounds with 55 crystal structures stable
+- Precursor SrB3C3 already synthesized (at 50 GPa)
+- Mechanism: NH4 molecular vibrations in clathrate cage
+
+**Approach 3: Alkali/Transition Metal Hydrides**
+- Li2AgH6, Li2AuH6: Near theoretical limit for conventional SC
+- Suggests ceiling exists for BCS mechanism at ambient pressure
+
+**Key Pattern**: All successful ambient-pressure approaches involve:
+1. Molecular hydride units (MH6, NH4) that vibrate
+2. A structural scaffold (Mg sublattice, B-C clathrate) that stabilizes the structure
+3. Metastability requiring non-equilibrium synthesis
+
+**Sobering Finding**: There appears to be a theoretical ceiling for conventional (BCS) superconductivity at ambient pressure. Room temperature likely requires unconventional mechanism.
+
+---
+
 *This log should be updated each session with key insights developed in conversation.*

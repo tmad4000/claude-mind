@@ -360,6 +360,32 @@ This database collects empirical observations, experimental findings, and phenom
 - **Significance**: Explains WHY Mg works but Ca doesn't - design principle for similar compounds
 - **Related Problems**: PROB-001, PROB-006
 
+### OBS-SC-036: B-C Clathrates with NH4 - Another Ambient Path
+- **Type**: Computational
+- **Source**: Communications Physics (2024), arXiv:2311.01656
+- **Date**: 2024
+- **Description**: Hydride units (NH4) inserted into B-C clathrates. SrNH4B6C6 predicted at 85K ambient pressure. PbNH4B6C6 predicted at 115K ambient pressure. 24 compounds with 55 crystal structures dynamically stable.
+- **Significance**: Alternative approach to ambient-pressure superconductivity - not based on MH6 octahedra but on molecular hydrides in clathrate cages
+- **Related Problems**: PROB-003, PROB-006
+- **Synthesis Note**: Precursor SrB3C3 synthesized at 50 GPa - quench to ambient may work
+- **Status**: Computational prediction
+
+### OBS-SC-037: Li2AgH6, Li2AuH6 Near Theoretical Limit
+- **Type**: Computational/Theoretical
+- **Source**: npj Computational Materials (2024), Nature Communications (2025)
+- **Date**: 2024-2025
+- **Description**: Li2AgH6 and Li2AuH6 identified as approaching the practical limit for conventional (BCS) superconductivity at ambient pressure. Higher-Tc compounds tend to be thermodynamically unstable.
+- **Significance**: Suggests there may be a ceiling for conventional ambient-pressure superconductors. Room-temp may require unconventional mechanism.
+- **Related Problems**: PROB-002, PROB-003
+
+### OBS-SC-038: MB2C8 Clathrates (M=Na,K,Rb,Cs)
+- **Type**: Computational
+- **Source**: Phys. Rev. B (2024)
+- **Date**: 2024
+- **Description**: Boron-carbon clathrates MB2C8 predicted near 70K at ambient pressure
+- **Significance**: Another family of potential ambient-pressure superconductors
+- **Related Problems**: PROB-003, PROB-006
+
 ---
 
 ## INDEX BY PROBLEM
