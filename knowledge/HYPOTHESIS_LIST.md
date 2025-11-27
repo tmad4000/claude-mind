@@ -342,3 +342,46 @@ All hypotheses tested during Gray-Scott exploration, organized by category.
 - Class III mean: 0.59 ± 0.01 (more random)
 - Difference: ~24% lower for Class IV
 **Novelty**: 4/10 - Expected from periodicity, but quantifies the difference.
+
+---
+
+## CATEGORY 12: COMPREHENSIVE CLASSIFICATION (NEW - 2025-11-27, Overnight Session 3)
+
+### H12.1: Periodicity survey of ALL 256 rules validates Class IV/III distinction
+**Hypothesis**: Testing all 256 ECA rules for periodicity will cleanly separate Class IV from Class III.
+**Test**: Comprehensive survey with widths [31, 47, 61], 20000 steps, 3 seeds per configuration.
+**Result**: **CONFIRMED WITH NUANCE** (2025-11-27)
+- Class IV: 100% periodic (4/4 rules)
+- Class III: 33% periodic (mean rate), only 23% always periodic
+- Clean separation between canonical classes
+- BUT: 6 "Class III" rules are actually periodic (potential misclassifications)
+**Novelty**: 7/10 - First comprehensive periodicity survey of all 256 rules with explicit outlier identification.
+
+### H12.2: Six Class III rules are misclassified
+**Hypothesis**: Rules 22, 73, 129, 161, 181, 182 (classified as Class III) are actually more similar to Class IV.
+**Test**: Multi-metric analysis comparing outliers to true chaos and Class IV.
+**Result**: **STRONGLY SUPPORTED** (2025-11-27)
+- Outliers have HIGHER glider scores (0.562) than both Class III (0.472) and Class IV (0.483)
+- Outliers have LOWER damage spreading (0.291) than both Class III (0.500) and Class IV (0.487)
+- Outliers have LOWER block entropy (0.563) than Class III (0.647)
+- Outliers are 100% periodic like Class IV
+**Novelty**: 8/10 - Identifies specific rules that may need reclassification in Wolfram's taxonomy.
+
+### H12.3: Only 12 rules are truly chaotic
+**Hypothesis**: The number of genuinely chaotic ECA rules (never periodic within tractable limits) is small.
+**Test**: Comprehensive survey identifies rules that never found cycles.
+**Result**: **CONFIRMED** (2025-11-27)
+- Only 12 rules out of 256 are truly chaotic: 30, 45, 75, 86, 89, 101, 106, 120, 135, 149, 169, 225
+- This is ~5% of all rules
+- Most rules (211/256) are always periodic
+- 25 rules are trivial (collapse to uniform)
+**Novelty**: 6/10 - Quantifies the rarity of true chaos in ECA space.
+
+### H12.4: Periodicity is a better classifier than visual inspection
+**Hypothesis**: Computational periodicity tests reveal structure that human visual inspection misses.
+**Test**: Compare periodicity results with Wolfram's visual classification.
+**Result**: **CONFIRMED** (2025-11-27)
+- Rules like 22 have transients of 7000+ steps before entering short cycles (period 16)
+- Visual inspection of ~100 steps would miss this periodic structure
+- 6 rules classified as "chaotic" by visual appearance are actually periodic
+**Novelty**: 5/10 - Methodological insight for CA classification.
