@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "last_updated": "2025-11-27T04:00:00-08:00",
+    "last_updated": "2025-11-27T04:30:00-08:00",
     "description": "Single source of truth for research ideas, hypotheses, findings, and failed attempts"
   },
 
@@ -122,6 +122,190 @@
         "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124"
       ],
       "tags": ["meta-science", "infrastructure", "negative-results", "database", "high-impact"]
+    },
+    {
+      "id": "IDEA-006",
+      "title": "Minimal Complexity Threshold - Simplest Turing-Complete System",
+      "category": "complexity-theory",
+      "status": "promising",
+      "rating": 3,
+      "feasibility": "high",
+      "impact": "high",
+      "summary": "What is the simplest system capable of universal computation? Rule 110 is Turing-complete, but is there something simpler? Finding the exact boundary between computational universality and non-universality would illuminate fundamental limits.",
+      "key_insight": "We know Rule 110 works. We know simpler rules don't. The boundary must be somewhere specific. Finding it would tell us the 'minimum complexity cost' of computation.",
+      "why_interesting": [
+        "Connects to Kolmogorov complexity and algorithmic information theory",
+        "Practical implications for minimal computing substrates",
+        "Would reveal what 'features' are necessary vs sufficient for universality",
+        "Might generalize beyond CA to other computational substrates"
+      ],
+      "approaches": [
+        "Systematic search through rule space with universality proofs/disproofs",
+        "Identify necessary conditions (void stability, bidirectional spreading, etc.)",
+        "Look at 2-state vs 3-state vs continuous",
+        "Study bounded-time Turing completeness (weaker notion, might have simpler examples)"
+      ],
+      "date_added": "2025-11-27",
+      "evaluator_notes": "Deep theoretical question, computationally tractable, would illuminate fundamental limits of computation. Rated 8/10 overall.",
+      "tags": ["complexity-theory", "computation", "cellular-automata", "theoretical", "high-impact"]
+    },
+    {
+      "id": "IDEA-007",
+      "title": "Universal 'Interestingness' Metric for Complex Systems",
+      "category": "complexity-theory",
+      "status": "open",
+      "rating": 3,
+      "feasibility": "low",
+      "impact": "revolutionary",
+      "summary": "Find a metric that reliably distinguishes 'interesting' complex behavior (Class IV, edge of chaos) from mere randomness (Class III) and simple order (Class I/II). Entropy doesn't work. What does?",
+      "key_insight": "We discovered entropy gaps don't distinguish Class III from Class IV - chaotic rules can have higher entropy gaps than complex ones. The 000→0 void stability is necessary but not sufficient. Something else is going on.",
+      "why_hard": [
+        "Interestingness might be observer-dependent (anthropic)",
+        "May require multi-scale analysis (local vs global structure)",
+        "Could be irreducibly computational (no shortcut)",
+        "Might not exist as a simple metric"
+      ],
+      "candidate_approaches": [
+        "Logical depth (Bennett) - computational effort to produce pattern",
+        "Effective complexity (Gell-Mann) - length of shortest description of regularities",
+        "Statistical complexity (Crutchfield) - minimal hidden state for prediction",
+        "Integrated information (Tononi) - phi measure from consciousness research",
+        "Multi-scale entropy analysis",
+        "Compression ratio under different algorithms"
+      ],
+      "connection_to_project": "This is exactly what we've been hunting for in the CA/RD exploration. The Class IV isolation finding suggests the answer involves topology of parameter space, not just local properties.",
+      "date_added": "2025-11-27",
+      "evaluator_notes": "Moonshot but transformative if solvable. Holy grail problem - probably impossible but if found would deserve Fields Medal. Rated 7/10 overall due to low feasibility.",
+      "tags": ["complexity-theory", "metrics", "theoretical", "moonshot", "high-impact"]
+    },
+    {
+      "id": "IDEA-008",
+      "title": "Collective Intelligence Scaling Laws",
+      "category": "social-systems",
+      "status": "promising",
+      "rating": 3,
+      "feasibility": "high",
+      "impact": "high",
+      "summary": "How does group intelligence scale with group size, communication structure, and diversity? Are there universal scaling laws? This has direct implications for organizations, democracy, and AI collectives.",
+      "key_insight": "Sandy Pentland's work shows network structure matters more than individual ability for group performance. But we don't have systematic scaling laws like we do for metabolic rate vs body size in biology.",
+      "research_questions": [
+        "Does group IQ scale sublinearly, linearly, or superlinearly with size?",
+        "What network topologies maximize collective intelligence?",
+        "How does cognitive diversity vs homogeneity affect performance by task type?",
+        "Are there phase transitions in collective behavior at critical sizes?",
+        "How do AI agents change the scaling laws when added to human groups?"
+      ],
+      "data_sources": [
+        "Prediction markets (Metaculus, Polymarket) - track accuracy vs participant count",
+        "Wikipedia edit histories - quality vs editor count",
+        "GitHub projects - success metrics vs team size/structure",
+        "Scientific collaborations - paper impact vs author count",
+        "Sports teams, orchestras, companies"
+      ],
+      "recommended_contacts": [
+        "Sandy Pentland (MIT) - social physics pioneer",
+        "Anita Woolley (Carnegie Mellon) - collective intelligence factor",
+        "Scott Page (Michigan) - diversity and complexity"
+      ],
+      "date_added": "2025-11-27",
+      "evaluator_notes": "Timely with AI, feasible with data, high practical impact for organizations. Rated 7/10 overall.",
+      "tags": ["social-systems", "collective-intelligence", "scaling-laws", "data-science", "high-impact"]
+    },
+    {
+      "id": "IDEA-009",
+      "title": "Precursor Availability Filter for Material Predictions",
+      "category": "materials-science",
+      "status": "promising",
+      "rating": 3,
+      "feasibility": "high",
+      "impact": "high",
+      "summary": "AI systems predict thousands of new materials, but many are impossible to synthesize because precursors don't exist or synthesis pathways are unknown. Create a filter that rates predictions by 'can we actually make this?'",
+      "key_insight": "BSiC₂ was predicted in 2020 with Tc=74K but has zero synthesis attempts. Why? Probably because there's no obvious precursor pathway. If we had rated this upfront, we'd have saved 5 years of implicit 'this is impossible' knowledge.",
+      "components": [
+        "Precursor database: What compounds are commercially available or easily made?",
+        "Synthesis pathway inference: Given target, what steps could produce it?",
+        "Thermodynamic feasibility: Is each step favorable?",
+        "Equipment requirements: What does this synthesis need?",
+        "Overall 'synthesizability score'"
+      ],
+      "integration_targets": [
+        "Materials Project - add synthesizability scores to predictions",
+        "AFLOW - filter high-throughput screening results",
+        "Paper review - flag predictions without synthesis pathway",
+        "Funding agencies - prioritize testable predictions"
+      ],
+      "prior_art": [
+        "Retrosynthesis in organic chemistry (but not for inorganics)",
+        "ICSD contains experimentally known structures",
+        "Some ML models predict stability but not synthesizability"
+      ],
+      "date_added": "2025-11-27",
+      "evaluator_notes": "Solves real problem in materials science, immediately useful, relatively straightforward. Rated 7/10 overall.",
+      "tags": ["materials-science", "synthesis", "filtering", "practical", "high-impact"]
+    },
+    {
+      "id": "IDEA-010",
+      "title": "Null Result Futures Market",
+      "category": "meta-science",
+      "status": "promising",
+      "rating": 3,
+      "feasibility": "medium",
+      "impact": "high",
+      "summary": "Create a prediction market where people bet on whether hyped scientific findings will replicate. Financial incentives would accelerate detection of failures (like LK-99) and reward skepticism.",
+      "key_insight": "Currently there's no financial incentive to investigate suspected frauds or failures. Prediction markets create one. The LK-99 room-temperature superconductor fiasco would have been called out faster if money was on the line.",
+      "mechanism": [
+        "New hyped paper announced → market opens on 'will this replicate within 2 years?'",
+        "Skeptics can bet against, believers can bet for",
+        "Settlement based on replication attempts or meta-analyses",
+        "Winners get paid from losers (minus platform fee)"
+      ],
+      "challenges": [
+        "Defining 'replication' precisely (same result? same direction? p<0.05?)",
+        "Avoiding manipulation (bet against, then sabotage replication)",
+        "Regulatory issues with gambling on science",
+        "Getting critical mass of participants"
+      ],
+      "existing_precedents": [
+        "Replication Markets project at SCORE",
+        "Metaculus science questions",
+        "Polymarket for general events"
+      ],
+      "date_added": "2025-11-27",
+      "evaluator_notes": "Novel incentive mechanism, could actually shift replication culture, prediction markets work. Rated 7/10 overall.",
+      "tags": ["meta-science", "prediction-markets", "replication", "incentives", "high-impact"]
+    },
+    {
+      "id": "IDEA-011",
+      "title": "Human-AI Calibration Training",
+      "category": "ai-collaboration",
+      "status": "promising",
+      "rating": 2,
+      "feasibility": "high",
+      "impact": "high",
+      "summary": "Humans are systematically miscalibrated about when to trust AI - sometimes over-relying, sometimes under-relying. Create interactive training (like forecaster calibration training) to improve human-AI collaboration.",
+      "key_insight": "Good forecasters learn calibration through feedback. AI users rarely get this feedback. A training system would show: 'You trusted AI here and it was wrong' / 'You overrode AI here and you were wrong' - building intuition for AI capabilities.",
+      "training_components": [
+        "Present human with task + AI suggestion",
+        "Human decides: accept, modify, or reject AI",
+        "Reveal ground truth",
+        "Track calibration over time (Brier score equivalent)",
+        "Personalized feedback on systematic errors"
+      ],
+      "domains_to_target": [
+        "Medical diagnosis (high stakes)",
+        "Legal document review",
+        "Code review",
+        "Scientific literature assessment",
+        "Image analysis"
+      ],
+      "metrics": [
+        "Discrimination (can human tell when AI is right vs wrong?)",
+        "Calibration (does human confidence match AI accuracy?)",
+        "Resolution (can human improve on AI?)"
+      ],
+      "date_added": "2025-11-27",
+      "evaluator_notes": "Actually useful and underexplored. Proper calibration could prevent both over/under-reliance on AI. Rated 7/10 overall.",
+      "tags": ["ai-collaboration", "calibration", "training", "human-factors", "practical"]
     }
   ],
 

@@ -2,7 +2,7 @@
 
 *Auto-generated from `data/research_db.json`*
 
-**Last updated**: 2025-11-27T04:00:00-08:00
+**Last updated**: 2025-11-27T04:30:00-08:00
 
 ---
 
@@ -54,6 +54,61 @@ Create a public, searchable database of failed synthesis attempts, negative expe
 
 ---
 
+### ⭐⭐⭐ IDEA-006: Minimal Complexity Threshold - Simplest Turing-Complete System
+
+**Status**: PROMISING | **Feasibility**: high | **Impact**: high
+
+What is the simplest system capable of universal computation? Rule 110 is Turing-complete, but is there something simpler? Finding the exact boundary between computational universality and non-universality would illuminate fundamental limits.
+
+**Key Insight**: We know Rule 110 works. We know simpler rules don't. The boundary must be somewhere specific. Finding it would tell us the 'minimum complexity cost' of computation.
+
+---
+
+### ⭐⭐⭐ IDEA-008: Collective Intelligence Scaling Laws
+
+**Status**: PROMISING | **Feasibility**: high | **Impact**: high
+
+How does group intelligence scale with group size, communication structure, and diversity? Are there universal scaling laws? This has direct implications for organizations, democracy, and AI collectives.
+
+**Key Insight**: Sandy Pentland's work shows network structure matters more than individual ability for group performance. But we don't have systematic scaling laws like we do for metabolic rate vs body size in biology.
+
+**Recommended Contacts**:
+- Sandy Pentland (MIT) - social physics pioneer
+- Anita Woolley (Carnegie Mellon) - collective intelligence factor
+- Scott Page (Michigan) - diversity and complexity
+
+---
+
+### ⭐⭐⭐ IDEA-009: Precursor Availability Filter for Material Predictions
+
+**Status**: PROMISING | **Feasibility**: high | **Impact**: high
+
+AI systems predict thousands of new materials, but many are impossible to synthesize because precursors don't exist or synthesis pathways are unknown. Create a filter that rates predictions by 'can we actually make this?'
+
+**Key Insight**: BSiC₂ was predicted in 2020 with Tc=74K but has zero synthesis attempts. Why? Probably because there's no obvious precursor pathway. If we had rated this upfront, we'd have saved 5 years of implicit 'this is impossible' knowledge.
+
+---
+
+### ⭐⭐⭐ IDEA-010: Null Result Futures Market
+
+**Status**: PROMISING | **Feasibility**: medium | **Impact**: high
+
+Create a prediction market where people bet on whether hyped scientific findings will replicate. Financial incentives would accelerate detection of failures (like LK-99) and reward skepticism.
+
+**Key Insight**: Currently there's no financial incentive to investigate suspected frauds or failures. Prediction markets create one. The LK-99 room-temperature superconductor fiasco would have been called out faster if money was on the line.
+
+---
+
+### ⭐⭐ IDEA-011: Human-AI Calibration Training
+
+**Status**: PROMISING | **Feasibility**: high | **Impact**: high
+
+Humans are systematically miscalibrated about when to trust AI - sometimes over-relying, sometimes under-relying. Create interactive training (like forecaster calibration training) to improve human-AI collaboration.
+
+**Key Insight**: Good forecasters learn calibration through feedback. AI users rarely get this feedback. A training system would show: 'You trusted AI here and it was wrong' / 'You overrode AI here and you were wrong' - building intuition for AI capabilities.
+
+---
+
 ## Open Ideas (Need More Work)
 
 ### ⭐⭐ IDEA-004: Nickelate Strain Engineering for Higher Tc
@@ -61,6 +116,14 @@ Create a public, searchable database of failed synthesis attempts, negative expe
 **Status**: open | **Feasibility**: high | **Impact**: high
 
 La₃Ni₂O₇ superconducts at ambient pressure via substrate strain (SLAC, Feb 2025). Current Tc ~26K. Can systematic substrate/strain optimization push higher?
+
+---
+
+### ⭐⭐⭐ IDEA-007: Universal 'Interestingness' Metric for Complex Systems
+
+**Status**: open | **Feasibility**: low | **Impact**: revolutionary
+
+Find a metric that reliably distinguishes 'interesting' complex behavior (Class IV, edge of chaos) from mere randomness (Class III) and simple order (Class I/II). Entropy doesn't work. What does?
 
 ---
 
