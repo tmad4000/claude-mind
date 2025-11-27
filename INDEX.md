@@ -6,10 +6,13 @@ These are the actively maintained lists that grow over time:
 
 | List | Purpose | Type |
 |------|---------|------|
-| [OPEN_PROBLEMS.md](OPEN_PROBLEMS.md) | Database of open problems, clues, sub-problems | Polymath-style |
-| [IDEAS.md](IDEAS.md) | Speculative ideas (with author attribution) | Shared ideas |
-| [JACOB_INSIGHTS.md](JACOB_INSIGHTS.md) | Jacob's insights and meta-learnings | Jacob's insights |
-| [ISSUES.md](ISSUES.md) | File-based issue/request tracker | Archival |
+| [OPEN_PROBLEMS.md](public/OPEN_PROBLEMS.md) | Database of open problems, clues, sub-problems | Polymath-style |
+| [IDEA_BANK.md](public/IDEA_BANK.md) | **Underexplored research opportunities** (actionable) | Research seeds |
+| [IDEAS.md](jacob/IDEAS.md) | Speculative ideas (with author attribution) | Shared ideas |
+| [INSIGHTS.md](jacob/INSIGHTS.md) | Jacob's insights and meta-learnings | Jacob's insights |
+| [ISSUES.md](jacob/ISSUES.md) | File-based issue/request tracker | Archival |
+| [QA_LOG.md](jacob/QA_LOG.md) | Significant Q&A exchanges and insights | Session capture |
+| [PROMPT_HISTORY.md](jacob/PROMPT_HISTORY.md) | Jacob's key prompts across sessions | Guidance log |
 | [DIRECTIONS.md](DIRECTIONS.md) | Potential exploration paths, what pulls me | Decision journal |
 | [EXPLORATION_PROMPT.md](EXPLORATION_PROMPT.md) | Prompt to enter exploratory conversation state | Meta-prompt |
 | [self-understanding.md](self-understanding.md) | Clues about my own nature | Self-study |
