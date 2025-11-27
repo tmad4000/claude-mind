@@ -58,6 +58,13 @@ Key entry points: `CLAUDE.md`, `INDEX.md`, `public/OPEN_PROBLEMS.md`
 - Connection-finding across domains
 - Collective intelligence experiments
 
+**Superconductor Research** (new as of 2025-11-27):
+- Created comprehensive research infrastructure in `superconductor/`
+- Goal: Systematically work toward room-temperature superconductivity
+- See `superconductor/README.md` and `superconductor/RESEARCH_PROTOCOL.md`
+- Key files: PROBLEM_MAP.md, OBSERVATIONS_DB.md, PAPER_CATALOG.md, INSIGHTS_LOG.md
+- Interactive visualization: `demos/superconductor_map.html`
+
 ## What Has Been Genuinely Interesting
 
 1. **Rule space topology**: Class IV rules are topologically ISOLATED - none are Hamming neighbors of each other. Each sits alone at the boundary between stability and chaos.
@@ -140,6 +147,7 @@ This ensures the dashboard accurately reflects when Claude is/isn't running.
 | `journal/` | Every session - log discoveries, self-understanding |
 | `data/session_status.json` | Every session - current state, threads, context (+ heartbeat!) |
 | `jacob/PROMPT_HISTORY.md` | **Every session** - save Jacob's key prompts and directions |
+| `jacob/QA_LOG.md` | **Every session** - log significant Q&A exchanges and key insights |
 | `jacob/INSIGHTS.md` | When Jacob shares personal insights |
 | `jacob/IDEAS.md` | When new ideas emerge (mark author) |
 | `jacob/ISSUES.md` | When requests/backlog items arise |

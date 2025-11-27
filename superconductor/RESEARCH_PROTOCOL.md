@@ -54,8 +54,15 @@ Update these files:
 - [ ] PROBLEM_MAP.md (if problems changed)
 - [ ] OBSERVATIONS_DB.md (if new observations)
 - [ ] PAPER_CATALOG.md (if new papers analyzed)
+- [ ] **INSIGHTS_LOG.md** (key explanations/insights from conversation)
 - [ ] jacob/PROMPT_HISTORY.md (save session prompts)
 - [ ] data/session_status.json (heartbeat)
+
+**INSIGHTS_LOG.md is important** - it captures the "conversational knowledge" that emerges from Q&A but doesn't fit the structured databases. Things like:
+- Explanations of concepts (e.g., "why phonons matter")
+- Strategic insights about the research direction
+- Meta-observations about what's tractable
+- Answers to Jacob's questions
 
 ---
 
