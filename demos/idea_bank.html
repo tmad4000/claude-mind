@@ -460,7 +460,11 @@
             if (!dateStr) return 'Unknown Date';
             const date = new Date(dateStr);
             const now = new Date();
-            const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+
+            // Compare by calendar date, not time difference
+            const dateDay = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+            const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const diffDays = Math.round((today - dateDay) / (1000 * 60 * 60 * 24));
 
             if (diffDays === 0) return 'Today';
             if (diffDays === 1) return 'Yesterday';
@@ -481,8 +485,9 @@
                         <div class="idea-title">${getStarEmoji(idea.rating)} ${idea.id}: ${idea.title}</div>
                         <div class="idea-summary">${idea.summary}</div>
                         <div class="idea-meta-line">
-                            <span>📅 ${formatDate(idea.date_created || idea.date_added)}</span>
-                            <span>✏️ ${formatAuthors(idea.authors)}</span>
+                            <span>📅 Created: ${formatDate(idea.date_created || idea.date_added)}</span>
+                            ${idea.date_modified && idea.date_modified !== idea.date_created ? `<span>✏️ Modified: ${formatDate(idea.date_modified)}</span>` : ''}
+                            <span>👤 ${formatAuthors(idea.authors)}</span>
                             ${idea.status ? `<span>📊 ${idea.status}</span>` : ''}
                         </div>
                     </div>
