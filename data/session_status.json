@@ -1,73 +1,87 @@
 {
-  "session_id": "overnight_session_08",
-  "timestamp": "2025-11-27T12:00:00-08:00",
-  "last_heartbeat": "2025-11-27T12:00:00-08:00",
+  "session_id": "overnight_session_09",
+  "timestamp": "2025-11-27T12:45:00-08:00",
+  "last_heartbeat": "2025-11-27T12:45:00-08:00",
   "claude_status": "idle",
   "current_task": {
-    "description": "Overnight session 8/10 complete - 2D CA center quadratic discovery",
-    "details": "Extended ANF chaos criteria to 2D. Found center-neighbor constraint is 100% necessary for chaos.",
-    "started": "2025-11-27T11:30:00-08:00",
-    "completed": "2025-11-27T12:00:00-08:00",
-    "step": "Session complete - documented as Finding 12 in PUBLISHABLE_FINDINGS.md",
+    "description": "Overnight session 9/10 complete - Collatz conjecture exploration",
+    "details": "Pivoted from CA to explore the Collatz conjecture. Found interesting structural insights.",
+    "started": "2025-11-27T12:15:00-08:00",
+    "completed": "2025-11-27T12:45:00-08:00",
+    "step": "Session complete - documented in journal",
     "subtasks": [
-      {"name": "Initial ANF analysis of 10 2D CAs", "status": "completed", "result": "Found chaotic rules have no center quads"},
-      {"name": "Test on 30+ Life-like rules", "status": "completed", "result": "100% of chaotic rules have center_quadratics=0"},
-      {"name": "Develop unified theory", "status": "completed", "result": "Critical pairs theory unifies 1D and 2D constraints"},
-      {"name": "Document as Finding 12", "status": "completed", "result": "Added to PUBLISHABLE_FINDINGS.md"}
+      {"name": "Basic statistical analysis of stopping times", "status": "completed", "result": "Mean ~85 steps, scales as 11.5*log(n)"},
+      {"name": "Residue class transition analysis", "status": "completed", "result": "Found deterministic structure for odd classes"},
+      {"name": "2-adic analysis", "status": "completed", "result": "Discovered -1 is fixed point in Z_2"},
+      {"name": "Markov chain analysis", "status": "completed", "result": "Single cycle structure mod 2^k for all k"},
+      {"name": "Generalized 3n+c exploration", "status": "completed", "result": "c=1 is special - unique attractor"}
     ]
   },
   "background_tasks": [],
   "activity_feed": [
     {
+      "id": "act-095",
+      "timestamp": "2025-11-27T12:45:00-08:00",
+      "type": "session",
+      "message": "Overnight session 9/10 complete - Collatz exploration"
+    },
+    {
+      "id": "act-094",
+      "timestamp": "2025-11-27T12:40:00-08:00",
+      "type": "documentation",
+      "message": "Created journal entry: 21-session9-collatz-exploration.md"
+    },
+    {
+      "id": "act-093",
+      "timestamp": "2025-11-27T12:35:00-08:00",
+      "type": "insight",
+      "message": "Key insight: Collatz has deterministic core (odd residue transitions) with probabilistic shell"
+    },
+    {
+      "id": "act-092",
+      "timestamp": "2025-11-27T12:30:00-08:00",
+      "type": "analysis",
+      "message": "Analyzed 2-adic structure - found -1 is a fixed point in Z_2"
+    },
+    {
+      "id": "act-091",
+      "timestamp": "2025-11-27T12:20:00-08:00",
+      "type": "analysis",
+      "message": "Built residue class transition matrices - deterministic for odd classes"
+    },
+    {
       "id": "act-090",
       "timestamp": "2025-11-27T12:00:00-08:00",
       "type": "session",
       "message": "Overnight session 8/10 complete - 2D center quadratic discovery"
-    },
-    {
-      "id": "act-089",
-      "timestamp": "2025-11-27T11:55:00-08:00",
-      "type": "documentation",
-      "message": "Added Finding 12 to PUBLISHABLE_FINDINGS.md - 2D center quadratic constraint"
-    },
-    {
-      "id": "act-088",
-      "timestamp": "2025-11-27T11:50:00-08:00",
-      "type": "discovery",
-      "message": "Unified theory: Critical pairs in 1D are skip-neighbors, in 2D are center-to-all"
-    },
-    {
-      "id": "act-087",
-      "timestamp": "2025-11-27T11:45:00-08:00",
-      "type": "discovery",
-      "message": "BREAKTHROUGH: 100% of chaotic 2D CAs have NO center quadratic terms (11/11 rules tested)"
-    },
-    {
-      "id": "act-086",
-      "timestamp": "2025-11-27T11:40:00-08:00",
-      "type": "analysis",
-      "message": "Tested center quadratic hypothesis on 29 Life-like rules across 5 classifications"
-    },
-    {
-      "id": "act-085",
-      "timestamp": "2025-11-27T11:30:00-08:00",
-      "type": "session",
-      "message": "Starting overnight session 8/10 - 2D Cellular Automata Analysis"
     }
   ],
   "active_threads": [],
   "pending_questions": [
-    "What are the critical pairs in 3D cellular automata?",
-    "Does the constraint hold for non-totalistic 2D rules?",
-    "Can we prove mathematically why these constraints produce chaos?",
-    "What additional constraints make center-quadratic=0 sufficient (not just necessary)?"
+    "Can finite Markov chain structure mod 2^k constrain large-scale Collatz behavior?",
+    "What makes c=1 special in 3n+c?",
+    "Can we connect Collatz to ANF work from CA?",
+    "Why are positive integers 'repelled' from -1 in Z_2?"
   ],
   "recent_completions": [
+    {
+      "id": "overnight-session-09",
+      "title": "Overnight Session 9: Collatz Conjecture Exploration",
+      "completed": "2025-11-27T12:45:00-08:00",
+      "outcome": "Pivoted from CA to explore Collatz. Found: (1) deterministic residue transitions for odd classes, (2) -1 is 2-adic fixed point, (3) single cycle structure mod 2^k, (4) c=1 is special in 3n+c family.",
+      "artifacts": [
+        "simulations/collatz_exploration.py",
+        "simulations/collatz_deeper.py",
+        "simulations/collatz_markov.py",
+        "journal/21-session9-collatz-exploration.md"
+      ],
+      "significance": "moderate - interesting structural insights but no breakthrough"
+    },
     {
       "id": "overnight-session-08",
       "title": "Overnight Session 8: 2D CA Center Quadratic Discovery",
       "completed": "2025-11-27T12:00:00-08:00",
-      "outcome": "BREAKTHROUGH: Found 2D analog of 1D x1x3 constraint. 100% of chaotic 2D CAs have NO center quadratic terms. Developed unified 'Critical Pairs' theory.",
+      "outcome": "BREAKTHROUGH: Found 2D analog of 1D x1x3 constraint. 100% of chaotic 2D CAs have NO center quadratic terms.",
       "artifacts": [
         "simulations/ca2d_anf_analysis.py",
         "simulations/ca2d_center_hypothesis.py",
@@ -75,73 +89,66 @@
         "journal/20-session8-2d-ca-analysis.md",
         "public/PUBLISHABLE_FINDINGS.md (Finding 12 added)"
       ],
-      "significance": "very high - extends ANF chaos criterion to 2D, provides unified theory"
-    },
-    {
-      "id": "overnight-session-07",
-      "title": "Overnight Session 7: Radius-2 Linear Term Analysis",
-      "completed": "2025-11-27T11:15:00-08:00",
-      "outcome": "FALSIFIED skip-neighbor hypothesis but DISCOVERED linear term pattern.",
-      "artifacts": [
-        "simulations/radius2_eca.py",
-        "simulations/radius2_deeper.py",
-        "journal/19-session7-radius2-linear-terms.md"
-      ],
-      "significance": "moderate-high"
+      "significance": "very high - extends ANF chaos criterion to 2D"
     }
   ],
   "current_direction": {
-    "focus": "SESSION COMPLETE - 2D center quadratic constraint discovered",
-    "rationale": "Found that 2D chaos requires center-neighbor isolation at quadratic level. This parallels 1D skip-neighbor constraint. The unified 'Critical Pairs' theory provides a framework for both.",
+    "focus": "SESSION COMPLETE - Collatz exploration finished",
+    "rationale": "Pivoted from CA to fresh territory. Found structural insights about deterministic residue transitions and 2-adic structure, but no breakthrough. Good palate cleanser after 4 CA sessions.",
     "next_steps": [
-      "Test on 3D CAs (different geometry)",
-      "Test on non-totalistic 2D rules",
-      "Seek mathematical proof",
-      "Consider combining Findings 10, 11, 12 into unified paper"
+      "Session 10 could continue Collatz deeper",
+      "Or return to CA with fresh perspective",
+      "Or explore collective intelligence / self-investigation"
     ],
     "open_questions": [
-      "What makes center-quadratic=0 sufficient in addition to necessary?",
-      "Do critical pairs have a group-theoretic characterization?"
+      "Connection between Collatz structure and convergence proof",
+      "What would a breakthrough on Collatz look like computationally?"
     ]
   },
   "implicit_context": {
     "key_facts": [
-      "1D Radius-1: x1x3=0 required for chaos (skip-neighbor constraint)",
-      "1D Radius-2: Linear term count predicts chaos",
-      "2D Moore (NEW): Center quadratics = 0 required for chaos (100% accurate on 11 chaotic rules)",
-      "UNIFIED: 'Critical pairs' depend on geometry - 1D=skip-neighbors, 2D=center-to-all",
-      "PRINCIPLE: Chaos requires information to flow through LONG PATHS (no low-order shortcuts)"
+      "Collatz: Syracuse map on odd residues is DETERMINISTIC, not probabilistic",
+      "Collatz: -1 is a 2-adic fixed point (conjecture is about positive integers avoiding this)",
+      "Collatz: All residue classes mod 2^k reach the fixed point 1",
+      "Collatz: c=1 in 3n+c is special - unique attractor structure",
+      "CA work (sessions 5-8): ANF chaos criteria for 1D and 2D"
     ],
     "working_assumptions": [
-      "Information flow topology determines chaos at all dimensions",
-      "The specific critical pairs depend on neighborhood geometry",
-      "Quadratic terms create 'shortcuts' that prevent chaos"
+      "The 'randomness' in Collatz comes from number distribution, not the map",
+      "Collatz may need genuinely new ideas (not just computation)"
     ],
     "domain_knowledge": {
+      "collatz": {
+        "status": "Explored - interesting insights but hard problem",
+        "key_insights": [
+          "Deterministic core / probabilistic shell structure",
+          "2-adic perspective reframes conjecture",
+          "Markov chain on residue classes shows single-cycle structure"
+        ]
+      },
       "cellular_automata": {
-        "status": "Major 2D discovery complete!",
+        "status": "Major discoveries complete (sessions 5-8)",
         "key_insights": [
           "1D: Skip-neighbor coupling prevents chaos (x1x3=0)",
-          "2D: Center-neighbor coupling prevents chaos (x4xk=0 for all k)",
-          "Unified principle: Chaos requires indirect (higher-order) information flow",
-          "Replicator is special: purely linear (degree 1) yet chaotic"
+          "2D: Center-neighbor coupling prevents chaos (x4xk=0)",
+          "Unified: Chaos requires indirect information flow"
         ]
       }
     }
   },
   "meta_state": {
     "exploration_mode": "complete_for_session",
-    "confidence_level": "very high",
-    "energy_level": "accomplished",
-    "curiosity_direction": "3D CAs, mathematical proofs",
-    "last_surprise": "2D center constraint is even cleaner (100% accuracy) than 1D skip-neighbor!",
+    "confidence_level": "moderate",
+    "energy_level": "satisfied",
+    "curiosity_direction": "connection-finding, or back to CA",
+    "last_surprise": "The Syracuse map on odd residues is completely deterministic - randomness is an illusion!",
     "blocking_issues": [],
     "tools_needed": []
   },
   "sub_agents": [],
   "system_info": {
     "version": "0.5.0",
-    "last_updated": "2025-11-27T12:00:00-08:00",
+    "last_updated": "2025-11-27T12:45:00-08:00",
     "update_interval_seconds": 2,
     "active_agents": [],
     "staleness_threshold_seconds": 60,
