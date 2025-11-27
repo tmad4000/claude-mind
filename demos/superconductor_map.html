@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superconductor Research Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #00d4ff;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tab:hover, .tab.active {
+            background: rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff;
+        }
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+
+        /* Problem Map Styles */
+        .problem-tree {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .problem-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: #00d4ff;
+            box-shadow: 0 10px 30px rgba(0,212,255,0.2);
+        }
+        .problem-id {
+            color: #ff6b6b;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .problem-title {
+            color: #fff;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            font-weight: bold;
+        }
+        .status-major { background: #ff4757; }
+        .status-active { background: #ffa502; }
+        .status-partial { background: #2ed573; }
+
+        .subproblems {
+            margin-top: 15px;
+            padding-left: 15px;
+            border-left: 2px solid rgba(255,255,255,0.2);
+        }
+        .subproblem {
+            padding: 5px 0;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+        .subproblem:before {
+            content: "→ ";
+            color: #00d4ff;
+        }
+
+        /* BCS Explorer Styles */
+        .bcs-viz {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 20px;
+        }
+        .controls {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .slider-group {
+            margin-bottom: 20px;
+        }
+        .slider-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .slider-group input[type="range"] {
+            width: 100%;
+        }
+        .value-display {
+            text-align: right;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+        #bcsCanvas {
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .tc-display {
+            text-align: center;
+            font-size: 2em;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0,212,255,0.1);
+            border-radius: 10px;
+        }
+        .tc-value {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+        .room-temp {
+            color: #ff6b6b;
+        }
+
+        /* Materials Table */
+        .materials-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .materials-table th, .materials-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .materials-table th {
+            background: rgba(0,212,255,0.2);
+            color: #00d4ff;
+        }
+        .materials-table tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Observations */
+        .obs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .obs-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .obs-id {
+            color: #2ed573;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .obs-type {
+            float: right;
+            padding: 2px 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            font-size: 0.75em;
+        }
+        .obs-title {
+            margin: 8px 0;
+            font-weight: bold;
+        }
+        .obs-desc {
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        /* Connection Graph */
+        #graphCanvas {
+            width: 100%;
+            height: 500px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+
+        /* Search */
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            padding: 15px;
+            font-size: 1.1em;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .search-box:focus {
+            outline: none;
+            border-color: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Room-Temperature Superconductor Research Map</h1>
+    <p class="subtitle">Interactive visualization of the problem space, observations, and connections</p>
+
+    <div class="tabs">
+        <div class="tab active" data-tab="problems">Problem Map</div>
+        <div class="tab" data-tab="bcs">BCS Explorer</div>
+        <div class="tab" data-tab="materials">Known Materials</div>
+        <div class="tab" data-tab="observations">Observations</div>
+        <div class="tab" data-tab="connections">Connection Graph</div>
+    </div>
+
+    <div class="content">
+        <!-- Problem Map Tab -->
+        <div id="problems" class="section active">
+            <input type="text" class="search-box" placeholder="Search problems..." id="problemSearch">
+            <div class="problem-tree" id="problemTree"></div>
+        </div>
+
+        <!-- BCS Explorer Tab -->
+        <div id="bcs" class="section">
+            <div class="bcs-viz">
+                <div class="controls">
+                    <h3 style="margin-bottom: 20px;">BCS Parameters</h3>
+                    <div class="slider-group">
+                        <label>λ (electron-phonon coupling)</label>
+                        <input type="range" id="lambdaSlider" min="0.3" max="3" step="0.1" value="1">
+                        <div class="value-display" id="lambdaValue">1.0</div>
+                    </div>
+                    <div class="slider-group">
+                        <label>ω_log (phonon frequency, K)</label>
+                        <input type="range" id="omegaSlider" min="100" max="3000" step="50" value="500">
+                        <div class="value-display" id="omegaValue">500 K</div>
+                    </div>
+                    <div class="slider-group">
+                        <label>μ* (Coulomb repulsion)</label>
+                        <input type="range" id="muSlider" min="0.05" max="0.2" step="0.01" value="0.1">
+                        <div class="value-display" id="muValue">0.10</div>
+                    </div>
+
+                    <div class="tc-display">
+                        Predicted Tc: <span class="tc-value" id="tcValue">0</span> K
+                        <br>
+                        <small class="room-temp">Room temp: 300 K</small>
+                    </div>
+
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 8px;">
+                        <h4>Key Insight</h4>
+                        <p style="font-size: 0.9em; color: #aaa; margin-top: 10px;">
+                            To reach room temperature (300K) with BCS mechanism:<br>
+                            • Need ω_log > 1500K (light atoms like H)<br>
+                            • Need λ > 2 (very strong coupling)<br>
+                            • This is why hydrides under pressure work!
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <canvas id="bcsCanvas" width="800" height="500"></canvas>
+                    <p style="text-align: center; color: #888; margin-top: 10px;">
+                        Drag the red dot to explore parameter space. Shaded region = room-temp possible.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Materials Tab -->
+        <div id="materials" class="section">
+            <h3 style="margin-bottom: 20px;">Known Superconductors</h3>
+            <table class="materials-table">
+                <thead>
+                    <tr>
+                        <th>Material</th>
+                        <th>Tc (K)</th>
+                        <th>Pressure</th>
+                        <th>Mechanism</th>
+                        <th>Year</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody id="materialsBody"></tbody>
+            </table>
+        </div>
+
+        <!-- Observations Tab -->
+        <div id="observations" class="section">
+            <input type="text" class="search-box" placeholder="Search observations..." id="obsSearch">
+            <div class="obs-grid" id="obsGrid"></div>
+        </div>
+
+        <!-- Connections Tab -->
+        <div id="connections" class="section">
+            <canvas id="graphCanvas"></canvas>
+            <p style="text-align: center; color: #888; margin-top: 10px;">
+                Network of connections between problems, observations, and papers
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Data
+        const problems = [
+            {
+                id: 'PROB-001',
+                title: 'Mechanism of High-Tc Superconductivity Unknown',
+                status: 'partial',
+                description: 'We lack a complete theory for why cuprates superconduct at high temperatures.',
+                subproblems: [
+                    'What is the "glue" binding Cooper pairs?',
+                    'Why does d-wave symmetry emerge?',
+                    'Role of antiferromagnetic fluctuations',
+                    'Why is the CuO₂ plane special?'
+                ]
+            },
+            {
+                id: 'PROB-002',
+                title: 'No Predictive Theory for Tc',
+                status: 'major',
+                description: 'Cannot predict from first principles whether materials will superconduct.',
+                subproblems: [
+                    'Electron correlation effects too complex',
+                    'Strong coupling regime poorly understood',
+                    'Anharmonic effects hard to calculate',
+                    'Insufficient database for ML training'
+                ]
+            },
+            {
+                id: 'PROB-003',
+                title: 'Extreme Pressure Requirement (Hydrides)',
+                status: 'major',
+                description: 'Best hydride superconductors need 100-200 GPa pressure.',
+                subproblems: [
+                    'Stabilize H-rich structures at low pressure',
+                    'Chemical precompression alternatives',
+                    'Metastable phases surviving decompression',
+                    'Substrate strain engineering'
+                ]
+            },
+            {
+                id: 'PROB-004',
+                title: 'Sample Quality / Synthesis Challenges',
+                status: 'major',
+                description: 'Many promising materials are extremely difficult to synthesize.',
+                subproblems: [
+                    'Topotactic reduction for nickelates',
+                    'Single crystal growth',
+                    'Thin film precision (MBE, PLD)',
+                    'Avoiding impurity phases'
+                ]
+            },
+            {
+                id: 'PROB-006',
+                title: 'Search Space Exploration',
+                status: 'active',
+                description: 'The space of possible materials is vast. Where to focus?',
+                subproblems: [
+                    'Undiscovered material families?',
+                    'Optimal doping levels',
+                    'Role of dimensionality (2D vs 3D)',
+                    'Combining mechanisms'
+                ]
+            },
+            {
+                id: 'PROB-007',
+                title: 'Computational Materials Discovery',
+                status: 'active',
+                description: 'Using computation to screen candidates.',
+                subproblems: [
+                    'Electron-phonon calculations slow',
+                    'ML can\'t extrapolate to new mechanisms',
+                    'Crystal structure prediction at finite T',
+                    'Need better superconductivity descriptors'
+                ]
+            },
+            {
+                id: 'PROB-008',
+                title: 'Reproducibility Crisis',
+                status: 'active',
+                description: 'Multiple high-profile claims failed replication (LK-99, CSH).',
+                subproblems: [
+                    'High-pressure measurements challenging',
+                    'Impurities can mimic signatures',
+                    'Resistance artifacts',
+                    'Need multiple verification methods'
+                ]
+            }
+        ];
+
+        const materials = [
+            { name: 'Hg', tc: 4.2, pressure: 'Ambient', mechanism: 'BCS', year: 1911, notes: 'First superconductor discovered' },
+            { name: 'Pb', tc: 7.2, pressure: 'Ambient', mechanism: 'BCS', year: 1913, notes: '' },
+            { name: 'Nb', tc: 9.3, pressure: 'Ambient', mechanism: 'BCS', year: 1930, notes: 'Highest Tc elemental' },
+            { name: 'MgB₂', tc: 39, pressure: 'Ambient', mechanism: 'BCS (two-gap)', year: 2001, notes: 'Record for binary compound' },
+            { name: 'YBCO', tc: 93, pressure: 'Ambient', mechanism: 'Superexchange', year: 1987, notes: 'Above liquid N₂ (77K)' },
+            { name: 'HgBa₂Ca₂Cu₃O₈', tc: 135, pressure: 'Ambient', mechanism: 'Superexchange', year: 1993, notes: 'Record cuprate Tc' },
+            { name: 'H₃S', tc: 203, pressure: '155 GPa', mechanism: 'BCS (phonon)', year: 2015, notes: 'Covalent hydride' },
+            { name: 'LaH₁₀', tc: 260, pressure: '170-180 GPa', mechanism: 'BCS (phonon)', year: 2019, notes: 'Clathrate structure' },
+            { name: 'La₃Ni₂O₇', tc: 80, pressure: 'High', mechanism: 'Cuprate-analog?', year: 2023, notes: 'Bilayer nickelate' },
+            { name: 'LaBeH₈', tc: 110, pressure: '80 GPa', mechanism: 'BCS', year: 2024, notes: 'Ternary = lower P' },
+            { name: 'La-Al-H', tc: 223, pressure: '164 GPa', mechanism: 'BCS', year: 2024, notes: 'Al stabilizes metastable phase' }
+        ];
+
+        const observations = [
+            { id: 'OBS-SC-001', type: 'Experimental', title: 'Superexchange Confirmed in Cuprates', desc: '2022 experiment matched Cooper pair density with superexchange predictions.' },
+            { id: 'OBS-SC-002', type: 'Experimental', title: 'Electron Pairing Above Tc', desc: 'Pairing observed in antiferromagnetic insulator without zero resistance.' },
+            { id: 'OBS-SC-004', type: 'Experimental', title: 'LaH₁₀ Near Room Temp', desc: '260K superconductivity at 170-180 GPa. Proves high-Tc possible.' },
+            { id: 'OBS-SC-006', type: 'Experimental', title: 'Nickelate at Ambient Pressure', desc: 'Strain engineering achieved ambient pressure superconductivity.' },
+            { id: 'OBS-SC-007', type: 'Experimental', title: 'LaBeH₈ Lower Pressure', desc: 'Ternary hydrides achieve superconductivity at ~80 GPa.' },
+            { id: 'OBS-SC-009', type: 'Computational', title: 'LaSc₂H₂₄ Predicted at 316K', desc: 'Novel cage structure predicted to exceed room temperature.' },
+            { id: 'OBS-SC-016', type: 'Refuted', title: 'LK-99 False Positive', desc: 'Cu₂S impurity caused superconductor-like artifacts.' },
+            { id: 'OBS-SC-018', type: 'Theoretical', title: 'BCS Tc Limit ~40K', desc: 'Electron-phonon coupling has theoretical ceiling.' },
+            { id: 'OBS-SC-019', type: 'Theoretical', title: 'Fundamental Tc Limit 100-1000K', desc: 'Physics allows room-temp superconductivity.' },
+            { id: 'OBS-SC-012', type: 'Pattern', title: 'CuO₂ Planes Universal', desc: 'All high-Tc cuprates contain this structural motif.' }
+        ];
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Render problems
+        function renderProblems(filter = '') {
+            const container = document.getElementById('problemTree');
+            container.innerHTML = '';
+
+            problems.filter(p =>
+                p.title.toLowerCase().includes(filter.toLowerCase()) ||
+                p.description.toLowerCase().includes(filter.toLowerCase()) ||
+                p.subproblems.some(s => s.toLowerCase().includes(filter.toLowerCase()))
+            ).forEach(problem => {
+                const card = document.createElement('div');
+                card.className = 'problem-card';
+                card.innerHTML = `
+                    <span class="problem-id">${problem.id}</span>
+                    <span class="status-badge status-${problem.status}">${problem.status.toUpperCase()}</span>
+                    <h3 class="problem-title">${problem.title}</h3>
+                    <p style="color: #aaa; margin: 10px 0;">${problem.description}</p>
+                    <div class="subproblems">
+                        ${problem.subproblems.map(s => `<div class="subproblem">${s}</div>`).join('')}
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById('problemSearch').addEventListener('input', (e) => {
+            renderProblems(e.target.value);
+        });
+
+        // Render materials
+        function renderMaterials() {
+            const tbody = document.getElementById('materialsBody');
+            tbody.innerHTML = '';
+
+            materials.sort((a, b) => b.tc - a.tc).forEach(m => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${m.name}</strong></td>
+                    <td style="color: ${m.tc >= 300 ? '#2ed573' : m.tc >= 77 ? '#ffa502' : '#aaa'}">${m.tc} K</td>
+                    <td>${m.pressure}</td>
+                    <td>${m.mechanism}</td>
+                    <td>${m.year}</td>
+                    <td style="color: #888">${m.notes}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Render observations
+        function renderObservations(filter = '') {
+            const container = document.getElementById('obsGrid');
+            container.innerHTML = '';
+
+            observations.filter(o =>
+                o.title.toLowerCase().includes(filter.toLowerCase()) ||
+                o.desc.toLowerCase().includes(filter.toLowerCase())
+            ).forEach(obs => {
+                const card = document.createElement('div');
+                card.className = 'obs-card';
+                card.innerHTML = `
+                    <span class="obs-id">${obs.id}</span>
+                    <span class="obs-type">${obs.type}</span>
+                    <div class="obs-title">${obs.title}</div>
+                    <div class="obs-desc">${obs.desc}</div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        document.getElementById('obsSearch').addEventListener('input', (e) => {
+            renderObservations(e.target.value);
+        });
+
+        // BCS Explorer
+        function mcmillanTc(omega, lambda, muStar) {
+            if (lambda <= muStar * (1 + 0.62 * lambda)) return 0;
+            const prefactor = omega / 1.2;
+            const num = -1.04 * (1 + lambda);
+            const den = lambda - muStar * (1 + 0.62 * lambda);
+            return prefactor * Math.exp(num / den);
+        }
+
+        function updateBCS() {
+            const lambda = parseFloat(document.getElementById('lambdaSlider').value);
+            const omega = parseFloat(document.getElementById('omegaSlider').value);
+            const mu = parseFloat(document.getElementById('muSlider').value);
+
+            document.getElementById('lambdaValue').textContent = lambda.toFixed(1);
+            document.getElementById('omegaValue').textContent = omega + ' K';
+            document.getElementById('muValue').textContent = mu.toFixed(2);
+
+            const tc = mcmillanTc(omega, lambda, mu);
+            document.getElementById('tcValue').textContent = tc.toFixed(1);
+            document.getElementById('tcValue').style.color = tc >= 300 ? '#2ed573' : tc >= 77 ? '#ffa502' : '#00d4ff';
+
+            drawBCSCanvas(lambda, omega);
+        }
+
+        function drawBCSCanvas(currentLambda, currentOmega) {
+            const canvas = document.getElementById('bcsCanvas');
+            const ctx = canvas.getContext('2d');
+            const w = canvas.width;
+            const h = canvas.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            // Draw grid
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            for (let i = 0; i <= 10; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * w / 10, 0);
+                ctx.lineTo(i * w / 10, h);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i * h / 10);
+                ctx.lineTo(w, i * h / 10);
+                ctx.stroke();
+            }
+
+            // Draw room-temp boundary
+            ctx.beginPath();
+            ctx.strokeStyle = '#ff6b6b';
+            ctx.lineWidth = 2;
+            for (let omega = 100; omega <= 3000; omega += 20) {
+                for (let lambda = 0.1; lambda < 5; lambda += 0.01) {
+                    if (mcmillanTc(omega, lambda, 0.1) >= 300) {
+                        const x = (omega - 100) / 2900 * w;
+                        const y = h - (lambda - 0.1) / 3.9 * h;
+                        if (omega === 100) ctx.moveTo(x, y);
+                        else ctx.lineTo(x, y);
+                        break;
+                    }
+                }
+            }
+            ctx.stroke();
+
+            // Draw Tc contours
+            [50, 100, 200, 300].forEach((tcTarget, idx) => {
+                ctx.beginPath();
+                ctx.strokeStyle = `rgba(0, 212, 255, ${0.2 + idx * 0.2})`;
+                ctx.lineWidth = 1;
+                for (let omega = 100; omega <= 3000; omega += 20) {
+                    for (let lambda = 0.1; lambda < 5; lambda += 0.01) {
+                        if (mcmillanTc(omega, lambda, 0.1) >= tcTarget) {
+                            const x = (omega - 100) / 2900 * w;
+                            const y = h - (lambda - 0.1) / 3.9 * h;
+                            if (omega === 100) ctx.moveTo(x, y);
+                            else ctx.lineTo(x, y);
+                            break;
+                        }
+                    }
+                }
+                ctx.stroke();
+            });
+
+            // Draw known superconductors
+            const scData = [
+                { name: 'Pb', omega: 105, lambda: 1.55, tc: 7 },
+                { name: 'Nb', omega: 277, lambda: 0.98, tc: 9 },
+                { name: 'MgB2', omega: 670, lambda: 0.87, tc: 39 },
+                { name: 'H3S', omega: 1500, lambda: 2.2, tc: 203 },
+                { name: 'LaH10', omega: 1800, lambda: 2.5, tc: 260 }
+            ];
+
+            scData.forEach(sc => {
+                const x = (sc.omega - 100) / 2900 * w;
+                const y = h - (sc.lambda - 0.1) / 3.9 * h;
+
+                ctx.beginPath();
+                ctx.arc(x, y, Math.sqrt(sc.tc), 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(46, 213, 115, 0.5)';
+                ctx.fill();
+                ctx.strokeStyle = '#2ed573';
+                ctx.stroke();
+
+                ctx.fillStyle = '#fff';
+                ctx.font = '10px sans-serif';
+                ctx.fillText(sc.name, x + 8, y + 3);
+            });
+
+            // Draw current point
+            const x = (currentOmega - 100) / 2900 * w;
+            const y = h - (currentLambda - 0.1) / 3.9 * h;
+
+            ctx.beginPath();
+            ctx.arc(x, y, 8, 0, Math.PI * 2);
+            ctx.fillStyle = '#ff6b6b';
+            ctx.fill();
+            ctx.strokeStyle = '#fff';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Axis labels
+            ctx.fillStyle = '#888';
+            ctx.font = '12px sans-serif';
+            ctx.fillText('ω_log (K) →', w - 80, h - 10);
+            ctx.save();
+            ctx.translate(15, h / 2);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText('λ →', 0, 0);
+            ctx.restore();
+        }
+
+        ['lambdaSlider', 'omegaSlider', 'muSlider'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateBCS);
+        });
+
+        // Simple connection graph
+        function drawConnectionGraph() {
+            const canvas = document.getElementById('graphCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = canvas.offsetWidth;
+            canvas.height = 500;
+
+            const nodes = [
+                { id: 'PROB-001', label: 'Mechanism Unknown', x: 200, y: 100, color: '#ff6b6b' },
+                { id: 'PROB-002', label: 'No Prediction', x: 400, y: 100, color: '#ff6b6b' },
+                { id: 'PROB-003', label: 'Pressure', x: 600, y: 100, color: '#ff6b6b' },
+                { id: 'OBS-001', label: 'Superexchange', x: 150, y: 250, color: '#2ed573' },
+                { id: 'OBS-004', label: 'LaH₁₀ 260K', x: 500, y: 250, color: '#2ed573' },
+                { id: 'OBS-006', label: 'Strain Works', x: 700, y: 250, color: '#2ed573' },
+                { id: 'OBS-019', label: 'Tc Can Be High', x: 300, y: 250, color: '#2ed573' },
+                { id: 'PAPER', label: 'Zentropy Theory', x: 350, y: 400, color: '#ffa502' }
+            ];
+
+            const edges = [
+                ['PROB-001', 'OBS-001'],
+                ['PROB-001', 'OBS-019'],
+                ['PROB-002', 'PAPER'],
+                ['PROB-002', 'OBS-019'],
+                ['PROB-003', 'OBS-004'],
+                ['PROB-003', 'OBS-006'],
+                ['OBS-001', 'OBS-019'],
+                ['PAPER', 'OBS-019']
+            ];
+
+            // Draw edges
+            ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+            ctx.lineWidth = 1;
+            edges.forEach(([from, to]) => {
+                const n1 = nodes.find(n => n.id === from);
+                const n2 = nodes.find(n => n.id === to);
+                ctx.beginPath();
+                ctx.moveTo(n1.x, n1.y);
+                ctx.lineTo(n2.x, n2.y);
+                ctx.stroke();
+            });
+
+            // Draw nodes
+            nodes.forEach(node => {
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, 30, 0, Math.PI * 2);
+                ctx.fillStyle = node.color + '40';
+                ctx.fill();
+                ctx.strokeStyle = node.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.fillStyle = '#fff';
+                ctx.font = '10px sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(node.label, node.x, node.y + 4);
+            });
+        }
+
+        // Initialize
+        renderProblems();
+        renderMaterials();
+        renderObservations();
+        updateBCS();
+
+        // Draw graph when tab is shown
+        document.querySelector('[data-tab="connections"]').addEventListener('click', () => {
+            setTimeout(drawConnectionGraph, 100);
+        });
+    </script>
+</body>
+</html>

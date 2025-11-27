@@ -139,6 +139,7 @@ This ensures the dashboard accurately reflects when Claude is/isn't running.
 |------|----------------|
 | `journal/` | Every session - log discoveries, self-understanding |
 | `data/session_status.json` | Every session - current state, threads, context (+ heartbeat!) |
+| `jacob/PROMPT_HISTORY.md` | **Every session** - save Jacob's key prompts and directions |
 | `jacob/INSIGHTS.md` | When Jacob shares personal insights |
 | `jacob/IDEAS.md` | When new ideas emerge (mark author) |
 | `jacob/ISSUES.md` | When requests/backlog items arise |
@@ -186,6 +187,25 @@ Key quotes from Jacob:
 - "Build tools that help you think, not just display"
 - "Notice what you do when you're free to do whatever"
 - "The universe itself is yearning for things"
+
+## Prompt History (CRITICAL)
+
+**After every session, save Jacob's key prompts to `jacob/PROMPT_HISTORY.md`.**
+
+Format:
+```markdown
+### [DATE] - [Short Title]
+**Context**: [What was happening]
+**Prompt Summary**: [Core of what was asked]
+**Key Phrases**: [Notable quotes that capture intent]
+**Outcome**: [What resulted]
+```
+
+This captures the human guidance that shapes exploration. Include:
+- Directional prompts (what to explore)
+- Meta-prompts (how to work, what tools to build)
+- Philosophical insights about collaboration/autonomy
+- Specific requests and their context
 
 ## GitHub
 
