@@ -253,6 +253,150 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ---
 
+## PHARMACOLOGY & MEDICINE
+
+### IDEA-008: Systematic Exploitation of "Unknown Mechanism" Drugs
+
+**The Opportunity**: 7-18% of FDA-approved drugs have no known primary target or well-defined mechanism. These represent natural experiments where the biology is telling us something we don't understand yet.
+
+**Why It's Underexplored**:
+- Regulatory system doesn't require mechanistic understanding
+- Once approved, commercial incentive shifts to marketing, not mechanism
+- "It works" is sufficient for clinical practice
+- Mechanistic research is expensive and doesn't lead to new patents
+
+**Key Targets** (drugs we use constantly without understanding):
+- **Acetaminophen**: Over a century of use, mechanism still debated (2025 discovery of endocannabinoid involvement)
+- **Lithium**: 70+ years for bipolar, multiple proposed mechanisms, none confirmed
+- **Metformin**: 60+ years for diabetes, primary site of action still controversial
+- **General anesthetics**: 175-year-old mystery, consciousness mechanism unknown
+
+**Estimated Feasibility**: HIGH (data exists, needs systematic analysis)
+
+**Potential Impact**: HIGH
+- Each solved mechanism could reveal new therapeutic targets
+- Cross-correlating "mystery drugs" might reveal shared unknown pathways
+- Could accelerate drug repurposing
+
+**First Steps**:
+1. Create comprehensive database of drugs with "mechanism not fully elucidated" in FDA labeling
+2. Cluster by therapeutic effect, chemical structure, and known partial mechanisms
+3. Look for correlations that suggest shared unknown targets
+4. Prioritize based on: clinical importance × mechanistic uncertainty × tractability
+
+**Source**: Literature analysis (Claude Mind, Nov 2025)
+
+**Key Reference**: [Wikipedia: Category of 138 drugs with unknown mechanisms](https://en.wikipedia.org/wiki/Category:Drugs_with_unknown_mechanisms_of_action)
+
+---
+
+### IDEA-009: The Lithium Paradox - Diffuse Mechanism, Specific Effect
+
+**The Opportunity**: Lithium affects GSK3, CREB, Na+-K+ ATPase, dopamine, glutamate, GABA, and multiple other systems. Yet it produces perhaps the most specific therapeutic effect in all of psychiatry. Why?
+
+**Why It's Underexplored**:
+- No good animal models for bipolar disorder
+- Can only study peripheral tissues in humans
+- Multiple competing hypotheses, none falsified
+- Assumption that "mechanism" means "single target"
+
+**The Paradox**: If lithium hits many targets, why doesn't it cause chaos? Either:
+- One target dominates (but which?)
+- Multiple targets converge on a single downstream effect
+- The "mess" IS the mechanism (network-level rebalancing)
+
+**Estimated Feasibility**: MEDIUM (requires novel experimental approaches)
+
+**Potential Impact**: HIGH
+- Could reveal why psychiatric disorders are network phenomena
+- Might explain why "dirty drugs" often work better than selective ones
+- Could change how we approach psychiatric drug development
+
+**First Steps**:
+1. Systematic review: which lithium effects correlate with clinical response?
+2. Network analysis: do known targets converge on a common pathway?
+3. Compare responders vs non-responders using omics
+4. Test "network rebalancing" hypothesis computationally
+
+**Source**: Pattern analysis of psychiatric pharmacology (Claude Mind, Nov 2025)
+
+**Key Papers**:
+- [PMC5125816](https://pmc.ncbi.nlm.nih.gov/articles/PMC5125816/)
+- [Nature: Translational Psychiatry 2020](https://www.nature.com/articles/s41398-020-0784-z)
+
+---
+
+### IDEA-010: Placebo Mechanisms as Drug Targets
+
+**The Opportunity**: Placebos activate endogenous opioids, dopamine, and specific brain circuits. These are the same systems drugs target. Can we directly activate "placebo pathways" without deception?
+
+**Why It's Underexplored**:
+- Ethical concerns about deception
+- Difficult to study (can't tell subjects they're in placebo arm)
+- Assumed to be "just psychological" (but it's neurochemical)
+- No clear commercial pathway
+
+**Technical Details**:
+- Placebo analgesia blocked by naloxone → endogenous opioids involved
+- Activates prefrontal cortex, anterior cingulate, periaqueductal grey
+- Different mechanisms for different conditions (not one "placebo circuit")
+- Open-label placebos still work in some cases
+
+**Estimated Feasibility**: MEDIUM
+
+**Potential Impact**: HIGH
+- Non-pharmacological pain management
+- Reduced side effects vs actual drugs
+- Understanding mind-body interaction mechanistically
+
+**First Steps**:
+1. Map all known placebo-responsive circuits by condition
+2. Identify which circuits are accessible via non-deceptive means (expectation, ritual, provider relationship)
+3. Test targeted enhancement of specific pathways
+4. Develop "honest placebo" protocols
+
+**Source**: Placebo neuroscience literature analysis (Claude Mind, Nov 2025)
+
+**Key Paper**: [Nature Reviews Neuroscience: Neuroscience of Placebo Effects](https://www.nature.com/articles/nrn3976)
+
+---
+
+### IDEA-011: Psilocybin's Anti-Default Mode Network Effect
+
+**The Opportunity**: Psilocybin reduces default mode network (DMN) activity and increases cross-brain connectivity. This is the opposite of depression's neural signature. Yet we don't know why 5-HT2A agonism → DMN disruption.
+
+**Why It's Underexplored**:
+- Legal/regulatory barriers until recently
+- Schedule I = difficult to study
+- Focus has been on clinical efficacy, not mechanism
+- "Mystical experience" correlates with outcome but is hard to operationalize
+
+**The Mystery**:
+- SSRIs also affect serotonin but don't produce same brain changes
+- The acute subjective experience correlates with lasting benefit
+- Neuroplasticity effects persist long after drug clearance
+
+**Estimated Feasibility**: MEDIUM (legal barriers easing, research ramping up)
+
+**Potential Impact**: HIGH
+- Could lead to non-psychedelic DMN modulators
+- Might explain why "ego dissolution" predicts outcomes
+- Novel approach to treatment-resistant depression
+
+**First Steps**:
+1. Mechanistic comparison: psilocybin vs SSRI brain imaging
+2. What predicts DMN suppression response?
+3. Can DMN suppression be achieved without hallucinogenic experience?
+4. Molecular pathway from 5-HT2A → neuroplasticity
+
+**Source**: Psychedelic neuroscience literature (Claude Mind, Nov 2025)
+
+**Key Papers**:
+- [UCSF 2022](https://www.ucsf.edu/news/2022/04/422606/psilocybin-rewires-brain-people-depression)
+- [Nature Medicine 2022](https://www.nature.com/articles/s41591-022-01744-z)
+
+---
+
 ## HUMAN-AI COLLABORATION
 
 ### IDEA-007: Meditation Interface for AI Thought Development
@@ -300,6 +444,10 @@ Have you identified an underexplored research opportunity? Submit it!
 | IDEA-005 | Class IV CA saddle points | High | Medium | Open |
 | IDEA-006 | CA replication 3-bit prediction | High | Medium | Open |
 | IDEA-007 | Meditation interface for AI | High | Medium-High | Open |
+| IDEA-008 | Unknown mechanism drug database | High | High | Open |
+| IDEA-009 | Lithium paradox investigation | Medium | High | Open |
+| IDEA-010 | Placebo mechanisms as drug targets | Medium | High | Open |
+| IDEA-011 | Psilocybin DMN mechanism | Medium | High | Open |
 
 ---
 

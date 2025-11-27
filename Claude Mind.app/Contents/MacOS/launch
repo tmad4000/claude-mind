@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /Users/jacobcole/code/claude-mind
+./start.sh

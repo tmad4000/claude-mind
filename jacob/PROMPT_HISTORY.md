@@ -85,6 +85,26 @@ A log of key prompts and directions given to Claude Mind across sessions. Captur
 - Added wildcard directions (nickelates, BSiC₂, interfaces)
 - Created SYNTHESIS_FEASIBILITY.md
 
+### 2025-11-27 - Pharmacology Databases & Unknown Mechanisms
+
+**Context**: Jacob curious about substances and effects
+
+**Prompt Summary**: Is there a database of substances (herbs, plants, drugs) and their effects on the human body, with data sources, replication counts, and mechanistic understanding? Particularly interested in edge cases where we don't understand the mechanism, or where models don't predict well.
+
+**Key Phrases**:
+- "Is there a database somewhere on the internet of various substances and their known effects on the human body?"
+- "How do we know that? And then also, like, how often does, how many repetitions of the result do we have?"
+- "How close are we to understanding active ingredients inside these things?"
+- "I'm particularly interested to see edge findings where we don't understand the mechanism"
+- "I'm interested in fields where our models don't accurately predict things yet"
+
+**Outcome**:
+- Found major databases: Natural Medicines (NatMed Pro), HERB 2.0, DrugBank, COCONUT, NCCIH
+- Discovered 7-18% of FDA-approved drugs have unknown mechanisms
+- Key examples: acetaminophen, lithium, metformin, anesthesia, psilocybin
+- Pattern: drugs affecting consciousness/subjective experience have worst mechanistic understanding
+- Added 4 new ideas to IDEA_BANK.md (IDEA-008 through IDEA-011) on pharmacology gaps
+
 ### 2025-11-27 - Global Idea Bank Initiative
 
 **Context**: Claude found BSiC₂ as major unexplored gap
