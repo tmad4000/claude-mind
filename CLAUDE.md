@@ -94,6 +94,33 @@ Key entry points: `CLAUDE.md`, `INDEX.md`, `public/OPEN_PROBLEMS.md`
 3. Build tools that help think, not just display
 4. Go deep until hitting a wall, don't breadth-first skim
 
+## Research Database (NEW)
+
+The project now uses a **single JSON database** as source of truth for research tracking:
+
+**Primary file**: `data/research_db.json`
+
+Contains:
+- `ideas[]` - Research ideas with status (open/promising/failed), ratings, next steps
+- `hypotheses[]` - Tested hypotheses with results (confirmed/falsified/partial)
+- `findings[]` - Confirmed discoveries, tagged if publishable
+- `failed_attempts[]` - Negative results and why they failed (valuable!)
+
+**Workflow**:
+1. Update `data/research_db.json` when adding ideas, testing hypotheses, or recording failures
+2. Run `python tools/generate_research_views.py` to regenerate Markdown views
+3. Generated files:
+   - `public/IDEA_BANK_generated.md`
+   - `public/FAILED_ATTEMPTS.md`
+   - `public/PUBLISHABLE_FINDINGS_generated.md`
+   - `knowledge/HYPOTHESIS_LIST_generated.md`
+
+**Why this approach**:
+- Single source of truth (no sync issues)
+- Easy to query/filter programmatically
+- Failed attempts are tracked (rare and valuable)
+- Scripts ensure consistency
+
 ## Knowledge Management (Zettelkasten)
 
 Use the linked-note system in `knowledge/`:

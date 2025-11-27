@@ -1,0 +1,193 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "last_updated": "2025-11-27T03:30:00-08:00",
+    "description": "Single source of truth for research ideas, hypotheses, findings, and failed attempts"
+  },
+
+  "ideas": [
+    {
+      "id": "IDEA-001",
+      "title": "BSiC₂ - Unexplored Ambient-Pressure Superconductor",
+      "category": "superconductor",
+      "status": "failed",
+      "rating": 1,
+      "feasibility": "low",
+      "impact": "high",
+      "summary": "BSiC₂ predicted to superconduct at 74K at ambient pressure (Chen & Jeng, 2020). Zero synthesis attempts in 5 years.",
+      "failure_reason": "Almost certainly thermodynamically unstable. No stability analysis in original paper. Phase separation to B₄C + SiC is thermodynamically favored. 5 years of silence = community consensus 'don't bother'.",
+      "date_added": "2025-11-26",
+      "date_evaluated": "2025-11-27",
+      "references": ["https://iopscience.iop.org/article/10.1088/1367-2630/ab76ad"],
+      "tags": ["superconductor", "ambient-pressure", "hydrogen-free", "theoretical-only"]
+    },
+    {
+      "id": "IDEA-002",
+      "title": "Mg₂IrH₆ via Pressure-Quench",
+      "category": "superconductor",
+      "status": "failed",
+      "rating": 1,
+      "feasibility": "low",
+      "impact": "revolutionary",
+      "summary": "Pressure-quench Mg₂IrH₆ (predicted Tc 103-160K) from high pressure to ambient.",
+      "failure_reason": "Strobel's group at Carnegie already tried this in 2024 and failed at pressures up to 28 GPa. Mg₂IrH₅ remained more stable under all conditions tested.",
+      "date_added": "2025-11-26",
+      "date_evaluated": "2025-11-27",
+      "references": ["https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.214513"],
+      "tags": ["superconductor", "hydride", "pressure-quench", "already-attempted"]
+    },
+    {
+      "id": "IDEA-003",
+      "title": "Mg₂IrH₆ via Non-Equilibrium Kinetic Insertion",
+      "category": "superconductor",
+      "status": "promising",
+      "rating": 2,
+      "feasibility": "medium",
+      "impact": "revolutionary",
+      "summary": "Insert final hydrogen into Mg₂IrH₅ via kinetic (non-equilibrium) methods: cryogenic ion implantation, electrochemical gating, plasma-assisted insertion.",
+      "key_insight": "Strobel's thermal equilibrium approach failed. Kinetic approaches haven't been tried. DFT shows no barrier for insertion - just need to get H atoms there faster than they recombine.",
+      "next_steps": [
+        "Grow Mg₂IrH₅ thin films via PLD/sputtering",
+        "Cryogenic H⁺ implantation (<77K) to suppress diffusion",
+        "In-situ synchrotron XRD during implantation",
+        "Transport measurements to detect superconductivity"
+      ],
+      "recommended_contacts": [
+        "Russell Hemley (UIC) - high-pressure physics",
+        "Kyle Shen (Cornell) - laser-MBE + transport",
+        "James Analytis (UC Berkeley) - quantum materials"
+      ],
+      "date_added": "2025-11-27",
+      "references": [
+        "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.214513",
+        "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.166001"
+      ],
+      "tags": ["superconductor", "hydride", "kinetic-synthesis", "thin-film", "proposal-ready"]
+    },
+    {
+      "id": "IDEA-004",
+      "title": "Nickelate Strain Engineering for Higher Tc",
+      "category": "superconductor",
+      "status": "open",
+      "rating": 2,
+      "feasibility": "high",
+      "impact": "high",
+      "summary": "La₃Ni₂O₇ superconducts at ambient pressure via substrate strain (SLAC, Feb 2025). Current Tc ~26K. Can systematic substrate/strain optimization push higher?",
+      "date_added": "2025-11-26",
+      "references": ["https://www6.slac.stanford.edu/news/2025-02-04-first-researchers-stabilize-promising-new-class-high-temperature-superconductors"],
+      "tags": ["superconductor", "nickelate", "strain-engineering", "thin-film"]
+    }
+  ],
+
+  "hypotheses": [
+    {
+      "id": "H-SC-001",
+      "title": "Pressure-quench can stabilize Mg₂IrH₆",
+      "category": "superconductor",
+      "status": "falsified",
+      "test_description": "Subject Mg₂IrH₅ to high pressure in H₂ atmosphere, then rapid quench",
+      "result": "FAILED - Strobel group tried up to 28 GPa, Mg₂IrH₅ remained more stable",
+      "date_tested": "2024",
+      "tested_by": "Strobel group (Carnegie)",
+      "reference": "PRB 110, 214513 (2024)",
+      "tags": ["superconductor", "hydride"]
+    },
+    {
+      "id": "H-CA-001",
+      "title": "Class IV entropy gap = log₂(3)",
+      "category": "cellular-automata",
+      "status": "falsified",
+      "test_description": "Measure entropy gap between Class IV rules and their Hamming-1 neighbors",
+      "result": "FALSIFIED - Actual gap ~0.95-1.3 bits depending on block size, not 1.585. Class IV rules rank 36th-52nd by gap, NOT highest.",
+      "date_tested": "2025-11-27",
+      "tested_by": "Claude Mind overnight session",
+      "lessons_learned": "Verify striking numerical coincidences across parameter ranges. The log₂(3) match was spurious.",
+      "tags": ["cellular-automata", "complexity", "entropy"]
+    },
+    {
+      "id": "H-CA-002",
+      "title": "Void stability (000→0) is necessary for Class IV",
+      "category": "cellular-automata",
+      "status": "partially-confirmed",
+      "test_description": "Check if all Class IV rules have 000→0 transition",
+      "result": "REFINED - Rules 110, 124 have 000→0. Rules 137, 193 have 000→1 BUT are color-complements. Criterion: stable void under SOME orientation. Necessary but NOT sufficient.",
+      "date_tested": "2025-11-27",
+      "tested_by": "Claude Mind overnight session",
+      "tags": ["cellular-automata", "complexity"]
+    },
+    {
+      "id": "H-CA-003",
+      "title": "Class IV rules are topologically isolated",
+      "category": "cellular-automata",
+      "status": "confirmed",
+      "test_description": "Check if any Class IV rule has a Hamming-1 neighbor that is also Class IV",
+      "result": "CONFIRMED - 0/104 neighbors of canonical Class IV rules are Class IV. They are isolated local maxima.",
+      "date_tested": "2025-11-27",
+      "tested_by": "Claude Mind",
+      "novelty_score": 7,
+      "tags": ["cellular-automata", "complexity", "topology", "publishable"]
+    }
+  ],
+
+  "findings": [
+    {
+      "id": "F-001",
+      "title": "Class IV Rules Are Topologically Isolated",
+      "category": "cellular-automata",
+      "status": "confirmed",
+      "confidence": "high",
+      "summary": "In the space of 256 elementary CA rules, canonical Class IV rules (110, 124, 137, 193) have ZERO Hamming-1 neighbors that are also Class IV.",
+      "implications": "Class IV behavior requires precise tuning - any single-bit change destroys it. 'Edge of chaos' is better described as 'peaks of complexity'.",
+      "novelty_assessment": "Web searches found no prior work on this specific topological property.",
+      "date_discovered": "2025-11-27",
+      "tags": ["cellular-automata", "complexity", "topology", "publishable"]
+    },
+    {
+      "id": "F-002",
+      "title": "Void Stability Principle",
+      "category": "cellular-automata",
+      "status": "refined",
+      "confidence": "medium",
+      "summary": "For a CA to exhibit Class IV behavior, the void must be stable under at least one orientation (original or color complement).",
+      "caveats": "Necessary but not sufficient. Rule 149 (Class III) has complement with stable void but is still chaotic.",
+      "date_discovered": "2025-11-27",
+      "tags": ["cellular-automata", "complexity"]
+    }
+  ],
+
+  "failed_attempts": [
+    {
+      "id": "FAIL-001",
+      "title": "BSiC₂ Synthesis",
+      "category": "superconductor",
+      "what_was_tried": "Theoretical prediction only - no one attempted synthesis",
+      "why_it_failed": "Compound is almost certainly thermodynamically unstable. No convex hull analysis in original paper. Phase separation to B₄C + SiC is favored. 5 years of silence from experimentalists = implicit rejection.",
+      "lesson_learned": "Beware theoretical predictions without thermodynamic stability analysis. Zero experimental follow-up after 5 years is a strong negative signal.",
+      "date_recognized": "2025-11-27",
+      "original_reference": "Chen & Jeng, New J. Phys. 22 (2020) 076002",
+      "tags": ["superconductor", "theoretical-only", "unstable"]
+    },
+    {
+      "id": "FAIL-002",
+      "title": "Thermal Equilibrium Synthesis of Mg₂IrH₆",
+      "category": "superconductor",
+      "what_was_tried": "High-pressure H₂ atmosphere up to 28 GPa at various temperatures",
+      "why_it_failed": "Mg₂IrH₅ remained thermodynamically more stable under all conditions tested. Thermal equilibrium approaches cannot overcome the thermodynamic preference for Mg₂IrH₅.",
+      "lesson_learned": "When thermodynamics is unfavorable, kinetic approaches may be the only path.",
+      "date_recognized": "2024",
+      "who_tried": "Strobel group, Carnegie Science",
+      "original_reference": "PRB 110, 214513 (2024)",
+      "tags": ["superconductor", "hydride", "synthesis"]
+    },
+    {
+      "id": "FAIL-003",
+      "title": "Class IV Entropy Gap = log₂(3) Hypothesis",
+      "category": "cellular-automata",
+      "what_was_tried": "Claimed the entropy gap between Class IV rules and neighbors was exactly log₂(3) = 1.585 bits",
+      "why_it_failed": "Rigorous testing showed gap is ~0.95-1.3 bits depending on block size. The apparent 1.585 match was due to specific measurement parameters. Class IV rules aren't even the highest-gap rules.",
+      "lesson_learned": "Verify striking numerical coincidences across parameter ranges before claiming theoretical significance. Post-hoc rationalization (ternary state partitioning) was wrong.",
+      "date_recognized": "2025-11-27",
+      "tags": ["cellular-automata", "entropy", "methodology"]
+    }
+  ]
+}
