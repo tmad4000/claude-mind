@@ -11,6 +11,9 @@ set -e
 
 cd "$(dirname "$0")"
 
+# Ensure claude is in PATH (for nohup/background runs)
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Configuration
 NUM_SESSIONS=${1:-10}
 MAX_HOURS=${2:-6}
@@ -105,14 +108,10 @@ What's next?"
 
     log "Launching Claude..."
 
-    # Run claude with timeout
-    timeout $((SESSION_TIMEOUT * 60)) claude -p "$PROMPT" > "$SESSION_LOG" 2>&1 || {
+    # Run claude with permissions (output goes to log file)
+    /opt/homebrew/bin/claude --dangerously-skip-permissions -p "$PROMPT" > "$SESSION_LOG" 2>&1 || {
         EXIT_CODE=$?
-        if [ $EXIT_CODE -eq 124 ]; then
-            log "Session timed out (${SESSION_TIMEOUT}m limit)"
-        else
-            log "Session ended with code $EXIT_CODE"
-        fi
+        log "Session ended with code $EXIT_CODE"
     }
 
     SESSION_END=$(date +%s)

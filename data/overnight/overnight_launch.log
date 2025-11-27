@@ -1,0 +1,19 @@
+[02:07:43] === OVERNIGHT EXPLORATION STARTED ===
+[02:07:43] Run ID: 20251127_020743
+[02:07:43] Target: 10 sessions, max 8 hours
+[02:07:43] Session timeout: 30 minutes
+[02:07:43] 
+[02:07:43] 
+[02:07:43] --- SESSION 1 of 10 (0m elapsed, 480m remaining) ---
+[02:07:43] Launching Claude...
+script: tcgetattr/ioctl: Operation not supported on socket
+[02:07:43] Session ended with code 1
+[02:07:43] Session 1 complete: 0m, 0 commits
+[02:07:43] Cooling down for 30s...
+[02:08:13] 
+[02:08:13] --- SESSION 2 of 10 (0m elapsed, 480m remaining) ---
+[02:08:13] Launching Claude...
+script: tcgetattr/ioctl: Operation not supported on socket
+[02:08:13] Session ended with code 1
+[02:08:13] Session 2 complete: 0m, 0 commits
+[02:08:13] Cooling down for 30s...
