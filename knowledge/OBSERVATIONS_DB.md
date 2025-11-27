@@ -241,6 +241,24 @@ Each observation follows:
 3. This supports "saddle point" interpretation: Class IV sits at a complexity peak where any perturbation leads to simpler (lower entropy) dynamics
 4. The four canonical Class IV rules (110, 124, 137, 193) are symmetry-equivalent and form the ONLY Class IV cluster in the entire 256-rule space
 
+### OBS-CA-009: Entropy gap doesn't distinguish Class III from Class IV
+**System**: Elementary CA (all 256 rules)
+**Parameters**: All rules analyzed for entropy and entropy gap vs Hamming-1 neighbors
+**Observation**: Chaotic Class III rules (149, 135) have HIGHER entropy gaps (+1.70, +1.72) than canonical Class IV (+1.57)
+**Quantitative**:
+- Rule 149: gap +1.72, entropy 4.00 (Class III - chaotic)
+- Rule 135: gap +1.70, entropy 4.00 (Class III - chaotic)
+- Rule 110: gap +1.57, entropy 3.82 (Class IV - complex)
+- Rule 30: gap +1.48, entropy 4.00 (Class III - famous for randomness)
+- Key difference: Rules 149, 135 have 000→1 (spontaneous birth), Rule 110 has 000→0
+**Surprising?**: YES - naively expected Class IV to have highest gaps
+**Connections**: OBS-CA-008, Wolfram's classification
+**Theory implications**:
+1. Entropy gap measures LOCAL complexity relative to neighbors, NOT structured complexity
+2. Chaotic rules can have high gaps by being "maximally random" where neighbors are less so
+3. The key distinction: Class IV = structured complexity (gliders, computation), Class III = maximal chaos
+4. The transition 000→0 (no spontaneous birth) may be critical for Class IV - it forces structure to propagate rather than emerge everywhere
+
 ---
 
 ## QUESTIONS RAISED BY OBSERVATIONS
