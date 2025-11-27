@@ -99,6 +99,47 @@ Based on impact × feasibility:
 
 ---
 
+## MAJOR GAP: BSiC₂ - UNEXPLORED HIGH-TC CANDIDATE (Updated 2025-11-27)
+
+### The Opportunity
+A 2020 paper (New J. Phys. 22 076002) predicted BSiC₂ superconducts at **73.6K at AMBIENT PRESSURE** via BCS mechanism. This is:
+- **Hydrogen-free** (no stability/handling issues)
+- **Stoichiometric** (no doping required)
+- **Ambient pressure** (no diamond anvil cells)
+- The **highest predicted Tc** for any hydrogen-free conventional superconductor at ambient pressure
+
+### The Gap
+As of November 2025, **NO experimental synthesis attempts have been published**. This is a 5-year gap since the theoretical prediction.
+
+### Technical Details
+- Structure: Hexagonal, derived from 2H-SiC with Si layers alternately substituted by B
+- Lattice: a = 2.89 Å, c/a = 1.66
+- Electron-phonon coupling: λ = 2.41 (exceptionally strong)
+- Key phonon: E₂g mode dramatically softened (~6.71 meV at A point)
+- Related: BC₃ also predicted superconducting at ~40K
+
+### Why It Might Be Hard
+- Requires specific BSiC₂ stoichiometry, not the B₁₂(B,C,Si)₃ phase that forms in B-C-Si composites
+- May be metastable (like many high-Tc hydrides)
+- No known precursor compounds
+- Boron solubility in SiC is only ~0.2 wt% at high temp - full substitution may be challenging
+
+### Possible Synthesis Approaches
+1. **MBE/CVD**: Atomic layer deposition alternating B and Si on C substrate
+2. **High-pressure/high-temp**: Force B into SiC lattice under extreme conditions, quench
+3. **Spark plasma sintering**: Rapid heating may access metastable phase
+4. **Ion implantation**: B implantation into SiC followed by annealing
+
+### Priority Assessment
+**HIGH PRIORITY for computational follow-up**:
+- Calculate convex hull energy (is it metastable or unstable?)
+- Identify potential synthesis barriers
+- Check if thin-film approach could stabilize the structure
+
+**MEDIUM PRIORITY for experimental**:
+- High risk but potentially revolutionary payoff
+- Worth a dedicated effort if DFT confirms accessibility
+
 ## META-OBSERVATION
 
 The field is moving fast. My pattern analysis independently predicted several compounds that turned out to already be studied (YBeH8, ThBeH8, LaBH8). This suggests:
@@ -114,11 +155,15 @@ The field is moving fast. My pattern analysis independently predicted several co
 | **Mg2IrH6** | 103-160K | Mg2IrH5 SYNTHESIZED | MH6 octahedra |
 | PbNH4B6C6 | 115K | SrB3C3 synthesized (50 GPa) | B-C clathrate + NH4 |
 | SrNH4B6C6 | 85K | SrB3C3 synthesized | B-C clathrate + NH4 |
+| **BSiC₂** | 74K | **NONE - UNEXPLORED** | B-substituted SiC |
 | MB2C8 (M=Na,K,Rb,Cs) | ~70K | Unknown | B-C clathrate |
-| Mg2RhH6 | 45-80K | Unknown | MH6 octahedra |
+| Mg2RhH6 | 45-80K | Mg2RuH4 exists | MH6 octahedra |
 | Li2AgH6 | Near limit | Unknown | Theoretical ceiling |
 
-**Conclusion**: Mg2IrH6 remains the closest path due to Mg2IrH5 already existing. This should be the top experimental priority.
+**Priorities**:
+1. **Mg2IrH6** - closest path due to Mg2IrH5 already existing
+2. **BSiC₂** - hydrogen-free, but no synthesis attempts in 5 years since prediction
+3. **Mg2RhH6** - cheaper alternative if Ir path succeeds
 
 ---
 
