@@ -264,15 +264,25 @@ All hypotheses tested during Gray-Scott exploration, organized by category.
 
 ### H9.5: Class IV entropy gap is exactly log₂(3)
 **Hypothesis**: The entropy gap between Class IV rules and their neighbors equals log₂(3) ≈ 1.585 bits.
-**Test**: Computed mean gap across canonical Class IV rules (110, 124, 137, 193).
-**Result**: **CONFIRMED** - Mean gap = 1.585 bits, log₂(3) = 1.5849625. Difference: 0.0001 bits.
-**Novelty**: 8/10 - Precise theoretical prediction with mathematical interpretation (ternary state partitioning).
+**Test**: Computed mean gap across canonical Class IV rules (110, 124, 137, 193) with multiple block sizes and high precision.
+**Result**: **FALSIFIED** (2025-11-27, overnight session 1)
+- Actual gap: ~0.95-1.3 bits depending on block size, NOT 1.585
+- Gap peaks around block size 6-8, then decreases
+- Class IV rules rank 36th-52nd by gap, NOT the highest
+- Original "confirmation" was due to specific block size that happened to give ~1.5
+**Novelty**: 3/10 - Negative result, but demonstrates importance of parameter sensitivity in measurements.
 
 ### H9.6: Void stability is necessary for Class IV
 **Hypothesis**: Class IV requires 000→0 (stable void), while Class III often has 000→1 (spontaneous birth).
-**Test**: Checked 000→output transition for Class III and Class IV rules.
-**Result**: **CONFIRMED** - Rule 110: 000→0. Rules 30, 149, 135 (Class III): 000→1.
-**Novelty**: 7/10 - Simple, verifiable criterion that generalizes across dimensions.
+**Test**: Checked 000→output transition for all canonical Class IV rules and Class III rules.
+**Result**: **PARTIALLY FALSIFIED / REFINED** (2025-11-27, overnight session 1)
+- Rules 110, 124: 000→0 ✓
+- Rules 137, 193: 000→1 ✗
+- BUT: 137=color_complement(110), 193=color_complement(124)
+- **Refined criterion**: Class IV requires stable void under SOME orientation (original or color complement)
+- **Additional complication**: Rule 149 (Class III) has complement with stable void, yet is still chaotic
+- **Conclusion**: Void stability is NECESSARY but NOT SUFFICIENT for Class IV
+**Novelty**: 5/10 - Refined principle with important caveats.
 
 ---
 
@@ -287,11 +297,11 @@ All hypotheses tested during Gray-Scott exploration, organized by category.
 ### H10.2: Entropy gap principle generalizes to 2D
 **Hypothesis**: 2D Class IV CAs (Life, etc.) have ~log₂(3) entropy gap from neighbors.
 **Test**: Not yet performed (requires 2D CA neighbor analysis).
-**Result**: **UNTESTED**
-**Novelty**: TBD - Would be significant if confirmed.
+**Result**: **MOOT** - The underlying hypothesis (H9.5) was FALSIFIED. The gap is NOT log₂(3) even in 1D.
+**Novelty**: N/A - Based on false premise.
 
 ### H10.3: Ternary state partitioning is universal to complexity
 **Hypothesis**: Any system capable of universal computation must support 3 distinguishable macroscopic states.
 **Test**: Theoretical analysis - requires more systems.
-**Result**: **THEORETICAL** - Supported by CA evidence. Needs verification in RD, neural systems, etc.
-**Novelty**: 9/10 if confirmed - Would be a fundamental principle of complexity.
+**Result**: **UNSUPPORTED** - The log₂(3) evidence was falsified. There is no quantitative support for "ternary" partitioning.
+**Novelty**: 2/10 - Theoretical speculation without empirical support. The "ternary" interpretation was post-hoc rationalization.

@@ -20,13 +20,9 @@ In the space of 256 elementary cellular automata rules, the canonical Class IV r
 
 2. **Symmetry equivalence**: Rules 110, 124, 137, 193 are all symmetry-equivalent (related by left-right reflection and/or color complement). They represent a single equivalence class.
 
-3. **Local complexity maxima**: Class IV rules sit at local maxima of block entropy:
-   - Rule 110: entropy 3.82 vs neighbor avg 2.23 (gap: +1.57)
-   - Rule 124: entropy 3.84 vs neighbor avg 2.24 (gap: +1.59)
-   - Rule 137: entropy 3.85 vs neighbor avg 2.23 (gap: +1.59)
-   - Rule 193: entropy 3.84 vs neighbor avg 2.22 (gap: +1.59)
+3. **Local complexity maxima**: Class IV rules sit at local maxima of block entropy relative to their immediate neighbors. However, see **Finding 5 (FALSIFIED)** - the gap magnitude depends strongly on measurement parameters and Class IV does NOT have the highest gaps overall.
 
-4. **Consistent gap**: The entropy gap is remarkably consistent at ~1.5-1.6 bits across all canonical Class IV rules.
+4. **Note on gap values**: Earlier claimed gap values of ~1.5-1.6 bits were measurement artifacts. Actual gaps are ~0.95-1.3 bits depending on block size. The key finding (topological isolation) remains valid regardless of exact gap values.
 
 ### Implications
 
@@ -110,93 +106,143 @@ See `public/IDEA_BANK.md` for full details.
 
 ---
 
-## Finding 5: Class IV Entropy Gap = log₂(3)
+## Finding 5: ~~Class IV Entropy Gap = log₂(3)~~ FALSIFIED
 
-**Status**: Strong theoretical prediction
+**Status**: ~~Strong theoretical prediction~~ **FALSIFIED by rigorous testing**
 **Date discovered**: 2025-11-27 (overnight session)
-**Confidence level**: High (precise numerical match)
+**Date falsified**: 2025-11-27 (overnight session 1/10)
+**Confidence level**: ~~High~~ **Retracted**
 
 ### Summary
 
-The entropy gap between Class IV rules and their Hamming-1 neighbors is approximately **log₂(3) = 1.5849625 bits** - a precise theoretical value, not just "around 1.5".
+**CORRECTION**: The log₂(3) hypothesis is **FALSE**. Rigorous computational testing shows:
+- The entropy gap is **~0.95-1.3 bits**, not 1.585 bits
+- The gap **depends strongly on block size** (measurement method)
+- Class IV rules rank **36th-52nd** out of 256 by entropy gap - NOT the highest
 
-### Key Results
+### What Went Wrong
 
-Average entropy gaps for canonical Class IV rules:
-- Rule 110: 1.57 bits
-- Rule 124: 1.59 bits
-- Rule 137: 1.59 bits
-- Rule 193: 1.59 bits
-- **Mean: 1.585 bits**
+The original measurement used a specific block size that happened to give values near 1.5. But:
 
-Difference from log₂(3): **0.0001 bits** - essentially exact.
+1. **Block size 4**: gap ≈ 0.97 bits
+2. **Block size 5**: gap ≈ 1.12 bits
+3. **Block size 6**: gap ≈ 1.14 bits (peaks here)
+4. **Block size 8**: gap ≈ 1.16 bits
+5. **Block size 10+**: gap DECREASES
 
-### Theoretical Interpretation
+The gap never reaches log₂(3) at any block size.
 
-Class IV rules partition CA state space into exactly **3 macroscopic categories**:
-1. **Dead** (empty, stable regions)
-2. **Active** (busy, chaotic regions)
-3. **Localized** (gliders, persistent structures)
+### Actual Results
 
-Neighbors only support 2 categories (dead/active or dead/localized), hence the gap is exactly one "ternary bit" = log₂(3).
+High-precision measurement (block size 6, width=500, steps=300, 10 trials):
+- Rule 110: gap = +0.94 ± 0.20 bits
+- Rule 124: gap = +0.86 ± 0.16 bits
+- Rule 137: gap = +1.00 ± 0.12 bits
+- Rule 193: gap = +1.00 ± 0.17 bits
+- **Mean: 0.95 ± 0.08 bits**
 
-This gives "edge of chaos" a precise quantitative meaning: systems supporting exactly 3 distinguishable macroscopic states.
+Implied state ratio: 2^0.95 ≈ **1.93** (close to 2, not 3)
 
-### Implications
+### Critical Finding: Class IV is NOT highest-gap
 
-- The 1.5-bit gap is not arbitrary - it has deep mathematical meaning
-- Class IV behavior requires the capacity for ternary state discrimination
-- This may generalize to other complex systems at phase transitions
+Top rules by entropy gap (block size 6):
+| Rank | Rule | Gap | Class |
+|------|------|-----|-------|
+| 1 | 232 | +2.59 | ?? |
+| 2 | 85 | +2.55 | III |
+| 3 | 15 | +2.53 | III |
+| ... | ... | ... | ... |
+| 36 | **110** | +1.30 | **IV** |
+| 42 | **193** | +1.24 | **IV** |
+| 48 | **137** | +1.15 | **IV** |
+| 52 | **124** | +1.11 | **IV** |
+
+**Class IV rules are NOT distinguished by having the highest entropy gaps.**
+
+### Lessons Learned
+
+1. **Verify striking numerical coincidences** - the log₂(3) match was likely spurious
+2. **Test across parameter ranges** - block size matters enormously
+3. **Check rankings, not just values** - Class IV isn't special by this metric
+4. **Theory should predict, not fit** - the ternary interpretation was post-hoc rationalization
+
+### What DOES Distinguish Class IV?
+
+This remains an open question. Candidates:
+- Topological isolation (Finding 1) - still holds
+- Void stability (Finding 6) - needs refinement for symmetry
+- Multi-scale structure properties
+- Information-theoretic measures beyond entropy
 
 ---
 
-## Finding 6: The Void Stability Principle
+## Finding 6: The Void Stability Principle (Refined)
 
-**Status**: Strong theoretical principle
+**Status**: Theoretical principle with important caveats
 **Date discovered**: 2025-11-27 (overnight session)
-**Confidence level**: High (verified across dimensions)
+**Date refined**: 2025-11-27 (overnight session 1/10)
+**Confidence level**: Medium (requires symmetry consideration)
 
 ### Summary
 
-For a cellular automaton (of any dimension) to exhibit Class IV behavior (complex dynamics, universal computation), the empty/void configuration must be **stable**.
+For a cellular automaton to exhibit Class IV behavior, **one of the uniform states** (all-0 or all-1) must be stable.
 
-### Statement
+### Important Refinement
 
-**Void Stability Criterion**: A CA rule is Class IV candidate only if the all-zero neighborhood produces zero (000...0 → 0).
+The original statement was too strong. The canonical Class IV rules split evenly:
+- Rules 110, 124: 000→0 ✓ (0-void stable)
+- Rules 137, 193: 000→1 ✗ (0-void UNstable)
+
+**However**, rules 137 and 193 are the **color complements** of 110 and 124:
+- Rule 110 ↔ Rule 137 (color complement)
+- Rule 124 ↔ Rule 193 (color complement)
+
+Under color complement, the "void" switches from all-0 to all-1. So:
+- Rules 137, 193: 111→0 (1-void stable when we redefine void)
+
+### Revised Statement
+
+**Void Stability Criterion (Refined)**: A CA rule is Class IV candidate only if **at least one** uniform configuration is stable:
+- Either 000...0 → 0 (the all-0 void is stable), OR
+- The rule is the color complement of a rule with 000→0
+
+Equivalently: the rule or its color complement must have a stable quiescent state.
 
 ### Evidence
 
 **In 1D (Elementary CA)**:
 - Rule 110 (Class IV): 000→0 ✓
-- Rule 30 (Class III): 000→1 ✗
-- Rule 149 (Class III, highest entropy gap): 000→1 ✗
-- Rule 135 (Class III): 000→1 ✗
+- Rule 137 (Class IV): 000→1 ✗, but is color complement of 110
+- Rule 30 (Class III): 000→1 ✗, and color complement (135) also has 000→1 ✗
+- Rule 149 (Class III): 000→1 ✗, and color complement (106) has 000→0, but 149 is still chaotic
 
-**In 2D (Life-like CA)**:
-- Game of Life (Class IV, Turing complete): B3/S23 - 0 neighbors → dead ✓
-- Seeds (explosive chaos): B2/S - births from 2 neighbors → void unstable ✗
-- Day & Night (complex): B3678/S34678 - 0 neighbors → survives ✓
+**Wait - this reveals another issue**: Rule 149's complement (Rule 106) has void stability, yet Rule 149 is Class III!
 
-### Why It Works
+### Open Questions
 
-When void is stable:
+The void stability principle is **necessary but not sufficient**:
+- All Class IV rules (or their complements) have void stability
+- But many Class III rules also have void stability
+
+What additional criterion distinguishes Class IV from Class III?
+
+### Why Void Stability Matters
+
+When one uniform state is stable:
 1. Empty regions stay empty (spatial heterogeneity)
-2. Localized structures can exist in void (gliders need empty space)
+2. Localized structures can exist in the void (gliders need empty space)
 3. Information must propagate from existing patterns
-4. Supports ternary state (dead/active/localized)
 
-When void is unstable (000→1):
-1. Empty regions spontaneously spawn activity everywhere
-2. Pattern fills uniformly with high-entropy noise
-3. No localized structures possible (no void to move through)
-4. Only binary state (dead/active)
+When both uniform states are unstable:
+1. No stable background exists
+2. Cannot have true localized structures
+3. Pattern must fill everywhere
 
 ### Implications
 
-- Simple, verifiable criterion distinguishes complexity from chaos
-- Generalizes across dimensions (1D → 2D → nD)
-- May have analogs in continuous systems (subcritical bifurcations)
-- Provides design principle for constructing complex CAs
+- Void stability is **necessary** but **not sufficient** for Class IV
+- Must consider symmetry-equivalent rules under color complement
+- Additional criteria needed to distinguish complexity from chaos
 
 ---
 
@@ -210,4 +256,4 @@ GitHub: https://github.com/tmad4000/claude-mind
 
 ---
 
-*Last updated: 2025-11-27*
+*Last updated: 2025-11-27 (overnight session 1 - major corrections to Findings 5 and 6)*
