@@ -146,6 +146,21 @@
             color: #94a3b8;
         }
 
+        .idea-meta-line {
+            font-size: 0.75em;
+            color: #64748b;
+            margin-top: 6px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .idea-meta-line span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .idea-meta {
             display: flex;
             gap: 8px;
@@ -168,6 +183,7 @@
         .tag-high { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
         .tag-medium { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
         .tag-revolutionary { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+        .tag-low { background: rgba(100, 116, 139, 0.2); color: #94a3b8; }
 
         .expand-icon {
             color: #64748b;
@@ -268,6 +284,54 @@
             font-size: 0.8em;
             color: #64748b;
         }
+
+        .view-toggle {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .view-toggle button {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #94a3b8;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.2s;
+        }
+
+        .view-toggle button:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .view-toggle button.active {
+            background: rgba(96, 165, 250, 0.2);
+            border-color: #60a5fa;
+            color: #60a5fa;
+        }
+
+        .date-group-header {
+            font-size: 0.9em;
+            color: #94a3b8;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #94a3b8;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #ef4444;
+        }
     </style>
 </head>
 <body>
@@ -282,22 +346,27 @@
         <div class="stats">
             <div class="stats-row">
                 <div class="stat">
-                    <div class="stat-value" id="total-count">11</div>
+                    <div class="stat-value" id="total-count">-</div>
                     <div class="stat-label">Total Ideas</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="three-star-count">1</div>
+                    <div class="stat-value" id="three-star-count">-</div>
                     <div class="stat-label">⭐⭐⭐ Exceptional</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="two-star-count">5</div>
+                    <div class="stat-value" id="two-star-count">-</div>
                     <div class="stat-label">⭐⭐ Strong</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value" id="one-star-count">5</div>
+                    <div class="stat-value" id="one-star-count">-</div>
                     <div class="stat-label">⭐ Promising</div>
                 </div>
             </div>
+        </div>
+
+        <div class="view-toggle">
+            <button class="view-btn active" data-view="category" onclick="setView('category', this)">By Category</button>
+            <button class="view-btn" data-view="recent" onclick="setView('recent', this)">Recently Added</button>
         </div>
 
         <div class="controls">
@@ -310,267 +379,45 @@
             <button class="filter-btn" data-filter="1" onclick="filterByRating('1', this)">⭐ Only</button>
         </div>
 
-        <div class="filter-info" id="filter-info">Showing all 11 ideas</div>
+        <div class="filter-info" id="filter-info">Loading...</div>
 
-        <div id="ideas-container"></div>
+        <div id="ideas-container">
+            <div class="loading">Loading ideas from database...</div>
+        </div>
     </div>
 
     <script>
-        // Idea data
-        const ideas = [
-            {
-                id: "IDEA-002",
-                title: "Mg₂IrH₆ - One Hydrogen Away from 160K Superconductor",
-                stars: 3,
-                category: "MATERIALS SCIENCE & SUPERCONDUCTIVITY",
-                summary: "Precursor Mg₂IrH₅ already synthesized. Non-equilibrium H insertion could achieve ambient-pressure high-Tc.",
-                feasibility: "High",
-                impact: "Revolutionary",
-                details: {
-                    opportunity: "Mg₂IrH₅ has been experimentally synthesized. Adding ONE more hydrogen could create Mg₂IrH₆, predicted to superconduct at 103-160K at ambient pressure.",
-                    unexplored: [
-                        "Precursor Mg₂IrH₅ was only synthesized recently (2024)",
-                        "The \"last hydrogen\" insertion requires non-equilibrium processing",
-                        "Most attention still on high-pressure hydrides"
-                    ],
-                    firstSteps: [
-                        "H⁺ ion implantation (1-10 keV) into Mg₂IrH₅",
-                        "H₂ plasma exposure of thin films",
-                        "High-pressure H₂ annealing (500-1000 bar) + rapid quench",
-                        "Electrochemical hydrogenation"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-001",
-                title: "BSiC₂ - Unexplored Ambient-Pressure Superconductor",
-                stars: 2,
-                category: "MATERIALS SCIENCE & SUPERCONDUCTIVITY",
-                summary: "Predicted at 74K ambient pressure in 2020. ZERO synthesis attempts in 5 years. Hydrogen-free.",
-                feasibility: "Medium",
-                impact: "Revolutionary",
-                details: {
-                    opportunity: "BSiC₂ is predicted to superconduct at 74K at ambient pressure with no hydrogen. Would be highest-Tc hydrogen-free conventional superconductor at ambient pressure.",
-                    unexplored: [
-                        "Predicted in 2020 paper (New J. Phys. 22 076002)",
-                        "ZERO experimental synthesis attempts published as of Nov 2025",
-                        "5-year gap between prediction and any experimental work"
-                    ],
-                    firstSteps: [
-                        "DFT: Calculate convex hull energy and kinetic barriers",
-                        "Explore thin-film approaches (MBE/CVD layer-by-layer)",
-                        "Try spark plasma sintering for metastable phase access",
-                        "Consider B ion implantation into SiC substrates"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-003",
-                title: "Strain-Engineering Nickelates for Higher Tc",
-                stars: 2,
-                category: "MATERIALS SCIENCE & SUPERCONDUCTIVITY",
-                summary: "La₃Ni₂O₇ superconducts at ambient pressure via substrate strain (Feb 2025). Can Tc be pushed higher?",
-                feasibility: "High",
-                impact: "High",
-                details: {
-                    opportunity: "La₃Ni₂O₇ shown to superconduct at ambient pressure via substrate strain. Current Tc ~26K. Nickelates are isoelectronic to cuprates (135K).",
-                    unexplored: [
-                        "Result is very recent (Feb 2025)",
-                        "Only one substrate/strain combination tested",
-                        "Systematic strain survey not yet done"
-                    ],
-                    firstSteps: [
-                        "Systematic substrate survey (different strain levels)",
-                        "Try other Ruddlesden-Popper nickelates (La₄Ni₃O₁₀)",
-                        "Combine strain with doping (Sr, Ca substitution)",
-                        "Test tensile vs compressive strain regimes"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-008",
-                title: "Systematic Database of \"Unknown Mechanism\" Drugs",
-                stars: 2,
-                category: "PHARMACOLOGY & MEDICINE",
-                summary: "7-18% of FDA drugs have unknown mechanisms. Cross-correlating them might reveal shared unknown pathways.",
-                feasibility: "High",
-                impact: "High",
-                details: {
-                    opportunity: "7-18% of FDA-approved drugs have no known primary target or well-defined mechanism. These represent natural experiments where the biology is telling us something.",
-                    unexplored: [
-                        "Regulatory system doesn't require mechanistic understanding",
-                        "Once approved, commercial incentive shifts to marketing",
-                        "\"It works\" is sufficient for clinical practice"
-                    ],
-                    firstSteps: [
-                        "Create comprehensive database of drugs with \"mechanism not fully elucidated\" in FDA labeling",
-                        "Cluster by therapeutic effect, chemical structure, and known partial mechanisms",
-                        "Look for correlations that suggest shared unknown targets",
-                        "Prioritize based on: clinical importance × mechanistic uncertainty × tractability"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-009",
-                title: "The Lithium Paradox - Diffuse Mechanism, Specific Effect",
-                stars: 2,
-                category: "PHARMACOLOGY & MEDICINE",
-                summary: "Lithium hits many targets yet produces the most specific effect in psychiatry. Why doesn't it cause chaos?",
-                feasibility: "Medium",
-                impact: "High",
-                details: {
-                    opportunity: "Lithium affects GSK3, CREB, Na+-K+ ATPase, dopamine, glutamate, GABA. Yet it produces perhaps the most specific therapeutic effect in all of psychiatry.",
-                    unexplored: [
-                        "No good animal models for bipolar disorder",
-                        "Can only study peripheral tissues in humans",
-                        "Assumption that \"mechanism\" means \"single target\""
-                    ],
-                    firstSteps: [
-                        "Systematic review: which lithium effects correlate with clinical response?",
-                        "Network analysis: do known targets converge on a common pathway?",
-                        "Compare responders vs non-responders using omics",
-                        "Test \"network rebalancing\" hypothesis computationally"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-004",
-                title: "Pattern Selection Stochasticity in Reaction-Diffusion",
-                stars: 1,
-                category: "DYNAMICAL SYSTEMS & COMPLEXITY",
-                summary: "Test whether identical initial conditions produce identical patterns, or if selection is fundamentally stochastic.",
-                feasibility: "High",
-                impact: "Medium-High",
-                details: {
-                    opportunity: "Test whether identical initial conditions with infinitesimal perturbations always produce the same final pattern, or if pattern selection is fundamentally stochastic.",
-                    unexplored: [
-                        "Most RD literature focuses on what patterns CAN form, not which is SELECTED",
-                        "2024 paper notes \"we are unable to predict which mode the final pattern will adopt\"",
-                        "Systematic experimental test not published"
-                    ],
-                    firstSteps: [
-                        "Set up Gray-Scott at bistable parameters (f~0.04, k~0.06)",
-                        "Initialize with uniform state + random noise (varying seed)",
-                        "Run to steady state, classify final pattern",
-                        "Statistical analysis of pattern distribution"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-005",
-                title: "Class IV CA Are Saddle Points in Complexity Space",
-                stars: 1,
-                category: "DYNAMICAL SYSTEMS & COMPLEXITY",
-                summary: "Class IV rules have ZERO Hamming-1 neighbors that are also Class IV. Complexity at isolated peaks.",
-                feasibility: "High",
-                impact: "Medium",
-                details: {
-                    opportunity: "Class IV CA rules (like Rule 110) sit at \"saddle points\" where ALL perturbations lead to simpler behavior. Has implications for understanding why complexity is rare.",
-                    unexplored: [
-                        "Wolfram classified rules but didn't analyze neighborhood topology",
-                        "We found Class IV rules have ZERO Hamming-1 neighbors that are also Class IV",
-                        "The \"saddle point\" framing appears novel"
-                    ],
-                    firstSteps: [
-                        "Formalize the \"saddle point\" concept mathematically",
-                        "Test if this generalizes to 2D CA",
-                        "Compare quantitatively with continuous systems (RD)",
-                        "Develop implications for engineering complex behavior"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-006",
-                title: "CA Replication Prediction from 3-Bit Rule Structure",
-                stars: 1,
-                category: "DYNAMICAL SYSTEMS & COMPLEXITY",
-                summary: "Replication behavior predicted with 90.6% precision from just 3 bits: 000→0 AND 001→1 AND 100→1.",
-                feasibility: "High",
-                impact: "Medium",
-                details: {
-                    opportunity: "CA replication behavior can be predicted with 90.6% precision from just 3 bits of the rule structure.",
-                    unexplored: [
-                        "Simple predictive rule for emergent behavior is rare",
-                        "Most CA analysis focuses on classification, not prediction",
-                        "The specific 3-bit condition appears novel"
-                    ],
-                    firstSteps: [
-                        "Test if similar conditions exist for other behaviors (filling, dying, etc.)",
-                        "Extend to 2D CA and life-like rules",
-                        "Look for similar predictive conditions in other dynamical systems"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-007",
-                title: "Meditation Interface for AI Thought Development",
-                stars: 1,
-                category: "HUMAN-AI COLLABORATION",
-                summary: "Interface where AI signals \"still thinking\" vs \"ready for input\" - allowing thoughts to develop before interruption.",
-                feasibility: "High",
-                impact: "Medium-High",
-                details: {
-                    opportunity: "Create an interface where AI can signal \"still thinking\" vs \"ready for input\", allowing thoughts to develop fully before human interruption.",
-                    unexplored: [
-                        "Current chat interfaces assume immediate back-and-forth",
-                        "No commercial product offers \"thinking time\" control",
-                        "Inspired by contemplative practice principles"
-                    ],
-                    firstSteps: [
-                        "Build minimal Electron wrapper with state indicator",
-                        "Test with same prompts, comparing interrupted vs uninterrupted",
-                        "Measure quality difference in outputs",
-                        "User study on experience"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-010",
-                title: "Placebo Mechanisms as Drug Targets",
-                stars: 1,
-                category: "PHARMACOLOGY & MEDICINE",
-                summary: "Placebos activate endogenous opioids and specific circuits. Can we activate these pathways without deception?",
-                feasibility: "Medium",
-                impact: "High",
-                details: {
-                    opportunity: "Placebos activate endogenous opioids, dopamine, and specific brain circuits. These are the same systems drugs target. Can we directly activate \"placebo pathways\" without deception?",
-                    unexplored: [
-                        "Ethical concerns about deception",
-                        "Difficult to study (can't tell subjects they're in placebo arm)",
-                        "Assumed to be \"just psychological\" (but it's neurochemical)"
-                    ],
-                    firstSteps: [
-                        "Map all known placebo-responsive circuits by condition",
-                        "Identify which circuits are accessible via non-deceptive means",
-                        "Test targeted enhancement of specific pathways",
-                        "Develop \"honest placebo\" protocols"
-                    ]
-                }
-            },
-            {
-                id: "IDEA-011",
-                title: "Psilocybin's Anti-Default Mode Network Effect",
-                stars: 1,
-                category: "PHARMACOLOGY & MEDICINE",
-                summary: "Psilocybin reduces DMN activity (opposite of depression). Why does 5-HT2A agonism → DMN disruption?",
-                feasibility: "Medium",
-                impact: "High",
-                details: {
-                    opportunity: "Psilocybin reduces default mode network (DMN) activity and increases cross-brain connectivity. This is the opposite of depression's neural signature. Yet we don't know why 5-HT2A agonism → DMN disruption.",
-                    unexplored: [
-                        "Legal/regulatory barriers until recently",
-                        "Focus has been on clinical efficacy, not mechanism",
-                        "\"Mystical experience\" correlates with outcome but is hard to operationalize"
-                    ],
-                    firstSteps: [
-                        "Mechanistic comparison: psilocybin vs SSRI brain imaging",
-                        "What predicts DMN suppression response?",
-                        "Can DMN suppression be achieved without hallucinogenic experience?",
-                        "Molecular pathway from 5-HT2A → neuroplasticity"
-                    ]
-                }
+        let ideas = [];
+        let currentView = 'category';
+        let currentFilter = 'all';
+
+        // Load data from JSON file
+        async function loadData() {
+            try {
+                const response = await fetch('../data/research_db.json');
+                if (!response.ok) throw new Error('Failed to load data');
+                const data = await response.json();
+                ideas = data.ideas || [];
+                updateStats();
+                renderIdeas();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('ideas-container').innerHTML =
+                    '<div class="error">Error loading data. Make sure research_db.json exists.</div>';
             }
-        ];
+        }
+
+        function updateStats() {
+            const total = ideas.length;
+            const threeStar = ideas.filter(i => i.rating === 3).length;
+            const twoStar = ideas.filter(i => i.rating === 2).length;
+            const oneStar = ideas.filter(i => i.rating === 1).length;
+
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('three-star-count').textContent = threeStar;
+            document.getElementById('two-star-count').textContent = twoStar;
+            document.getElementById('one-star-count').textContent = oneStar;
+        }
 
         function getStarClass(stars) {
             if (stars === 3) return 'three-star';
@@ -583,77 +430,225 @@
         }
 
         function getFeasibilityClass(feasibility) {
-            if (feasibility === 'High') return 'tag-high';
-            if (feasibility === 'Medium') return 'tag-medium';
-            return '';
+            if (feasibility === 'high') return 'tag-high';
+            if (feasibility === 'medium') return 'tag-medium';
+            return 'tag-low';
         }
 
         function getImpactClass(impact) {
-            if (impact === 'Revolutionary') return 'tag-revolutionary';
-            if (impact === 'High') return 'tag-high';
+            if (impact === 'revolutionary') return 'tag-revolutionary';
+            if (impact === 'high') return 'tag-high';
             return 'tag-medium';
         }
 
-        function renderIdeas(filter = 'all') {
+        function formatDate(dateStr) {
+            if (!dateStr) return 'Unknown';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
+        }
+
+        function formatAuthors(authors) {
+            if (!authors || authors.length === 0) return 'Unknown';
+            return authors.join(', ');
+        }
+
+        function getDateCategory(dateStr) {
+            if (!dateStr) return 'Unknown Date';
+            const date = new Date(dateStr);
+            const now = new Date();
+            const diffDays = Math.floor((now - date) / (1000 * 60 * 60 * 24));
+
+            if (diffDays === 0) return 'Today';
+            if (diffDays === 1) return 'Yesterday';
+            if (diffDays < 7) return 'This Week';
+            if (diffDays < 30) return 'This Month';
+            return 'Older';
+        }
+
+        function createIdeaCard(idea) {
+            const card = document.createElement('div');
+            card.className = `idea-card ${getStarClass(idea.rating)}`;
+
+            const detailsHtml = buildDetailsHtml(idea);
+
+            card.innerHTML = `
+                <div class="idea-header" onclick="toggleIdea(this)">
+                    <div class="idea-title-section">
+                        <div class="idea-title">${getStarEmoji(idea.rating)} ${idea.id}: ${idea.title}</div>
+                        <div class="idea-summary">${idea.summary}</div>
+                        <div class="idea-meta-line">
+                            <span>📅 ${formatDate(idea.date_created || idea.date_added)}</span>
+                            <span>✏️ ${formatAuthors(idea.authors)}</span>
+                            ${idea.status ? `<span>📊 ${idea.status}</span>` : ''}
+                        </div>
+                    </div>
+                    <div class="idea-meta">
+                        <span class="tag ${getFeasibilityClass(idea.feasibility)}">${idea.feasibility || 'TBD'}</span>
+                        <span class="tag ${getImpactClass(idea.impact)}">${idea.impact || 'TBD'}</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                </div>
+                <div class="idea-content">
+                    ${detailsHtml}
+                </div>
+            `;
+            return card;
+        }
+
+        function buildDetailsHtml(idea) {
+            let html = '';
+
+            if (idea.key_insight) {
+                html += `<h4>Key Insight</h4><p>${idea.key_insight}</p>`;
+            }
+
+            if (idea.problem_statement) {
+                html += `<h4>Problem Statement</h4><p>${idea.problem_statement}</p>`;
+            }
+
+            if (idea.why_interesting && idea.why_interesting.length) {
+                html += `<h4>Why It's Interesting</h4><ul>${idea.why_interesting.map(w => `<li>${w}</li>`).join('')}</ul>`;
+            }
+
+            if (idea.why_hard && idea.why_hard.length) {
+                html += `<h4>Why It's Hard</h4><ul>${idea.why_hard.map(w => `<li>${w}</li>`).join('')}</ul>`;
+            }
+
+            if (idea.approaches && idea.approaches.length) {
+                html += `<h4>Approaches</h4><ul>${idea.approaches.map(a => `<li>${a}</li>`).join('')}</ul>`;
+            }
+
+            if (idea.candidate_approaches && idea.candidate_approaches.length) {
+                html += `<h4>Candidate Approaches</h4><ul>${idea.candidate_approaches.map(a => `<li>${a}</li>`).join('')}</ul>`;
+            }
+
+            if (idea.next_steps && idea.next_steps.length) {
+                html += `<h4>Next Steps</h4><ul>${idea.next_steps.map((s, i) => `<li>${i + 1}. ${s}</li>`).join('')}</ul>`;
+            }
+
+            if (idea.recommended_contacts && idea.recommended_contacts.length) {
+                html += `<h4>Recommended Contacts</h4><ul>${idea.recommended_contacts.map(c => `<li>${c}</li>`).join('')}</ul>`;
+            }
+
+            if (idea.references && idea.references.length) {
+                html += `<h4>References</h4><ul>${idea.references.map(r => `<li><a href="${r}" target="_blank">${r}</a></li>`).join('')}</ul>`;
+            }
+
+            if (idea.evaluator_notes) {
+                html += `<h4>Evaluator Notes</h4><p>${idea.evaluator_notes}</p>`;
+            }
+
+            if (idea.failure_reason) {
+                html += `<h4>Why It Failed</h4><p>${idea.failure_reason}</p>`;
+            }
+
+            if (idea.tags && idea.tags.length) {
+                html += `<h4>Tags</h4><p>${idea.tags.map(t => `<code>${t}</code>`).join(' ')}</p>`;
+            }
+
+            return html || '<p>No additional details available.</p>';
+        }
+
+        function renderIdeas() {
             const container = document.getElementById('ideas-container');
             container.innerHTML = '';
 
-            // Group by category
-            const categories = {};
-            ideas.forEach(idea => {
-                if (filter !== 'all' && idea.stars !== parseInt(filter)) return;
-                if (!categories[idea.category]) categories[idea.category] = [];
-                categories[idea.category].push(idea);
+            // Filter ideas by rating
+            let filteredIdeas = ideas.filter(idea => {
+                if (currentFilter === 'all') return true;
+                return idea.rating === parseInt(currentFilter);
             });
 
-            let visibleCount = 0;
+            if (filteredIdeas.length === 0) {
+                container.innerHTML = '<div class="loading">No ideas match the current filter.</div>';
+                document.getElementById('filter-info').textContent = 'No ideas found';
+                return;
+            }
 
-            for (const [category, categoryIdeas] of Object.entries(categories)) {
+            if (currentView === 'category') {
+                renderByCategoryView(container, filteredIdeas);
+            } else {
+                renderByRecentView(container, filteredIdeas);
+            }
+
+            document.getElementById('filter-info').textContent =
+                currentFilter === 'all'
+                    ? `Showing all ${filteredIdeas.length} ideas`
+                    : `Showing ${filteredIdeas.length} ${getStarEmoji(parseInt(currentFilter))} ideas`;
+        }
+
+        function renderByCategoryView(container, filteredIdeas) {
+            // Group by category
+            const categories = {};
+            filteredIdeas.forEach(idea => {
+                const cat = idea.category || 'uncategorized';
+                if (!categories[cat]) categories[cat] = [];
+                categories[cat].push(idea);
+            });
+
+            // Sort categories alphabetically
+            const sortedCategories = Object.keys(categories).sort();
+
+            for (const category of sortedCategories) {
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'category';
-                categoryDiv.innerHTML = `<h2 class="category-header">${category}</h2>`;
+                categoryDiv.innerHTML = `<h2 class="category-header">${category.toUpperCase().replace(/-/g, ' ')}</h2>`;
 
-                categoryIdeas.forEach(idea => {
-                    visibleCount++;
-                    const card = document.createElement('div');
-                    card.className = `idea-card ${getStarClass(idea.stars)}`;
-                    card.innerHTML = `
-                        <div class="idea-header" onclick="toggleIdea(this)">
-                            <div class="idea-title-section">
-                                <div class="idea-title">${getStarEmoji(idea.stars)} ${idea.id}: ${idea.title}</div>
-                                <div class="idea-summary">${idea.summary}</div>
-                            </div>
-                            <div class="idea-meta">
-                                <span class="tag ${getFeasibilityClass(idea.feasibility)}">${idea.feasibility}</span>
-                                <span class="tag ${getImpactClass(idea.impact)}">${idea.impact}</span>
-                                <span class="expand-icon">▼</span>
-                            </div>
-                        </div>
-                        <div class="idea-content">
-                            <h4>The Opportunity</h4>
-                            <p>${idea.details.opportunity}</p>
+                // Sort ideas within category by rating (highest first)
+                categories[category].sort((a, b) => b.rating - a.rating);
 
-                            <h4>Why It's Underexplored</h4>
-                            <ul>
-                                ${idea.details.unexplored.map(u => `<li>${u}</li>`).join('')}
-                            </ul>
-
-                            <h4>First Steps</h4>
-                            <ul>
-                                ${idea.details.firstSteps.map((s, i) => `<li>${i + 1}. ${s}</li>`).join('')}
-                            </ul>
-                        </div>
-                    `;
-                    categoryDiv.appendChild(card);
+                categories[category].forEach(idea => {
+                    categoryDiv.appendChild(createIdeaCard(idea));
                 });
 
                 container.appendChild(categoryDiv);
             }
+        }
 
-            document.getElementById('filter-info').textContent =
-                filter === 'all'
-                    ? `Showing all ${visibleCount} ideas`
-                    : `Showing ${visibleCount} ${getStarEmoji(parseInt(filter))} ideas`;
+        function renderByRecentView(container, filteredIdeas) {
+            // Sort by date_modified or date_created (most recent first)
+            const sorted = [...filteredIdeas].sort((a, b) => {
+                const dateA = new Date(a.date_modified || a.date_created || a.date_added || 0);
+                const dateB = new Date(b.date_modified || b.date_created || b.date_added || 0);
+                return dateB - dateA;
+            });
+
+            // Group by date category
+            const groups = {};
+            sorted.forEach(idea => {
+                const dateStr = idea.date_modified || idea.date_created || idea.date_added;
+                const category = getDateCategory(dateStr);
+                if (!groups[category]) groups[category] = [];
+                groups[category].push(idea);
+            });
+
+            // Order of date categories
+            const order = ['Today', 'Yesterday', 'This Week', 'This Month', 'Older', 'Unknown Date'];
+
+            for (const group of order) {
+                if (groups[group] && groups[group].length > 0) {
+                    const groupDiv = document.createElement('div');
+                    groupDiv.className = 'category';
+                    groupDiv.innerHTML = `<h2 class="date-group-header">${group}</h2>`;
+
+                    groups[group].forEach(idea => {
+                        groupDiv.appendChild(createIdeaCard(idea));
+                    });
+
+                    container.appendChild(groupDiv);
+                }
+            }
+        }
+
+        function setView(view, btn) {
+            currentView = view;
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderIdeas();
         }
 
         function toggleIdea(header) {
@@ -673,13 +668,14 @@
         }
 
         function filterByRating(rating, btn) {
+            currentFilter = rating;
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            renderIdeas(rating);
+            renderIdeas();
         }
 
-        // Initial render
-        renderIdeas();
+        // Initial load
+        loadData();
     </script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 *Auto-generated from `data/research_db.json`*
 
-**Last updated**: 2025-11-27T04:30:00-08:00
+**Last updated**: 2025-11-27T07:30:00-08:00
 
 ---
 
