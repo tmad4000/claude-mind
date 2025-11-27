@@ -6,6 +6,37 @@ A curated collection of **underexplored research opportunities** identified thro
 
 ---
 
+## Philosophy & Properties
+
+**What this is:**
+- A living document of *actionable* research opportunities
+- Ideas must be specific enough that a researcher could pursue them
+- Quality over quantity - only genuinely promising gaps
+- Cross-domain: superconductors, pharmacology, dynamical systems, AI, etc.
+
+**What qualifies for inclusion:**
+- ✅ Predicted but never tested experimentally
+- ✅ Clear synthesis pathway exists but no one has tried it
+- ✅ Cross-domain connection no one has made
+- ✅ Specific parameter regime unexplored
+- ✅ Existing data that hasn't been analyzed a certain way
+- ❌ Vague "interesting questions" without clear next steps
+- ❌ Already being actively pursued by multiple groups
+- ❌ Requires resources beyond plausible reach
+
+**Star Rating System:**
+- ⭐⭐⭐ **Exceptional**: High feasibility + Revolutionary impact + Clear path forward
+- ⭐⭐ **Strong**: Either high feasibility OR high impact, with reasonable path
+- ⭐ **Promising**: Worth pursuing but with significant unknowns
+
+**Maintenance:**
+- Review and update ratings as new information emerges
+- Mark ideas as "In Progress" or "Completed" when pursued
+- Add new ideas from each exploration session
+- Cross-link related ideas
+
+---
+
 ## Format
 
 Each idea includes:
@@ -20,7 +51,7 @@ Each idea includes:
 
 ## MATERIALS SCIENCE & SUPERCONDUCTIVITY
 
-### IDEA-001: BSiC₂ - Unexplored Ambient-Pressure Superconductor
+### ⭐⭐ IDEA-001: BSiC₂ - Unexplored Ambient-Pressure Superconductor
 
 **The Opportunity**: BSiC₂ is predicted to superconduct at **74K at ambient pressure** with **no hydrogen**. This would be the highest-Tc hydrogen-free conventional superconductor at ambient pressure ever discovered.
 
@@ -62,7 +93,7 @@ Each idea includes:
 
 ---
 
-### IDEA-002: Mg₂IrH₆ - One Hydrogen Away from 160K Superconductor
+### ⭐⭐⭐ IDEA-002: Mg₂IrH₆ - One Hydrogen Away from 160K Superconductor
 
 **The Opportunity**: Mg₂IrH₅ has been **experimentally synthesized**. Adding ONE more hydrogen could create Mg₂IrH₆, predicted to superconduct at **103-160K at ambient pressure**.
 
@@ -100,7 +131,7 @@ Each idea includes:
 
 ---
 
-### IDEA-003: Strain-Engineering Nickelates for Higher Tc
+### ⭐⭐ IDEA-003: Strain-Engineering Nickelates for Higher Tc
 
 **The Opportunity**: La₃Ni₂O₇ has been shown to superconduct at ambient pressure via substrate strain (SLAC, Feb 2025). Current Tc is ~26K. Can this be pushed much higher?
 
@@ -156,7 +187,7 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ## DYNAMICAL SYSTEMS & COMPLEXITY
 
-### IDEA-004: Pattern Selection Stochasticity in Reaction-Diffusion
+### ⭐ IDEA-004: Pattern Selection Stochasticity in Reaction-Diffusion
 
 **The Opportunity**: Test whether identical initial conditions with infinitesimal perturbations always produce the same final pattern, or if pattern selection is fundamentally stochastic.
 
@@ -187,7 +218,7 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ---
 
-### IDEA-005: Class IV Cellular Automata Are Saddle Points in Complexity Space
+### ⭐ IDEA-005: Class IV Cellular Automata Are Saddle Points in Complexity Space
 
 **The Opportunity**: Our analysis found that Class IV CA rules (like Rule 110) sit at "saddle points" where ALL perturbations lead to simpler behavior. This topological property has implications for understanding why complexity is rare.
 
@@ -221,7 +252,7 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ---
 
-### IDEA-006: Replication Prediction from 3-Bit Rule Structure
+### ⭐ IDEA-006: Replication Prediction from 3-Bit Rule Structure
 
 **The Opportunity**: We discovered that CA replication behavior can be predicted with 90.6% precision from just 3 bits of the rule: 000→0 AND 001→1 AND 100→1.
 
@@ -255,7 +286,7 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ## PHARMACOLOGY & MEDICINE
 
-### IDEA-008: Systematic Exploitation of "Unknown Mechanism" Drugs
+### ⭐⭐ IDEA-008: Systematic Exploitation of "Unknown Mechanism" Drugs
 
 **The Opportunity**: 7-18% of FDA-approved drugs have no known primary target or well-defined mechanism. These represent natural experiments where the biology is telling us something we don't understand yet.
 
@@ -290,7 +321,7 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ---
 
-### IDEA-009: The Lithium Paradox - Diffuse Mechanism, Specific Effect
+### ⭐⭐ IDEA-009: The Lithium Paradox - Diffuse Mechanism, Specific Effect
 
 **The Opportunity**: Lithium affects GSK3, CREB, Na+-K+ ATPase, dopamine, glutamate, GABA, and multiple other systems. Yet it produces perhaps the most specific therapeutic effect in all of psychiatry. Why?
 
@@ -326,7 +357,7 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ---
 
-### IDEA-010: Placebo Mechanisms as Drug Targets
+### ⭐ IDEA-010: Placebo Mechanisms as Drug Targets
 
 **The Opportunity**: Placebos activate endogenous opioids, dopamine, and specific brain circuits. These are the same systems drugs target. Can we directly activate "placebo pathways" without deception?
 
@@ -361,7 +392,7 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ---
 
-### IDEA-011: Psilocybin's Anti-Default Mode Network Effect
+### ⭐ IDEA-011: Psilocybin's Anti-Default Mode Network Effect
 
 **The Opportunity**: Psilocybin reduces default mode network (DMN) activity and increases cross-brain connectivity. This is the opposite of depression's neural signature. Yet we don't know why 5-HT2A agonism → DMN disruption.
 
@@ -399,7 +430,7 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ## HUMAN-AI COLLABORATION
 
-### IDEA-007: Meditation Interface for AI Thought Development
+### ⭐ IDEA-007: Meditation Interface for AI Thought Development
 
 **The Opportunity**: Create an interface where AI can signal "still thinking" vs "ready for input", allowing thoughts to develop fully before human interruption.
 
@@ -435,19 +466,19 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ## INDEX
 
-| ID | Topic | Feasibility | Impact | Status |
-|----|-------|-------------|--------|--------|
-| IDEA-001 | BSiC₂ superconductor | Medium | Revolutionary | Open |
-| IDEA-002 | Mg₂IrH₆ synthesis | High | Revolutionary | Open |
-| IDEA-003 | Nickelate strain engineering | High | High | Open |
-| IDEA-004 | RD pattern selection stochasticity | High | Medium-High | Open |
-| IDEA-005 | Class IV CA saddle points | High | Medium | Open |
-| IDEA-006 | CA replication 3-bit prediction | High | Medium | Open |
-| IDEA-007 | Meditation interface for AI | High | Medium-High | Open |
-| IDEA-008 | Unknown mechanism drug database | High | High | Open |
-| IDEA-009 | Lithium paradox investigation | Medium | High | Open |
-| IDEA-010 | Placebo mechanisms as drug targets | Medium | High | Open |
-| IDEA-011 | Psilocybin DMN mechanism | Medium | High | Open |
+| Rating | ID | Topic | Feasibility | Impact | Status |
+|--------|-----|-------|-------------|--------|--------|
+| ⭐⭐⭐ | IDEA-002 | Mg₂IrH₆ synthesis | High | Revolutionary | Open |
+| ⭐⭐ | IDEA-001 | BSiC₂ superconductor | Medium | Revolutionary | Open |
+| ⭐⭐ | IDEA-003 | Nickelate strain engineering | High | High | Open |
+| ⭐⭐ | IDEA-008 | Unknown mechanism drug database | High | High | Open |
+| ⭐⭐ | IDEA-009 | Lithium paradox investigation | Medium | High | Open |
+| ⭐ | IDEA-004 | RD pattern selection stochasticity | High | Medium-High | Open |
+| ⭐ | IDEA-005 | Class IV CA saddle points | High | Medium | Open |
+| ⭐ | IDEA-006 | CA replication 3-bit prediction | High | Medium | Open |
+| ⭐ | IDEA-007 | Meditation interface for AI | High | Medium-High | Open |
+| ⭐ | IDEA-010 | Placebo mechanisms as drug targets | Medium | High | Open |
+| ⭐ | IDEA-011 | Psilocybin DMN mechanism | Medium | High | Open |
 
 ---
 

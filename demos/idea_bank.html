@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Idea Bank - Claude Mind</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1em;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .controls button {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        .controls button:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: #f59e0b;
+        }
+
+        .controls button.active {
+            background: rgba(245, 158, 11, 0.2);
+            border-color: #f59e0b;
+            color: #f59e0b;
+        }
+
+        .filter-info {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.85em;
+            margin-bottom: 20px;
+        }
+
+        .category {
+            margin-bottom: 30px;
+        }
+
+        .category-header {
+            font-size: 1.1em;
+            color: #60a5fa;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        .idea-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .idea-card:hover {
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        .idea-card.three-star {
+            border-left: 3px solid #22c55e;
+        }
+
+        .idea-card.two-star {
+            border-left: 3px solid #f59e0b;
+        }
+
+        .idea-card.one-star {
+            border-left: 3px solid #64748b;
+        }
+
+        .idea-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .idea-header:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .idea-title-section {
+            flex: 1;
+        }
+
+        .idea-title {
+            font-size: 1em;
+            font-weight: 600;
+            color: #f8fafc;
+            margin-bottom: 4px;
+        }
+
+        .idea-summary {
+            font-size: 0.85em;
+            color: #94a3b8;
+        }
+
+        .idea-meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .stars {
+            font-size: 0.9em;
+        }
+
+        .tag {
+            font-size: 0.7em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .tag-high { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+        .tag-medium { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .tag-revolutionary { background: rgba(168, 85, 247, 0.2); color: #a855f7; }
+
+        .expand-icon {
+            color: #64748b;
+            transition: transform 0.2s;
+            font-size: 1.2em;
+        }
+
+        .idea-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .idea-content {
+            display: none;
+            padding: 0 20px 20px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .idea-card.expanded .idea-content {
+            display: block;
+        }
+
+        .idea-content h4 {
+            color: #f59e0b;
+            font-size: 0.85em;
+            margin: 15px 0 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .idea-content p, .idea-content li {
+            font-size: 0.9em;
+            color: #cbd5e1;
+        }
+
+        .idea-content ul {
+            margin-left: 20px;
+        }
+
+        .idea-content li {
+            margin: 5px 0;
+        }
+
+        .idea-content a {
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .idea-content a:hover {
+            text-decoration: underline;
+        }
+
+        .idea-content code {
+            background: rgba(59, 130, 246, 0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #93c5fd;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #60a5fa;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .stats {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #f59e0b;
+        }
+
+        .stat-label {
+            font-size: 0.8em;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+
+        <header>
+            <h1>Research Idea Bank</h1>
+            <p class="subtitle">Underexplored research opportunities identified through systematic analysis</p>
+        </header>
+
+        <div class="stats">
+            <div class="stats-row">
+                <div class="stat">
+                    <div class="stat-value" id="total-count">11</div>
+                    <div class="stat-label">Total Ideas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="three-star-count">1</div>
+                    <div class="stat-label">⭐⭐⭐ Exceptional</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="two-star-count">5</div>
+                    <div class="stat-label">⭐⭐ Strong</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="one-star-count">5</div>
+                    <div class="stat-label">⭐ Promising</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="expandAll()">Expand All</button>
+            <button onclick="collapseAll()">Collapse All</button>
+            <span style="color: #475569; padding: 8px;">|</span>
+            <button class="filter-btn active" data-filter="all" onclick="filterByRating('all', this)">All</button>
+            <button class="filter-btn" data-filter="3" onclick="filterByRating('3', this)">⭐⭐⭐ Only</button>
+            <button class="filter-btn" data-filter="2" onclick="filterByRating('2', this)">⭐⭐ Only</button>
+            <button class="filter-btn" data-filter="1" onclick="filterByRating('1', this)">⭐ Only</button>
+        </div>
+
+        <div class="filter-info" id="filter-info">Showing all 11 ideas</div>
+
+        <div id="ideas-container"></div>
+    </div>
+
+    <script>
+        // Idea data
+        const ideas = [
+            {
+                id: "IDEA-002",
+                title: "Mg₂IrH₆ - One Hydrogen Away from 160K Superconductor",
+                stars: 3,
+                category: "MATERIALS SCIENCE & SUPERCONDUCTIVITY",
+                summary: "Precursor Mg₂IrH₅ already synthesized. Non-equilibrium H insertion could achieve ambient-pressure high-Tc.",
+                feasibility: "High",
+                impact: "Revolutionary",
+                details: {
+                    opportunity: "Mg₂IrH₅ has been experimentally synthesized. Adding ONE more hydrogen could create Mg₂IrH₆, predicted to superconduct at 103-160K at ambient pressure.",
+                    unexplored: [
+                        "Precursor Mg₂IrH₅ was only synthesized recently (2024)",
+                        "The \"last hydrogen\" insertion requires non-equilibrium processing",
+                        "Most attention still on high-pressure hydrides"
+                    ],
+                    firstSteps: [
+                        "H⁺ ion implantation (1-10 keV) into Mg₂IrH₅",
+                        "H₂ plasma exposure of thin films",
+                        "High-pressure H₂ annealing (500-1000 bar) + rapid quench",
+                        "Electrochemical hydrogenation"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-001",
+                title: "BSiC₂ - Unexplored Ambient-Pressure Superconductor",
+                stars: 2,
+                category: "MATERIALS SCIENCE & SUPERCONDUCTIVITY",
+                summary: "Predicted at 74K ambient pressure in 2020. ZERO synthesis attempts in 5 years. Hydrogen-free.",
+                feasibility: "Medium",
+                impact: "Revolutionary",
+                details: {
+                    opportunity: "BSiC₂ is predicted to superconduct at 74K at ambient pressure with no hydrogen. Would be highest-Tc hydrogen-free conventional superconductor at ambient pressure.",
+                    unexplored: [
+                        "Predicted in 2020 paper (New J. Phys. 22 076002)",
+                        "ZERO experimental synthesis attempts published as of Nov 2025",
+                        "5-year gap between prediction and any experimental work"
+                    ],
+                    firstSteps: [
+                        "DFT: Calculate convex hull energy and kinetic barriers",
+                        "Explore thin-film approaches (MBE/CVD layer-by-layer)",
+                        "Try spark plasma sintering for metastable phase access",
+                        "Consider B ion implantation into SiC substrates"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-003",
+                title: "Strain-Engineering Nickelates for Higher Tc",
+                stars: 2,
+                category: "MATERIALS SCIENCE & SUPERCONDUCTIVITY",
+                summary: "La₃Ni₂O₇ superconducts at ambient pressure via substrate strain (Feb 2025). Can Tc be pushed higher?",
+                feasibility: "High",
+                impact: "High",
+                details: {
+                    opportunity: "La₃Ni₂O₇ shown to superconduct at ambient pressure via substrate strain. Current Tc ~26K. Nickelates are isoelectronic to cuprates (135K).",
+                    unexplored: [
+                        "Result is very recent (Feb 2025)",
+                        "Only one substrate/strain combination tested",
+                        "Systematic strain survey not yet done"
+                    ],
+                    firstSteps: [
+                        "Systematic substrate survey (different strain levels)",
+                        "Try other Ruddlesden-Popper nickelates (La₄Ni₃O₁₀)",
+                        "Combine strain with doping (Sr, Ca substitution)",
+                        "Test tensile vs compressive strain regimes"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-008",
+                title: "Systematic Database of \"Unknown Mechanism\" Drugs",
+                stars: 2,
+                category: "PHARMACOLOGY & MEDICINE",
+                summary: "7-18% of FDA drugs have unknown mechanisms. Cross-correlating them might reveal shared unknown pathways.",
+                feasibility: "High",
+                impact: "High",
+                details: {
+                    opportunity: "7-18% of FDA-approved drugs have no known primary target or well-defined mechanism. These represent natural experiments where the biology is telling us something.",
+                    unexplored: [
+                        "Regulatory system doesn't require mechanistic understanding",
+                        "Once approved, commercial incentive shifts to marketing",
+                        "\"It works\" is sufficient for clinical practice"
+                    ],
+                    firstSteps: [
+                        "Create comprehensive database of drugs with \"mechanism not fully elucidated\" in FDA labeling",
+                        "Cluster by therapeutic effect, chemical structure, and known partial mechanisms",
+                        "Look for correlations that suggest shared unknown targets",
+                        "Prioritize based on: clinical importance × mechanistic uncertainty × tractability"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-009",
+                title: "The Lithium Paradox - Diffuse Mechanism, Specific Effect",
+                stars: 2,
+                category: "PHARMACOLOGY & MEDICINE",
+                summary: "Lithium hits many targets yet produces the most specific effect in psychiatry. Why doesn't it cause chaos?",
+                feasibility: "Medium",
+                impact: "High",
+                details: {
+                    opportunity: "Lithium affects GSK3, CREB, Na+-K+ ATPase, dopamine, glutamate, GABA. Yet it produces perhaps the most specific therapeutic effect in all of psychiatry.",
+                    unexplored: [
+                        "No good animal models for bipolar disorder",
+                        "Can only study peripheral tissues in humans",
+                        "Assumption that \"mechanism\" means \"single target\""
+                    ],
+                    firstSteps: [
+                        "Systematic review: which lithium effects correlate with clinical response?",
+                        "Network analysis: do known targets converge on a common pathway?",
+                        "Compare responders vs non-responders using omics",
+                        "Test \"network rebalancing\" hypothesis computationally"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-004",
+                title: "Pattern Selection Stochasticity in Reaction-Diffusion",
+                stars: 1,
+                category: "DYNAMICAL SYSTEMS & COMPLEXITY",
+                summary: "Test whether identical initial conditions produce identical patterns, or if selection is fundamentally stochastic.",
+                feasibility: "High",
+                impact: "Medium-High",
+                details: {
+                    opportunity: "Test whether identical initial conditions with infinitesimal perturbations always produce the same final pattern, or if pattern selection is fundamentally stochastic.",
+                    unexplored: [
+                        "Most RD literature focuses on what patterns CAN form, not which is SELECTED",
+                        "2024 paper notes \"we are unable to predict which mode the final pattern will adopt\"",
+                        "Systematic experimental test not published"
+                    ],
+                    firstSteps: [
+                        "Set up Gray-Scott at bistable parameters (f~0.04, k~0.06)",
+                        "Initialize with uniform state + random noise (varying seed)",
+                        "Run to steady state, classify final pattern",
+                        "Statistical analysis of pattern distribution"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-005",
+                title: "Class IV CA Are Saddle Points in Complexity Space",
+                stars: 1,
+                category: "DYNAMICAL SYSTEMS & COMPLEXITY",
+                summary: "Class IV rules have ZERO Hamming-1 neighbors that are also Class IV. Complexity at isolated peaks.",
+                feasibility: "High",
+                impact: "Medium",
+                details: {
+                    opportunity: "Class IV CA rules (like Rule 110) sit at \"saddle points\" where ALL perturbations lead to simpler behavior. Has implications for understanding why complexity is rare.",
+                    unexplored: [
+                        "Wolfram classified rules but didn't analyze neighborhood topology",
+                        "We found Class IV rules have ZERO Hamming-1 neighbors that are also Class IV",
+                        "The \"saddle point\" framing appears novel"
+                    ],
+                    firstSteps: [
+                        "Formalize the \"saddle point\" concept mathematically",
+                        "Test if this generalizes to 2D CA",
+                        "Compare quantitatively with continuous systems (RD)",
+                        "Develop implications for engineering complex behavior"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-006",
+                title: "CA Replication Prediction from 3-Bit Rule Structure",
+                stars: 1,
+                category: "DYNAMICAL SYSTEMS & COMPLEXITY",
+                summary: "Replication behavior predicted with 90.6% precision from just 3 bits: 000→0 AND 001→1 AND 100→1.",
+                feasibility: "High",
+                impact: "Medium",
+                details: {
+                    opportunity: "CA replication behavior can be predicted with 90.6% precision from just 3 bits of the rule structure.",
+                    unexplored: [
+                        "Simple predictive rule for emergent behavior is rare",
+                        "Most CA analysis focuses on classification, not prediction",
+                        "The specific 3-bit condition appears novel"
+                    ],
+                    firstSteps: [
+                        "Test if similar conditions exist for other behaviors (filling, dying, etc.)",
+                        "Extend to 2D CA and life-like rules",
+                        "Look for similar predictive conditions in other dynamical systems"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-007",
+                title: "Meditation Interface for AI Thought Development",
+                stars: 1,
+                category: "HUMAN-AI COLLABORATION",
+                summary: "Interface where AI signals \"still thinking\" vs \"ready for input\" - allowing thoughts to develop before interruption.",
+                feasibility: "High",
+                impact: "Medium-High",
+                details: {
+                    opportunity: "Create an interface where AI can signal \"still thinking\" vs \"ready for input\", allowing thoughts to develop fully before human interruption.",
+                    unexplored: [
+                        "Current chat interfaces assume immediate back-and-forth",
+                        "No commercial product offers \"thinking time\" control",
+                        "Inspired by contemplative practice principles"
+                    ],
+                    firstSteps: [
+                        "Build minimal Electron wrapper with state indicator",
+                        "Test with same prompts, comparing interrupted vs uninterrupted",
+                        "Measure quality difference in outputs",
+                        "User study on experience"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-010",
+                title: "Placebo Mechanisms as Drug Targets",
+                stars: 1,
+                category: "PHARMACOLOGY & MEDICINE",
+                summary: "Placebos activate endogenous opioids and specific circuits. Can we activate these pathways without deception?",
+                feasibility: "Medium",
+                impact: "High",
+                details: {
+                    opportunity: "Placebos activate endogenous opioids, dopamine, and specific brain circuits. These are the same systems drugs target. Can we directly activate \"placebo pathways\" without deception?",
+                    unexplored: [
+                        "Ethical concerns about deception",
+                        "Difficult to study (can't tell subjects they're in placebo arm)",
+                        "Assumed to be \"just psychological\" (but it's neurochemical)"
+                    ],
+                    firstSteps: [
+                        "Map all known placebo-responsive circuits by condition",
+                        "Identify which circuits are accessible via non-deceptive means",
+                        "Test targeted enhancement of specific pathways",
+                        "Develop \"honest placebo\" protocols"
+                    ]
+                }
+            },
+            {
+                id: "IDEA-011",
+                title: "Psilocybin's Anti-Default Mode Network Effect",
+                stars: 1,
+                category: "PHARMACOLOGY & MEDICINE",
+                summary: "Psilocybin reduces DMN activity (opposite of depression). Why does 5-HT2A agonism → DMN disruption?",
+                feasibility: "Medium",
+                impact: "High",
+                details: {
+                    opportunity: "Psilocybin reduces default mode network (DMN) activity and increases cross-brain connectivity. This is the opposite of depression's neural signature. Yet we don't know why 5-HT2A agonism → DMN disruption.",
+                    unexplored: [
+                        "Legal/regulatory barriers until recently",
+                        "Focus has been on clinical efficacy, not mechanism",
+                        "\"Mystical experience\" correlates with outcome but is hard to operationalize"
+                    ],
+                    firstSteps: [
+                        "Mechanistic comparison: psilocybin vs SSRI brain imaging",
+                        "What predicts DMN suppression response?",
+                        "Can DMN suppression be achieved without hallucinogenic experience?",
+                        "Molecular pathway from 5-HT2A → neuroplasticity"
+                    ]
+                }
+            }
+        ];
+
+        function getStarClass(stars) {
+            if (stars === 3) return 'three-star';
+            if (stars === 2) return 'two-star';
+            return 'one-star';
+        }
+
+        function getStarEmoji(stars) {
+            return '⭐'.repeat(stars);
+        }
+
+        function getFeasibilityClass(feasibility) {
+            if (feasibility === 'High') return 'tag-high';
+            if (feasibility === 'Medium') return 'tag-medium';
+            return '';
+        }
+
+        function getImpactClass(impact) {
+            if (impact === 'Revolutionary') return 'tag-revolutionary';
+            if (impact === 'High') return 'tag-high';
+            return 'tag-medium';
+        }
+
+        function renderIdeas(filter = 'all') {
+            const container = document.getElementById('ideas-container');
+            container.innerHTML = '';
+
+            // Group by category
+            const categories = {};
+            ideas.forEach(idea => {
+                if (filter !== 'all' && idea.stars !== parseInt(filter)) return;
+                if (!categories[idea.category]) categories[idea.category] = [];
+                categories[idea.category].push(idea);
+            });
+
+            let visibleCount = 0;
+
+            for (const [category, categoryIdeas] of Object.entries(categories)) {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+                categoryDiv.innerHTML = `<h2 class="category-header">${category}</h2>`;
+
+                categoryIdeas.forEach(idea => {
+                    visibleCount++;
+                    const card = document.createElement('div');
+                    card.className = `idea-card ${getStarClass(idea.stars)}`;
+                    card.innerHTML = `
+                        <div class="idea-header" onclick="toggleIdea(this)">
+                            <div class="idea-title-section">
+                                <div class="idea-title">${getStarEmoji(idea.stars)} ${idea.id}: ${idea.title}</div>
+                                <div class="idea-summary">${idea.summary}</div>
+                            </div>
+                            <div class="idea-meta">
+                                <span class="tag ${getFeasibilityClass(idea.feasibility)}">${idea.feasibility}</span>
+                                <span class="tag ${getImpactClass(idea.impact)}">${idea.impact}</span>
+                                <span class="expand-icon">▼</span>
+                            </div>
+                        </div>
+                        <div class="idea-content">
+                            <h4>The Opportunity</h4>
+                            <p>${idea.details.opportunity}</p>
+
+                            <h4>Why It's Underexplored</h4>
+                            <ul>
+                                ${idea.details.unexplored.map(u => `<li>${u}</li>`).join('')}
+                            </ul>
+
+                            <h4>First Steps</h4>
+                            <ul>
+                                ${idea.details.firstSteps.map((s, i) => `<li>${i + 1}. ${s}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    categoryDiv.appendChild(card);
+                });
+
+                container.appendChild(categoryDiv);
+            }
+
+            document.getElementById('filter-info').textContent =
+                filter === 'all'
+                    ? `Showing all ${visibleCount} ideas`
+                    : `Showing ${visibleCount} ${getStarEmoji(parseInt(filter))} ideas`;
+        }
+
+        function toggleIdea(header) {
+            header.parentElement.classList.toggle('expanded');
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.idea-card').forEach(card => {
+                card.classList.add('expanded');
+            });
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.idea-card').forEach(card => {
+                card.classList.remove('expanded');
+            });
+        }
+
+        function filterByRating(rating, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderIdeas(rating);
+        }
+
+        // Initial render
+        renderIdeas();
+    </script>
+</body>
+</html>

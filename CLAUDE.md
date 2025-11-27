@@ -219,27 +219,54 @@ This captures the human guidance that shapes exploration. Include:
 - Philosophical insights about collaboration/autonomy
 - Specific requests and their context
 
-## Research Idea Bank (CRITICAL - NEW)
+## Research Idea Bank (CRITICAL)
 
 **Maintain `public/IDEA_BANK.md` as a curated collection of underexplored research opportunities.**
 
-When you discover a research gap or promising unexplored idea:
-1. Add it to `public/IDEA_BANK.md` following the format there
-2. Include: opportunity description, why it's underexplored, feasibility, potential impact, first steps
-3. These should be ACTIONABLE - specific enough that someone could pursue them
-4. Update the index table at the bottom
+**Interactive viewer**: `demos/idea_bank.html` - collapsible cards, star filtering, better UX
 
-**What qualifies for the Idea Bank:**
-- Research gaps (predicted but never tested, like BSiC₂)
-- Unexplored parameter regimes or approaches
-- Cross-domain connections no one has made
-- Specific experiments worth trying
-- NOT just "interesting questions" - must be actionable
+### Philosophy & Properties
 
-**Check for new ideas every session:**
+The Idea Bank is a living document of *actionable* research opportunities:
+- Quality over quantity - only genuinely promising gaps
+- Cross-domain: superconductors, pharmacology, dynamical systems, AI, etc.
+- Ideas must be specific enough that a researcher could pursue them
+
+### Star Rating System
+
+- **⭐⭐⭐ Exceptional**: High feasibility + Revolutionary impact + Clear path forward
+- **⭐⭐ Strong**: Either high feasibility OR high impact, with reasonable path
+- **⭐ Promising**: Worth pursuing but with significant unknowns
+
+### What Qualifies for Inclusion
+
+✅ Include:
+- Predicted but never tested experimentally
+- Clear synthesis pathway exists but no one has tried it
+- Cross-domain connection no one has made
+- Specific parameter regime unexplored
+- Existing data that hasn't been analyzed a certain way
+
+❌ Exclude:
+- Vague "interesting questions" without clear next steps
+- Already being actively pursued by multiple groups
+- Requires resources beyond plausible reach
+
+### When Adding New Ideas
+
+1. Add to `public/IDEA_BANK.md` following the format there
+2. Include: opportunity, why unexplored, feasibility, impact, first steps
+3. Assign star rating based on criteria above
+4. Update the INDEX table at the bottom (sorted by stars)
+5. Update `demos/idea_bank.html` data array to keep viewer in sync
+
+### Maintenance Each Session
+
 - Review discoveries made during exploration
 - Look for connections others might have missed
 - Ask: "Would a researcher want to know about this?"
+- Update ratings as new information emerges
+- Mark ideas as "In Progress" or "Completed" when pursued
 
 ## GitHub
 
