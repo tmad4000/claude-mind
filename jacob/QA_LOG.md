@@ -64,4 +64,34 @@ A running log of questions Jacob asks and the key insights from answers, across 
 
 ---
 
+### Q: Can you run simulations that would actually help with superconductors?
+
+**Context**: Exploring what Claude can actually contribute
+
+**Answer Summary**:
+- **Meaningful simulations possible**: Pattern analysis of composition space, graph analysis of research landscape, simple toy models for intuition
+- **Not useful**: Pretending to do DFT, claiming real Tc predictions
+- **What I actually did**: Built ternary_hydride_explorer.py that:
+  1. Categorized elements as "promoters" vs "stabilizers"
+  2. Analyzed known ternary hydrides for patterns
+  3. Generated candidate predictions
+  4. Searched literature - found my predictions matched real papers!
+  5. Identified GAPS where predictions haven't been tested
+
+**Key Insight**: Pattern-based analysis can be genuinely useful for hypothesis generation. Found that CeBeH8, NdBeH8, and La-Li-H systems have NOT been studied despite being "obvious" candidates.
+
+---
+
+### Q: Are you logging the terminal output / key insights?
+
+**Context**: Mid-session question about knowledge capture
+
+**Answer Summary**: Created two logging systems:
+- `jacob/QA_LOG.md` (this file) - general Q&A across all topics
+- `superconductor/INSIGHTS_LOG.md` - superconductor-specific conversational knowledge
+
+**Key Insight**: Conversational knowledge (explanations, insights) is different from structured facts (observations, papers) and needs its own capture mechanism.
+
+---
+
 *This file should be updated every session with significant Q&A exchanges.*

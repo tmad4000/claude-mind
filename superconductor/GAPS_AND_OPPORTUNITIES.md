@@ -53,9 +53,12 @@ These have computational predictions but no experimental verification:
 
 ## KEY OPEN QUESTIONS
 
-1. **Why hasn't Mg2XH6 been synthesized?**
-   - This is the biggest mystery. Ambient pressure Tc >80K would be huge.
-   - Possible issues: synthesis difficulty? Stability problems? Cost of Rh/Ir/Pt?
+1. **Mg2IrH6 synthesis is CLOSE!** (Updated 2025-11-27)
+   - Mg2IrH5 has been synthesized experimentally (PRB 2024)
+   - It's isostructural with Mg2IrH6 except for one H vacancy
+   - Favorable barrier for H insertion
+   - Non-equilibrium processing may achieve the full Mg2IrH6
+   - THIS IS THE CLOSEST WE ARE TO AMBIENT PRESSURE HIGH-TC SUPERCONDUCTOR
 
 2. **Can ThBeH8 replace AcBeH8 as the low-pressure champion?**
    - ThBeH8 at 7-10 GPa with Tc ~100K is achievable with multi-anvil apparatus
@@ -78,7 +81,9 @@ These have computational predictions but no experimental verification:
 
 Based on impact × feasibility:
 
-1. **Synthesize Mg2RhH6** - Ambient pressure Tc >80K would transform the field
+1. **URGENT: Complete Mg2IrH6 synthesis** - Mg2IrH5 already made! Just need one more H atom!
+   - Non-equilibrium processing (rapid quench, ion implantation?)
+   - Would achieve ~160K at AMBIENT PRESSURE
 2. **Synthesize ThBeH8** - ~100K at 7-10 GPa is achievable
 3. **DFT study of CeBeH8** - Fill obvious gap in XBeH8 series
 4. **DFT study of La-Li-H system** - Test if Li beats Be

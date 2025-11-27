@@ -180,4 +180,31 @@ This suggests that achieving room temperature at ambient pressure via BCS/phonon
 
 ---
 
+#### MAJOR FINDING: Mg2IrH6 Pathway Exists!
+
+**Discovery**: Searching for why Mg2XH6 hasn't been synthesized, found that Mg2IrH5 HAS been synthesized (PRB 2024)!
+
+**The situation**:
+- Mg2IrH6 is predicted to superconduct at ~160K at AMBIENT PRESSURE
+- Mg2IrH5 has been made experimentally under mild conditions
+- It's isostructural with Mg2IrH6 except for ONE hydrogen vacancy
+- There's a favorable barrier for inserting that final hydrogen
+
+**Why this matters**:
+This is potentially the closest anyone has gotten to an ambient-pressure high-Tc superconductor. We're literally ONE HYDROGEN ATOM away from a material that could work above liquid nitrogen temperature without any pressure at all.
+
+**Open question**: What non-equilibrium processing could insert that hydrogen?
+- Rapid quenching?
+- Ion implantation?
+- Electrochemical?
+- High H2 pressure at moderate temperature?
+
+**Also learned**: The mechanism explanation
+- In Mg2IrH6, IrH6⁴⁻ molecular vibrations provide electron-phonon coupling
+- The eg* states of IrH6 are at the Fermi level
+- In Ca2IrH6, Ca d-backdonation quenches this → no superconductivity
+- This is why Mg works but Ca doesn't
+
+---
+
 *This log should be updated each session with key insights developed in conversation.*

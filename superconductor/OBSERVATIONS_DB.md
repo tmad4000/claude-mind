@@ -336,6 +336,30 @@ This database collects empirical observations, experimental findings, and phenom
 - **Related Problems**: PROB-003, PROB-006
 - **Status**: OPPORTUNITY
 
+### OBS-SC-034: Mg2IrH5 Synthesized - Pathway to Mg2IrH6
+- **Type**: Experimental
+- **Source**: Phys. Rev. B 110, 214513 (2024), arXiv:2406.09538
+- **Date**: 2024
+- **Description**: Mg2IrH5 has been synthesized under mild conditions. It is isostructural with predicted superconducting Mg2IrH6 except for one H vacancy. Favorable barrier for H insertion.
+- **Significance**: MAJOR - Experimental pathway to ambient-pressure superconductor exists! Mg2IrH6 predicted at 103-160K at ambient pressure.
+- **Related Problems**: PROB-003
+- **Potential Applications**: Non-equilibrium processing of Mg2IrH5 may yield Mg2IrH6
+- **Status**: Experimental progress - VERY HIGH PRIORITY
+- **Detailed Synthesis Info**:
+  - Low-P method: 450°C, 100-250 bar H2, 2 weeks, 80-90% pure
+  - High-P DAC: 10-28 GPa, 800-2500K, laser heating
+  - H insertion: NO BARRIER from Mg2IrH5 → Mg2IrH6 (VCNEB calculations)
+  - Mg2IrH6 is 60 meV/atom above convex hull (metastable)
+  - Suggested methods: deposition or implantation
+
+### OBS-SC-035: IrH6 Vibrations Drive Superconductivity
+- **Type**: Theoretical
+- **Source**: Angewandte Chemie 2024
+- **Date**: 2024
+- **Description**: In Mg2IrH6, superconductivity comes from IrH6⁴⁻ molecular vibrations with eg* states at Fermi level. In Ca2IrH6 this is quenched by Ca d backdonation.
+- **Significance**: Explains WHY Mg works but Ca doesn't - design principle for similar compounds
+- **Related Problems**: PROB-001, PROB-006
+
 ---
 
 ## INDEX BY PROBLEM
