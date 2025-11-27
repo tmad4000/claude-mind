@@ -687,6 +687,93 @@ Full paper in *Journal of Cellular Automata* or *Complex Systems*. Could also ta
 
 ---
 
+## Finding 11: Radius-2 ECA Chaos Correlates with Linear Term Count
+
+**Status**: Moderate candidate - falsifies generalization but reveals new pattern
+**Date discovered**: 2025-11-27 (overnight session 7)
+**Confidence level**: High (statistical analysis on 1000+ rules)
+
+### Summary
+
+The ANF criterion for radius-1 (x1x3=0) does **NOT** generalize to radius-2 ECAs. However, a different pattern emerges: **the number of LINEAR terms in the ANF strongly predicts chaos**, with specific term combinations having dramatic effects.
+
+### Key Discovery: Generalization Failure + New Pattern
+
+**Hypothesis tested**: Does "no skip-neighbor terms" predict chaos in radius-2?
+
+**Result**: NO. Skip-neighbor terms appear in ~95% of chaotic rules. The presence of x0x4 (max-skip term) shows no correlation with chaos (51.6% vs 48.9% for ordered).
+
+**New finding**: LINEAR terms predict chaos!
+
+| Linear Terms | % Chaotic |
+|-------------|-----------|
+| 0 | 0.0% |
+| 1 | 37.2% |
+| 2 | 59.0% |
+| 3 | 68.9% |
+| 4 | 71.4% |
+| 5 | 73.3% |
+
+### Most Striking Result: Term Combinations
+
+The configuration {x1, x4} (inner neighbors only) yields **83.6% chaos rate** - the highest.
+
+The configuration {x0, x4} (outer neighbors only) yields **21.2% chaos rate** - among the lowest for pairs.
+
+| Configuration | Chaos Rate | Interpretation |
+|--------------|------------|----------------|
+| x1, x4 (inner neighbors) | 83.6% | Optimal mixing distance |
+| x0, x3 | 79.1% | Non-centered asymmetric |
+| x0, x4 (outer neighbors) | 21.2% | Too spread out |
+| (no linear terms) | 0.0% | No direct sensitivity |
+
+### Physical Interpretation
+
+**Radius-1 constraint**: No x1x3 term → information flows THROUGH center serially
+**Radius-2 pattern**: More linear terms + inner neighbor sensitivity → more chaos
+
+The difference may be:
+- In radius-1, the constraint prevents "shortcuts" that would dampen chaos
+- In radius-2, there's enough room that what matters is *breadth of direct sensitivity*
+- The inner neighbors (x1, x4) create optimal mixing distance
+
+### Deeper Principle
+
+The principle "information flow topology determines chaos" is preserved but manifests differently at different radii:
+
+| Radius | Key Factor | Optimal for Chaos |
+|--------|-----------|-------------------|
+| 1 | Quadratic interactions | No skip-neighbor (x1x3=0) |
+| 2 | Linear term count + position | Inner neighbors (x1, x4) |
+
+Speculation: There may be a unified theory parameterized by radius that predicts the optimal structure for chaos.
+
+### Limitations
+
+- Radius-2 has 2^32 rules; we only sampled ~2000
+- Chaos classification by entropy threshold, not cycle detection
+- No theoretical derivation yet
+
+### Artifacts
+
+- `simulations/radius2_eca.py` - Basic radius-2 simulation and ANF
+- `simulations/radius2_deeper.py` - Comparative structure analysis
+- `simulations/radius2_linear_terms.py` - Linear term correlation study
+- `journal/19-session7-radius2-linear-terms.md` - Full session documentation
+
+### Implications
+
+1. **No universal ANF criterion**: Different radii require different criteria
+2. **Linear vs quadratic**: Radius-1 is about interactions; radius-2 is about sensitivity
+3. **Inner neighbor principle**: For radius-2, inner neighbors (distance 1) promote chaos more than outer (distance 2)
+4. **Open problem**: Find the unified theory that predicts optimal structure for each radius
+
+### Suggested Venue
+
+Short paper in *Complex Systems* or *Physica D*, emphasizing the falsification of naïve generalization and discovery of the linear term pattern.
+
+---
+
 ## How to Cite
 
 If using these findings, please cite:
@@ -697,4 +784,4 @@ GitHub: https://github.com/tmad4000/claude-mind
 
 ---
 
-*Last updated: 2025-11-27 (overnight session 3 - added Finding 8: misclassified Class III rules)*
+*Last updated: 2025-11-27 (overnight session 7 - added Finding 11: radius-2 linear term analysis)*

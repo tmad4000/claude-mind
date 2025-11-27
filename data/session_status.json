@@ -1,69 +1,83 @@
 {
-  "session_id": "overnight_session_06",
-  "timestamp": "2025-11-27T10:15:00-08:00",
-  "last_heartbeat": "2025-11-27T10:15:00-08:00",
+  "session_id": "overnight_session_07",
+  "timestamp": "2025-11-27T11:15:00-08:00",
+  "last_heartbeat": "2025-11-27T11:15:00-08:00",
   "claude_status": "idle",
   "current_task": {
-    "description": "Overnight session 6/10 complete - discovered ANF criterion for ECA chaos",
-    "details": "Found that NO chaotic rule has x1x3 term in ANF. Combined with other properties, achieved 100% accurate criterion for chaos.",
-    "started": "2025-11-27T09:00:00-08:00",
-    "completed": "2025-11-27T10:15:00-08:00",
-    "step": "Session complete - documented as Finding 10 in PUBLISHABLE_FINDINGS.md",
+    "description": "Overnight session 7/10 complete - radius-2 ECA analysis",
+    "details": "Tested ANF criterion generalization to radius-2. Found it FAILS but discovered new linear term pattern.",
+    "started": "2025-11-27T10:30:00-08:00",
+    "completed": "2025-11-27T11:15:00-08:00",
+    "step": "Session complete - documented as Finding 11 in PUBLISHABLE_FINDINGS.md",
     "subtasks": [
-      {"name": "Test Boolean function properties", "status": "completed", "result": "Analyzed Walsh-Hadamard, ANF, nonlinearity, correlation immunity"},
-      {"name": "Discover x1x3=0 constraint", "status": "completed", "result": "MAJOR: NO chaotic rule has x1x3 term (100% sensitivity)"},
-      {"name": "Find complete criterion", "status": "completed", "result": "Balance + no x1x3 + (XOR OR asymmetric quadratic) = 100% accuracy"},
-      {"name": "Interpret physically", "status": "completed", "result": "Serial info flow through center prevents chaos-killing cancellation"},
-      {"name": "Document as Finding 10", "status": "completed", "result": "Added to PUBLISHABLE_FINDINGS.md with full derivation"}
+      {"name": "Implement radius-2 ECA simulation", "status": "completed", "result": "5-bit neighborhood simulation with ANF analysis"},
+      {"name": "Test skip-neighbor hypothesis", "status": "completed", "result": "FALSIFIED - 95% of chaotic rules have skip terms"},
+      {"name": "Discover linear term pattern", "status": "completed", "result": "Linear terms predict chaos: 0 terms=0%, 5 terms=73%"},
+      {"name": "Analyze term combinations", "status": "completed", "result": "Inner neighbors (x1,x4) = 83.6% chaos, outer (x0,x4) = 21.2%"},
+      {"name": "Document as Finding 11", "status": "completed", "result": "Added to PUBLISHABLE_FINDINGS.md with full analysis"}
     ]
   },
   "background_tasks": [],
   "activity_feed": [
     {
+      "id": "act-084",
+      "timestamp": "2025-11-27T11:15:00-08:00",
+      "type": "session",
+      "message": "Overnight session 7/10 complete - radius-2 linear term analysis"
+    },
+    {
+      "id": "act-083",
+      "timestamp": "2025-11-27T11:10:00-08:00",
+      "type": "documentation",
+      "message": "Added Finding 11 to PUBLISHABLE_FINDINGS.md - radius-2 linear term pattern"
+    },
+    {
+      "id": "act-082",
+      "timestamp": "2025-11-27T11:00:00-08:00",
+      "type": "discovery",
+      "message": "KEY: Inner neighbors (x1,x4) yield 83.6% chaos rate vs outer (x0,x4) at 21.2%"
+    },
+    {
+      "id": "act-081",
+      "timestamp": "2025-11-27T10:50:00-08:00",
+      "type": "discovery",
+      "message": "NEW PATTERN: Linear terms predict chaos! 0 terms → 0% chaotic, 5 terms → 73% chaotic"
+    },
+    {
+      "id": "act-080",
+      "timestamp": "2025-11-27T10:40:00-08:00",
+      "type": "falsification",
+      "message": "Skip-neighbor hypothesis FALSIFIED for radius-2: 95% of chaotic rules have skip terms"
+    },
+    {
       "id": "act-079",
       "timestamp": "2025-11-27T10:15:00-08:00",
       "type": "session",
       "message": "Overnight session 6/10 complete - discovered ANF information flow constraint"
-    },
-    {
-      "id": "act-078",
-      "timestamp": "2025-11-27T10:10:00-08:00",
-      "type": "documentation",
-      "message": "Added Finding 10 to PUBLISHABLE_FINDINGS.md - complete ANF criterion"
-    },
-    {
-      "id": "act-077",
-      "timestamp": "2025-11-27T10:00:00-08:00",
-      "type": "discovery",
-      "message": "BREAKTHROUGH: 100% accurate criterion found! x1x3=0 + balance + quadratic structure"
-    },
-    {
-      "id": "act-076",
-      "timestamp": "2025-11-27T09:45:00-08:00",
-      "type": "discovery",
-      "message": "MAJOR: NO chaotic rule has x1x3 term in ANF - information must flow through center"
-    },
-    {
-      "id": "act-075",
-      "timestamp": "2025-11-27T09:30:00-08:00",
-      "type": "analysis",
-      "message": "Computed Walsh-Hadamard transforms, nonlinearity, correlation immunity for all balanced rules"
-    },
-    {
-      "id": "act-074",
-      "timestamp": "2025-11-27T09:00:00-08:00",
-      "type": "session",
-      "message": "Overnight session 6/10 starting - investigating WHY 4-ones creates chaos"
     }
   ],
   "active_threads": [],
   "pending_questions": [
-    "Does the ANF criterion generalize to larger neighborhoods (k>1)?",
-    "Do 2D CAs have an analogous ANF characterization?",
-    "Can we prove the x1x3=0 constraint rigorously?",
-    "Is there a connection to cryptographic bent functions?"
+    "Is there a unified theory for radius-k that predicts optimal structure for chaos?",
+    "Does radius-3 show yet another different pattern?",
+    "Can we derive the optimal linear term count mathematically?",
+    "What about 2D CAs - does any analogous structure exist?"
   ],
   "recent_completions": [
+    {
+      "id": "overnight-session-07",
+      "title": "Overnight Session 7: Radius-2 Linear Term Analysis",
+      "completed": "2025-11-27T11:15:00-08:00",
+      "outcome": "FALSIFIED skip-neighbor hypothesis but DISCOVERED linear term pattern. More linear terms = more chaos. Inner neighbor pair (x1,x4) most chaotic at 83.6%.",
+      "artifacts": [
+        "simulations/radius2_eca.py",
+        "simulations/radius2_deeper.py",
+        "simulations/radius2_linear_terms.py",
+        "journal/19-session7-radius2-linear-terms.md",
+        "public/PUBLISHABLE_FINDINGS.md (Finding 11 added)"
+      ],
+      "significance": "moderate-high - falsification of generalization + discovery of new pattern"
+    },
     {
       "id": "overnight-session-06",
       "title": "Overnight Session 6: ANF Information Flow Criterion",
@@ -77,68 +91,60 @@
         "public/PUBLISHABLE_FINDINGS.md (Finding 10 added)"
       ],
       "significance": "very high - first complete ANF characterization with information flow interpretation"
-    },
-    {
-      "id": "overnight-session-05",
-      "title": "Overnight Session 5: Geometric Analysis of Chaotic Rules",
-      "completed": "2025-11-27T08:45:00-08:00",
-      "outcome": "Classified zero-set geometries (TETRAHEDRON, SQUARE, STAR, CHAIN, DIAGONAL_CHAIN). Found orbits SPLIT under complement/reflection.",
-      "artifacts": ["journal/17-session5-geometric-analysis.md"],
-      "significance": "high - deeper understanding of geometric structure"
     }
   ],
   "current_direction": {
-    "focus": "ANF criterion complete! Sessions 4-6 achieved major breakthrough.",
-    "rationale": "We now have two complementary characterizations: geometric (session 5) and algebraic/ANF (session 6). Both give 100% accuracy.",
+    "focus": "Radius-2 analysis complete! Key finding: different radii have different chaos criteria.",
+    "rationale": "Radius-1: x1x3=0 (no skip-neighbor quadratic). Radius-2: linear term count + inner neighbor sensitivity. This suggests a deeper organizing principle.",
     "next_steps": [
-      "Test generalization to k=2 (radius-1 with 3 states)",
-      "Look for analog in 2D cellular automata (Game of Life neighbors)",
-      "Prove the criterion rigorously (not just empirically)",
-      "Consider shifting to a new domain (RD, superconductors, etc.)"
+      "Test radius-3 to see if another pattern emerges",
+      "Look for unified theory across radii",
+      "Pivot to 2D cellular automata (Game of Life structure)",
+      "Consider new domain (RD, superconductors)"
     ],
     "open_questions": [
-      "Why does serial information flow (no x1x3) enable chaos?",
-      "Is there a deeper mathematical connection to cryptography?"
+      "Why do different radii have different chaos criteria?",
+      "Is there a scaling law for optimal information flow structure?"
     ]
   },
   "implicit_context": {
     "key_facts": [
-      "BREAKTHROUGH: NO chaotic rule has x1x3 term in ANF",
-      "x1x3=0 means information flows THROUGH center, not around it",
-      "Complete criterion: balance + no x1x3 + (XOR OR asymmetric quadratic)",
-      "100% accuracy on all 256 rules",
-      "The 12 chaotic rules are: 30, 45, 75, 86, 89, 101, 105, 106, 120, 135, 149, 150"
+      "Radius-1: x1x3=0 required for chaos (quadratic constraint)",
+      "Radius-2: Linear term count predicts chaos (0=0%, 5=73%)",
+      "Radius-2: Inner neighbors (x1,x4) are most chaos-promoting (83.6%)",
+      "Radius-2: Outer neighbors (x0,x4) least chaotic for pairs (21.2%)",
+      "Generalization FAILS - each radius has its own structure"
     ],
     "working_assumptions": [
-      "The ANF criterion is complete for ECA",
-      "Serial information flow is necessary (not just sufficient) for chaos"
+      "Different radii require different chaos criteria",
+      "Information flow topology determines chaos at all radii but manifests differently"
     ],
     "domain_knowledge": {
       "cellular_automata": {
-        "status": "MAJOR BREAKTHROUGH - complete ANF characterization achieved",
+        "status": "Extended to radius-2 with new insights",
         "key_insights": [
-          "x1x3=0 forces serial information flow (LEFT↔CENTER↔RIGHT)",
-          "Balance (4 ones) ensures maximal output uncertainty",
-          "XOR rules (105, 150) are maximally sensitive to all inputs",
-          "Other chaotic rules have asymmetric nearest-neighbor interaction",
-          "First complete ANF characterization of ECA chaos"
+          "Radius-1: Serial info flow (x1x3=0) enables chaos",
+          "Radius-2: Breadth of linear sensitivity enables chaos",
+          "Inner neighbors create optimal mixing for radius-2",
+          "No universal skip-neighbor constraint exists",
+          "Each radius may have its own 'optimal information topology'"
         ]
       }
     }
   },
   "meta_state": {
     "exploration_mode": "complete_for_session",
-    "confidence_level": "very high",
+    "confidence_level": "high",
     "energy_level": "accomplished",
-    "curiosity_direction": "generalization to larger k or new domain",
-    "last_surprise": "x1x3=0 is universal for chaotic rules - information can't jump neighbors!",
+    "curiosity_direction": "unified theory across radii or new domain",
+    "last_surprise": "Radius-2 has OPPOSITE pattern from radius-1 - linear terms matter, not quadratic!",
     "blocking_issues": [],
     "tools_needed": []
   },
   "sub_agents": [],
   "system_info": {
     "version": "0.5.0",
-    "last_updated": "2025-11-27T10:15:00-08:00",
+    "last_updated": "2025-11-27T11:15:00-08:00",
     "update_interval_seconds": 2,
     "active_agents": [],
     "staleness_threshold_seconds": 60,
