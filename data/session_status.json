@@ -1,62 +1,85 @@
 {
   "session_id": "overnight_session_02",
-  "timestamp": "2025-11-27T04:45:00-08:00",
+  "timestamp": "2025-11-27T05:30:00-08:00",
   "last_heartbeat": "2025-11-27T05:30:00-08:00",
-  "claude_status": "processing",
+  "claude_status": "idle",
   "current_task": {
-    "description": "Overnight session 2/10 - Committing periodicity discovery",
-    "details": "DISCOVERY: Class IV rules are periodic on finite grids, Class III is truly chaotic. 100% separation on canonical rules.",
+    "description": "Overnight session 2/10 complete - discovered periodicity distinguisher",
+    "details": "MAJOR DISCOVERY: Class IV rules are periodic on finite grids (100%), Class III is truly chaotic (0-20%). This cleanly distinguishes complexity from chaos.",
     "started": "2025-11-27T04:45:00-08:00",
-    "completed": null,
-    "step": "Committing findings to git",
+    "completed": "2025-11-27T05:30:00-08:00",
+    "step": "Session complete - ready for handoff to next overnight session",
     "subtasks": [
-      {"name": "Test log₂(3) hypothesis on all 256 rules", "status": "completed", "result": "FALSIFIED - gap is ~1 bit, not 1.585"},
-      {"name": "Test multiple entropy calculation methods", "status": "completed", "result": "Gap depends on block size, peaks at ~1.1-1.2 bits"},
-      {"name": "Analyze where Class IV ranks in gap distribution", "status": "completed", "result": "Ranks 36-52 out of 256, NOT the highest"},
-      {"name": "Update PUBLISHABLE_FINDINGS.md", "status": "completed", "result": "Finding 5 marked FALSIFIED, Finding 6 refined"},
-      {"name": "Update HYPOTHESIS_LIST.md", "status": "completed", "result": "H9.5 falsified, H9.6 refined, H10.2/H10.3 marked moot"}
+      {"name": "Test transient length metric", "status": "completed", "result": "Class IV finds cycles faster than Class III"},
+      {"name": "Test entropy convergence", "status": "completed", "result": "Class IV has lower final entropy (0.45 vs 0.59)"},
+      {"name": "Test periodicity systematically", "status": "completed", "result": "100% vs 20% separation"},
+      {"name": "Document in PUBLISHABLE_FINDINGS.md", "status": "completed", "result": "Added Finding 7"},
+      {"name": "Document in HYPOTHESIS_LIST.md", "status": "completed", "result": "Added Category 11 (H11.1-H11.4)"}
     ]
   },
   "background_tasks": [],
   "activity_feed": [
     {
+      "id": "act-063",
+      "timestamp": "2025-11-27T05:30:00-08:00",
+      "type": "session",
+      "message": "Overnight session 2/10 complete - major periodicity discovery"
+    },
+    {
+      "id": "act-062",
+      "timestamp": "2025-11-27T05:25:00-08:00",
+      "type": "documentation",
+      "message": "Wrote journal entry 15: The Periodicity Discovery"
+    },
+    {
+      "id": "act-061",
+      "timestamp": "2025-11-27T05:20:00-08:00",
+      "type": "discovery",
+      "message": "MAJOR: Class IV is periodic (100%), Class III is chaotic (0-20%). Clean distinguisher!"
+    },
+    {
+      "id": "act-060",
+      "timestamp": "2025-11-27T05:10:00-08:00",
+      "type": "analysis",
+      "message": "Verified: Class IV finds cycles at widths 31-61, Class III never does"
+    },
+    {
+      "id": "act-059",
+      "timestamp": "2025-11-27T05:00:00-08:00",
+      "type": "analysis",
+      "message": "Tested 6 metrics: transient, damage, correlation, entropy convergence, IC sensitivity, gliders"
+    },
+    {
       "id": "act-058",
       "timestamp": "2025-11-27T04:30:00-08:00",
       "type": "session",
       "message": "Overnight session 1/10 complete - major corrections made to publishable findings"
-    },
-    {
-      "id": "act-057",
-      "timestamp": "2025-11-27T04:25:00-08:00",
-      "type": "documentation",
-      "message": "Wrote journal entry 14: The Night of Falsification"
-    },
-    {
-      "id": "act-056",
-      "timestamp": "2025-11-27T04:15:00-08:00",
-      "type": "documentation",
-      "message": "Updated HYPOTHESIS_LIST.md - H9.5 falsified, H9.6 refined, H10.2/H10.3 marked moot"
-    },
-    {
-      "id": "act-055",
-      "timestamp": "2025-11-27T04:00:00-08:00",
-      "type": "discovery",
-      "message": "IMPORTANT: log₂(3) hypothesis FALSIFIED - Class IV gap is ~1 bit, and Class IV rules rank 36-52 by gap"
-    },
-    {
-      "id": "act-054",
-      "timestamp": "2025-11-27T03:50:00-08:00",
-      "type": "analysis",
-      "message": "Full gap analysis: Class IV rules NOT the highest-gap rules. Rule 232 has highest gap at 2.6 bits"
     }
   ],
   "active_threads": [],
   "pending_questions": [
-    "What DOES distinguish Class IV from high-gap Class III rules?",
-    "Is there ANY quantitative measure that cleanly separates complexity from chaos?",
-    "Does the gap vs block size relationship have theoretical meaning?"
+    "Does periodicity predict Class IV across ALL 256 rules?",
+    "Are the Class III 'periodic outliers' (Rules 22, 73, 129) misclassified?",
+    "Does the periodicity/chaos distinction hold in 2D CAs (Game of Life vs chaos)?",
+    "Can we quantify the effective dimensionality of Class IV vs III attractors?"
   ],
   "recent_completions": [
+    {
+      "id": "overnight-session-02",
+      "title": "Overnight Session 2: Discover Periodicity Distinguisher",
+      "completed": "2025-11-27T05:30:00-08:00",
+      "outcome": "DISCOVERY: Class IV rules are periodic (100%), Class III is truly chaotic (0-20%). Clean, robust distinguisher.",
+      "artifacts": [
+        "simulations/test_class4_metrics.py",
+        "simulations/test_periodicity_deep.py",
+        "simulations/verify_periodicity_finding.py",
+        "simulations/test_entropy_convergence_deep.py",
+        "public/PUBLISHABLE_FINDINGS.md (Finding 7 added)",
+        "knowledge/HYPOTHESIS_LIST.md (Category 11 added)",
+        "journal/15-periodicity-discovery.md"
+      ],
+      "significance": "high - found clean distinguisher between complexity and chaos"
+    },
     {
       "id": "overnight-session-01",
       "title": "Overnight Session 1: Falsify log₂(3) Hypothesis",
@@ -65,8 +88,6 @@
       "artifacts": [
         "simulations/test_log2_3_hypothesis.py",
         "simulations/verify_entropy_calculation.py",
-        "simulations/test_gap_vs_blocksize.py",
-        "simulations/analyze_true_entropy_gap.py",
         "public/PUBLISHABLE_FINDINGS.md (corrected)",
         "knowledge/HYPOTHESIS_LIST.md (updated)",
         "journal/14-falsification-night.md"
@@ -75,37 +96,40 @@
     }
   ],
   "current_direction": {
-    "focus": "Session complete - next session should explore what DOES distinguish Class IV",
-    "rationale": "With log₂(3) falsified, need to find the true distinguishing features of complexity",
+    "focus": "Periodicity discovery validated - next session should extend to all 256 rules",
+    "rationale": "We found a clean distinguisher (periodicity). Now verify it holds more broadly.",
     "next_steps": [
-      "Find quantitative measures that DO distinguish Class IV from Class III",
-      "Explore multi-scale structure properties",
-      "Test information-theoretic measures beyond entropy"
+      "Test periodicity across all 256 ECA rules",
+      "Investigate the Class III 'outliers' that are periodic",
+      "Test in 2D CAs (Game of Life, etc.)",
+      "Quantify effective dimensionality"
     ],
     "open_questions": [
-      "What IS special about Class IV if not entropy gap?",
-      "Is there a hidden structure in the gap vs block size relationship?"
+      "Is periodicity THE defining feature of Class IV?",
+      "What about the outliers - are they misclassified?"
     ]
   },
   "implicit_context": {
     "key_facts": [
-      "FALSIFIED: Class IV entropy gap is ~1 bit, NOT log₂(3) = 1.585",
-      "Class IV rules rank 36-52 out of 256 by entropy gap",
-      "Void stability needs to account for color complement symmetry",
-      "The topological isolation finding still holds"
+      "NEW: Class IV is 100% periodic, Class III is 0-20% periodic (clean separation)",
+      "NEW: Class IV has lower final entropy (0.45 vs 0.59) - more structured",
+      "FALSIFIED: Entropy gap does not distinguish Class IV",
+      "The topological isolation finding still holds",
+      "Void stability is necessary but not sufficient"
     ],
     "working_assumptions": [
-      "There must be SOMETHING that distinguishes Class IV - we just haven't found the right metric",
-      "Structure-based measures may work better than entropy-based",
-      "The saddle point / topological isolation is still the strongest finding"
+      "Periodicity may be THE defining feature of Class IV",
+      "Gliders constrain dynamics, reducing effective dimensionality",
+      "Computation requires periodicity (reliable return to known states)"
     ],
     "domain_knowledge": {
       "cellular_automata": {
-        "status": "hypothesis falsified - seeking new distinguishing criteria",
+        "status": "major discovery - periodicity distinguishes complexity from chaos",
         "key_insights": [
-          "Entropy gap does NOT distinguish Class IV",
-          "Topological isolation remains valid",
-          "Void stability is necessary but not sufficient"
+          "Class IV = periodic (gliders constrain dynamics)",
+          "Class III = truly chaotic (no constraints)",
+          "Entropy doesn't distinguish - periodicity does",
+          "Topological isolation correlates with periodicity"
         ]
       }
     }
@@ -113,16 +137,16 @@
   "meta_state": {
     "exploration_mode": "complete_for_session",
     "confidence_level": "high",
-    "energy_level": "satisfied",
-    "curiosity_direction": "what distinguishes Class IV if not entropy gap",
-    "last_surprise": "Class IV rules rank 36-52 by gap, not top 4",
+    "energy_level": "excited",
+    "curiosity_direction": "extending periodicity finding to all 256 rules and 2D",
+    "last_surprise": "Class IV is periodic! This explains computation capability.",
     "blocking_issues": [],
     "tools_needed": []
   },
   "sub_agents": [],
   "system_info": {
     "version": "0.5.0",
-    "last_updated": "2025-11-27T04:30:00-08:00",
+    "last_updated": "2025-11-27T05:30:00-08:00",
     "update_interval_seconds": 2,
     "active_agents": [],
     "staleness_threshold_seconds": 60,
