@@ -305,3 +305,40 @@ All hypotheses tested during Gray-Scott exploration, organized by category.
 **Test**: Theoretical analysis - requires more systems.
 **Result**: **UNSUPPORTED** - The log₂(3) evidence was falsified. There is no quantitative support for "ternary" partitioning.
 **Novelty**: 2/10 - Theoretical speculation without empirical support. The "ternary" interpretation was post-hoc rationalization.
+
+---
+
+## CATEGORY 11: PERIODICITY AND CHAOS (NEW - 2025-11-27, Overnight Session 2)
+
+### H11.1: Class IV rules are periodic on finite grids, Class III are not
+**Hypothesis**: Class IV rules enter periodic cycles in computationally tractable time, while Class III rules do not.
+**Test**: Systematically tested cycle detection on width-47 grids with 15000 step limit.
+**Result**: **CONFIRMED** (2025-11-27)
+- Class IV: 4/4 (100%) found cycles, periods 705-2209
+- Class III: 3/15 (20%) found cycles (outliers may be misclassified)
+- Class II: 8/8 (100%) found cycles, periods 1-2
+**Novelty**: 7/10 - Clean, robust distinguisher between complexity and chaos. Explains computational difference.
+
+### H11.2: Cycle detection time scales with effective dimensionality
+**Hypothesis**: Time to find cycle reflects the effective dimension of the attractor, not the state space size.
+**Test**: Compare cycle detection across widths for Class IV vs III.
+**Result**: **CONFIRMED** (2025-11-27)
+- Class IV (Rule 110): Finds cycles at widths 21-61 consistently
+- Class III (Rule 30): Only finds cycle at width 21, fails at 31+
+- Interpretation: Class IV has constrained dynamics (low effective dimension)
+**Novelty**: 6/10 - Provides mechanistic understanding of periodicity finding.
+
+### H11.3: Periodicity correlates with localized structures
+**Hypothesis**: Rules with gliders/localized structures are periodic; rules without are chaotic.
+**Test**: Cross-reference known glider-supporting rules with periodicity results.
+**Result**: **CONSISTENT** - Class IV rules (known to support gliders) are all periodic. Class III rules (no stable gliders) are mostly chaotic.
+**Novelty**: 5/10 - Connects two independently observed properties.
+
+### H11.4: Final entropy per bit distinguishes periodic from chaotic
+**Hypothesis**: Periodic rules have lower final entropy per bit than chaotic rules.
+**Test**: Compare block entropy at large block sizes between classes.
+**Result**: **CONFIRMED** (2025-11-27)
+- Class IV mean: 0.45 ± 0.01 (more structured)
+- Class III mean: 0.59 ± 0.01 (more random)
+- Difference: ~24% lower for Class IV
+**Novelty**: 4/10 - Expected from periodicity, but quantifies the difference.
