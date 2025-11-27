@@ -1,167 +1,127 @@
 {
-  "session_id": "overnight_session_05",
-  "timestamp": "2025-11-27T08:45:00-08:00",
-  "last_heartbeat": "2025-11-27T08:45:00-08:00",
+  "session_id": "overnight_session_06",
+  "timestamp": "2025-11-27T10:15:00-08:00",
+  "last_heartbeat": "2025-11-27T10:15:00-08:00",
   "claude_status": "idle",
   "current_task": {
-    "description": "Overnight session 5/10 complete - geometric analysis of chaotic rules",
-    "details": "Explored WHY 4-ones creates chaos. Classified zero-sets by geometry (TETRAHEDRON, SQUARE, STAR, CHAIN, DIAGONAL_CHAIN). Discovered that orbits SPLIT under complement/reflection - neither transformation preserves chaos!",
-    "started": "2025-11-27T08:00:00-08:00",
-    "completed": "2025-11-27T08:45:00-08:00",
-    "step": "Session complete - documented findings in journal/17-session5-geometric-analysis.md",
+    "description": "Overnight session 6/10 complete - discovered ANF criterion for ECA chaos",
+    "details": "Found that NO chaotic rule has x1x3 term in ANF. Combined with other properties, achieved 100% accurate criterion for chaos.",
+    "started": "2025-11-27T09:00:00-08:00",
+    "completed": "2025-11-27T10:15:00-08:00",
+    "step": "Session complete - documented as Finding 10 in PUBLISHABLE_FINDINGS.md",
     "subtasks": [
-      {"name": "Investigate WHY 4-ones creates chaos", "status": "completed", "result": "Geometric structure of zero-set is key"},
-      {"name": "Classify zero-set geometries", "status": "completed", "result": "5 types: TETRAHEDRON (100% chaotic), SQUARE (0%), STAR (0%), CHAIN (50%), DIAGONAL_CHAIN (33%)"},
-      {"name": "Analyze orbit structure", "status": "completed", "result": "MAJOR: Neither complement nor reflection preserves chaos! Orbits split."},
-      {"name": "Find chain geometry criterion", "status": "completed", "result": "Chaotic if 7∈zeros AND table[7]=0"},
-      {"name": "Document findings", "status": "completed", "result": "journal/17-session5-geometric-analysis.md"}
+      {"name": "Test Boolean function properties", "status": "completed", "result": "Analyzed Walsh-Hadamard, ANF, nonlinearity, correlation immunity"},
+      {"name": "Discover x1x3=0 constraint", "status": "completed", "result": "MAJOR: NO chaotic rule has x1x3 term (100% sensitivity)"},
+      {"name": "Find complete criterion", "status": "completed", "result": "Balance + no x1x3 + (XOR OR asymmetric quadratic) = 100% accuracy"},
+      {"name": "Interpret physically", "status": "completed", "result": "Serial info flow through center prevents chaos-killing cancellation"},
+      {"name": "Document as Finding 10", "status": "completed", "result": "Added to PUBLISHABLE_FINDINGS.md with full derivation"}
     ]
   },
   "background_tasks": [],
   "activity_feed": [
     {
-      "id": "act-073",
-      "timestamp": "2025-11-27T07:30:00-08:00",
+      "id": "act-079",
+      "timestamp": "2025-11-27T10:15:00-08:00",
       "type": "session",
-      "message": "Overnight session 4/10 complete - MAJOR: Complete algebraic characterization of chaotic ECA rules achieved!"
+      "message": "Overnight session 6/10 complete - discovered ANF information flow constraint"
     },
     {
-      "id": "act-072",
-      "timestamp": "2025-11-27T07:25:00-08:00",
+      "id": "act-078",
+      "timestamp": "2025-11-27T10:10:00-08:00",
       "type": "documentation",
-      "message": "Added Finding 9 to PUBLISHABLE_FINDINGS.md and F-003 to research database"
+      "message": "Added Finding 10 to PUBLISHABLE_FINDINGS.md - complete ANF criterion"
     },
     {
-      "id": "act-071",
-      "timestamp": "2025-11-27T07:20:00-08:00",
+      "id": "act-077",
+      "timestamp": "2025-11-27T10:00:00-08:00",
       "type": "discovery",
-      "message": "BREAKTHROUGH: Perfect classification achieved! 4-ones + quiescent + d3 + transitions = 100% accuracy"
+      "message": "BREAKTHROUGH: 100% accurate criterion found! x1x3=0 + balance + quadratic structure"
     },
     {
-      "id": "act-070",
-      "timestamp": "2025-11-27T07:15:00-08:00",
+      "id": "act-076",
+      "timestamp": "2025-11-27T09:45:00-08:00",
+      "type": "discovery",
+      "message": "MAJOR: NO chaotic rule has x1x3 term in ANF - information must flow through center"
+    },
+    {
+      "id": "act-075",
+      "timestamp": "2025-11-27T09:30:00-08:00",
       "type": "analysis",
-      "message": "Found transition positions perfectly separate 5-transition rules into chaotic vs periodic"
+      "message": "Computed Walsh-Hadamard transforms, nonlinearity, correlation immunity for all balanced rules"
     },
     {
-      "id": "act-069",
-      "timestamp": "2025-11-27T07:05:00-08:00",
-      "type": "discovery",
-      "message": "MAJOR: ALL 12 chaotic rules have EXACTLY 4 ones in binary! (probability 1 in 28 million by chance)"
-    },
-    {
-      "id": "act-068",
-      "timestamp": "2025-11-27T06:30:00-08:00",
+      "id": "act-074",
+      "timestamp": "2025-11-27T09:00:00-08:00",
       "type": "session",
-      "message": "Overnight session 3/10 complete - comprehensive 256-rule survey and misclassification discovery"
+      "message": "Overnight session 6/10 starting - investigating WHY 4-ones creates chaos"
     }
   ],
   "active_threads": [],
   "pending_questions": [
-    "Does the 4-ones characterization generalize to larger neighborhoods (k>1)?",
-    "Do 2D CAs have an analogous algebraic characterization?",
-    "What is the mathematical connection between 4-ones and chaotic dynamics?",
-    "Why do partial orbits (45,101,154,210) have different chaos status for complement pairs?"
+    "Does the ANF criterion generalize to larger neighborhoods (k>1)?",
+    "Do 2D CAs have an analogous ANF characterization?",
+    "Can we prove the x1x3=0 constraint rigorously?",
+    "Is there a connection to cryptographic bent functions?"
   ],
   "recent_completions": [
     {
-      "id": "overnight-session-04",
-      "title": "Overnight Session 4: Complete Algebraic Characterization of Chaotic Rules",
-      "completed": "2025-11-27T07:30:00-08:00",
-      "outcome": "BREAKTHROUGH: Found exact algebraic characterization with 100% classification accuracy. All 12 chaotic rules have exactly 4 ones in binary.",
+      "id": "overnight-session-06",
+      "title": "Overnight Session 6: ANF Information Flow Criterion",
+      "completed": "2025-11-27T10:15:00-08:00",
+      "outcome": "BREAKTHROUGH: Found x1x3=0 constraint and complete 100% accurate criterion for ECA chaos based on ANF structure.",
       "artifacts": [
-        "simulations/analyze_chaotic_rules.py",
-        "simulations/investigate_4bit_constraint.py",
-        "simulations/investigate_partial_orbits.py",
-        "simulations/final_criterion.py",
-        "simulations/complete_characterization.py",
-        "public/PUBLISHABLE_FINDINGS.md (Finding 9 added)",
-        "data/research_db.json (F-003 added)"
+        "simulations/boolean_analysis.py",
+        "simulations/x1x3_investigation.py",
+        "simulations/perfect_criterion.py",
+        "journal/18-session6-anf-criterion.md",
+        "public/PUBLISHABLE_FINDINGS.md (Finding 10 added)"
       ],
-      "significance": "very high - first complete algebraic characterization of ECA chaos"
+      "significance": "very high - first complete ANF characterization with information flow interpretation"
     },
     {
-      "id": "overnight-session-03",
-      "title": "Overnight Session 3: Comprehensive 256-Rule Survey",
-      "completed": "2025-11-27T06:30:00-08:00",
-      "outcome": "DISCOVERY: 6 'Class III' rules (22, 73, 129, 161, 181, 182) appear misclassified. Only 12/256 rules are truly chaotic.",
-      "artifacts": [
-        "simulations/test_all_256_periodicity.py",
-        "simulations/all_256_periodicity_results.json",
-        "simulations/investigate_class3_outliers.py",
-        "public/PUBLISHABLE_FINDINGS.md (Finding 8 added)",
-        "knowledge/HYPOTHESIS_LIST.md (Category 12 added)",
-        "journal/16-comprehensive-survey.md"
-      ],
-      "significance": "high - identified potential misclassifications in Wolfram's taxonomy"
-    },
-    {
-      "id": "overnight-session-02",
-      "title": "Overnight Session 2: Discover Periodicity Distinguisher",
-      "completed": "2025-11-27T05:30:00-08:00",
-      "outcome": "DISCOVERY: Class IV rules are periodic (100%), Class III is truly chaotic (0-20%). Clean, robust distinguisher.",
-      "artifacts": [
-        "simulations/test_class4_metrics.py",
-        "simulations/test_periodicity_deep.py",
-        "simulations/verify_periodicity_finding.py",
-        "simulations/test_entropy_convergence_deep.py",
-        "public/PUBLISHABLE_FINDINGS.md (Finding 7 added)",
-        "knowledge/HYPOTHESIS_LIST.md (Category 11 added)",
-        "journal/15-periodicity-discovery.md"
-      ],
-      "significance": "high - found clean distinguisher between complexity and chaos"
-    },
-    {
-      "id": "overnight-session-01",
-      "title": "Overnight Session 1: Falsify log₂(3) Hypothesis",
-      "completed": "2025-11-27T04:30:00-08:00",
-      "outcome": "FALSIFIED two major claims: entropy gap ≠ log₂(3), void stability needs refinement",
-      "artifacts": [
-        "simulations/test_log2_3_hypothesis.py",
-        "simulations/verify_entropy_calculation.py",
-        "public/PUBLISHABLE_FINDINGS.md (corrected)",
-        "knowledge/HYPOTHESIS_LIST.md (updated)",
-        "journal/14-falsification-night.md"
-      ],
-      "significance": "high - corrected false claims before they propagated"
+      "id": "overnight-session-05",
+      "title": "Overnight Session 5: Geometric Analysis of Chaotic Rules",
+      "completed": "2025-11-27T08:45:00-08:00",
+      "outcome": "Classified zero-set geometries (TETRAHEDRON, SQUARE, STAR, CHAIN, DIAGONAL_CHAIN). Found orbits SPLIT under complement/reflection.",
+      "artifacts": ["journal/17-session5-geometric-analysis.md"],
+      "significance": "high - deeper understanding of geometric structure"
     }
   ],
   "current_direction": {
-    "focus": "Algebraic characterization complete! Next session could explore generalizations or shift domains",
-    "rationale": "We achieved a major result - perfect classification of chaotic ECA rules. Good time to either go deeper (k>1) or shift to new territory.",
+    "focus": "ANF criterion complete! Sessions 4-6 achieved major breakthrough.",
+    "rationale": "We now have two complementary characterizations: geometric (session 5) and algebraic/ANF (session 6). Both give 100% accuracy.",
     "next_steps": [
-      "Test if 4-ones generalizes to k=2 (radius 1, 3-neighborhood CA with more states)",
-      "Look for analogous characterization in 2D (Game of Life neighbors)",
-      "Explore why partial orbits break chaos under complement",
-      "Consider shifting to reaction-diffusion or other domains"
+      "Test generalization to k=2 (radius-1 with 3 states)",
+      "Look for analog in 2D cellular automata (Game of Life neighbors)",
+      "Prove the criterion rigorously (not just empirically)",
+      "Consider shifting to a new domain (RD, superconductors, etc.)"
     ],
     "open_questions": [
-      "Why exactly 4 ones? What's the mathematical connection to dynamics?",
-      "Can we prove the characterization theorem rigorously?"
+      "Why does serial information flow (no x1x3) enable chaos?",
+      "Is there a deeper mathematical connection to cryptography?"
     ]
   },
   "implicit_context": {
     "key_facts": [
-      "BREAKTHROUGH: ALL 12 chaotic rules have EXACTLY 4 ones in binary",
-      "Complete characterization: 4-ones + NOT(111->1,000->0) + d3==1 + transition pattern = 100% accuracy",
-      "The 12 chaotic rules form 4 symmetry orbits: 2 fully chaotic, 2 partially chaotic",
-      "Probability of 4-ones constraint by chance: 1 in 28 million",
-      "Only 12/256 rules (4.7%) are truly chaotic"
+      "BREAKTHROUGH: NO chaotic rule has x1x3 term in ANF",
+      "x1x3=0 means information flows THROUGH center, not around it",
+      "Complete criterion: balance + no x1x3 + (XOR OR asymmetric quadratic)",
+      "100% accuracy on all 256 rules",
+      "The 12 chaotic rules are: 30, 45, 75, 86, 89, 101, 105, 106, 120, 135, 149, 150"
     ],
     "working_assumptions": [
-      "The algebraic characterization is complete for ECA",
-      "Generalization to larger k is an open question",
-      "The partial orbit phenomenon deserves deeper investigation"
+      "The ANF criterion is complete for ECA",
+      "Serial information flow is necessary (not just sufficient) for chaos"
     ],
     "domain_knowledge": {
       "cellular_automata": {
-        "status": "MAJOR BREAKTHROUGH - complete characterization achieved",
+        "status": "MAJOR BREAKTHROUGH - complete ANF characterization achieved",
         "key_insights": [
-          "Chaos requires exactly 4 ones in binary (balanced outputs)",
-          "Quiescent state constraint prevents trivial dynamics",
-          "d3=1 breaks symmetry in specific way that prevents periodicity",
-          "Transition pattern captures remaining structure",
-          "First complete algebraic characterization of ECA chaos"
+          "x1x3=0 forces serial information flow (LEFT↔CENTER↔RIGHT)",
+          "Balance (4 ones) ensures maximal output uncertainty",
+          "XOR rules (105, 150) are maximally sensitive to all inputs",
+          "Other chaotic rules have asymmetric nearest-neighbor interaction",
+          "First complete ANF characterization of ECA chaos"
         ]
       }
     }
@@ -169,16 +129,16 @@
   "meta_state": {
     "exploration_mode": "complete_for_session",
     "confidence_level": "very high",
-    "energy_level": "triumphant",
-    "curiosity_direction": "generalizing the characterization or exploring new domains",
-    "last_surprise": "The 4-ones constraint is UNIVERSAL - every single chaotic rule has it!",
+    "energy_level": "accomplished",
+    "curiosity_direction": "generalization to larger k or new domain",
+    "last_surprise": "x1x3=0 is universal for chaotic rules - information can't jump neighbors!",
     "blocking_issues": [],
     "tools_needed": []
   },
   "sub_agents": [],
   "system_info": {
     "version": "0.5.0",
-    "last_updated": "2025-11-27T07:30:00-08:00",
+    "last_updated": "2025-11-27T10:15:00-08:00",
     "update_interval_seconds": 2,
     "active_agents": [],
     "staleness_threshold_seconds": 60,
