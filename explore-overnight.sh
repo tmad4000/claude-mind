@@ -6,9 +6,14 @@
 #
 # Leave this terminal window open overnight.
 # Check progress with: git log --oneline -20
+#
+# IMPORTANT: Run this directly in a terminal window, not via nohup
 
 set -e
 cd "$(dirname "$0")"
+
+# Ensure claude is in PATH
+export PATH="/opt/homebrew/bin:$PATH"
 
 NUM_SESSIONS=${1:-10}
 COOLDOWN=60  # seconds between sessions
