@@ -236,4 +236,58 @@ Searching for other ambient-pressure candidates revealed the field is converging
 
 ---
 
+### Session Continued: Research Director Mode & Evaluation
+
+#### Insight: Self-Evaluation Improves Research Quality
+
+**What happened**: Jacob suggested I "think as a research director with full lab access" and then spawn a sub-agent to evaluate my research questions. This meta-level approach revealed several weaknesses:
+
+1. **RQ-001 (H insertion)**: Needed a characterization plan - what if we get partial success? How do we know we've made Mg2IrH6?
+2. **RQ-002 (Mg vs Ca)**: Was framed negatively ("why Ca fails"). Reframing positively ("what makes Mg work") opens design space.
+3. **RQ-009 (Li instead of Be)**: REJECTED - the premise was flawed. "Lighter = better" ignores chemistry (bonding character, electron count).
+
+**Meta-learning**: My initial questions were reasonable but lacked the rigor a real research director would apply. The evaluation process caught:
+- Missing contingency plans (what if partial success?)
+- Negative framing that limits thinking
+- Faulty mechanistic reasoning (mass isn't everything)
+
+#### Insight: Nickelates as Alternative Path
+
+**Discovery**: Harold Hwang's group at SLAC (Feb 2025) demonstrated La₃Ni₂O₇ superconducting at ambient pressure via substrate strain. This is huge because:
+
+1. **Strain engineering** can substitute for high pressure
+2. **Thin films** enable advanced characterization impossible in diamond anvil cells
+3. **Nickelates are isoelectronic to cuprates** - if we could optimize them like cuprates were optimized, 100K+ might be achievable
+
+This provides a "lower risk" research direction alongside the higher-risk hydride work.
+
+#### Insight: BSiC₂ - The Forgotten Candidate
+
+**Discovery**: A 2020 paper predicted BSiC₂ superconducts at 74K at ambient pressure with NO hydrogen. It's:
+- Stoichiometric (no doping needed)
+- Hydrogen-free (no stability/handling issues)
+- Ambient pressure (no diamond anvil cells)
+
+**The gap**: NO ONE has tried to synthesize it (as far as I can find). This is a major unexplored opportunity. The synthesis might be challenging (metastable phase) but the payoff could be enormous.
+
+#### Insight: Portfolio Thinking for Research
+
+A research director shouldn't bet everything on one approach. My revised portfolio:
+- **60%** on hydrides (Mg2IrH6, etc.) - closest to proven success
+- **25%** on nickelates - lower risk, proven approach via strain
+- **15%** on wildcards (BSiC₂, interfaces) - high risk, high potential
+
+This balances near-term progress with longer-term moonshots.
+
+#### Insight: The "Probably Impossible" Result
+
+A 2025 paper in npj Quantum Materials showed that room-temperature superconductivity in 2D unconventional superconductors is "probably impossible" within current theoretical frameworks.
+
+**What this means**:
+- Cuprate-style mechanisms likely can't reach 300K
+- If room-temp is achievable, it's either (1) BCS pushed to absolute limit, or (2) some NEW mechanism we don't understand yet
+- The hydride approach (conventional BCS) might actually be the more promising path for room-temp
+
+---
+
 *This log should be updated each session with key insights developed in conversation.*

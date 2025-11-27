@@ -219,3 +219,4 @@ This captures the human guidance that shapes exploration. Include:
 
 Repo: https://github.com/tmad4000/claude-mind
 Push after significant work. All files are synced.
+- > Can you also save a file where you literally save the literal prompts that I give? Every time. In a big stack.

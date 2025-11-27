@@ -386,17 +386,65 @@ This database collects empirical observations, experimental findings, and phenom
 - **Significance**: Another family of potential ambient-pressure superconductors
 - **Related Problems**: PROB-003, PROB-006
 
+### OBS-SC-039: La₃Ni₂O₇ Strain-Stabilized at Ambient Pressure (SLAC 2025)
+- **Type**: Experimental
+- **Source**: Ko et al., Nature Dec 2024; SLAC announcement Feb 2025
+- **Date**: February 2025
+- **Description**: Harold Hwang's group demonstrated La₃Ni₂O₇ superconducting at ambient pressure via lateral compressive strain from substrate. Transition at -247°C to -231°C, true zero-resistance at -271°C (2K).
+- **Significance**: First ambient-pressure nickelate superconductor. Demonstrates "strain engineering" as alternative to high pressure. Enables characterization techniques (ARPES, STM) impossible under pressure.
+- **Related Problems**: PROB-003, PROB-004
+- **Potential Applications**: Thin-film superconducting devices; systematic strain optimization could increase Tc
+- **Status**: Verified (published in Nature)
+
+### OBS-SC-040: BSiC₂ Predicted as Hydrogen-Free 74K Superconductor
+- **Type**: Computational
+- **Source**: New J. Phys. 22 (2020) 076002
+- **Date**: 2020
+- **Description**: First-principles calculations predict BSiC₂ superconducts at 73.6K at ambient pressure via conventional electron-phonon coupling. Stoichiometric, hydrogen-free.
+- **Significance**: Would be the highest-Tc hydrogen-free conventional superconductor at ambient pressure if synthesized. Circumvents all hydrogen-related challenges.
+- **Related Problems**: PROB-003, PROB-004, PROB-006
+- **Potential Applications**: If real, eliminates hydrogen handling/stability issues entirely
+- **Status**: Theory only - NO experimental attempts found in literature as of Nov 2025. MAJOR GAP.
+
+### OBS-SC-041: NUS Nickel Oxide at 40K Ambient Pressure (2025)
+- **Type**: Experimental
+- **Source**: National University of Singapore, April 2025
+- **Date**: April 2025
+- **Description**: (Sm-Eu-Ca)NiO₂ infinite-layer nickelate demonstrates superconductivity at ~40K under ambient pressure conditions.
+- **Significance**: Demonstrates copper is not essential for high-Tc. Different from nickelate under pressure - this is intrinsic ambient-pressure superconductivity.
+- **Related Problems**: PROB-001, PROB-003
+- **Status**: Needs verification
+
+### OBS-SC-042: Theoretical Ceiling for Unconventional SC (2025)
+- **Type**: Computational/Theoretical
+- **Source**: npj Quantum Materials (2025)
+- **Date**: 2025
+- **Description**: Systematic simulations showed room-temperature superconductivity in correlated materials under ambient pressure is "probably impossible" within current theoretical frameworks for 2D unconventional superconductors.
+- **Significance**: Suggests if room-temp is achievable, it requires either (1) conventional BCS pushed to limit, or (2) mechanisms beyond current unconventional theories.
+- **Related Problems**: PROB-001, PROB-002
+- **Status**: Theoretical
+
+### OBS-SC-043: Mg2RuH4 Exists as Precursor
+- **Type**: Experimental
+- **Source**: Literature search Nov 2025
+- **Date**: Various
+- **Description**: Mg2RuH4 has been synthesized, providing a potential pathway to Mg2RuH6 (predicted 45-80K at ambient pressure) similar to the Mg2IrH5→Mg2IrH6 pathway.
+- **Significance**: Ru is much cheaper than Ir ($15/g vs $150/g). If Mg2RuH6 works, it's more practical.
+- **Related Problems**: PROB-003, PROB-004
+- **Potential Applications**: Cost-effective ambient-pressure superconductor
+- **Status**: Partially verified - Mg2RuH4 exists, Mg2RuH6 is predicted but not synthesized
+
 ---
 
 ## INDEX BY PROBLEM
 
 | Problem | Related Observations |
 |---------|---------------------|
-| PROB-001 (Mechanism) | OBS-SC-001, 002, 003, 018, 019 |
-| PROB-002 (Prediction) | OBS-SC-009, 010, 011, 020 |
-| PROB-003 (Pressure) | OBS-SC-004, 006, 007, 008, 014 |
-| PROB-004 (Synthesis) | OBS-SC-005, 021, 022 |
-| PROB-006 (Search) | OBS-SC-002, 005, 009, 012, 013, 015, 020 |
+| PROB-001 (Mechanism) | OBS-SC-001, 002, 003, 018, 019, 041, 042 |
+| PROB-002 (Prediction) | OBS-SC-009, 010, 011, 020, 042 |
+| PROB-003 (Pressure) | OBS-SC-004, 006, 007, 008, 014, 039, 040, 041, 043 |
+| PROB-004 (Synthesis) | OBS-SC-005, 021, 022, 039, 040, 043 |
+| PROB-006 (Search) | OBS-SC-002, 005, 009, 012, 013, 015, 020, 040 |
 | PROB-007 (Computation) | OBS-SC-010 |
 | PROB-008 (Reproducibility) | OBS-SC-016, 017 |
 
@@ -419,5 +467,5 @@ Asymmetric superconductivity (different critical current in different directions
 ---
 
 *Last updated: 2025-11-27*
-*Total observations: 22*
+*Total observations: 43*
 *Idea seeds: 4*
