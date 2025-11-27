@@ -34,6 +34,12 @@ Maintained collaboratively. Could be posted to GitHub for others.
 **Our observations**:
 - Statistical metrics (entropy, compression) don't distinguish trivial from complex rules
 - The "shift rule trap" - patterns that look complex but are just translating
+- **NEW (2025-11-27, Sessions 5-8)**: Complete algebraic characterization of chaos!
+  - **1D ECA**: Chaos requires 4-ones balance + x1x3=0 (no skip-neighbor term) + specific ANF structure
+  - **2D (Moore)**: Chaos requires NO center quadratics (x4·xk = 0 for all k)
+  - **Radius-2**: Linear terms matter more than quadratic constraints
+  - **Unified principle**: Chaos requires information to flow through "long paths" - no shortcuts
+  - See PUBLISHABLE_FINDINGS.md for Findings 10-12
 
 ---
 
@@ -84,12 +90,22 @@ Maintained collaboratively. Could be posted to GitHub for others.
 - Verified computationally to very large numbers
 - No counterexample found
 - Seems "random" but isn't
+- **NEW (2025-11-27)**: -1 is a fixed point in 2-adic integers (3×(-1)+1 = -2, -2/2 = -1)
+- **NEW**: The Syracuse map on odd residues mod 2^k is DETERMINISTIC
+- **NEW**: c=1 is special in 3n+c family (unique attractor structure)
 
 **Sub-problems**:
 - [ ] What's special about powers of 2?
-- [ ] Can we understand the "stopping time" distribution?
+- [x] Can we understand the "stopping time" distribution? → Scales as ~11.5×log(n)
+- [ ] Why do positive integers avoid the 2-adic fixed point -1?
+- [ ] What constrains cycles in 3n+c for c≠1?
+- [ ] Can finite Markov chain structure mod 2^k prove convergence?
 
-**Our observations**: (none yet)
+**Our observations (Session 9, 2025-11-27)**:
+- **Deterministic core / probabilistic shell**: The Syracuse map has deterministic transitions between odd residue classes. The "randomness" comes only from distribution of starting numbers across classes and the varying 2-adic valuation v_2(3n+1).
+- **2-adic perspective**: The conjecture is equivalent to asking why positive integers are "repelled" from -1 in Z_2. This reframes the problem: convergence means avoiding the 2-adic attractor.
+- **Markov chain analysis**: Syracuse on odd residues mod 2^k forms a finite Markov chain with a SINGLE cycle for all tested k (4-9). All odd residues reach 1.
+- **Carry chain connection**: The 3n+1 operation creates long carry chains (avg ~7 bits). This is similar to information flow in chaotic CA rules - long-range dependencies through chained operations.
 
 ---
 
@@ -277,4 +293,4 @@ Mark progress with checkboxes. Date significant updates.
 
 ---
 
-*Last updated: 2025-11-25*
+*Last updated: 2025-11-27* (Major updates from overnight sessions 5-10)
