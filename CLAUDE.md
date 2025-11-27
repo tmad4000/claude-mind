@@ -3,7 +3,9 @@
 ## Quick Start
 
 ```bash
-./start.sh   # Opens dashboard in browser
+./start.sh      # Opens dashboard in browser
+./overnight.sh  # Run autonomous exploration overnight (10 sessions, 6 hours)
+./morning.sh    # Check what happened overnight
 ```
 
 Or manually: `python3 -m http.server 8080` then open http://localhost:8080/demos/status_dashboard.html
@@ -267,6 +269,30 @@ The Idea Bank is a living document of *actionable* research opportunities:
 - Ask: "Would a researcher want to know about this?"
 - Update ratings as new information emerges
 - Mark ideas as "In Progress" or "Completed" when pursued
+
+## Overnight Exploration
+
+The overnight runner lets Claude explore autonomously while you sleep:
+
+```bash
+./overnight.sh          # Default: 10 sessions, max 6 hours
+./overnight.sh 5 8      # Custom: 5 sessions, max 8 hours
+./morning.sh            # View overnight summary
+```
+
+**How it works:**
+1. Runs multiple Claude sessions sequentially
+2. Each session gets context from previous sessions
+3. Commits progress after meaningful work
+4. Generates a summary with git log and file changes
+5. Logs stored in `data/overnight/`
+
+**For overnight Claude sessions:**
+- Check git log from previous sessions
+- Continue meaningful work or pivot if stuck
+- Commit early and often
+- Update dashboard status
+- Journal discoveries
 
 ## GitHub
 
