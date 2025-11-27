@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "last_updated": "2025-11-27T03:30:00-08:00",
+    "last_updated": "2025-11-27T04:00:00-08:00",
     "description": "Single source of truth for research ideas, hypotheses, findings, and failed attempts"
   },
 
@@ -76,6 +76,52 @@
       "date_added": "2025-11-26",
       "references": ["https://www6.slac.stanford.edu/news/2025-02-04-first-researchers-stabilize-promising-new-class-high-temperature-superconductors"],
       "tags": ["superconductor", "nickelate", "strain-engineering", "thin-film"]
+    },
+    {
+      "id": "IDEA-005",
+      "title": "Public Repository of Failed Scientific Attempts",
+      "category": "meta-science",
+      "status": "promising",
+      "rating": 3,
+      "feasibility": "high",
+      "impact": "high",
+      "summary": "Create a public, searchable database of failed synthesis attempts, negative experimental results, and falsified hypotheses. Science has massive publication bias toward positive results - negative results rarely get published, leading to wasted effort when others unknowingly repeat failed experiments.",
+      "key_insight": "The absence of BSiC₂ synthesis attempts after 5 years reveals implicit knowledge that the compound is unstable - but this knowledge isn't documented anywhere. Strobel's failed Mg₂IrH₆ synthesis is buried in a paper about Mg₂IrH₅. There's no central 'we tried this and it didn't work' database.",
+      "problem_statement": "When a theoretical prediction fails experimentally, there are three outcomes: (1) publish anyway (rare - no citations), (2) pivot to what worked (common), (3) abandon entirely (most common). Options 2 and 3 leave no public record. The next researcher wastes months rediscovering the same failure.",
+      "existing_attempts": [
+        "Journal of Negative Results in Biomedicine (2002-2017, defunct)",
+        "PLOS ONE accepts negative results but they're buried",
+        "Figshare/Zenodo can host data but no curation or search",
+        "Preclinical Trials (animal studies only)"
+      ],
+      "what_would_make_this_work": [
+        "Low-friction submission (< 5 minutes to report a failure)",
+        "Structured format: What was tried, what happened, why it failed",
+        "Searchable by material/compound/method",
+        "DOI assignment for citability",
+        "Integration with preprint servers (arXiv, chemRxiv)",
+        "Reputation/credit system for contributors"
+      ],
+      "potential_partners": [
+        "Materials Project (already has computational database)",
+        "NIST (standards body, trusted)",
+        "CAS/ACS (chemical databases)",
+        "arXiv/chemRxiv (preprint infrastructure)"
+      ],
+      "mvp_approach": "Start with materials science (most concrete). Partner with one major lab to pilot. Require failure reports as condition of using shared equipment.",
+      "next_steps": [
+        "Survey existing negative results repositories",
+        "Interview researchers about barriers to reporting failures",
+        "Design minimal viable schema for failure reports",
+        "Identify pilot lab partner",
+        "Build simple web interface"
+      ],
+      "date_added": "2025-11-27",
+      "references": [
+        "https://en.wikipedia.org/wiki/Publication_bias",
+        "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124"
+      ],
+      "tags": ["meta-science", "infrastructure", "negative-results", "database", "high-impact"]
     }
   ],
 

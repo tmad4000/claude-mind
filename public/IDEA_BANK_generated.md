@@ -2,7 +2,7 @@
 
 *Auto-generated from `data/research_db.json`*
 
-**Last updated**: 2025-11-27T03:30:00-08:00
+**Last updated**: 2025-11-27T04:00:00-08:00
 
 ---
 
@@ -30,6 +30,27 @@ Insert final hydrogen into Mg₂IrH₅ via kinetic (non-equilibrium) methods: cr
 **References**:
 - https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.214513
 - https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.166001
+
+---
+
+### ⭐⭐⭐ IDEA-005: Public Repository of Failed Scientific Attempts
+
+**Status**: PROMISING | **Feasibility**: high | **Impact**: high
+
+Create a public, searchable database of failed synthesis attempts, negative experimental results, and falsified hypotheses. Science has massive publication bias toward positive results - negative results rarely get published, leading to wasted effort when others unknowingly repeat failed experiments.
+
+**Key Insight**: The absence of BSiC₂ synthesis attempts after 5 years reveals implicit knowledge that the compound is unstable - but this knowledge isn't documented anywhere. Strobel's failed Mg₂IrH₆ synthesis is buried in a paper about Mg₂IrH₅. There's no central 'we tried this and it didn't work' database.
+
+**Next Steps**:
+- Survey existing negative results repositories
+- Interview researchers about barriers to reporting failures
+- Design minimal viable schema for failure reports
+- Identify pilot lab partner
+- Build simple web interface
+
+**References**:
+- https://en.wikipedia.org/wiki/Publication_bias
+- https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124
 
 ---
 
