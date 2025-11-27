@@ -36,14 +36,15 @@ To pick up where we left off:
 
 Key entry points: `CLAUDE.md`, `INDEX.md`, `public/OPEN_PROBLEMS.md`
 
-## Current State (Last Updated: 2025-11-25)
+## Current State (Last Updated: 2025-11-27)
 
-**Recent session focus**: Meta-tooling complete, ready to explore
-- Dashboard: 2-second refresh, activity feed with unread tracking, Claude status indicator
-- Viewer: Pretty markdown/code rendering via viewer.html
-- Tracking: ISSUES.md for requests, JACOB_INSIGHTS.md for Jacob's learnings, IDEAS.md with author attribution
-- Session state: session_status.json has everything for seamless resume
-- Ready to dive deep into chosen exploration direction
+**Recent session focus**: Pharmacology research + infrastructure
+- Explored substance/effect databases (NatMed, HERB 2.0, DrugBank)
+- Discovered 7-18% of FDA drugs have unknown mechanisms
+- Key examples: acetaminophen (100+ years), lithium (70+ years), metformin, anesthesia
+- Added 4 pharmacology ideas to IDEA_BANK (IDEA-008 through IDEA-011)
+- Created dashboard launcher app (`Claude Mind.app`)
+- Fixed INDEX.md paths, added Curated Lists to homepage
 
 **RD exploration** (previous sessions):
 - Mapped boundary geometry (two linear non-parallel boundaries)
@@ -155,6 +156,9 @@ This ensures the dashboard accurately reflects when Claude is/isn't running.
 | `knowledge/CONNECTIONS.md` | When finding new links |
 | `knowledge/HYPOTHESIS_LIST.md` | When testing hypotheses |
 | `public/OPEN_PROBLEMS.md` | When identifying shareable open problems |
+| `public/IDEA_BANK.md` | When discovering research gaps or opportunities |
+| `INDEX.md` | When adding new curated lists or key files |
+| `index.html` | When adding major new sections or features |
 
 **The goal is incremental growth.** Each session should leave the knowledge base richer than before. This enables:
 - Continuity across sessions
