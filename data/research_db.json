@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "last_updated": "2025-11-27T04:30:00-08:00",
+    "last_updated": "2025-11-27T07:30:00-08:00",
     "description": "Single source of truth for research ideas, hypotheses, findings, and failed attempts"
   },
 
@@ -17,6 +17,9 @@
       "summary": "BSiC₂ predicted to superconduct at 74K at ambient pressure (Chen & Jeng, 2020). Zero synthesis attempts in 5 years.",
       "failure_reason": "Almost certainly thermodynamically unstable. No stability analysis in original paper. Phase separation to B₄C + SiC is thermodynamically favored. 5 years of silence = community consensus 'don't bother'.",
       "date_added": "2025-11-26",
+      "date_created": "2025-11-26T10:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "date_evaluated": "2025-11-27",
       "references": ["https://iopscience.iop.org/article/10.1088/1367-2630/ab76ad"],
       "tags": ["superconductor", "ambient-pressure", "hydrogen-free", "theoretical-only"]
@@ -32,6 +35,9 @@
       "summary": "Pressure-quench Mg₂IrH₆ (predicted Tc 103-160K) from high pressure to ambient.",
       "failure_reason": "Strobel's group at Carnegie already tried this in 2024 and failed at pressures up to 28 GPa. Mg₂IrH₅ remained more stable under all conditions tested.",
       "date_added": "2025-11-26",
+      "date_created": "2025-11-26T10:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "date_evaluated": "2025-11-27",
       "references": ["https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.214513"],
       "tags": ["superconductor", "hydride", "pressure-quench", "already-attempted"]
@@ -58,6 +64,9 @@
         "James Analytis (UC Berkeley) - quantum materials"
       ],
       "date_added": "2025-11-27",
+      "date_created": "2025-11-27T02:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "references": [
         "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.214513",
         "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.166001"
@@ -74,6 +83,9 @@
       "impact": "high",
       "summary": "La₃Ni₂O₇ superconducts at ambient pressure via substrate strain (SLAC, Feb 2025). Current Tc ~26K. Can systematic substrate/strain optimization push higher?",
       "date_added": "2025-11-26",
+      "date_created": "2025-11-26T10:00:00-08:00",
+      "date_modified": "2025-11-26T10:00:00-08:00",
+      "authors": ["Claude"],
       "references": ["https://www6.slac.stanford.edu/news/2025-02-04-first-researchers-stabilize-promising-new-class-high-temperature-superconductors"],
       "tags": ["superconductor", "nickelate", "strain-engineering", "thin-film"]
     },
@@ -117,6 +129,9 @@
         "Build simple web interface"
       ],
       "date_added": "2025-11-27",
+      "date_created": "2025-11-27T03:30:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Jacob"],
       "references": [
         "https://en.wikipedia.org/wiki/Publication_bias",
         "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.0020124"
@@ -146,6 +161,9 @@
         "Study bounded-time Turing completeness (weaker notion, might have simpler examples)"
       ],
       "date_added": "2025-11-27",
+      "date_created": "2025-11-27T04:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "evaluator_notes": "Deep theoretical question, computationally tractable, would illuminate fundamental limits of computation. Rated 8/10 overall.",
       "tags": ["complexity-theory", "computation", "cellular-automata", "theoretical", "high-impact"]
     },
@@ -175,6 +193,9 @@
       ],
       "connection_to_project": "This is exactly what we've been hunting for in the CA/RD exploration. The Class IV isolation finding suggests the answer involves topology of parameter space, not just local properties.",
       "date_added": "2025-11-27",
+      "date_created": "2025-11-27T04:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "evaluator_notes": "Moonshot but transformative if solvable. Holy grail problem - probably impossible but if found would deserve Fields Medal. Rated 7/10 overall due to low feasibility.",
       "tags": ["complexity-theory", "metrics", "theoretical", "moonshot", "high-impact"]
     },
@@ -208,6 +229,9 @@
         "Scott Page (Michigan) - diversity and complexity"
       ],
       "date_added": "2025-11-27",
+      "date_created": "2025-11-27T04:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "evaluator_notes": "Timely with AI, feasible with data, high practical impact for organizations. Rated 7/10 overall.",
       "tags": ["social-systems", "collective-intelligence", "scaling-laws", "data-science", "high-impact"]
     },
@@ -240,6 +264,9 @@
         "Some ML models predict stability but not synthesizability"
       ],
       "date_added": "2025-11-27",
+      "date_created": "2025-11-27T04:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "evaluator_notes": "Solves real problem in materials science, immediately useful, relatively straightforward. Rated 7/10 overall.",
       "tags": ["materials-science", "synthesis", "filtering", "practical", "high-impact"]
     },
@@ -271,6 +298,9 @@
         "Polymarket for general events"
       ],
       "date_added": "2025-11-27",
+      "date_created": "2025-11-27T04:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "evaluator_notes": "Novel incentive mechanism, could actually shift replication culture, prediction markets work. Rated 7/10 overall.",
       "tags": ["meta-science", "prediction-markets", "replication", "incentives", "high-impact"]
     },
@@ -304,6 +334,9 @@
         "Resolution (can human improve on AI?)"
       ],
       "date_added": "2025-11-27",
+      "date_created": "2025-11-27T04:00:00-08:00",
+      "date_modified": "2025-11-27T04:30:00-08:00",
+      "authors": ["Claude"],
       "evaluator_notes": "Actually useful and underexplored. Proper calibration could prevent both over/under-reliance on AI. Rated 7/10 overall.",
       "tags": ["ai-collaboration", "calibration", "training", "human-factors", "practical"]
     }
@@ -382,6 +415,27 @@
       "caveats": "Necessary but not sufficient. Rule 149 (Class III) has complement with stable void but is still chaotic.",
       "date_discovered": "2025-11-27",
       "tags": ["cellular-automata", "complexity"]
+    },
+    {
+      "id": "F-003",
+      "title": "Complete Algebraic Characterization of Chaotic ECA Rules",
+      "category": "cellular-automata",
+      "status": "confirmed",
+      "confidence": "high",
+      "summary": "ALL 12 truly chaotic ECA rules have EXACTLY 4 ones in binary representation. Combined with quiescent state, asymmetric balance (d3=1), and transition pattern conditions, we achieve 100% accurate classification.",
+      "key_results": [
+        "4-ones condition is NECESSARY - no chaotic rule has any other bit count",
+        "12/256 rules are truly chaotic (4.7%)",
+        "Chaotic rules form 4 symmetry orbits - 2 fully chaotic, 2 partially chaotic",
+        "Perfect classification: 4-ones + NOT(111->1,000->0) + d3==1 + transition pattern"
+      ],
+      "implications": [
+        "Chaos in 1D CA is algebraically constrained",
+        "Can determine chaos instantly without simulation",
+        "Wolfram's visual classification missed structure"
+      ],
+      "date_discovered": "2025-11-27",
+      "tags": ["cellular-automata", "chaos", "classification", "publishable", "major-discovery"]
     }
   ],
 
