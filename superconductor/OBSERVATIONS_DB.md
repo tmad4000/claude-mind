@@ -239,6 +239,105 @@ This database collects empirical observations, experimental findings, and phenom
 
 ---
 
+## CATEGORY: TERNARY HYDRIDE PATTERNS (Session 2025-11-27)
+
+### OBS-SC-023: AcBeH8 Predicted at 181K / 10 GPa
+- **Type**: Computational
+- **Source**: Physical Review B 109, 014501 (Jan 2024), arXiv:2411.19028
+- **Date**: 2024
+- **Description**: fcc AcBeH8 predicted dynamically stable down to 10 GPa with Tc = 181K. Multiple stable/metastable Ac-Be-H compounds identified.
+- **Significance**: MAJOR - Only 10 GPa is achievable without diamond anvils! Be-H bonds provide chemical precompression allowing near-ambient stability.
+- **Related Problems**: PROB-003 (pressure reduction)
+- **Potential Applications**: Experimental synthesis target - lower pressure than any other high-Tc hydride
+- **Status**: Computational prediction (not yet synthesized)
+- **Note**: Actinium is radioactive, limiting practical applications, but proves the concept
+
+### OBS-SC-024: YBeH8 Predicted at 201K / 200 GPa
+- **Type**: Computational
+- **Source**: Journal of Chemical Physics (2024), iScience 2025
+- **Date**: 2024
+- **Description**: YBeH8 predicted to have Tc = 201K at 200 GPa. Be-H alloy backbone contributes ~85% of electron-phonon coupling.
+- **Significance**: Confirms Be-H backbone is key to high Tc in this structure type
+- **Related Problems**: PROB-003, PROB-006
+- **Status**: Computational prediction
+
+### OBS-SC-025: Heavy Rare Earth XBeH8 Series
+- **Type**: Computational
+- **Source**: iScience 2025
+- **Date**: 2025
+- **Description**: TmBeH8 (41-48K @ 80 GPa), YbBeH8 (134-145K @ 100 GPa), LuBeH8 (228-245K @ 140 GPa) predicted.
+- **Significance**: Shows progression - heavier rare earths can increase Tc but also increase required pressure
+- **Related Problems**: PROB-003, PROB-006
+- **Status**: Computational predictions
+
+### OBS-SC-026: ScC2H8 - Carbon as Stabilizer
+- **Type**: Computational
+- **Source**: J. Phys. Chem. C (2024), npj Comp. Mat. (2024)
+- **Date**: 2024
+- **Description**: ScC2H8 predicted stable above 50 GPa with superconducting properties. Carbon acts as stabilizer like Be.
+- **Significance**: Expands the stabilizer palette beyond Be/B/Al - carbon compounds may offer new pathways
+- **Related Problems**: PROB-006
+- **Status**: Computational prediction
+
+### OBS-SC-027: Mg2XH6 Family at Ambient Pressure
+- **Type**: Computational
+- **Source**: npj Computational Materials (2024)
+- **Date**: 2024
+- **Description**: Mg2XH6 (X = Rh, Ir, Pd, Pt) predicted to achieve ambient pressure superconductivity above 80K.
+- **Significance**: If verified, this would be a major breakthrough - no pressure required!
+- **Related Problems**: PROB-003 (pressure = 0!)
+- **Status**: Computational prediction - HIGH PRIORITY FOR VERIFICATION
+
+### OBS-SC-028: Pattern - Be-H Backbone Drives High Tc
+- **Type**: Pattern
+- **Source**: Multiple 2024-2025 papers
+- **Description**: Across LaBeH8, YBeH8, AcBeH8, the Be-H bonds contribute 80-90% of electron-phonon coupling. The rare earth element modulates stability pressure.
+- **Significance**: Design principle - optimize the Be-H network, use rare earth to tune pressure
+- **Related Problems**: PROB-006, PROB-003
+
+### OBS-SC-029: Trade-off Between Tc and Pressure
+- **Type**: Pattern
+- **Source**: Multiple papers analysis
+- **Description**: Within XBeH8 family, heavier X = higher Tc but also higher required pressure. There's no free lunch.
+- **Significance**: Suggests we may need fundamentally different approach for true ambient pressure high-Tc
+- **Related Problems**: PROB-003
+
+### OBS-SC-030: ThBeH8 at Low Pressure (7-10 GPa)
+- **Type**: Computational
+- **Source**: ScienceDirect (2024), arXiv, PMC
+- **Date**: 2024
+- **Description**: ThBeH8 predicted stable down to 7 GPa with Tc = 98-113K. Uses "fluorite-type" structure. Chemical template effect provides stability.
+- **Significance**: Non-radioactive alternative to AcBeH8. 7-10 GPa is achievable with multi-anvil apparatus.
+- **Related Problems**: PROB-003
+- **Status**: Computational prediction - synthesis candidate
+
+### OBS-SC-031: LaBH8 Boron Stabilizer
+- **Type**: Computational
+- **Source**: npj Comp. Mat. (2021), Phys. Rev. B
+- **Date**: 2021
+- **Description**: LaBH8 predicted to have Tc = 126-156K at 40-55 GPa. "Sodalite clathrate" structure with B replacing Be.
+- **Significance**: Shows boron works as stabilizer, opens additional compositional space
+- **Related Problems**: PROB-006
+- **Status**: Computational prediction
+
+### OBS-SC-032: Research Gap - CeBeH8, NdBeH8 Not Studied
+- **Type**: Gap
+- **Source**: Literature search 2025-11-27
+- **Description**: Despite LaBeH8, YBeH8, TmBeH8, YbBeH8, LuBeH8, AcBeH8, ThBeH8 all being studied, CeBeH8 and NdBeH8 have NO publications found.
+- **Significance**: Obvious gap in systematic studies. Ce and Nd are adjacent to La - should be straightforward DFT.
+- **Related Problems**: PROB-006
+- **Status**: OPPORTUNITY
+
+### OBS-SC-033: Research Gap - La-Li-H System Not Studied
+- **Type**: Gap
+- **Source**: Literature search 2025-11-27
+- **Description**: Li is lighter than Be and should provide stronger chemical precompression. No La-Li-H superconductor studies found.
+- **Significance**: If Li works better than Be, this could be important
+- **Related Problems**: PROB-003, PROB-006
+- **Status**: OPPORTUNITY
+
+---
+
 ## INDEX BY PROBLEM
 
 | Problem | Related Observations |

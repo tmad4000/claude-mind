@@ -237,6 +237,86 @@ A living catalog of papers relevant to room-temperature superconductivity resear
 
 ---
 
+### 2024-2025 (Added 2025-11-27)
+
+#### PAPER-012: AcBeH8 at 10 GPa
+- **Full Title**: Prediction of high-Tc superconductivity in ternary actinium beryllium hydrides at low pressure
+- **Authors**: Multiple
+- **Source**: Physical Review B 109, 014501 (Jan 2024); arXiv:2411.19028
+- **Date**: January 2024
+- **Contribution Type**: Computational
+- **Key Claims**:
+  - fcc AcBeH8 stable down to 10 GPa (!)
+  - Tc = 181K at 10 GPa
+  - Be-H bonds enable near-ambient stability via chemical precompression
+- **Related Problems**: PROB-003
+- **Related Observations**: OBS-SC-023
+- **Connections Established**: Light element (Be) + actinide → lowest pressure high-Tc hydride
+- **Credibility Notes**: Not yet synthesized; Ac is radioactive
+- **Summary**: Major conceptual advance - shows 10 GPa is achievable for high-Tc hydride
+
+#### PAPER-013: Heavy Rare Earth XBeH8 Series
+- **Full Title**: Prediction of high-Tc superconductivity in heavy rare earth metals compressed Be-H alloy backbone
+- **Authors**: Multiple
+- **Source**: iScience (2025)
+- **Date**: 2025
+- **Contribution Type**: Computational
+- **Key Claims**:
+  - TmBeH8: 41-48K @ 80 GPa
+  - YbBeH8: 134-145K @ 100 GPa
+  - LuBeH8: 228-245K @ 140 GPa
+  - Be-H alloy backbone provides ~85% of coupling
+- **Related Problems**: PROB-003, PROB-006
+- **Related Observations**: OBS-SC-025, OBS-SC-028
+- **Connections Established**: Systematic series showing Tc vs pressure trade-off
+- **Summary**: Comprehensive DFT study of XBeH8 family with heavy rare earths
+
+#### PAPER-014: ScC2H8 Carbon-Based Ternary
+- **Full Title**: Ternary ScC2H8 Superconductor at Moderate Pressure
+- **Authors**: Multiple
+- **Source**: J. Phys. Chem. C (2024)
+- **Date**: 2024
+- **Contribution Type**: Computational
+- **Key Claims**:
+  - ScC2H8 stable above 50 GPa
+  - Carbon acts as stabilizer element
+  - Expands beyond Be/B/Al stabilizers
+- **Related Problems**: PROB-006
+- **Related Observations**: OBS-SC-026
+- **Connections Established**: Carbon can replace Be in ternary hydrides
+- **Summary**: Opens new compositional space with C-H networks
+
+#### PAPER-015: Ambient Pressure Mg2XH6 Prediction
+- **Full Title**: Prediction of ambient pressure conventional superconductivity above 80 K in hydride compounds
+- **Authors**: Multiple
+- **Source**: npj Computational Materials (2024)
+- **Date**: 2024
+- **Contribution Type**: Computational
+- **Key Claims**:
+  - Mg2XH6 (X = Rh, Ir, Pd, Pt) predicted superconducting at ambient pressure
+  - Tc > 80K without any external pressure
+- **Related Problems**: PROB-003
+- **Related Observations**: OBS-SC-027
+- **Connections Established**: New approach using transition metals → ambient pressure possibility
+- **Open Questions Raised**: Why hasn't this been synthesized yet? Stability issues?
+- **Credibility Notes**: HIGH PRIORITY for experimental verification
+- **Summary**: If verified, this would be a breakthrough - no diamond anvil needed
+
+#### PAPER-016: Ternary Hydrides Review (NSR)
+- **Full Title**: Superconducting ternary hydrides: progress and challenges
+- **Authors**: Multiple
+- **Source**: National Science Review (2024)
+- **Date**: 2024
+- **Contribution Type**: Review
+- **Key Claims**:
+  - Comprehensive review of ternary hydride field
+  - Binary hydrides explored; ternaries are the next frontier
+  - Trade-off between Tc and pressure is fundamental
+- **Related Problems**: PROB-003, PROB-006, PROB-007
+- **Summary**: Essential background reading for ternary hydride research
+
+---
+
 ## PAPERS TO FIND/READ
 
 - [ ] Full zentropy theory paper (when published)
@@ -244,6 +324,8 @@ A living catalog of papers relevant to room-temperature superconductivity resear
 - [ ] Original LaH₁₀ Nature 2019 paper (Drozdov et al.)
 - [ ] Recent ARPES on nickelates
 - [ ] Holographic superconductivity papers (Gubser et al.)
+- [ ] Full Mg2XH6 ambient pressure paper - why no synthesis yet?
+- [ ] YBeH8 J. Chem. Phys. full paper
 
 ---
 

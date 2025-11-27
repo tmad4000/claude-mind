@@ -1,0 +1,180 @@
+{
+  "known_ternaries": [
+    {
+      "formula": "LaBeH8",
+      "tc": 110,
+      "pressure": 80
+    },
+    {
+      "formula": "(La,Y)H10",
+      "tc": 253,
+      "pressure": 183
+    },
+    {
+      "formula": "(La,Ce)H9",
+      "tc": 176,
+      "pressure": 100
+    },
+    {
+      "formula": "(La,Ce)H10",
+      "tc": 190,
+      "pressure": 170
+    },
+    {
+      "formula": "(Y,Ce)H9",
+      "tc": 140,
+      "pressure": 150
+    },
+    {
+      "formula": "(La,Nd)H10",
+      "tc": 160,
+      "pressure": 180
+    },
+    {
+      "formula": "LaAlH",
+      "tc": 223,
+      "pressure": 164
+    },
+    {
+      "formula": "CaBeH8",
+      "tc": 55,
+      "pressure": 100
+    },
+    {
+      "formula": "LaSc2H24",
+      "tc": 316,
+      "pressure": 167
+    }
+  ],
+  "tier1_candidates": [
+    [
+      "La",
+      "Li",
+      6.428571428571429
+    ],
+    [
+      "Y",
+      "Li",
+      6.428571428571429
+    ],
+    [
+      "Ce",
+      "Li",
+      6.428571428571429
+    ],
+    [
+      "Nd",
+      "Li",
+      6.428571428571429
+    ],
+    [
+      "Th",
+      "Li",
+      6.428571428571429
+    ],
+    [
+      "Ac",
+      "Li",
+      6.428571428571429
+    ],
+    [
+      "Y",
+      "Be",
+      6.111111111111111
+    ],
+    [
+      "Ce",
+      "Be",
+      6.111111111111111
+    ],
+    [
+      "Nd",
+      "Be",
+      6.111111111111111
+    ],
+    [
+      "Th",
+      "Be",
+      6.111111111111111
+    ]
+  ],
+  "tier2_candidates": [
+    [
+      "Sc",
+      "Ac",
+      7.4
+    ],
+    [
+      "Ce",
+      "Sc",
+      6.700000000000001
+    ],
+    [
+      "Nd",
+      "Sc",
+      6.700000000000001
+    ],
+    [
+      "Y",
+      "Sc",
+      6.600000000000001
+    ],
+    [
+      "Sc",
+      "Th",
+      6.500000000000002
+    ],
+    [
+      "Th",
+      "Ac",
+      5.899999999999999
+    ],
+    [
+      "La",
+      "Th",
+      5.800000000000001
+    ],
+    [
+      "Y",
+      "Ac",
+      5.799999999999999
+    ]
+  ],
+  "hypotheses": [
+    {
+      "id": "HYP-TH-001",
+      "statement": "LaBeH8 analogs with other light stabilizers (B, Li) will show similar pressure reduction",
+      "test": "DFT calculation of LaBH8 and LaLiH8 stability and Tc",
+      "rationale": "Be's role appears to be providing chemical pressure via small radius",
+      "priority": "HIGH"
+    },
+    {
+      "id": "HYP-TH-002",
+      "statement": "Sc-based ternaries will have lower pressure requirements than La-based",
+      "test": "Compare ScBeH8 vs LaBeH8 stability pressures",
+      "rationale": "Sc has smaller radius than La, may need less external pressure",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "HYP-TH-003",
+      "statement": "Triple-element hydrides (quaternary) may further reduce pressure",
+      "test": "DFT screening of (La,Y)BeH8 and similar",
+      "rationale": "Combining multiple strategies: mixed promoters + stabilizer",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "HYP-TH-004",
+      "statement": "The optimal stabilizer mass is around 9-11 amu (Be/B)",
+      "test": "Systematic study of La-X-H where X varies in mass",
+      "rationale": "Be works, Al also works but at higher P; light is better",
+      "priority": "LOW"
+    },
+    {
+      "id": "HYP-TH-005",
+      "statement": "Th-based hydrides may have highest Tc potential (large radius + high mass)",
+      "test": "ThBeH8 DFT stability and Tc prediction",
+      "rationale": "Th has similar properties to La but larger, may enhance DOS",
+      "priority": "HIGH (but radioactive = hard to test)"
+    }
+  ]
+}
