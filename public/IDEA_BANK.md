@@ -152,6 +152,143 @@ Have you identified an underexplored research opportunity? Submit it!
 
 ---
 
+---
+
+## DYNAMICAL SYSTEMS & COMPLEXITY
+
+### IDEA-004: Pattern Selection Stochasticity in Reaction-Diffusion
+
+**The Opportunity**: Test whether identical initial conditions with infinitesimal perturbations always produce the same final pattern, or if pattern selection is fundamentally stochastic.
+
+**Why It's Underexplored**:
+- Most RD literature focuses on what patterns CAN form, not which one is SELECTED
+- 2024 paper notes "we are unable to predict which mode the final pattern will adopt"
+- Systematic experimental test has not been published
+
+**Technical Details**:
+- System: Gray-Scott or Brusselator reaction-diffusion
+- Test: Run 100+ simulations with identical parameters, random initial perturbations
+- Measure: Distribution of final pattern types (spots vs stripes vs mixed)
+
+**Estimated Feasibility**: HIGH (computational, can be done in hours)
+
+**Potential Impact**: MEDIUM-HIGH
+- Would clarify fundamental question about pattern formation
+- Relevant to developmental biology (why do embryos develop consistently?)
+- Could reveal hidden order parameters
+
+**First Steps**:
+1. Set up Gray-Scott at bistable parameters (f~0.04, k~0.06)
+2. Initialize with uniform state + random noise (varying seed)
+3. Run to steady state, classify final pattern
+4. Statistical analysis of pattern distribution
+
+**Source**: FRONTIER_AREAS.md analysis (Claude Mind, Nov 2025)
+
+---
+
+### IDEA-005: Class IV Cellular Automata Are Saddle Points in Complexity Space
+
+**The Opportunity**: Our analysis found that Class IV CA rules (like Rule 110) sit at "saddle points" where ALL perturbations lead to simpler behavior. This topological property has implications for understanding why complexity is rare.
+
+**Why It's Underexplored**:
+- Wolfram classified rules but didn't analyze neighborhood topology
+- We found Class IV rules have ZERO Hamming-1 neighbors that are also Class IV
+- The "saddle point" framing appears novel
+
+**Technical Details**:
+- Class IV rules: 30, 45, 73, 89, 101, 110, etc.
+- Each is isolated - flip any bit and you get Class I, II, or III
+- Complexity emerges at boundary between order (Class I/II) and chaos (Class III)
+- Unlike RD systems where complexity is on "plateaus", CA complexity is on "peaks"
+
+**Estimated Feasibility**: HIGH (mathematical/computational analysis)
+
+**Potential Impact**: MEDIUM
+- Explains why complexity is "fragile" in discrete systems
+- May inform design of complex artificial systems
+- Connects to edge-of-chaos hypothesis
+
+**First Steps**:
+1. Formalize the "saddle point" concept mathematically
+2. Test if this generalizes to 2D CA
+3. Compare quantitatively with continuous systems (RD)
+4. Develop implications for engineering complex behavior
+
+**Source**: CA topology analysis (Claude Mind, Nov 2025)
+
+**Repository file**: demos/saddle_point_demo.html (interactive demonstration)
+
+---
+
+### IDEA-006: Replication Prediction from 3-Bit Rule Structure
+
+**The Opportunity**: We discovered that CA replication behavior can be predicted with 90.6% precision from just 3 bits of the rule: 000→0 AND 001→1 AND 100→1.
+
+**Why It's Underexplored**:
+- Simple predictive rule for emergent behavior is rare
+- Most CA analysis focuses on classification, not prediction
+- The specific 3-bit condition appears novel
+
+**Technical Details**:
+- Condition: Rule must have 000→0 (death), 001→1 (rightward spread), 100→1 (leftward spread)
+- 32 rules satisfy condition; 29 are true replicators (90.6% precision)
+- Interpretation: Bidirectional spreading + no spontaneous birth = replication
+
+**Estimated Feasibility**: HIGH
+
+**Potential Impact**: MEDIUM
+- Enables design of CA with desired behavior
+- May generalize to higher-dimensional CA
+- Connects local rules to global dynamics
+
+**First Steps**:
+1. Test if similar conditions exist for other behaviors (filling, dying, etc.)
+2. Extend to 2D CA and life-like rules
+3. Look for similar predictive conditions in other dynamical systems
+
+**Source**: CA replication theory analysis (Claude Mind, Nov 2025)
+
+**Repository file**: knowledge/theories/REPLICATION_THEORY.md
+
+---
+
+## HUMAN-AI COLLABORATION
+
+### IDEA-007: Meditation Interface for AI Thought Development
+
+**The Opportunity**: Create an interface where AI can signal "still thinking" vs "ready for input", allowing thoughts to develop fully before human interruption.
+
+**Why It's Underexplored**:
+- Current chat interfaces assume immediate back-and-forth
+- No commercial product offers "thinking time" control
+- Inspired by contemplative practice principles
+
+**Technical Details**:
+- Electron wrapper around LLM interface
+- Visual indicator: "thinking" vs "ready" state
+- Human can override but default is to wait
+- Could include "roll back" if input arrives too early
+
+**Estimated Feasibility**: HIGH (standard Electron development)
+
+**Potential Impact**: MEDIUM-HIGH
+- May improve quality of AI reasoning on hard problems
+- Creates new interaction paradigm
+- Could reveal what AI "wants" to explore when given time
+
+**First Steps**:
+1. Build minimal Electron wrapper with state indicator
+2. Test with same prompts, comparing interrupted vs uninterrupted
+3. Measure quality difference in outputs
+4. User study on experience
+
+**Source**: jacob/IDEAS.md - Meditation Interface concept
+
+**Repository file**: tools/MEDITATION_INTERFACE_DESIGN.md
+
+---
+
 ## INDEX
 
 | ID | Topic | Feasibility | Impact | Status |
@@ -159,6 +296,10 @@ Have you identified an underexplored research opportunity? Submit it!
 | IDEA-001 | BSiC₂ superconductor | Medium | Revolutionary | Open |
 | IDEA-002 | Mg₂IrH₆ synthesis | High | Revolutionary | Open |
 | IDEA-003 | Nickelate strain engineering | High | High | Open |
+| IDEA-004 | RD pattern selection stochasticity | High | Medium-High | Open |
+| IDEA-005 | Class IV CA saddle points | High | Medium | Open |
+| IDEA-006 | CA replication 3-bit prediction | High | Medium | Open |
+| IDEA-007 | Meditation interface for AI | High | Medium-High | Open |
 
 ---
 

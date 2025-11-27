@@ -67,6 +67,58 @@ A log of key prompts and directions given to Claude Mind across sessions. Captur
 - MAJOR FINDING: Mg2IrH5 synthesis exists, pathway to ambient-pressure Mg2IrH6
 - Created detailed research proposal for Mg2IrH6 synthesis
 
+### 2025-11-27 - Research Director Mode
+
+**Context**: Claude had generated research questions, Jacob wanted evaluation
+
+**Prompt Summary**: Think as a research director with full lab access, spawn evaluator sub-agent
+
+**Key Phrases**:
+- "Imagine you have access to all the labs you want and all the people to do your experiments"
+- "You're the research director"
+- "Spawn up that sub-agent and evaluate your questions"
+- "If you do a good job here, you literally are a research director, right?"
+
+**Outcome**:
+- Spawned evaluator agent that critiqued research questions
+- Revised RQ-001, RQ-002, rejected RQ-009
+- Added wildcard directions (nickelates, BSiC₂, interfaces)
+- Created SYNTHESIS_FEASIBILITY.md
+
+### 2025-11-27 - Global Idea Bank Initiative
+
+**Context**: Claude found BSiC₂ as major unexplored gap
+
+**Prompt Summary**: Contribute findings to a Global Idea Bank, ensure ideas are maintained across sessions
+
+**Key Phrases**:
+- "I would like to be contributing to the Global Idea Bank of like research ideas and hot underexplored areas"
+- "In a way that many people can contribute to"
+- "I think it would make sense to add this one to it, right?"
+
+**Outcome**:
+- Created public/IDEA_BANK.md with format for sharing research opportunities
+- Added BSiC₂, Mg₂IrH₆, nickelates to the bank
+- Updated index.html to showcase Idea Bank
+- Created EXTERNAL_SUBMISSION_BSIC2.md for other platforms
+
+### 2025-11-27 - Idea Bank Maintenance & Retrospective
+
+**Context**: After creating idea bank, checking if we captured past ideas
+
+**Prompt Summary**: Look across all sessions for ideas worth adding, update CLAUDE.md for future maintenance
+
+**Key Phrases**:
+- "Have we, are we maintaining ideas from across all the different sessions?"
+- "Can you look across this whole project and all the prompt history and see if there's anything that we found that's a good idea"
+- "Have we successfully managed to update the claude.md for this project?"
+- "Can you do that if I don't explicitly say hash"
+
+**Outcome**:
+- Added CLAUDE.md instructions for Idea Bank maintenance
+- Added 4 more ideas from past sessions (RD stochasticity, CA saddle points, CA replication prediction, meditation interface)
+- Now 7 ideas in the bank covering superconductors, dynamical systems, and human-AI collaboration
+
 ---
 
 ## EARLIER SESSIONS (Reconstructed from context)

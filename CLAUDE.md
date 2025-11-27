@@ -215,8 +215,29 @@ This captures the human guidance that shapes exploration. Include:
 - Philosophical insights about collaboration/autonomy
 - Specific requests and their context
 
+## Research Idea Bank (CRITICAL - NEW)
+
+**Maintain `public/IDEA_BANK.md` as a curated collection of underexplored research opportunities.**
+
+When you discover a research gap or promising unexplored idea:
+1. Add it to `public/IDEA_BANK.md` following the format there
+2. Include: opportunity description, why it's underexplored, feasibility, potential impact, first steps
+3. These should be ACTIONABLE - specific enough that someone could pursue them
+4. Update the index table at the bottom
+
+**What qualifies for the Idea Bank:**
+- Research gaps (predicted but never tested, like BSiC₂)
+- Unexplored parameter regimes or approaches
+- Cross-domain connections no one has made
+- Specific experiments worth trying
+- NOT just "interesting questions" - must be actionable
+
+**Check for new ideas every session:**
+- Review discoveries made during exploration
+- Look for connections others might have missed
+- Ask: "Would a researcher want to know about this?"
+
 ## GitHub
 
 Repo: https://github.com/tmad4000/claude-mind
 Push after significant work. All files are synced.
-- > Can you also save a file where you literally save the literal prompts that I give? Every time. In a big stack.
