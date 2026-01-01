@@ -8,7 +8,7 @@ import random
 import time
 from pathlib import Path
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 PROJECT_ROOT = Path(__file__).parent.parent
 
@@ -19,6 +19,8 @@ from bot_generator import (
 )
 from battle_runner import run_1v1, run_battle
 from elo_system import update_elo, get_rating, get_leaderboard, load_ratings, save_ratings
+from claude_advisor import advise_bot, apply_advice, analyze_bot_performance
+from history_tracker import archive_battle, archive_generation, archive_llm_advice
 
 
 # Files
@@ -122,7 +124,7 @@ def initialize_population(size: int = 10) -> List[Dict]:
     return population
 
 
-def evaluate_bot(bot: Dict, opponents: List[str], battles_per_opponent: int = 3) -> Dict:
+def evaluate_bot(bot: Dict, opponents: List[str], battles_per_opponent: int = 3, generation: int = 0) -> Dict:
     """Evaluate a bot against opponents and update its stats"""
     bot_name = bot["name"]
     total_score = 0
@@ -138,6 +140,9 @@ def evaluate_bot(bot: Dict, opponents: List[str], battles_per_opponent: int = 3)
                 continue
 
             total_battles += 1
+
+            # Archive the battle
+            archive_battle(bot_name, opp, result, generation, context="evaluation")
 
             if result["winner"] == bot_name:
                 total_wins += 1
@@ -170,8 +175,44 @@ def select_parents(population: List[Dict], num_parents: int = 2) -> List[Dict]:
     return selected
 
 
-def create_next_generation(population: List[Dict], generation: int, config: Dict) -> List[Dict]:
-    """Create next generation through selection, crossover, and mutation"""
+def create_llm_improved_bot(parent: Dict, generation: int, bot_index: int) -> Optional[Dict]:
+    """Use Claude advisor to create an improved version of a bot"""
+    new_name = f"Evo_Gen{generation}_{bot_index:03d}"
+
+    print(f"  Getting Claude advice for {parent['id']}...")
+    update_heartbeat(f"Claude advising on {parent['id']}")
+
+    result = advise_bot(parent)
+
+    if result and result.get("advice"):
+        advice = result["advice"]
+        analysis = result.get("analysis", {})
+        confidence = advice.get("confidence", 0)
+
+        # Archive the LLM advice
+        archive_llm_advice(parent["id"], analysis, advice, generation)
+
+        if confidence >= 0.5:  # Only apply high-confidence advice
+            improved_genome = apply_advice(parent, advice)
+            log_activity(f"Claude advised: {advice.get('summary', 'improvement')}", "llm_advice")
+
+            if create_and_compile_bot(new_name, improved_genome):
+                return {
+                    "id": new_name,
+                    "name": f"sample.{new_name}",
+                    "genome": improved_genome,
+                    "created": datetime.now().isoformat(),
+                    "generation": generation,
+                    "parent_ids": [parent["id"]],
+                    "llm_advice": advice.get("summary", ""),
+                    "stats": {"battles": 0, "wins": 0}
+                }
+
+    return None
+
+
+def create_next_generation(population: List[Dict], generation: int, config: Dict, use_llm: bool = True) -> List[Dict]:
+    """Create next generation through LLM advice, selection, crossover, and mutation"""
     new_population = []
     pop_size = config["population_size"]
 
@@ -196,7 +237,22 @@ def create_next_generation(population: List[Dict], generation: int, config: Dict
             }
             new_population.append(bot)
 
-    # Create remaining through crossover and mutation
+    # LLM-guided improvement: Get Claude advice for top bots
+    if use_llm:
+        print("\n--- LLM-Guided Improvement Phase ---")
+        log_activity("Starting LLM-guided improvement phase", "llm_phase")
+
+        # Try to create LLM-improved versions of top 3 bots
+        for parent in sorted_pop[:3]:
+            if len(new_population) >= pop_size:
+                break
+
+            improved = create_llm_improved_bot(parent, generation, len(new_population))
+            if improved:
+                new_population.append(improved)
+                print(f"  Created LLM-improved bot: {improved['id']}")
+
+    # Fill remaining slots through traditional crossover and mutation
     while len(new_population) < pop_size:
         new_name = f"Evo_Gen{generation}_{len(new_population):03d}"
 
@@ -239,7 +295,7 @@ def run_generation(generation: int, population: List[Dict], config: Dict) -> Lis
     for i, bot in enumerate(population):
         print(f"\nEvaluating {bot['id']} ({i+1}/{len(population)})")
         update_heartbeat(f"Evaluating {bot['id']}")
-        evaluate_bot(bot, benchmarks, battles_per_opponent=2)
+        evaluate_bot(bot, benchmarks, battles_per_opponent=2, generation=generation)
         print(f"  Elo: {bot['stats'].get('elo', 1500)}, Wins: {bot['stats']['wins']}/{bot['stats']['battles']}")
 
     # Sort by Elo
@@ -249,6 +305,9 @@ def run_generation(generation: int, population: List[Dict], config: Dict) -> Lis
     best = population[0]
     print(f"\nBest bot: {best['id']} (Elo: {best['stats'].get('elo', 1500)})")
     log_activity(f"Gen {generation} best: {best['id']} (Elo: {best['stats'].get('elo', 1500)})", "milestone")
+
+    # Archive the generation
+    archive_generation(population, generation, best)
 
     # Update state
     state = load_state()

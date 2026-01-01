@@ -1,0 +1,36 @@
+{
+  "id": "Evo_Gen1_008",
+  "name": "sample.Evo_Gen1_008",
+  "generation": 1,
+  "genome": {
+    "movement_module": "Random",
+    "gun_module": "Linear",
+    "radar_module": "Spin",
+    "parameters": {
+      "PARAM_PREFERRED_DISTANCE": 199.22703857523103,
+      "PARAM_MOVE_DISTANCE": 181.5412523239415,
+      "PARAM_DIRECTION_CHANGE_RATE": 0.04211930236902195,
+      "PARAM_DIRECTION_CHANGE_INTERVAL": 23.375804653503202,
+      "PARAM_RANDOM_CHANGE_RATE": 0.030129854616332035,
+      "PARAM_MAX_TURN_ANGLE": 57.353927300742114,
+      "PARAM_FIRE_POWER_CLOSE": 2.659220080588525,
+      "PARAM_FIRE_POWER_MEDIUM": 1.8414648534887126,
+      "PARAM_FIRE_POWER_FAR": 1.1669548863011563,
+      "PARAM_RADAR_LOCK_EXTRA": 13.257159799947495
+    },
+    "body_color": "#0000FF",
+    "gun_color": "#00FFFF",
+    "radar_color": "#FFFF00"
+  },
+  "parent_ids": [
+    "Evo_Gen0_004",
+    "Evo_Gen0_001"
+  ],
+  "llm_advice": null,
+  "created": "2026-01-01T04:47:55.324152",
+  "stats": {
+    "battles": 16,
+    "wins": 14,
+    "elo": 1593
+  }
+}

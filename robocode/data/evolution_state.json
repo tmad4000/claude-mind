@@ -1,21 +1,111 @@
 {
-  "session_id": "evo_20260101_033254",
-  "timestamp": "2026-01-01T03:32:54.553029",
-  "last_heartbeat": "2026-01-01T03:40:25.940112",
+  "session_id": "evo_20260101_045638",
+  "timestamp": "2026-01-01T04:56:38.064514",
+  "last_heartbeat": "2026-01-01T05:01:16.019883",
   "status": "completed",
-  "generation": 0,
+  "generation": 1,
   "total_battles": 0,
   "best_bot": {
-    "id": "Evo_Gen0_001",
-    "elo": 1581,
-    "genome": "Random + HeadOn"
+    "id": "Evo_Gen1_002",
+    "elo": 1629,
+    "genome": "Random + Linear"
   },
   "current_task": {
-    "description": "Evaluating Evo_Gen0_008",
-    "timestamp": "2026-01-01T03:39:37.743627"
+    "description": "Evaluating Evo_Gen1_003",
+    "timestamp": "2026-01-01T05:00:49.828449"
   },
   "agent_builders": [],
   "activity_feed": [
+    {
+      "timestamp": "2026-01-01T05:01:16.019879",
+      "type": "complete",
+      "message": "Evolution completed"
+    },
+    {
+      "timestamp": "2026-01-01T05:01:15.970747",
+      "type": "milestone",
+      "message": "Gen 1 best: Evo_Gen1_002 (Elo: 1629)"
+    },
+    {
+      "timestamp": "2026-01-01T04:56:38.065354",
+      "type": "evolution",
+      "message": "Starting generation 1"
+    },
+    {
+      "timestamp": "2026-01-01T04:56:38.064951",
+      "type": "start",
+      "message": "Evolution started"
+    },
+    {
+      "timestamp": "2026-01-01T04:53:14.160535",
+      "type": "complete",
+      "message": "Evolution completed"
+    },
+    {
+      "timestamp": "2026-01-01T04:53:14.144090",
+      "type": "milestone",
+      "message": "Gen 1 best: Evo_Gen1_001 (Elo: 1605)"
+    },
+    {
+      "timestamp": "2026-01-01T04:47:55.986740",
+      "type": "evolution",
+      "message": "Starting generation 1"
+    },
+    {
+      "timestamp": "2026-01-01T04:47:51.198306",
+      "type": "llm_advice",
+      "message": "Claude advised: Upgrade gun from HeadOn to Linear prediction for better accuracy against moving targets"
+    },
+    {
+      "timestamp": "2026-01-01T04:47:19.272809",
+      "type": "llm_advice",
+      "message": "Claude advised: Switch from Linear gun to GuessFactor gun to counter SpinBot's circular movement"
+    },
+    {
+      "timestamp": "2026-01-01T04:46:48.049047",
+      "type": "llm_advice",
+      "message": "Claude advised: Switch from HeadOn gun to Linear gun to hit circular-moving enemies like SpinBot."
+    },
+    {
+      "timestamp": "2026-01-01T04:45:44.879711",
+      "type": "llm_phase",
+      "message": "Starting LLM-guided improvement phase"
+    },
+    {
+      "timestamp": "2026-01-01T04:45:39.935396",
+      "type": "milestone",
+      "message": "Gen 0 best: Evo_Gen0_001 (Elo: 1654)"
+    },
+    {
+      "timestamp": "2026-01-01T04:40:55.525625",
+      "type": "evolution",
+      "message": "Starting generation 0"
+    },
+    {
+      "timestamp": "2026-01-01T04:40:55.523998",
+      "type": "start",
+      "message": "Evolution started"
+    },
+    {
+      "timestamp": "2026-01-01T04:40:44.229911",
+      "type": "complete",
+      "message": "Evolution completed"
+    },
+    {
+      "timestamp": "2026-01-01T04:40:44.223279",
+      "type": "milestone",
+      "message": "Gen 0 best: Evo_Gen0_001 (Elo: 1635)"
+    },
+    {
+      "timestamp": "2026-01-01T04:34:43.588994",
+      "type": "evolution",
+      "message": "Starting generation 0"
+    },
+    {
+      "timestamp": "2026-01-01T04:34:43.588524",
+      "type": "start",
+      "message": "Evolution started"
+    },
     {
       "timestamp": "2026-01-01T03:40:25.940089",
       "type": "complete",

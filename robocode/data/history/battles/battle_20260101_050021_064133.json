@@ -1,0 +1,17 @@
+{
+  "id": "battle_20260101_050021_064133",
+  "timestamp": "2026-01-01T05:00:21.064108",
+  "generation": 1,
+  "context": "evaluation",
+  "bot1": "sample.Evo_Gen1_006",
+  "bot2": "sample.Fire",
+  "result": {
+    "winner": "sample.Evo_Gen1_006",
+    "loser": "sample.Fire",
+    "winner_score": 915,
+    "loser_score": 283,
+    "margin": 632,
+    "winner_firsts": 4,
+    "loser_firsts": 1
+  }
+}

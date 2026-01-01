@@ -1,0 +1,1902 @@
+{
+  "generated": "2026-01-01T05:01:25.269150",
+  "summary": {
+    "total_generations": 1,
+    "total_battles": 80,
+    "total_llm_advice": 0,
+    "best_bot": "Evo_Gen1_002",
+    "best_elo": 1629,
+    "timeline_entries": 81
+  },
+  "generations": [
+    {
+      "generation": 1,
+      "bot_count": 10,
+      "bots": [
+        {
+          "id": "Evo_Gen1_002",
+          "name": "sample.Evo_Gen1_002",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Lock",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 169.12600887727956,
+              "PARAM_MOVE_DISTANCE": 187.73641203692867,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.046249517678251445,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 22.484582230755265,
+              "PARAM_RANDOM_CHANGE_RATE": 0.031460523561185255,
+              "PARAM_MAX_TURN_ANGLE": 49.23287808166663,
+              "PARAM_FIRE_POWER_CLOSE": 2.584312857018111,
+              "PARAM_FIRE_POWER_MEDIUM": 1.915701783299124,
+              "PARAM_FIRE_POWER_FAR": 1.2508014445236257,
+              "PARAM_RADAR_LOCK_EXTRA": 12.314333834617727
+            },
+            "body_color": "#008000",
+            "gun_color": "#00FF80",
+            "radar_color": "#8000FF"
+          },
+          "parent_ids": [
+            "Evo_Gen0_001"
+          ],
+          "llm_advice": "Switch from HeadOn gun to Linear gun to hit circular-moving enemies like SpinBot.",
+          "created": "2026-01-01T04:46:48.849253",
+          "stats": {
+            "battles": 16,
+            "wins": 15,
+            "elo": 1629
+          }
+        },
+        {
+          "id": "Evo_Gen1_001",
+          "name": "sample.Evo_Gen1_001",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Spin",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 379.5182088720238,
+              "PARAM_MOVE_DISTANCE": 172.2213374586688,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.03799874434202423,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 25.038599856210674,
+              "PARAM_RANDOM_CHANGE_RATE": 0.029784690281519387,
+              "PARAM_MAX_TURN_ANGLE": 75.16757600137788,
+              "PARAM_FIRE_POWER_CLOSE": 2.7521263917393255,
+              "PARAM_FIRE_POWER_MEDIUM": 1.7983115696111949,
+              "PARAM_FIRE_POWER_FAR": 0.9479294318158735,
+              "PARAM_RADAR_LOCK_EXTRA": 15.53588557872292
+            },
+            "body_color": "#FFFF00",
+            "gun_color": "#FF8000",
+            "radar_color": "#FF00FF"
+          },
+          "parent_ids": [
+            "Evo_Gen0_004"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:45:44.879222",
+          "stats": {
+            "battles": 16,
+            "wins": 14,
+            "elo": 1603
+          }
+        },
+        {
+          "id": "Evo_Gen1_007",
+          "name": "sample.Evo_Gen1_007",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Spin",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 379.5182088720238,
+              "PARAM_MOVE_DISTANCE": 172.2213374586688,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.03799874434202423,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 25.038599856210674,
+              "PARAM_RANDOM_CHANGE_RATE": 0.029784690281519387,
+              "PARAM_MAX_TURN_ANGLE": 75.16757600137788,
+              "PARAM_FIRE_POWER_CLOSE": 2.7521263917393255,
+              "PARAM_FIRE_POWER_MEDIUM": 1.7983115696111949,
+              "PARAM_FIRE_POWER_FAR": 0.9479294318158735,
+              "PARAM_RADAR_LOCK_EXTRA": 15.53588557872292
+            },
+            "body_color": "#00FFFF",
+            "gun_color": "#FF0080",
+            "radar_color": "#000080"
+          },
+          "parent_ids": [
+            "Evo_Gen0_004",
+            "Evo_Gen0_004"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:47:54.297660",
+          "stats": {
+            "battles": 16,
+            "wins": 14,
+            "elo": 1595
+          }
+        },
+        {
+          "id": "Evo_Gen1_008",
+          "name": "sample.Evo_Gen1_008",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Spin",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 199.22703857523103,
+              "PARAM_MOVE_DISTANCE": 181.5412523239415,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.04211930236902195,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 23.375804653503202,
+              "PARAM_RANDOM_CHANGE_RATE": 0.030129854616332035,
+              "PARAM_MAX_TURN_ANGLE": 57.353927300742114,
+              "PARAM_FIRE_POWER_CLOSE": 2.659220080588525,
+              "PARAM_FIRE_POWER_MEDIUM": 1.8414648534887126,
+              "PARAM_FIRE_POWER_FAR": 1.1669548863011563,
+              "PARAM_RADAR_LOCK_EXTRA": 13.257159799947495
+            },
+            "body_color": "#0000FF",
+            "gun_color": "#00FFFF",
+            "radar_color": "#FFFF00"
+          },
+          "parent_ids": [
+            "Evo_Gen0_004",
+            "Evo_Gen0_001"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:47:55.324152",
+          "stats": {
+            "battles": 16,
+            "wins": 14,
+            "elo": 1593
+          }
+        },
+        {
+          "id": "Evo_Gen1_005",
+          "name": "sample.Evo_Gen1_005",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Lock",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 379.5182088720238,
+              "PARAM_MOVE_DISTANCE": 163.35223326894783,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.0404159459397171,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 25.038599856210674,
+              "PARAM_RANDOM_CHANGE_RATE": 0.029784690281519387,
+              "PARAM_MAX_TURN_ANGLE": 75.16757600137788,
+              "PARAM_FIRE_POWER_CLOSE": 2.7521263917393255,
+              "PARAM_FIRE_POWER_MEDIUM": 1.7983115696111949,
+              "PARAM_FIRE_POWER_FAR": 0.9479294318158735,
+              "PARAM_RADAR_LOCK_EXTRA": 15.53588557872292
+            },
+            "body_color": "#FFFF00",
+            "gun_color": "#FF8000",
+            "radar_color": "#FF00FF"
+          },
+          "parent_ids": [
+            "Evo_Gen0_004"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:47:52.848117",
+          "stats": {
+            "battles": 16,
+            "wins": 13,
+            "elo": 1572
+          }
+        },
+        {
+          "id": "Evo_Gen1_004",
+          "name": "sample.Evo_Gen1_004",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Lock",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 349.9763898972505,
+              "PARAM_MOVE_DISTANCE": 116.62709860913775,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.06201317664356205,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 28.455061211533792,
+              "PARAM_RANDOM_CHANGE_RATE": 0.02387961722432401,
+              "PARAM_MAX_TURN_ANGLE": 44.37257506897404,
+              "PARAM_FIRE_POWER_CLOSE": 2.9778328452159353,
+              "PARAM_FIRE_POWER_MEDIUM": 1.692089087803276,
+              "PARAM_FIRE_POWER_FAR": 1.1533851129782433,
+              "PARAM_RADAR_LOCK_EXTRA": 15.702064463481905
+            },
+            "body_color": "#00FF80",
+            "gun_color": "#80FF00",
+            "radar_color": "#008080"
+          },
+          "parent_ids": [
+            "Evo_Gen0_007"
+          ],
+          "llm_advice": "Upgrade gun from HeadOn to Linear prediction for better accuracy against moving targets",
+          "created": "2026-01-01T04:47:52.015540",
+          "stats": {
+            "battles": 16,
+            "wins": 13,
+            "elo": 1570
+          }
+        },
+        {
+          "id": "Evo_Gen1_000",
+          "name": "sample.Evo_Gen1_000",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "HeadOn",
+            "radar_module": "Lock",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 169.12600887727956,
+              "PARAM_MOVE_DISTANCE": 187.73641203692867,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.046249517678251445,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 22.484582230755265,
+              "PARAM_RANDOM_CHANGE_RATE": 0.031460523561185255,
+              "PARAM_MAX_TURN_ANGLE": 49.23287808166663,
+              "PARAM_FIRE_POWER_CLOSE": 2.584312857018111,
+              "PARAM_FIRE_POWER_MEDIUM": 1.915701783299124,
+              "PARAM_FIRE_POWER_FAR": 1.2508014445236257,
+              "PARAM_RADAR_LOCK_EXTRA": 12.314333834617727
+            },
+            "body_color": "#008000",
+            "gun_color": "#00FF80",
+            "radar_color": "#8000FF"
+          },
+          "parent_ids": [
+            "Evo_Gen0_001"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:45:43.079385",
+          "stats": {
+            "battles": 16,
+            "wins": 12,
+            "elo": 1550
+          }
+        },
+        {
+          "id": "Evo_Gen1_009",
+          "name": "sample.Evo_Gen1_009",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Perpendicular",
+            "gun_module": "Linear",
+            "radar_module": "Lock",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 188.43160432075635,
+              "PARAM_MOVE_DISTANCE": 161.01453017684798,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.0701047098903031,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 19.895464736134453,
+              "PARAM_RANDOM_CHANGE_RATE": 0.04340321792267326,
+              "PARAM_MAX_TURN_ANGLE": 53.21859323361818,
+              "PARAM_FIRE_POWER_CLOSE": 2.676419112955091,
+              "PARAM_FIRE_POWER_MEDIUM": 2.0240497046479247,
+              "PARAM_FIRE_POWER_FAR": 1.4420689185623383,
+              "PARAM_RADAR_LOCK_EXTRA": 5.165340852854582
+            },
+            "body_color": "#008000",
+            "gun_color": "#000080",
+            "radar_color": "#FF0000"
+          },
+          "parent_ids": [
+            "Evo_Gen0_005"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:47:55.985806",
+          "stats": {
+            "battles": 16,
+            "wins": 11,
+            "elo": 1499
+          }
+        },
+        {
+          "id": "Evo_Gen1_006",
+          "name": "sample.Evo_Gen1_006",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Perpendicular",
+            "gun_module": "Linear",
+            "radar_module": "Spin",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 248.46371457285977,
+              "PARAM_MOVE_DISTANCE": 167.95482135933406,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.07988501980667104,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 38.56731546798139,
+              "PARAM_RANDOM_CHANGE_RATE": 0.014338892114460284,
+              "PARAM_MAX_TURN_ANGLE": 72.49035103519536,
+              "PARAM_FIRE_POWER_CLOSE": 2.598354492272216,
+              "PARAM_FIRE_POWER_MEDIUM": 1.863990811760509,
+              "PARAM_FIRE_POWER_FAR": 0.9301524012759464,
+              "PARAM_RADAR_LOCK_EXTRA": 16.756920336677304
+            },
+            "body_color": "#008080",
+            "gun_color": "#80FF00",
+            "radar_color": "#008080"
+          },
+          "parent_ids": [
+            "Evo_Gen0_003"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:47:53.582656",
+          "stats": {
+            "battles": 16,
+            "wins": 11,
+            "elo": 1484
+          }
+        },
+        {
+          "id": "Evo_Gen1_003",
+          "name": "sample.Evo_Gen1_003",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "GuessFactor",
+            "radar_module": "Spin",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 379.5182088720238,
+              "PARAM_MOVE_DISTANCE": 172.2213374586688,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.03799874434202423,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 25.038599856210674,
+              "PARAM_RANDOM_CHANGE_RATE": 0.029784690281519387,
+              "PARAM_MAX_TURN_ANGLE": 75.16757600137788,
+              "PARAM_FIRE_POWER_CLOSE": 2.7521263917393255,
+              "PARAM_FIRE_POWER_MEDIUM": 1.7983115696111949,
+              "PARAM_FIRE_POWER_FAR": 0.9479294318158735,
+              "PARAM_RADAR_LOCK_EXTRA": 15.53588557872292
+            },
+            "body_color": "#FFFF00",
+            "gun_color": "#FF8000",
+            "radar_color": "#FF00FF"
+          },
+          "parent_ids": [
+            "Evo_Gen0_004"
+          ],
+          "llm_advice": "Switch from Linear gun to GuessFactor gun to counter SpinBot's circular movement",
+          "created": "2026-01-01T04:47:20.051580",
+          "stats": {
+            "battles": 16,
+            "wins": 7,
+            "elo": 1384
+          }
+        }
+      ],
+      "top_3": [
+        {
+          "id": "Evo_Gen1_002",
+          "name": "sample.Evo_Gen1_002",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Lock",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 169.12600887727956,
+              "PARAM_MOVE_DISTANCE": 187.73641203692867,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.046249517678251445,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 22.484582230755265,
+              "PARAM_RANDOM_CHANGE_RATE": 0.031460523561185255,
+              "PARAM_MAX_TURN_ANGLE": 49.23287808166663,
+              "PARAM_FIRE_POWER_CLOSE": 2.584312857018111,
+              "PARAM_FIRE_POWER_MEDIUM": 1.915701783299124,
+              "PARAM_FIRE_POWER_FAR": 1.2508014445236257,
+              "PARAM_RADAR_LOCK_EXTRA": 12.314333834617727
+            },
+            "body_color": "#008000",
+            "gun_color": "#00FF80",
+            "radar_color": "#8000FF"
+          },
+          "parent_ids": [
+            "Evo_Gen0_001"
+          ],
+          "llm_advice": "Switch from HeadOn gun to Linear gun to hit circular-moving enemies like SpinBot.",
+          "created": "2026-01-01T04:46:48.849253",
+          "stats": {
+            "battles": 16,
+            "wins": 15,
+            "elo": 1629
+          }
+        },
+        {
+          "id": "Evo_Gen1_001",
+          "name": "sample.Evo_Gen1_001",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Spin",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 379.5182088720238,
+              "PARAM_MOVE_DISTANCE": 172.2213374586688,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.03799874434202423,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 25.038599856210674,
+              "PARAM_RANDOM_CHANGE_RATE": 0.029784690281519387,
+              "PARAM_MAX_TURN_ANGLE": 75.16757600137788,
+              "PARAM_FIRE_POWER_CLOSE": 2.7521263917393255,
+              "PARAM_FIRE_POWER_MEDIUM": 1.7983115696111949,
+              "PARAM_FIRE_POWER_FAR": 0.9479294318158735,
+              "PARAM_RADAR_LOCK_EXTRA": 15.53588557872292
+            },
+            "body_color": "#FFFF00",
+            "gun_color": "#FF8000",
+            "radar_color": "#FF00FF"
+          },
+          "parent_ids": [
+            "Evo_Gen0_004"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:45:44.879222",
+          "stats": {
+            "battles": 16,
+            "wins": 14,
+            "elo": 1603
+          }
+        },
+        {
+          "id": "Evo_Gen1_007",
+          "name": "sample.Evo_Gen1_007",
+          "generation": 1,
+          "genome": {
+            "movement_module": "Random",
+            "gun_module": "Linear",
+            "radar_module": "Spin",
+            "parameters": {
+              "PARAM_PREFERRED_DISTANCE": 379.5182088720238,
+              "PARAM_MOVE_DISTANCE": 172.2213374586688,
+              "PARAM_DIRECTION_CHANGE_RATE": 0.03799874434202423,
+              "PARAM_DIRECTION_CHANGE_INTERVAL": 25.038599856210674,
+              "PARAM_RANDOM_CHANGE_RATE": 0.029784690281519387,
+              "PARAM_MAX_TURN_ANGLE": 75.16757600137788,
+              "PARAM_FIRE_POWER_CLOSE": 2.7521263917393255,
+              "PARAM_FIRE_POWER_MEDIUM": 1.7983115696111949,
+              "PARAM_FIRE_POWER_FAR": 0.9479294318158735,
+              "PARAM_RADAR_LOCK_EXTRA": 15.53588557872292
+            },
+            "body_color": "#00FFFF",
+            "gun_color": "#FF0080",
+            "radar_color": "#000080"
+          },
+          "parent_ids": [
+            "Evo_Gen0_004",
+            "Evo_Gen0_004"
+          ],
+          "llm_advice": null,
+          "created": "2026-01-01T04:47:54.297660",
+          "stats": {
+            "battles": 16,
+            "wins": 14,
+            "elo": 1595
+          }
+        }
+      ]
+    }
+  ],
+  "recent_battles": [
+    {
+      "id": "battle_20260101_045835_081888",
+      "timestamp": "2026-01-01T04:58:35.081858",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_004",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_004",
+        "loser": "sample.Fire",
+        "winner_score": 998,
+        "loser_score": 144,
+        "margin": 854,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045838_665517",
+      "timestamp": "2026-01-01T04:58:38.665491",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_004",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_004",
+        "loser": "sample.Fire",
+        "winner_score": 1028,
+        "loser_score": 149,
+        "margin": 879,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045841_264002",
+      "timestamp": "2026-01-01T04:58:41.263899",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_007",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Evo_Gen1_007",
+        "loser": "sample.Walls",
+        "winner_score": 792,
+        "loser_score": 298,
+        "margin": 494,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_045843_824092",
+      "timestamp": "2026-01-01T04:58:43.824073",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_007",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Evo_Gen1_007",
+        "loser": "sample.Walls",
+        "winner_score": 941,
+        "loser_score": 312,
+        "margin": 629,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045852_703886",
+      "timestamp": "2026-01-01T04:58:52.703836",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_007",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_007",
+        "loser": "sample.Corners",
+        "winner_score": 858,
+        "loser_score": 76,
+        "margin": 782,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045856_381225",
+      "timestamp": "2026-01-01T04:58:56.381166",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_007",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_007",
+        "loser": "sample.Corners",
+        "winner_score": 970,
+        "loser_score": 196,
+        "margin": 774,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045859_997326",
+      "timestamp": "2026-01-01T04:58:59.997279",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_007",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.Evo_Gen1_007",
+        "loser": "sample.SpinBot",
+        "winner_score": 479,
+        "loser_score": 468,
+        "margin": 11,
+        "winner_firsts": 2,
+        "loser_firsts": 3
+      }
+    },
+    {
+      "id": "battle_20260101_045903_580887",
+      "timestamp": "2026-01-01T04:59:03.580858",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_007",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.SpinBot",
+        "loser": "sample.Evo_Gen1_007",
+        "winner_score": 555,
+        "loser_score": 292,
+        "margin": 263,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_045906_028398",
+      "timestamp": "2026-01-01T04:59:06.028380",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_007",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_007",
+        "loser": "sample.Fire",
+        "winner_score": 967,
+        "loser_score": 160,
+        "margin": 807,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045908_671900",
+      "timestamp": "2026-01-01T04:59:08.671868",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_007",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_007",
+        "loser": "sample.Fire",
+        "winner_score": 901,
+        "loser_score": 84,
+        "margin": 817,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045911_136837",
+      "timestamp": "2026-01-01T04:59:11.131839",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_005",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Evo_Gen1_005",
+        "loser": "sample.Walls",
+        "winner_score": 929,
+        "loser_score": 243,
+        "margin": 686,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045918_723748",
+      "timestamp": "2026-01-01T04:59:18.723724",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_005",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Evo_Gen1_005",
+        "loser": "sample.Walls",
+        "winner_score": 821,
+        "loser_score": 318,
+        "margin": 503,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_045925_366354",
+      "timestamp": "2026-01-01T04:59:25.366336",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_005",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_005",
+        "loser": "sample.Corners",
+        "winner_score": 892,
+        "loser_score": 68,
+        "margin": 824,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045929_061593",
+      "timestamp": "2026-01-01T04:59:29.061280",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_005",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_005",
+        "loser": "sample.Corners",
+        "winner_score": 914,
+        "loser_score": 132,
+        "margin": 782,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045931_614179",
+      "timestamp": "2026-01-01T04:59:31.614159",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_005",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.SpinBot",
+        "loser": "sample.Evo_Gen1_005",
+        "winner_score": 426,
+        "loser_score": 420,
+        "margin": 6,
+        "winner_firsts": 3,
+        "loser_firsts": 2
+      }
+    },
+    {
+      "id": "battle_20260101_045934_175054",
+      "timestamp": "2026-01-01T04:59:34.175037",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_005",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.Evo_Gen1_005",
+        "loser": "sample.SpinBot",
+        "winner_score": 472,
+        "loser_score": 318,
+        "margin": 154,
+        "winner_firsts": 3,
+        "loser_firsts": 2
+      }
+    },
+    {
+      "id": "battle_20260101_045936_710600",
+      "timestamp": "2026-01-01T04:59:36.710576",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_005",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_005",
+        "loser": "sample.Fire",
+        "winner_score": 922,
+        "loser_score": 108,
+        "margin": 814,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045939_246911",
+      "timestamp": "2026-01-01T04:59:39.246878",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_005",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_005",
+        "loser": "sample.Fire",
+        "winner_score": 899,
+        "loser_score": 72,
+        "margin": 827,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045941_795964",
+      "timestamp": "2026-01-01T04:59:41.795934",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_008",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Evo_Gen1_008",
+        "loser": "sample.Walls",
+        "winner_score": 917,
+        "loser_score": 192,
+        "margin": 725,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045944_286164",
+      "timestamp": "2026-01-01T04:59:44.286142",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_008",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Evo_Gen1_008",
+        "loser": "sample.Walls",
+        "winner_score": 951,
+        "loser_score": 232,
+        "margin": 719,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045946_771478",
+      "timestamp": "2026-01-01T04:59:46.771353",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_008",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_008",
+        "loser": "sample.Corners",
+        "winner_score": 916,
+        "loser_score": 112,
+        "margin": 804,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045949_274489",
+      "timestamp": "2026-01-01T04:59:49.274464",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_008",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_008",
+        "loser": "sample.Corners",
+        "winner_score": 866,
+        "loser_score": 22,
+        "margin": 844,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045951_806606",
+      "timestamp": "2026-01-01T04:59:51.806578",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_008",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.Evo_Gen1_008",
+        "loser": "sample.SpinBot",
+        "winner_score": 756,
+        "loser_score": 360,
+        "margin": 396,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_045954_288162",
+      "timestamp": "2026-01-01T04:59:54.288144",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_008",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.Evo_Gen1_008",
+        "loser": "sample.SpinBot",
+        "winner_score": 539,
+        "loser_score": 506,
+        "margin": 33,
+        "winner_firsts": 2,
+        "loser_firsts": 3
+      }
+    },
+    {
+      "id": "battle_20260101_045956_738812",
+      "timestamp": "2026-01-01T04:59:56.738786",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_008",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_008",
+        "loser": "sample.Fire",
+        "winner_score": 901,
+        "loser_score": 72,
+        "margin": 829,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_045959_207485",
+      "timestamp": "2026-01-01T04:59:59.207467",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_008",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_008",
+        "loser": "sample.Fire",
+        "winner_score": 936,
+        "loser_score": 121,
+        "margin": 815,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050001_770299",
+      "timestamp": "2026-01-01T05:00:01.770281",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_006",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Evo_Gen1_006",
+        "loser": "sample.Walls",
+        "winner_score": 877,
+        "loser_score": 654,
+        "margin": 223,
+        "winner_firsts": 3,
+        "loser_firsts": 2
+      }
+    },
+    {
+      "id": "battle_20260101_050004_222870",
+      "timestamp": "2026-01-01T05:00:04.222849",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_006",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Walls",
+        "loser": "sample.Evo_Gen1_006",
+        "winner_score": 880,
+        "loser_score": 630,
+        "margin": 250,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_050006_781624",
+      "timestamp": "2026-01-01T05:00:06.781603",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_006",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_006",
+        "loser": "sample.Corners",
+        "winner_score": 1106,
+        "loser_score": 390,
+        "margin": 716,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050009_398499",
+      "timestamp": "2026-01-01T05:00:09.398476",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_006",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_006",
+        "loser": "sample.Corners",
+        "winner_score": 1183,
+        "loser_score": 530,
+        "margin": 653,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050011_892547",
+      "timestamp": "2026-01-01T05:00:11.892518",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_006",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.SpinBot",
+        "loser": "sample.Evo_Gen1_006",
+        "winner_score": 705,
+        "loser_score": 98,
+        "margin": 607,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050018_472758",
+      "timestamp": "2026-01-01T05:00:18.472740",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_006",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.SpinBot",
+        "loser": "sample.Evo_Gen1_006",
+        "winner_score": 694,
+        "loser_score": 309,
+        "margin": 385,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_050021_064133",
+      "timestamp": "2026-01-01T05:00:21.064108",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_006",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_006",
+        "loser": "sample.Fire",
+        "winner_score": 915,
+        "loser_score": 283,
+        "margin": 632,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_050023_538849",
+      "timestamp": "2026-01-01T05:00:23.538821",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_006",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_006",
+        "loser": "sample.Fire",
+        "winner_score": 792,
+        "loser_score": 390,
+        "margin": 402,
+        "winner_firsts": 3,
+        "loser_firsts": 2
+      }
+    },
+    {
+      "id": "battle_20260101_050026_040053",
+      "timestamp": "2026-01-01T05:00:26.040035",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_009",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Evo_Gen1_009",
+        "loser": "sample.Walls",
+        "winner_score": 892,
+        "loser_score": 645,
+        "margin": 247,
+        "winner_firsts": 3,
+        "loser_firsts": 2
+      }
+    },
+    {
+      "id": "battle_20260101_050028_561473",
+      "timestamp": "2026-01-01T05:00:28.561454",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_009",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Walls",
+        "loser": "sample.Evo_Gen1_009",
+        "winner_score": 866,
+        "loser_score": 847,
+        "margin": 19,
+        "winner_firsts": 3,
+        "loser_firsts": 2
+      }
+    },
+    {
+      "id": "battle_20260101_050031_062098",
+      "timestamp": "2026-01-01T05:00:31.062076",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_009",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_009",
+        "loser": "sample.Corners",
+        "winner_score": 953,
+        "loser_score": 140,
+        "margin": 813,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050033_563381",
+      "timestamp": "2026-01-01T05:00:33.563359",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_009",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_009",
+        "loser": "sample.Corners",
+        "winner_score": 1013,
+        "loser_score": 216,
+        "margin": 797,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050037_170408",
+      "timestamp": "2026-01-01T05:00:37.170387",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_009",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.Evo_Gen1_009",
+        "loser": "sample.SpinBot",
+        "winner_score": 618,
+        "loser_score": 383,
+        "margin": 235,
+        "winner_firsts": 3,
+        "loser_firsts": 2
+      }
+    },
+    {
+      "id": "battle_20260101_050039_661410",
+      "timestamp": "2026-01-01T05:00:39.661390",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_009",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.SpinBot",
+        "loser": "sample.Evo_Gen1_009",
+        "winner_score": 615,
+        "loser_score": 281,
+        "margin": 334,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_050046_209855",
+      "timestamp": "2026-01-01T05:00:46.209831",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_009",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_009",
+        "loser": "sample.Fire",
+        "winner_score": 922,
+        "loser_score": 296,
+        "margin": 626,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_050049_821318",
+      "timestamp": "2026-01-01T05:00:49.821281",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_009",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_009",
+        "loser": "sample.Fire",
+        "winner_score": 1004,
+        "loser_score": 176,
+        "margin": 828,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050052_359571",
+      "timestamp": "2026-01-01T05:00:52.359547",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_003",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Walls",
+        "loser": "sample.Evo_Gen1_003",
+        "winner_score": 619,
+        "loser_score": 254,
+        "margin": 365,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050059_011714",
+      "timestamp": "2026-01-01T05:00:59.011682",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_003",
+      "bot2": "sample.Walls",
+      "result": {
+        "winner": "sample.Walls",
+        "loser": "sample.Evo_Gen1_003",
+        "winner_score": 590,
+        "loser_score": 134,
+        "margin": 456,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050101_471105",
+      "timestamp": "2026-01-01T05:01:01.471081",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_003",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Corners",
+        "loser": "sample.Evo_Gen1_003",
+        "winner_score": 444,
+        "loser_score": 437,
+        "margin": 7,
+        "winner_firsts": 3,
+        "loser_firsts": 2
+      }
+    },
+    {
+      "id": "battle_20260101_050104_978457",
+      "timestamp": "2026-01-01T05:01:04.978439",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_003",
+      "bot2": "sample.Corners",
+      "result": {
+        "winner": "sample.Evo_Gen1_003",
+        "loser": "sample.Corners",
+        "winner_score": 891,
+        "loser_score": 78,
+        "margin": 813,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050108_546058",
+      "timestamp": "2026-01-01T05:01:08.546035",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_003",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.SpinBot",
+        "loser": "sample.Evo_Gen1_003",
+        "winner_score": 628,
+        "loser_score": 57,
+        "margin": 571,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050111_010895",
+      "timestamp": "2026-01-01T05:01:11.010873",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_003",
+      "bot2": "sample.SpinBot",
+      "result": {
+        "winner": "sample.SpinBot",
+        "loser": "sample.Evo_Gen1_003",
+        "winner_score": 505,
+        "loser_score": 270,
+        "margin": 235,
+        "winner_firsts": 4,
+        "loser_firsts": 1
+      }
+    },
+    {
+      "id": "battle_20260101_050113_468381",
+      "timestamp": "2026-01-01T05:01:13.468362",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_003",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_003",
+        "loser": "sample.Fire",
+        "winner_score": 961,
+        "loser_score": 136,
+        "margin": 825,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    },
+    {
+      "id": "battle_20260101_050115_968768",
+      "timestamp": "2026-01-01T05:01:15.968750",
+      "generation": 1,
+      "context": "evaluation",
+      "bot1": "sample.Evo_Gen1_003",
+      "bot2": "sample.Fire",
+      "result": {
+        "winner": "sample.Evo_Gen1_003",
+        "loser": "sample.Fire",
+        "winner_score": 1025,
+        "loser_score": 160,
+        "margin": 865,
+        "winner_firsts": 5,
+        "loser_firsts": 0
+      }
+    }
+  ],
+  "llm_advice": [],
+  "timeline": [
+    {
+      "type": "battle",
+      "id": "battle_20260101_045640_614220",
+      "timestamp": "2026-01-01T04:56:40.614187",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_001 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045645_097523",
+      "timestamp": "2026-01-01T04:56:45.097495",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_001 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045648_888656",
+      "timestamp": "2026-01-01T04:56:48.888604",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_001 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045651_572265",
+      "timestamp": "2026-01-01T04:56:51.572237",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_001 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045654_769740",
+      "timestamp": "2026-01-01T04:56:54.769717",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_001"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045657_304953",
+      "timestamp": "2026-01-01T04:56:57.304927",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_001"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045700_117420",
+      "timestamp": "2026-01-01T04:57:00.117403",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_001 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045706_966419",
+      "timestamp": "2026-01-01T04:57:06.966388",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_001 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045713_595952",
+      "timestamp": "2026-01-01T04:57:13.595925",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_002 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045720_227860",
+      "timestamp": "2026-01-01T04:57:20.227822",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_002 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045722_903146",
+      "timestamp": "2026-01-01T04:57:22.903119",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_002 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045725_486348",
+      "timestamp": "2026-01-01T04:57:25.486324",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_002 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045728_062653",
+      "timestamp": "2026-01-01T04:57:28.061616",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_002 beat sample.SpinBot"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045730_654517",
+      "timestamp": "2026-01-01T04:57:30.654493",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_002"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045743_924391",
+      "timestamp": "2026-01-01T04:57:43.923798",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_002 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045746_479909",
+      "timestamp": "2026-01-01T04:57:46.479884",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_002 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045749_065002",
+      "timestamp": "2026-01-01T04:57:49.064980",
+      "generation": 1,
+      "summary": "sample.Walls beat sample.Evo_Gen1_000"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045751_571940",
+      "timestamp": "2026-01-01T04:57:51.571918",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_000 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045754_277928",
+      "timestamp": "2026-01-01T04:57:54.277909",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_000 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045756_729428",
+      "timestamp": "2026-01-01T04:57:56.729407",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_000 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045800_285384",
+      "timestamp": "2026-01-01T04:58:00.285358",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_000"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045803_813466",
+      "timestamp": "2026-01-01T04:58:03.813443",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_000"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045807_358117",
+      "timestamp": "2026-01-01T04:58:07.358089",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_000 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045809_912855",
+      "timestamp": "2026-01-01T04:58:09.912833",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_000 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045812_389729",
+      "timestamp": "2026-01-01T04:58:12.389710",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_004 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045815_913979",
+      "timestamp": "2026-01-01T04:58:15.913956",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_004 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045818_480105",
+      "timestamp": "2026-01-01T04:58:18.480071",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_004 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045821_098207",
+      "timestamp": "2026-01-01T04:58:21.098175",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_004 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045823_571755",
+      "timestamp": "2026-01-01T04:58:23.571733",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_004"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045831_321959",
+      "timestamp": "2026-01-01T04:58:31.321932",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_004"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045835_081888",
+      "timestamp": "2026-01-01T04:58:35.081858",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_004 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045838_665517",
+      "timestamp": "2026-01-01T04:58:38.665491",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_004 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045841_264002",
+      "timestamp": "2026-01-01T04:58:41.263899",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_007 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045843_824092",
+      "timestamp": "2026-01-01T04:58:43.824073",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_007 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045852_703886",
+      "timestamp": "2026-01-01T04:58:52.703836",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_007 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045856_381225",
+      "timestamp": "2026-01-01T04:58:56.381166",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_007 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045859_997326",
+      "timestamp": "2026-01-01T04:58:59.997279",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_007 beat sample.SpinBot"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045903_580887",
+      "timestamp": "2026-01-01T04:59:03.580858",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_007"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045906_028398",
+      "timestamp": "2026-01-01T04:59:06.028380",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_007 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045908_671900",
+      "timestamp": "2026-01-01T04:59:08.671868",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_007 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045911_136837",
+      "timestamp": "2026-01-01T04:59:11.131839",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_005 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045918_723748",
+      "timestamp": "2026-01-01T04:59:18.723724",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_005 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045925_366354",
+      "timestamp": "2026-01-01T04:59:25.366336",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_005 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045929_061593",
+      "timestamp": "2026-01-01T04:59:29.061280",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_005 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045931_614179",
+      "timestamp": "2026-01-01T04:59:31.614159",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_005"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045934_175054",
+      "timestamp": "2026-01-01T04:59:34.175037",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_005 beat sample.SpinBot"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045936_710600",
+      "timestamp": "2026-01-01T04:59:36.710576",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_005 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045939_246911",
+      "timestamp": "2026-01-01T04:59:39.246878",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_005 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045941_795964",
+      "timestamp": "2026-01-01T04:59:41.795934",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_008 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045944_286164",
+      "timestamp": "2026-01-01T04:59:44.286142",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_008 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045946_771478",
+      "timestamp": "2026-01-01T04:59:46.771353",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_008 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045949_274489",
+      "timestamp": "2026-01-01T04:59:49.274464",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_008 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045951_806606",
+      "timestamp": "2026-01-01T04:59:51.806578",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_008 beat sample.SpinBot"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045954_288162",
+      "timestamp": "2026-01-01T04:59:54.288144",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_008 beat sample.SpinBot"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045956_738812",
+      "timestamp": "2026-01-01T04:59:56.738786",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_008 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_045959_207485",
+      "timestamp": "2026-01-01T04:59:59.207467",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_008 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050001_770299",
+      "timestamp": "2026-01-01T05:00:01.770281",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_006 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050004_222870",
+      "timestamp": "2026-01-01T05:00:04.222849",
+      "generation": 1,
+      "summary": "sample.Walls beat sample.Evo_Gen1_006"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050006_781624",
+      "timestamp": "2026-01-01T05:00:06.781603",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_006 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050009_398499",
+      "timestamp": "2026-01-01T05:00:09.398476",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_006 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050011_892547",
+      "timestamp": "2026-01-01T05:00:11.892518",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_006"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050018_472758",
+      "timestamp": "2026-01-01T05:00:18.472740",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_006"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050021_064133",
+      "timestamp": "2026-01-01T05:00:21.064108",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_006 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050023_538849",
+      "timestamp": "2026-01-01T05:00:23.538821",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_006 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050026_040053",
+      "timestamp": "2026-01-01T05:00:26.040035",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_009 beat sample.Walls"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050028_561473",
+      "timestamp": "2026-01-01T05:00:28.561454",
+      "generation": 1,
+      "summary": "sample.Walls beat sample.Evo_Gen1_009"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050031_062098",
+      "timestamp": "2026-01-01T05:00:31.062076",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_009 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050033_563381",
+      "timestamp": "2026-01-01T05:00:33.563359",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_009 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050037_170408",
+      "timestamp": "2026-01-01T05:00:37.170387",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_009 beat sample.SpinBot"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050039_661410",
+      "timestamp": "2026-01-01T05:00:39.661390",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_009"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050046_209855",
+      "timestamp": "2026-01-01T05:00:46.209831",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_009 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050049_821318",
+      "timestamp": "2026-01-01T05:00:49.821281",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_009 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050052_359571",
+      "timestamp": "2026-01-01T05:00:52.359547",
+      "generation": 1,
+      "summary": "sample.Walls beat sample.Evo_Gen1_003"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050059_011714",
+      "timestamp": "2026-01-01T05:00:59.011682",
+      "generation": 1,
+      "summary": "sample.Walls beat sample.Evo_Gen1_003"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050101_471105",
+      "timestamp": "2026-01-01T05:01:01.471081",
+      "generation": 1,
+      "summary": "sample.Corners beat sample.Evo_Gen1_003"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050104_978457",
+      "timestamp": "2026-01-01T05:01:04.978439",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_003 beat sample.Corners"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050108_546058",
+      "timestamp": "2026-01-01T05:01:08.546035",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_003"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050111_010895",
+      "timestamp": "2026-01-01T05:01:11.010873",
+      "generation": 1,
+      "summary": "sample.SpinBot beat sample.Evo_Gen1_003"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050113_468381",
+      "timestamp": "2026-01-01T05:01:13.468362",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_003 beat sample.Fire"
+    },
+    {
+      "type": "battle",
+      "id": "battle_20260101_050115_968768",
+      "timestamp": "2026-01-01T05:01:15.968750",
+      "generation": 1,
+      "summary": "sample.Evo_Gen1_003 beat sample.Fire"
+    },
+    {
+      "type": "generation",
+      "generation": 1,
+      "timestamp": "2026-01-01T05:01:16.018076",
+      "population_size": 10,
+      "best_bot": "Evo_Gen1_002",
+      "best_elo": 1629
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+[
+  {
+    "timestamp": "2026-01-01T04:34:33.803279",
+    "bot_id": "Evo_Gen0_001",
+    "analysis_summary": {
+      "wins": 3,
+      "total": 4,
+      "win_rate": 0.75,
+      "avg_survival_ratio": 64.5625,
+      "avg_damage_ratio": 2.6344874048334237,
+      "avg_firsts_ratio": 0.7000000000000001
+    },
+    "problems": [
+      "LOSES_TO_WALL_HUGGER: Struggles against wall tactics (sample.Walls)"
+    ],
+    "advice": {
+      "recommendation_type": "module_change",
+      "confidence": 0.85,
+      "summary": "Switch from Random to Perpendicular movement to counter wall-hugging opponents",
+      "changes": {
+        "movement_module": "Perpendicular"
+      },
+      "reasoning": "The bot loses specifically to sample.Walls, which uses a wall-following strategy. Random movement is ineffective against wall-huggers because it doesn't maintain optimal positioning - the bot often ends up in corners or against walls where it becomes an easy target. Perpendicular movement actively maintains distance and moves at right angles to the enemy, which accomplishes two things: (1) it keeps the bot away from walls where Walls has an advantage, and (2) it makes the bot harder to hit since it's constantly moving orthogonally to incoming fire. The current 75% win rate with strong damage ratio (2.63) shows the HeadOn gun is working well against simple opponents - the weakness is purely positional. Perpendicular movement should convert the Walls matchup to a win while maintaining effectiveness against the other opponents."
+    }
+  },
+  {
+    "timestamp": "2026-01-01T04:46:48.045164",
+    "bot_id": "Evo_Gen0_001",
+    "analysis_summary": {
+      "wins": 3,
+      "total": 4,
+      "win_rate": 0.75,
+      "avg_survival_ratio": 125.22916666666667,
+      "avg_damage_ratio": 3.6597530183422338,
+      "avg_firsts_ratio": 0.65
+    },
+    "problems": [
+      "LOSES_TO_SPINNER: Struggles against circular movement (sample.SpinBot)"
+    ],
+    "advice": {
+      "recommendation_type": "module_change",
+      "confidence": 0.85,
+      "summary": "Switch from HeadOn gun to Linear gun to hit circular-moving enemies like SpinBot.",
+      "changes": {
+        "gun_module": "Linear"
+      },
+      "reasoning": "The bot's only loss is against SpinBot, which uses circular movement. The HeadOn gun aims directly at the enemy's current position, which completely misses targets with predictable circular motion. SpinBot moves in a consistent arc, making it an ideal target for Linear targeting, which predicts where the enemy will be based on their current velocity vector. Linear targeting calculates the intersection point between the bullet trajectory and the enemy's projected path, dramatically improving hit rates against enemies with consistent movement patterns. The damage ratio against SpinBot (0.97) shows the bot is barely breaking even on damage, indicating the gun is the problem since survival ratio (0.25) suggests we're taking hits while missing our shots. With the other three battles showing strong performance (damage ratios 2.29-6.71), the current Random movement and Lock radar are working well - only the gun targeting needs improvement for circular movers."
+    }
+  },
+  {
+    "timestamp": "2026-01-01T04:47:19.269667",
+    "bot_id": "Evo_Gen0_004",
+    "analysis_summary": {
+      "wins": 3,
+      "total": 4,
+      "win_rate": 0.75,
+      "avg_survival_ratio": 187.5,
+      "avg_damage_ratio": 4.229851917658816,
+      "avg_firsts_ratio": 0.75
+    },
+    "problems": [
+      "LOSES_TO_SPINNER: Struggles against circular movement (sample.SpinBot)"
+    ],
+    "advice": {
+      "recommendation_type": "module_change",
+      "confidence": 0.85,
+      "summary": "Switch from Linear gun to GuessFactor gun to counter SpinBot's circular movement",
+      "changes": {
+        "gun_module": "GuessFactor"
+      },
+      "reasoning": "The Linear gun predicts enemy position by extrapolating their current velocity in a straight line. This works well against bots that move linearly (like Walls, Fire, Corners), explaining the 3 wins. However, SpinBot moves in a tight circular pattern - it's constantly changing direction. Linear prediction shoots where SpinBot *would* be if it kept going straight, but SpinBot curves away, causing most shots to miss (damage ratio 0.32 confirms this). GuessFactor targeting builds a statistical model of where enemies actually end up relative to predictions, learning from hit/miss patterns. After a few rounds against SpinBot, GuessFactor will learn that this enemy consistently curves and will adjust aim accordingly. The current 75% win rate with 4.23 overall damage ratio shows the bot is fundamentally sound - it just needs a smarter gun for curved movement patterns."
+    }
+  },
+  {
+    "timestamp": "2026-01-01T04:47:51.196117",
+    "bot_id": "Evo_Gen0_007",
+    "analysis_summary": {
+      "wins": 4,
+      "total": 4,
+      "win_rate": 1.0,
+      "avg_survival_ratio": 126.16666666666667,
+      "avg_damage_ratio": 3.275102108376756,
+      "avg_firsts_ratio": 0.8
+    },
+    "problems": [],
+    "advice": {
+      "recommendation_type": "module_change",
+      "confidence": 0.75,
+      "summary": "Upgrade gun from HeadOn to Linear prediction for better accuracy against moving targets",
+      "changes": {
+        "gun_module": "Linear"
+      },
+      "reasoning": "While Evo_Gen0_007 has a perfect 4/4 win rate, the current opponents (Walls, SpinBot, Fire, Corners) are all sample bots with predictable behavior. HeadOn targeting only hits enemies that aren't moving or are moving directly toward/away from you. As this bot faces stronger opponents with lateral movement, HeadOn accuracy will drop significantly. Linear targeting predicts where the enemy will be based on their current velocity, dramatically improving hit rate against moving targets. The 3.28 damage ratio is good but could be higher - upgrading to Linear targeting should increase damage output by 20-40% against mobile opponents without any downside. This is the highest-impact single change because gun accuracy directly translates to damage dealt, and Linear is a strict upgrade over HeadOn for all practical scenarios. Keep Random movement for now as it's working well (126.17 survival ratio), but the gun upgrade will prepare this bot for tougher competition."
+    }
+  }
+]

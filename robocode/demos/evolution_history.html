@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robocode Evolution History</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            border-bottom: 1px solid #333;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #00ff88;
+        }
+
+        .summary-card .label {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #00ff88, #00d4ff);
+        }
+
+        .timeline-event {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+        }
+
+        .timeline-event::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 20px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #00ff88;
+        }
+
+        .timeline-event.battle::before { background: #ff6b6b; }
+        .timeline-event.generation::before { background: #00ff88; }
+        .timeline-event.llm_advice::before { background: #ffd93d; }
+
+        .timeline-event .timestamp {
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .timeline-event .content {
+            margin-top: 5px;
+        }
+
+        /* Generations grid */
+        .generations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .generation-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #00ff88;
+        }
+
+        .generation-card h3 {
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .bot-list {
+            list-style: none;
+        }
+
+        .bot-list li {
+            padding: 8px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bot-list .elo {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+
+        .bot-list .genome {
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        /* LLM Advice section */
+        .advice-card {
+            background: rgba(255, 217, 61, 0.1);
+            border-left: 4px solid #ffd93d;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .advice-card .bot-name {
+            color: #ffd93d;
+            font-weight: bold;
+        }
+
+        .advice-card .summary {
+            margin: 10px 0;
+        }
+
+        .advice-card .reasoning {
+            font-size: 0.9em;
+            color: #aaa;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .confidence {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .confidence.high { background: rgba(0, 255, 136, 0.3); color: #00ff88; }
+        .confidence.medium { background: rgba(255, 217, 61, 0.3); color: #ffd93d; }
+        .confidence.low { background: rgba(255, 107, 107, 0.3); color: #ff6b6b; }
+
+        /* Battles section */
+        .battle-row {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+        }
+
+        .battle-row .winner {
+            color: #00ff88;
+            flex: 1;
+        }
+
+        .battle-row .loser {
+            color: #ff6b6b;
+            flex: 1;
+            text-align: right;
+        }
+
+        .battle-row .vs {
+            color: #666;
+            padding: 0 15px;
+        }
+
+        .battle-row .score {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            border-radius: 8px;
+            color: #888;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab:hover, .tab.active {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #666;
+        }
+
+        .error {
+            color: #ff6b6b;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Robocode Evolution History</h1>
+            <p>Watch how bots evolved through LLM-guided genetic algorithms</p>
+        </header>
+
+        <div class="summary-cards" id="summary">
+            <div class="summary-card">
+                <div class="value" id="total-generations">-</div>
+                <div class="label">Generations</div>
+            </div>
+            <div class="summary-card">
+                <div class="value" id="total-battles">-</div>
+                <div class="label">Battles</div>
+            </div>
+            <div class="summary-card">
+                <div class="value" id="total-advice">-</div>
+                <div class="label">LLM Insights</div>
+            </div>
+            <div class="summary-card">
+                <div class="value" id="best-elo">-</div>
+                <div class="label">Best Elo</div>
+            </div>
+        </div>
+
+        <div class="tabs">
+            <button class="tab active" data-tab="timeline">Timeline</button>
+            <button class="tab" data-tab="generations">Generations</button>
+            <button class="tab" data-tab="advice">LLM Advice</button>
+            <button class="tab" data-tab="battles">Recent Battles</button>
+        </div>
+
+        <div id="timeline" class="tab-content active">
+            <div class="section">
+                <h2>Evolution Timeline</h2>
+                <div class="timeline" id="timeline-content">
+                    <div class="loading">Loading timeline...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="generations" class="tab-content">
+            <div class="section">
+                <h2>Generation History</h2>
+                <div class="generations-grid" id="generations-content">
+                    <div class="loading">Loading generations...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="advice" class="tab-content">
+            <div class="section">
+                <h2>LLM Strategic Advice</h2>
+                <div id="advice-content">
+                    <div class="loading">Loading advice...</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="battles" class="tab-content">
+            <div class="section">
+                <h2>Recent Battles</h2>
+                <div id="battles-content">
+                    <div class="loading">Loading battles...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab handling
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Load and render data
+        async function loadData() {
+            try {
+                const response = await fetch('../data/history/viewer_data.json');
+                if (!response.ok) throw new Error('History data not found. Run: python tools/history_tracker.py export');
+                const data = await response.json();
+                renderData(data);
+            } catch (error) {
+                document.getElementById('timeline-content').innerHTML =
+                    `<div class="error">${error.message}</div>`;
+            }
+        }
+
+        function renderData(data) {
+            // Summary cards
+            const summary = data.summary || {};
+            document.getElementById('total-generations').textContent = summary.total_generations || 0;
+            document.getElementById('total-battles').textContent = summary.total_battles || 0;
+            document.getElementById('total-advice').textContent = summary.total_llm_advice || 0;
+            document.getElementById('best-elo').textContent = summary.best_elo || '-';
+
+            // Timeline
+            renderTimeline(data.timeline || []);
+
+            // Generations
+            renderGenerations(data.generations || []);
+
+            // LLM Advice
+            renderAdvice(data.llm_advice || []);
+
+            // Battles
+            renderBattles(data.recent_battles || []);
+        }
+
+        function renderTimeline(timeline) {
+            const container = document.getElementById('timeline-content');
+
+            if (timeline.length === 0) {
+                container.innerHTML = '<div class="loading">No timeline events yet</div>';
+                return;
+            }
+
+            container.innerHTML = timeline.slice().reverse().map(event => `
+                <div class="timeline-event ${event.type}">
+                    <div class="timestamp">${formatTimestamp(event.timestamp)}</div>
+                    <div class="content">
+                        <strong>${formatEventType(event.type)}:</strong>
+                        ${event.summary || `Generation ${event.generation}`}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderGenerations(generations) {
+            const container = document.getElementById('generations-content');
+
+            if (generations.length === 0) {
+                container.innerHTML = '<div class="loading">No generations archived yet</div>';
+                return;
+            }
+
+            container.innerHTML = generations.map(gen => `
+                <div class="generation-card">
+                    <h3>Generation ${gen.generation}</h3>
+                    <p>${gen.bot_count} bots</p>
+                    <ul class="bot-list">
+                        ${gen.bots.slice(0, 5).map((bot, i) => `
+                            <li>
+                                <div>
+                                    <span>${i + 1}. ${bot.id}</span>
+                                    <div class="genome">${bot.genome?.movement_module || '?'} + ${bot.genome?.gun_module || '?'}</div>
+                                </div>
+                                <span class="elo">${bot.stats?.elo || '?'}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        function renderAdvice(adviceList) {
+            const container = document.getElementById('advice-content');
+
+            if (adviceList.length === 0) {
+                container.innerHTML = '<div class="loading">No LLM advice recorded yet</div>';
+                return;
+            }
+
+            container.innerHTML = adviceList.slice().reverse().map(item => {
+                const advice = item.advice || {};
+                const confidence = advice.confidence || 0;
+                const confClass = confidence >= 0.7 ? 'high' : confidence >= 0.5 ? 'medium' : 'low';
+
+                return `
+                    <div class="advice-card">
+                        <div class="bot-name">
+                            ${item.bot_id}
+                            <span class="confidence ${confClass}">${Math.round(confidence * 100)}% confidence</span>
+                        </div>
+                        <div class="summary">${advice.summary || 'No summary'}</div>
+                        <div class="reasoning">${advice.reasoning || ''}</div>
+                        <div class="timestamp" style="margin-top: 10px; font-size: 0.8em; color: #666;">
+                            Gen ${item.generation} - ${formatTimestamp(item.timestamp)}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderBattles(battles) {
+            const container = document.getElementById('battles-content');
+
+            if (battles.length === 0) {
+                container.innerHTML = '<div class="loading">No battles recorded yet</div>';
+                return;
+            }
+
+            container.innerHTML = battles.slice().reverse().map(battle => {
+                const result = battle.result || {};
+                return `
+                    <div class="battle-row">
+                        <div class="winner">
+                            ${result.winner?.split('.').pop() || '?'}
+                            <span class="score">(${result.winner_score || 0})</span>
+                        </div>
+                        <div class="vs">vs</div>
+                        <div class="loser">
+                            <span class="score">(${result.loser_score || 0})</span>
+                            ${result.loser?.split('.').pop() || '?'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function formatTimestamp(ts) {
+            if (!ts) return '';
+            return new Date(ts).toLocaleString();
+        }
+
+        function formatEventType(type) {
+            const types = {
+                'battle': 'Battle',
+                'generation': 'Generation Complete',
+                'llm_advice': 'LLM Advice'
+            };
+            return types[type] || type;
+        }
+
+        // Load on page ready
+        loadData();
+    </script>
+</body>
+</html>

@@ -71,19 +71,27 @@ robocode/
 │   ├── orchestrator.py   # Main evolution loop
 │   ├── battle_runner.py  # Headless battle execution
 │   ├── bot_generator.py  # Module composition
-│   └── elo_system.py     # Elo rating system
+│   ├── elo_system.py     # Elo rating system
+│   ├── claude_advisor.py # LLM strategy advisor
+│   └── history_tracker.py # Battle/bot archiving
 ├── demos/
-│   └── evolution_dashboard.html  # Live monitoring
+│   ├── evolution_dashboard.html  # Live monitoring
+│   └── evolution_history.html    # Evolution replay viewer
 └── robocode-install/     # Robocode installation
 ```
 
 ## Current Results
 
-After Generation 0:
-- **Evo_Gen0_001** (Random + HeadOn) - Elo 1581 (#2)
-- **Evo_Gen0_004** (Random + Linear) - Elo 1577 (#3)
-- Beat sample.Walls (Elo 1545)!
-- Target: sample.SpinBot (Elo 1656)
+After Generation 1 (with LLM guidance):
+- **Evo_Gen1_002** (Perpendicular + HeadOn) - Elo 1629 (#2)
+- **Evo_Gen1_001** (Random + HeadOn) - Elo 1603 (#5)
+- Beat sample.Walls consistently!
+- Closing in on sample.SpinBot (Elo 1699)
+
+**LLM Insights Applied:**
+- Claude recommended switching Random → Perpendicular for wall tactics
+- Claude recommended Linear → GuessFactor for spinning targets
+- Confidence threshold: only apply advice with ≥50% confidence
 
 ## Requirements
 
@@ -121,6 +129,18 @@ python3 tools/bot_generator.py create MyBot
 - [x] Evolution orchestrator
 - [x] Real-time dashboard
 - [x] Overnight autonomous runner
-- [ ] LLM-driven strategy improvement (Claude advisor)
-- [ ] Multi-agent competition
+- [x] LLM-driven strategy improvement (Claude advisor)
+- [x] Battle/bot archiving for replay viewing
+- [ ] Multi-agent competition (Aggressor vs Survivor vs Adaptive)
 - [ ] Download and compete with RoboRumble top bots
+
+## Viewing History
+
+```bash
+# Export history data for viewer
+python3 tools/history_tracker.py export
+
+# View evolution history
+python3 -m http.server 8080
+# Open http://localhost:8080/demos/evolution_history.html
+```
