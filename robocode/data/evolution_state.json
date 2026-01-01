@@ -1,0 +1,45 @@
+{
+  "session_id": "evo_20260101_033254",
+  "timestamp": "2026-01-01T03:32:54.553029",
+  "last_heartbeat": "2026-01-01T03:40:25.940112",
+  "status": "completed",
+  "generation": 0,
+  "total_battles": 0,
+  "best_bot": {
+    "id": "Evo_Gen0_001",
+    "elo": 1581,
+    "genome": "Random + HeadOn"
+  },
+  "current_task": {
+    "description": "Evaluating Evo_Gen0_008",
+    "timestamp": "2026-01-01T03:39:37.743627"
+  },
+  "agent_builders": [],
+  "activity_feed": [
+    {
+      "timestamp": "2026-01-01T03:40:25.940089",
+      "type": "complete",
+      "message": "Evolution completed"
+    },
+    {
+      "timestamp": "2026-01-01T03:40:25.922493",
+      "type": "milestone",
+      "message": "Gen 0 best: Evo_Gen0_001 (Elo: 1581)"
+    },
+    {
+      "timestamp": "2026-01-01T03:33:18.222146",
+      "type": "evolution",
+      "message": "Starting generation 0"
+    },
+    {
+      "timestamp": "2026-01-01T03:32:54.553312",
+      "type": "start",
+      "message": "Evolution started"
+    }
+  ],
+  "meta_state": {
+    "exploration_mode": "exploration",
+    "diversity_index": 1.0,
+    "stagnation_counter": 0
+  }
+}

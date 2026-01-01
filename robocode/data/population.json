@@ -1,0 +1,262 @@
+{
+  "generation": 0,
+  "population_size": 8,
+  "bots": [
+    {
+      "id": "Evo_Gen0_001",
+      "name": "sample.Evo_Gen0_001",
+      "genome": {
+        "movement_module": "Random",
+        "gun_module": "HeadOn",
+        "radar_module": "Lock",
+        "parameters": {
+          "PARAM_PREFERRED_DISTANCE": 169.12600887727956,
+          "PARAM_MOVE_DISTANCE": 187.73641203692867,
+          "PARAM_DIRECTION_CHANGE_RATE": 0.046249517678251445,
+          "PARAM_DIRECTION_CHANGE_INTERVAL": 22.484582230755265,
+          "PARAM_RANDOM_CHANGE_RATE": 0.031460523561185255,
+          "PARAM_MAX_TURN_ANGLE": 49.23287808166663,
+          "PARAM_FIRE_POWER_CLOSE": 2.584312857018111,
+          "PARAM_FIRE_POWER_MEDIUM": 1.915701783299124,
+          "PARAM_FIRE_POWER_FAR": 1.2508014445236257,
+          "PARAM_RADAR_LOCK_EXTRA": 12.314333834617727
+        },
+        "body_color": "#008000",
+        "gun_color": "#00FF80",
+        "radar_color": "#8000FF"
+      },
+      "created": "2026-01-01T03:32:59.863439",
+      "generation": 0,
+      "parent_ids": [],
+      "stats": {
+        "battles": 8,
+        "wins": 7,
+        "elo": 1581
+      }
+    },
+    {
+      "id": "Evo_Gen0_004",
+      "name": "sample.Evo_Gen0_004",
+      "genome": {
+        "movement_module": "Random",
+        "gun_module": "Linear",
+        "radar_module": "Spin",
+        "parameters": {
+          "PARAM_PREFERRED_DISTANCE": 379.5182088720238,
+          "PARAM_MOVE_DISTANCE": 172.2213374586688,
+          "PARAM_DIRECTION_CHANGE_RATE": 0.03799874434202423,
+          "PARAM_DIRECTION_CHANGE_INTERVAL": 25.038599856210674,
+          "PARAM_RANDOM_CHANGE_RATE": 0.029784690281519387,
+          "PARAM_MAX_TURN_ANGLE": 75.16757600137788,
+          "PARAM_FIRE_POWER_CLOSE": 2.7521263917393255,
+          "PARAM_FIRE_POWER_MEDIUM": 1.7983115696111949,
+          "PARAM_FIRE_POWER_FAR": 0.9479294318158735,
+          "PARAM_RADAR_LOCK_EXTRA": 15.53588557872292
+        },
+        "body_color": "#FFFF00",
+        "gun_color": "#FF8000",
+        "radar_color": "#FF00FF"
+      },
+      "created": "2026-01-01T03:33:05.646139",
+      "generation": 0,
+      "parent_ids": [],
+      "stats": {
+        "battles": 8,
+        "wins": 7,
+        "elo": 1577
+      }
+    },
+    {
+      "id": "Evo_Gen0_005",
+      "name": "sample.Evo_Gen0_005",
+      "genome": {
+        "movement_module": "Perpendicular",
+        "gun_module": "Linear",
+        "radar_module": "Lock",
+        "parameters": {
+          "PARAM_PREFERRED_DISTANCE": 191.51195365524867,
+          "PARAM_MOVE_DISTANCE": 161.01453017684798,
+          "PARAM_DIRECTION_CHANGE_RATE": 0.06334263248988051,
+          "PARAM_DIRECTION_CHANGE_INTERVAL": 25.0183840598992,
+          "PARAM_RANDOM_CHANGE_RATE": 0.04340321792267326,
+          "PARAM_MAX_TURN_ANGLE": 53.21859323361818,
+          "PARAM_FIRE_POWER_CLOSE": 2.676419112955091,
+          "PARAM_FIRE_POWER_MEDIUM": 2.0240497046479247,
+          "PARAM_FIRE_POWER_FAR": 1.4420689185623383,
+          "PARAM_RADAR_LOCK_EXTRA": 5.095101416562228
+        },
+        "body_color": "#008000",
+        "gun_color": "#000080",
+        "radar_color": "#FF0000"
+      },
+      "created": "2026-01-01T03:33:10.718489",
+      "generation": 0,
+      "parent_ids": [],
+      "stats": {
+        "battles": 8,
+        "wins": 6,
+        "elo": 1535
+      }
+    },
+    {
+      "id": "Evo_Gen0_003",
+      "name": "sample.Evo_Gen0_003",
+      "genome": {
+        "movement_module": "Perpendicular",
+        "gun_module": "Linear",
+        "radar_module": "Spin",
+        "parameters": {
+          "PARAM_PREFERRED_DISTANCE": 248.46371457285977,
+          "PARAM_MOVE_DISTANCE": 167.95482135933406,
+          "PARAM_DIRECTION_CHANGE_RATE": 0.07988501980667104,
+          "PARAM_DIRECTION_CHANGE_INTERVAL": 39.6192816555083,
+          "PARAM_RANDOM_CHANGE_RATE": 0.014338892114460284,
+          "PARAM_MAX_TURN_ANGLE": 72.49035103519536,
+          "PARAM_FIRE_POWER_CLOSE": 2.598354492272216,
+          "PARAM_FIRE_POWER_MEDIUM": 1.863990811760509,
+          "PARAM_FIRE_POWER_FAR": 0.9301524012759464,
+          "PARAM_RADAR_LOCK_EXTRA": 16.756920336677304
+        },
+        "body_color": "#008080",
+        "gun_color": "#80FF00",
+        "radar_color": "#008080"
+      },
+      "created": "2026-01-01T03:33:02.723443",
+      "generation": 0,
+      "parent_ids": [],
+      "stats": {
+        "battles": 8,
+        "wins": 5,
+        "elo": 1508
+      }
+    },
+    {
+      "id": "Evo_Gen0_007",
+      "name": "sample.Evo_Gen0_007",
+      "genome": {
+        "movement_module": "Random",
+        "gun_module": "HeadOn",
+        "radar_module": "Lock",
+        "parameters": {
+          "PARAM_PREFERRED_DISTANCE": 349.9763898972505,
+          "PARAM_MOVE_DISTANCE": 116.62709860913775,
+          "PARAM_DIRECTION_CHANGE_RATE": 0.06201317664356205,
+          "PARAM_DIRECTION_CHANGE_INTERVAL": 28.455061211533792,
+          "PARAM_RANDOM_CHANGE_RATE": 0.02387961722432401,
+          "PARAM_MAX_TURN_ANGLE": 44.37257506897404,
+          "PARAM_FIRE_POWER_CLOSE": 2.9778328452159353,
+          "PARAM_FIRE_POWER_MEDIUM": 1.692089087803276,
+          "PARAM_FIRE_POWER_FAR": 1.1533851129782433,
+          "PARAM_RADAR_LOCK_EXTRA": 15.702064463481905
+        },
+        "body_color": "#00FF80",
+        "gun_color": "#80FF00",
+        "radar_color": "#008080"
+      },
+      "created": "2026-01-01T03:33:15.103420",
+      "generation": 0,
+      "parent_ids": [],
+      "stats": {
+        "battles": 8,
+        "wins": 4,
+        "elo": 1488
+      }
+    },
+    {
+      "id": "Evo_Gen0_008",
+      "name": "sample.Evo_Gen0_008",
+      "genome": {
+        "movement_module": "Perpendicular",
+        "gun_module": "HeadOn",
+        "radar_module": "Lock",
+        "parameters": {
+          "PARAM_PREFERRED_DISTANCE": 190.892898198498,
+          "PARAM_MOVE_DISTANCE": 170.10245403052835,
+          "PARAM_DIRECTION_CHANGE_RATE": 0.06042305245832707,
+          "PARAM_DIRECTION_CHANGE_INTERVAL": 22.607893535229184,
+          "PARAM_RANDOM_CHANGE_RATE": 0.015793116134123444,
+          "PARAM_MAX_TURN_ANGLE": 64.76159480670319,
+          "PARAM_FIRE_POWER_CLOSE": 2.6767679094307626,
+          "PARAM_FIRE_POWER_MEDIUM": 1.9291535995019204,
+          "PARAM_FIRE_POWER_FAR": 0.7914152477210452,
+          "PARAM_RADAR_LOCK_EXTRA": 7.700846513106722
+        },
+        "body_color": "#0000FF",
+        "gun_color": "#FF8000",
+        "radar_color": "#008080"
+      },
+      "created": "2026-01-01T03:33:17.259656",
+      "generation": 0,
+      "parent_ids": [],
+      "stats": {
+        "battles": 8,
+        "wins": 4,
+        "elo": 1480
+      }
+    },
+    {
+      "id": "Evo_Gen0_006",
+      "name": "sample.Evo_Gen0_006",
+      "genome": {
+        "movement_module": "Random",
+        "gun_module": "GuessFactor",
+        "radar_module": "Spin",
+        "parameters": {
+          "PARAM_PREFERRED_DISTANCE": 234.7813729735676,
+          "PARAM_MOVE_DISTANCE": 92.78189794165999,
+          "PARAM_DIRECTION_CHANGE_RATE": 0.026033452437826225,
+          "PARAM_DIRECTION_CHANGE_INTERVAL": 47.08941047013347,
+          "PARAM_RANDOM_CHANGE_RATE": 0.029984756165644944,
+          "PARAM_MAX_TURN_ANGLE": 69.80265087186793,
+          "PARAM_FIRE_POWER_CLOSE": 2.6555107414884698,
+          "PARAM_FIRE_POWER_MEDIUM": 2.217552183972747,
+          "PARAM_FIRE_POWER_FAR": 1.3430614801007668,
+          "PARAM_RADAR_LOCK_EXTRA": 10.365900248080738
+        },
+        "body_color": "#00FFFF",
+        "gun_color": "#0080FF",
+        "radar_color": "#8000FF"
+      },
+      "created": "2026-01-01T03:33:12.761101",
+      "generation": 0,
+      "parent_ids": [],
+      "stats": {
+        "battles": 8,
+        "wins": 4,
+        "elo": 1476
+      }
+    },
+    {
+      "id": "Evo_Gen0_002",
+      "name": "sample.Evo_Gen0_002",
+      "genome": {
+        "movement_module": "Random",
+        "gun_module": "GuessFactor",
+        "radar_module": "Lock",
+        "parameters": {
+          "PARAM_PREFERRED_DISTANCE": 278.8933745288667,
+          "PARAM_MOVE_DISTANCE": 121.51922388041248,
+          "PARAM_DIRECTION_CHANGE_RATE": 0.0988387902166561,
+          "PARAM_DIRECTION_CHANGE_INTERVAL": 30.149131664487733,
+          "PARAM_RANDOM_CHANGE_RATE": 0.030984215159282055,
+          "PARAM_MAX_TURN_ANGLE": 71.63788196166846,
+          "PARAM_FIRE_POWER_CLOSE": 2.5996676265804695,
+          "PARAM_FIRE_POWER_MEDIUM": 1.7947723145843144,
+          "PARAM_FIRE_POWER_FAR": 1.146360135879818,
+          "PARAM_RADAR_LOCK_EXTRA": 12.935510437313516
+        },
+        "body_color": "#FF0000",
+        "gun_color": "#0000FF",
+        "radar_color": "#FF00FF"
+      },
+      "created": "2026-01-01T03:33:01.460296",
+      "generation": 0,
+      "parent_ids": [],
+      "stats": {
+        "battles": 8,
+        "wins": 3,
+        "elo": 1445
+      }
+    }
+  ]
+}

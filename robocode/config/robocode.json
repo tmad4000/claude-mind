@@ -1,0 +1,19 @@
+{
+  "robocode_dir": "robocode-install",
+  "java_cmd": "java",
+  "java_args": [
+    "-Xmx512M",
+    "-XX:+IgnoreUnrecognizedVMOptions",
+    "--add-opens=java.base/sun.net.www.protocol.jar=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
+    "--add-opens=java.desktop/javax.swing.text=ALL-UNNAMED",
+    "--add-opens=java.desktop/sun.awt=ALL-UNNAMED"
+  ],
+  "battles_dir": "battles",
+  "results_dir": "battles/results",
+  "default_rounds": 10,
+  "default_battlefield": {
+    "width": 800,
+    "height": 600
+  }
+}

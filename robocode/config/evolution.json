@@ -1,0 +1,46 @@
+{
+  "population_size": 10,
+  "generations_per_session": 5,
+  "battles_per_evaluation": 5,
+  "selection": {
+    "method": "tournament",
+    "tournament_size": 3
+  },
+  "mutation": {
+    "rate": 0.3,
+    "parameter_noise": 0.1
+  },
+  "crossover": {
+    "rate": 0.5
+  },
+  "elo": {
+    "initial_rating": 1500,
+    "k_factor": 32
+  },
+  "agents": [
+    {
+      "name": "Aggressor",
+      "focus": "damage_output",
+      "preferred_modules": {
+        "movement": ["Perpendicular", "Random"],
+        "gun": ["Linear", "GuessFactor"]
+      }
+    },
+    {
+      "name": "Survivor",
+      "focus": "evasion",
+      "preferred_modules": {
+        "movement": ["WaveSurfer", "Random"],
+        "gun": ["HeadOn", "Linear"]
+      }
+    },
+    {
+      "name": "Adaptive",
+      "focus": "balanced",
+      "preferred_modules": {
+        "movement": ["Perpendicular", "WaveSurfer"],
+        "gun": ["GuessFactor", "Linear"]
+      }
+    }
+  ]
+}

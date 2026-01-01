@@ -1,0 +1,114 @@
+{
+  "k_factor": 32,
+  "initial_rating": 1500,
+  "ratings": {
+    "sample.Corners": {
+      "elo": 1251,
+      "battles": 16,
+      "type": "benchmark",
+      "last_battle": "2026-01-01T03:40:03.587049"
+    },
+    "sample.Crazy": {
+      "elo": 1450,
+      "battles": 0,
+      "type": "benchmark"
+    },
+    "sample.Fire": {
+      "elo": 1231,
+      "battles": 16,
+      "type": "benchmark",
+      "last_battle": "2026-01-01T03:40:25.919133"
+    },
+    "sample.MyFirstRobot": {
+      "elo": 1380,
+      "battles": 0,
+      "type": "benchmark"
+    },
+    "sample.RamFire": {
+      "elo": 1480,
+      "battles": 0,
+      "type": "benchmark"
+    },
+    "sample.SittingDuck": {
+      "elo": 1100,
+      "battles": 0,
+      "type": "benchmark"
+    },
+    "sample.SpinBot": {
+      "elo": 1656,
+      "battles": 16,
+      "type": "benchmark",
+      "last_battle": "2026-01-01T03:40:12.484088"
+    },
+    "sample.TrackFire": {
+      "elo": 1460,
+      "battles": 0,
+      "type": "benchmark"
+    },
+    "sample.VelociRobot": {
+      "elo": 1470,
+      "battles": 0,
+      "type": "benchmark"
+    },
+    "sample.Walls": {
+      "elo": 1545,
+      "battles": 17,
+      "type": "benchmark",
+      "last_battle": "2026-01-01T03:39:52.475248"
+    },
+    "sample.TestBot": {
+      "elo": 1517,
+      "battles": 1,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:31:43.957617"
+    },
+    "sample.Evo_Gen0_001": {
+      "elo": 1581,
+      "battles": 8,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:34:22.700041"
+    },
+    "sample.Evo_Gen0_002": {
+      "elo": 1445,
+      "battles": 8,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:35:31.983052"
+    },
+    "sample.Evo_Gen0_003": {
+      "elo": 1508,
+      "battles": 8,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:36:21.063578"
+    },
+    "sample.Evo_Gen0_004": {
+      "elo": 1577,
+      "battles": 8,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:37:09.501021"
+    },
+    "sample.Evo_Gen0_005": {
+      "elo": 1535,
+      "battles": 8,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:37:53.504253"
+    },
+    "sample.Evo_Gen0_006": {
+      "elo": 1476,
+      "battles": 8,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:38:49.908339"
+    },
+    "sample.Evo_Gen0_007": {
+      "elo": 1488,
+      "battles": 8,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:39:37.742629"
+    },
+    "sample.Evo_Gen0_008": {
+      "elo": 1480,
+      "battles": 8,
+      "type": "evolved",
+      "last_battle": "2026-01-01T03:40:25.918276"
+    }
+  }
+}
