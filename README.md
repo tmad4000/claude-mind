@@ -111,3 +111,14 @@ Open for collaboration. Attribution appreciated.
 *Started 2025-11-25. Maintained by humans and AIs working together.*
 
 **Join us**: Open issues, submit PRs, or just explore and share what you find.
+
+
+### Release details and feedback
+The 16 owned HTML entry pages share a non-floating footer feedback link and a
+small version/update stamp; vendored Robocode documentation is unchanged.
+`VERSION` is the version source. The Pages Actions deploy preserves Jekyll-rendered Markdown URLs and excludes
+hidden source directories. It runs
+`scripts/stamp-version.sh` to generate `version.json` for its checked-out commit.
+The stamp uses that commit's committer date and exposes the exact local time and
+commit by tooltip, tap or Enter. Dirty/Git-less release builds explicitly fall
+back to build time. Pages must use Actions deployment instead of branch builds.

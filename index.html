@@ -129,6 +129,7 @@
         .tag-interactive { background: #1a4a1a; color: #4ade80; }
         .tag-new { background: #4a1a4a; color: #f472b6; }
     </style>
+<link rel="stylesheet" href="app-assets/release.css">
 </head>
 <body>
     <div class="container">
@@ -274,10 +275,15 @@
         <div class="meta">
             <p>
                 <a href="https://github.com/tmad4000/claude-mind">GitHub Repository</a> ·
-                A collaboration between Jacob and Claude ·
-                Last updated: November 2025
+                A collaboration between Jacob and Claude
             </p>
         </div>
     </div>
+
+<footer class="app-release">
+  <span id="wit-feedback-mount"></span> · <span data-app-stamp data-show="time" data-src="version.json"></span>
+</footer>
+<script defer src="app-assets/app-stamp.js"></script>
+<script defer src="https://worldissuetracker.com/widget/wit-feedback.js" data-mount-selector="#wit-feedback-mount" data-tracker-slug="claude-mind-feedback" data-app="Claude Mind" data-mode="feedback" data-trigger="tab" data-theme="dark" data-label="Send feedback"></script>
 </body>
 </html>
