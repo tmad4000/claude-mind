@@ -116,7 +116,8 @@ Open for collaboration. Attribution appreciated.
 ### Release details and feedback
 The 16 owned HTML entry pages share a non-floating footer feedback link and a
 small version/update stamp; vendored Robocode documentation is unchanged.
-`VERSION` is the version source. The Pages Actions deploy runs
+`VERSION` is the version source. The Pages Actions deploy preserves Jekyll-rendered Markdown URLs and excludes
+hidden source directories. It runs
 `scripts/stamp-version.sh` to generate `version.json` for its checked-out commit.
 The stamp uses that commit's committer date and exposes the exact local time and
 commit by tooltip, tap or Enter. Dirty/Git-less release builds explicitly fall

@@ -16,9 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sh scripts/stamp-version.sh version.json
+      - uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ./_site
   deploy:
     needs: build
     runs-on: ubuntu-latest

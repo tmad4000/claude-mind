@@ -3,6 +3,7 @@
  *
  *   <span data-app-stamp></span>                          reads ./version.json
  *   <span data-app-stamp data-src="/app/version.json"></span>
+ *   <span data-app-stamp data-show="time"></span>         content pages: "Updated 5m ago" with no version
  *   <span data-app-stamp data-version="1.4.2" data-commit="ebca55c"
  *         data-time="2026-11-15T09:37:12Z" data-repo="tmad4000/breathe"></span>   build-injected
  *
@@ -47,7 +48,7 @@
   }
 
   function render(el, info) {
-    var version = info.version ? 'v' + String(info.version).replace(/^v/, '') : '';
+    var version = info.version && el.dataset.show !== 'time' ? 'v' + String(info.version).replace(/^v/, '') : '';
     var useBuild = info.event === 'build' || !info.commitTime;
     var f = format(useBuild ? info.buildTime : info.commitTime);
     var commit = info.commit ? String(info.commit).slice(0, 7) : '';
