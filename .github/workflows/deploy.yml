@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  pull_request:
 permissions:
   contents: read
   pages: write
@@ -20,10 +21,18 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Check existing rendered URLs and hidden-file exclusion
+        run: |
+          test -f _site/DIRECTIONS.html
+          test -f _site/INDEX.html
+          test -f _site/CLAUDE.html
+          test -f _site/version.json
+          test ! -e _site/.claude
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
