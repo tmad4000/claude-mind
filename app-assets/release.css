@@ -1,0 +1,4 @@
+.app-release { position: static; clear: both; margin: 24px 0 8px; padding: 12px 16px; color: #c1c7d0; text-align: center; font: 12px system-ui, sans-serif; }
+.app-stamp { font-variant-numeric: tabular-nums; white-space: nowrap; cursor: pointer; }
+.app-stamp:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.app-stamp[data-exact="1"] { white-space: normal; }

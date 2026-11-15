@@ -352,6 +352,7 @@
             50% { opacity: 0.5; }
         }
     </style>
+<link rel="stylesheet" href="../app-assets/release.css">
 </head>
 <body>
     <div class="container">
@@ -819,6 +820,11 @@
             drawRDTopology();
         });
     </script>
-<script defer src="https://worldissuetracker.com/widget/wit-feedback.js" data-tracker-slug="claude-mind-feedback" data-app="Claude Mind" data-mode="feedback" data-trigger="tab" data-label="Send feedback"></script>
+
+<footer class="app-release">
+  <span id="wit-feedback-mount"></span> · <span data-app-stamp data-src="../version.json"></span>
+</footer>
+<script defer src="../app-assets/app-stamp.js"></script>
+<script defer src="https://worldissuetracker.com/widget/wit-feedback.js" data-mount-selector="#wit-feedback-mount" data-tracker-slug="claude-mind-feedback" data-app="Claude Mind" data-mode="feedback" data-trigger="tab" data-theme="dark" data-label="Send feedback"></script>
 </body>
 </html>
